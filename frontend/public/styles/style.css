@@ -7,3 +7,27 @@
   padding: 0;
   border: 0;
 }
+
+#draggable {
+  padding: 0.5em;
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+#droppable {
+  background-image: url(/frontend/public/imgs/prato.png);
+  background-size: 400px;
+  border: 1px solid black;
+  border-radius: 50%; width: 400px; height: 400px;
+  padding: 0.5em;
+  float: left;
+  margin: 10px;
+}
+
+li {
+  list-style: none;
+}
+
+div img {
+  width: 100px;
+  height: 100px;
+}
