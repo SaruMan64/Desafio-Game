@@ -1,0 +1,73 @@
+@-moz-document url-prefix() {
+  html,
+  body {
+    overflow: hidden !important;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+#portas {
+  background-color: #cfcfcf;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: absolute;
+  z-index: 10;
+}
+
+.backDoor {
+  background-color: #fff;
+  position: relative;
+  width: 400px;
+  height: 300px;
+  display: flex;
+}
+
+.door {
+  background-color: brown;
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  transition: all 0.5s ease-in-out;
+  border: 1px solid black;
+  box-sizing: border-box;
+}
+
+.R {
+  transform-origin: right;
+  top: 0px;
+  left: 200px;
+}
+
+.L {
+  transform-origin: left;
+  top: 0px;
+  left: 0px;
+}
+
+.doorOpenL {
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px)
+    rotateY(-105deg);
+}
+
+.doorOpenR {
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px)
+    rotateY(105deg);
+}
+
+#btn {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: calc(50vh - 25px);
+  left: calc(50vw - 50px);
+}
