@@ -6,8 +6,9 @@ $(function () {
         cancel: "a.ui-icon",
         revert: "invalid",
         containment: "document",
-        helper: function(event) {
-            return $(`<div><img src="./images/${event.target.id}"></div>`)
+        helper: function (event) {
+            let deg = Math.floor(Math.random() * (360));
+            return $(`<div><img class="foods" style="transform: rotate(${deg}deg)" src="./images/${event.target.id}"></div>`);
         },
     })
 
