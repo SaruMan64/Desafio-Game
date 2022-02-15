@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: "Backend",
-      script: "npm",
+      script: "server.js",
       args: "start",
       cwd: "./backend/",
       watch: true,
@@ -11,12 +11,12 @@ module.exports = {
     },
     {
       name: "Frontend",
-      script: "npm",
+      script: "app.js",
       args: "start",
       cwd: "./frontend/",
       watch: true,
       watch_delay: 1000,
-      "ignore_watch": ["node_modules"]    
+      "ignore_watch": ["node_modules"] 
     },
   ],
 };
