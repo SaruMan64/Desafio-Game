@@ -1,0 +1,17 @@
+@keyframes doorL {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50%;
+  }
+}
+
+@keyframes doorR {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 100%;
+  }
+}

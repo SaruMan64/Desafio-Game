@@ -1,9 +1,30 @@
+$(function () {
+  $('#btn').click(function () {
+    $(this).prop('disabled', true);
+    //$(this).remove();
+    $(".L").css("animation", "doorL 2500ms cubic-bezier(1,0,.5,1)")
+    $(".R").css("animation", "doorR 2500ms cubic-bezier(1,0,.5,1)")
+    setTimeout(() => {
+      $(this).prop('disabled', false);
+      $(".L").css("left", "-50%")
+      $(".R").css("left", "100%")
+      //$("#doors").remove();
+    }, 2600);
+    const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
+    audiott.play();
+    //$("#doors").css("scale", "4 4");
+    /* $("#doors").css("opacity", "0");
+    $("#doors").css("position", "absolute");
+    $("#doors").css("top", "-62.41%");
+    $("#doors").css("transition", "opacity 2s, bottom 2.6s ease "); */
+  })
+});
+/* 
 const btn = document.querySelector("#btn");
 btn.onclick = () => {
-  const portas = document.querySelector("#portas");
   setTimeout(() => {
-	portas.remove();
-  }, 2000);
+    portas.remove();
+  }, 2300);
   toggleDoor();
   portas.style.transform = "scale(4)";
   portas.style.opacity = "0";
@@ -23,3 +44,4 @@ function toggleDoor() {
     }
   });
 }
+ */
