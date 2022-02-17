@@ -1,22 +1,25 @@
 $(function () {
   $('#btn').click(function () {
     $(this).prop('disabled', true);
-    //$(this).remove();
-    $(".L").css("animation", "doorL 2500ms cubic-bezier(1,0,.5,1)")
-    $(".R").css("animation", "doorR 2500ms cubic-bezier(1,0,.5,1)")
+
     setTimeout(() => {
-      $(this).prop('disabled', false);
+      $("#frontopening").html("");
+      const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
+      audiott.play();
+
+      const animationDoor = " 2800ms cubic-bezier(1,0,.5,1)"
+      const animationBrownser = ["-webkit-animation", "-moz-animation", "-o-animation", "animation"]
+      animationBrownser.forEach(el => {
+        $(".L").css(el, "doorL" + animationDoor);
+        $(".R").css(el, "doorR" + animationDoor);
+      });
+    }, 500)
+
+    setTimeout(() => {
       $(".L").css("left", "-50%")
       $(".R").css("left", "100%")
       //$("#doors").remove();
-    }, 2600);
-    const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
-    audiott.play();
-    //$("#doors").css("scale", "4 4");
-    /* $("#doors").css("opacity", "0");
-    $("#doors").css("position", "absolute");
-    $("#doors").css("top", "-62.41%");
-    $("#doors").css("transition", "opacity 2s, bottom 2.6s ease "); */
+    }, 2800);
   })
 });
 /* 

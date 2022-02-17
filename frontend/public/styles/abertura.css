@@ -33,16 +33,15 @@
   height: 100%;
   position: absolute;
   z-index: 10;
+  animation-iteration-count: 1;
 }
 
 .L {
   left: 0;
-  animation-iteration-count: 1;
 }
 
 .R {
   left: 50%;
-  animation-iteration-count: 1;
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
 }
@@ -105,7 +104,7 @@
   width: 250px;
   height: 40px;
   position: absolute;
-  top: calc(62.41% - calc(56px + 25px));
+  top: calc(62.5% - calc(56px + 40px));
   left: calc(50% - 125px);
   z-index: 6;
 
@@ -134,7 +133,7 @@
   width: 120px;
   height: 50px;
   position: absolute;
-  top: calc(62.41% + 25px);
+  top: 62.6%;
   left: calc(50% - 60px);
   z-index: 6;
 
@@ -145,7 +144,7 @@
   box-sizing: border-box;
   border-radius: 10px;
   cursor: pointer;
-  transition: 0s 800ms;
+  transition: 0s 500ms;
 
   /*   font-family: Roboto; */
   font-style: normal;
