@@ -6,10 +6,12 @@ const port = 4444;
 app.use(cors());
 app.use(express.json());
 
-/*app.get("/", (req, res) => {
+const getOrder = require("./modules/getOrder.js");
 
+app.get("/order", (req, res) => {
+  res.send(getOrder.getOrder());
 });
-
+/*
 app.post("/", (req, res) => {
   
 });
