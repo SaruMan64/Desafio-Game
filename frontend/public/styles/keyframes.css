@@ -1,3 +1,29 @@
+/* Doors Animation */
+/* Door Left */
+@-webkit-keyframes doorL {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50%;
+  }
+}
+@-moz-keyframes doorL {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50%;
+  }
+}
+@-o-keyframes doorL {
+  from {
+    left: 0;
+  }
+  to {
+    left: -50%;
+  }
+}
 @keyframes doorL {
   from {
     left: 0;
@@ -7,6 +33,31 @@
   }
 }
 
+/* Door Right */
+@-webkit-keyframes doorR {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-moz-keyframes doorR {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 100%;
+  }
+}
+@-o-keyframes doorR {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 100%;
+  }
+}
 @keyframes doorR {
   from {
     left: 50%;
