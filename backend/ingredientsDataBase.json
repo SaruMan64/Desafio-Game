@@ -1,0 +1,21 @@
+{
+    "broth": ["fish",
+        "chicken",
+        "meat",
+        "pork",
+        "shoyu"
+    ],
+    "ingredients": ["carrot",
+        "chashu",
+        "chicken",
+        "egg",
+        "mnema",
+        "moyashi",
+        "naruto",
+        "nori",
+        "porkrib",
+        "radish",
+        "shitake",
+        "tofu"
+    ]
+}
