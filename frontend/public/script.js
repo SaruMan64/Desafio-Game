@@ -1,4 +1,9 @@
 $(function () {
+    $("#game").tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+    $( "#game>li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-right" );
+    $("#game").on("click", "li", function(){
+        $(this).css("background-color", "light-blue");
+    });
     let $ingredients = $("#ingredients"),
         $plate = $("#droppable");
 
@@ -8,7 +13,7 @@ $(function () {
         containment: "document",
         helper: function (event) {
             let deg = Math.floor(Math.random() * (360));
-            return $(`<div><img class="foods" style="transform: rotate(${deg}deg)" src="./images/${event.target.id}"></div>`);
+            return $(`<div><img class="foods" style="transform: rotate(${deg}deg)" src="./images/${event.target.id}.png"></div>`);
         },
     })
 
