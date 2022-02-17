@@ -5,6 +5,26 @@
   padding: 0;
   border: 0;
 }
+
+@-moz-document url-prefix() {
+  html,
+  body {
+    overflow: hidden !important;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
 main {
   width: 100vw;
   height: 100vh;
