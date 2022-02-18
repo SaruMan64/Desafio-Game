@@ -1,5 +1,6 @@
 /* Doors Animation */
 /* Door Left */
+/* Safari 4+ */
 @-webkit-keyframes doorL {
   from {
     left: 0;
@@ -8,6 +9,7 @@
     left: -50%;
   }
 }
+/* Fx 5+ */
 @-moz-keyframes doorL {
   from {
     left: 0;
@@ -16,6 +18,7 @@
     left: -50%;
   }
 }
+/* Opera 12+ */
 @-o-keyframes doorL {
   from {
     left: 0;
@@ -24,6 +27,7 @@
     left: -50%;
   }
 }
+/* IE 10+, Fx 29+ */
 @keyframes doorL {
   from {
     left: 0;
@@ -34,6 +38,7 @@
 }
 
 /* Door Right */
+/* Safari 4+ */
 @-webkit-keyframes doorR {
   from {
     left: 50%;
@@ -42,6 +47,7 @@
     left: 100%;
   }
 }
+/* Fx 5+ */
 @-moz-keyframes doorR {
   from {
     left: 50%;
@@ -50,6 +56,7 @@
     left: 100%;
   }
 }
+/* Opera 12+ */
 @-o-keyframes doorR {
   from {
     left: 50%;
@@ -58,6 +65,7 @@
     left: 100%;
   }
 }
+/* IE 10+, Fx 29+ */
 @keyframes doorR {
   from {
     left: 50%;
@@ -68,14 +76,62 @@
 }
 
 /* Door Zoom Fade Out */
-@keyframes zoomFadeOut {
+/* Safari 4+ */
+@-webkit-keyframes zoomFadeOut {
   from {
     scale: 1 1;
+    transform: scale(1);
     opacity: 100%;
     top: 0;
   }
   to {
     scale: 4 4;
+    transform: scale(4);
+    opacity: 0;
+    top: -50%;
+  }
+}
+/* Fx 5+ */
+@-moz-keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    transform: scale(1);
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    transform: scale(4);
+    opacity: 0;
+    top: -50%;
+  }
+}
+/* Opera 12+ */
+@-o-keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    transform: scale(1);
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    transform: scale(4);
+    opacity: 0;
+    top: -50%;
+  }
+}
+/* IE 10+, Fx 29+ */
+@keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    transform: scale(1);
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    transform: scale(4);
     opacity: 0;
     top: -50%;
   }
