@@ -4,10 +4,9 @@ $(document).ready(function () {
   openingHTML();
   $('#btn').click(function () {
     openingAnimationDoors();
-  })
+  });
 
 })
-
 
 /* Functions */
 //Prepend HTML in to body
@@ -53,7 +52,6 @@ function openingAnimationDoors() {
       $("#doors").css(el, "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
     });
 
-    $("main").attr("hidden", false);
   }, 500)
 
   setTimeout(() => {
