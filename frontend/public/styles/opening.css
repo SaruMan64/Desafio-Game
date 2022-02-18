@@ -3,9 +3,13 @@
 #doors {
   height: 100%;
   width: 100%;
-  background-color: transparent;
+  background-image: url("../images/opening/SakuraOpening.png");
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
   position: absolute;
   z-index: 2;
+  animation-iteration-count: 1;
 }
 
 #frontopening {
@@ -13,8 +17,8 @@
   width: 100%;
   background-image: url("../images/opening/FrontOpening.png");
   background-position: center;
-  background-size: cover;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
   position: absolute;
   z-index: 5;
 }
@@ -46,66 +50,12 @@
   transform: scaleX(-1);
 }
 
-/* #doors {
-  background-color: #cfcfcf;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: absolute;
-  z-index: 10;
-}
-
-.backDoor {
-  background-color: #fff;
-  position: relative;
-  width: 400px;
-  height: 300px;
-  display: flex;
-}
-
-.door {
-  background-color: brown;
-  position: absolute;
-  width: 200px;
-  height: 300px;
-  transition: all 0.5s ease-in-out;
-  border: 1px solid black;
-  box-sizing: border-box;
-}
-
-.R {
-  transform-origin: right;
-  top: 0px;
-  left: 200px;
-}
-
-.L {
-  transform-origin: left;
-  top: 0px;
-  left: 0px;
-}
-
-.doorOpenL {
-  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px)
-    rotateY(-105deg);
-}
-
-.doorOpenR {
-  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px)
-    rotateY(105deg);
-}
-
-*/
-
 #inputName {
   width: 250px;
   height: 40px;
   position: absolute;
-  top: calc(62.5% - calc(56px + 40px));
-  left: calc(50% - 125px);
+  top: 52.8vh;
+  left: calc(50% - 120px);
   z-index: 6;
 
   background: #efefef;
@@ -115,7 +65,7 @@
   outline: 1px solid black;
   text-align: center;
 
-  /* font-family: Roboto; */
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -133,8 +83,8 @@
   width: 120px;
   height: 50px;
   position: absolute;
-  top: 62.6%;
-  left: calc(50% - 60px);
+  top: 63vh;
+  left: calc(50% - 55px);
   z-index: 6;
 
   background: #efefef;
@@ -146,7 +96,7 @@
   cursor: pointer;
   transition: 0s 500ms;
 
-  /*   font-family: Roboto; */
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;

@@ -66,3 +66,53 @@
     left: 100%;
   }
 }
+
+/* Door Zoom Fade Out */
+@-webkit-keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    opacity: 0;
+    top: -50%;
+  }
+}
+@-moz-keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    opacity: 0;
+    top: -50%;
+  }
+}
+@-o-keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    opacity: 0;
+    top: -50%;
+  }
+}
+@keyframes zoomFadeOut {
+  from {
+    scale: 1 1;
+    opacity: 100%;
+    top: 0;
+  }
+  to {
+    scale: 4 4;
+    opacity: 0;
+    top: -50%;
+  }
+}
