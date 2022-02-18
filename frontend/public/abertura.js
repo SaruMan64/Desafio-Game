@@ -22,5 +22,23 @@ $(function () {
       $(".R").css("left", "100%")
       $("#doors").remove();
     }, 2800);
+
+    
   })
 });
+
+function registerPlayer() {
+  const player = {
+    "name": $("#inputName").val(),
+  };
+  $.ajax({
+      url: 'http://localhost:4444/register',
+      method: "POST",
+      contentType: "application/json; charset=utf-8",
+      crossDomain: true,
+      data: player
+  })
+  .done(function (data) {
+      console.log(data);
+  });
+}
