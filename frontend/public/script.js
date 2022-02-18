@@ -1,28 +1,57 @@
 $(function () {
-    $("#game").tabs()/* .addClass("ui-tabs-vertical ui-helper-clearfix");
-    $("#game>li").removeClass("ui-corner-top").addClass("ui-corner-right") */;
-    $("#game").on("click", "li", function () {
-        $(this).css("background-color", "light-blue");
-    });
+    $("#game").tabs();
+
     let $ingredients = $("#ingredients"),
         $plate = $("#droppable"),
-        $trash = $("#trash");
+        // $trash = $("#trash"),
+        $broth = $("#broth"),
+        $pot = $("#pot"),
+        $noddle = $("#noddle1");
+
+    $noddle.draggable({
+        cursor: "grabbing",
+        cancel: "a.ui-icon",
+        revert: "valid",
+        containment: "#table2",
+        helper: function (event) {
+            return $(`<div><img class="foods" src="./images/${event.target.id}.png"></div>`);
+        }
+    });
+
+    $("li", $broth).draggable({
+        cursor: "grabbing",
+        cancel: "a.ui-icon",
+        revert: "valid",
+        containment: "#table2"
+    });
+
+    $pot.droppable({
+        accept: "#broth > li",
+        drop: function (event, ui) {
+            console.log(ui.helper[0].id);
+            $(this).css("background-color", ui.helper[0].id);
+        }
+    });
+
+    $pot.droppable({
+        accept: "#noddle1"
+    });
 
     $("li", $ingredients).draggable({
         cursor: "grabbing",
         cancel: "a.ui-icon",
         revert: "invalid",
-        containment: "document",
+        containment: "#table3",
         helper: function (event) {
             let deg = Math.floor(Math.random() * (360));
             return $(`<div><img class="foods" style="transform: rotate(${deg}deg)" src="./images/${event.target.id}.png"></div>`);
-        },
-    })
+        }
+    });
 
-    $("li", $ingredients).droppable({
+    $ingredients.droppable({
         revert: "invalid",
-        drop: function( event, ui ) {
-            $(ui.helper).remove();           
+        drop: function (event, ui) {
+            $(ui.helper).remove();
         }
     });
 
@@ -33,18 +62,8 @@ $(function () {
             $("#droppable div").addClass("item");
             $(".item").removeClass("ui-draggable")
                 .draggable({
-                    containment: 'document'
-                })
-                /* .draggable({
-                    revert: "valid",
-                    containment: false
-                }) */;
+                    containment: '#table3'
+                });
         }
-    })
-
-    /* $trash.droppable({
-        drop: function( event, ui ) {
-            $(ui.helper).remove();           
-        }
-    }) */
+    });
 });
