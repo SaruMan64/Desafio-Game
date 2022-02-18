@@ -8,7 +8,6 @@ $(document).ready(function () {
 
 })
 
-
 /* Functions */
 //Prepend HTML in to body
 function openingHTML() {
