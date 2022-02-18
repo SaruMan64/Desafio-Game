@@ -1,7 +1,7 @@
 $(function () {
   $('#btn').click(function () {
     $(this).prop('disabled', true);
-    //$(this).remove();
+    $(this).remove();
     $(".L").css("animation", "doorL 2500ms cubic-bezier(1,0,.5,1)")
     $(".R").css("animation", "doorR 2500ms cubic-bezier(1,0,.5,1)")
     setTimeout(() => {
@@ -9,7 +9,7 @@ $(function () {
       $(".L").css("left", "-50%")
       $(".R").css("left", "100%")
       //$("#doors").remove();
-    }, 2600);
+    }, 2400);
     const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
     audiott.play();
     //$("#doors").css("scale", "4 4");
