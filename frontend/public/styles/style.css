@@ -8,11 +8,20 @@
   border: 0;
 }
 
-#select-ingredients {
+#game {
+  width: 70vw;
+}
+
+.table {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: fit-content;
+}
+
+#noddle1{
+  width: 100px;
+  height: 100px;
 }
 
 #ingredients {
@@ -27,26 +36,46 @@
   margin: 10px 10px 10px 0;
 }
 
-#droppable {
-  background-image: url(/frontend/public/imgs/prato.png);
-  background-size: 400px;
+#box {
+  background-image: url(../images/box.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
   border: 1px solid black;
-  border-radius: 50%;
   width: 400px;
-  height: 400px;
+  height: 380px;
   padding: 0.5em;
   float: left;
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#droppable {
+  width: 250px;
+  height: 200px;
+  border: 1px solid black;
 }
 
 li {
   list-style: none;
 }
 
-div img {
+#broth img {
   width: 100px;
   height: 100px;
 }
+
+#ingredients img {
+  width: 100px;
+  height: 100px;
+}
+
+.foods {
+  width: 100px;
+  height: 100px;
+}
+
 /* 
 .ui-tabs-vertical {
   width: 65em;
@@ -86,4 +115,19 @@ div img {
   width: 100px;
   height: 100px;
   background-color: gray;
+}
+
+#pot {
+  width: 200px;
+  height: 200px;
+  background-color: #97ff0e;
+  border: 1px solid black;
+}
+
+#table4 {
+  background-image: url(../images/oven.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 465px;
+  height: 300px;
 }
