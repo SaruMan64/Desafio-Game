@@ -2,49 +2,69 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
-  <link rel="stylesheet" href="./styles/style.css" />
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 </head>
 
 <body>
-  <div id="game">
-    <ul>
-      <li><a href="#select-order">Pedido</a></li>
-      <li><a href="#select-noodles-and-sauce">Macarão e molho</a></li>
-      <li><a href="#select-ingredients">Ingredientes</a></li>
-      <li><a href="#select-coocking">Cozimento</a></li>
-    </ul>
-    <div id="select-order"></div>
-    <div id="select-noodles-and-sauce"></div>
-    <div id="select-ingredients">
-      <ul id="ingredients">
-        <li><img id="chicken" src="./images/chickenpot.png" alt="chicken"></li>
-        <li><img id="nori" src="./images/noripot.png" alt="nori"></li>
-        <li><img id="naruto" src="./images/narutopot.png" alt="naruto"></li>
-        <li><img id="porkrib" src="./images/porkribpot.png" alt="pork rib"></li>
-        <li><img id="carrot" src="./images/carrotpot.png" alt="pork rib"></li>
-        <li><img id="chashu" src="./images/chashupot.png" alt="pork rib"></li>
-        <li><img id="egg" src="./images/eggpot.png" alt="pork rib"></li>
-        <li><img id="mnema" src="./images/mnemapot.png" alt="pork rib"></li>
-        <li><img id="moyashi" src="./images/moyashipot.png" alt="pork rib"></li>
-        <li><img id="tofu" src="./images/tofupot.png" alt="pork rib"></li>
-        <li><img id="shitake" src="./images/shitakepot.png" alt="pork rib"></li>
-        <li><img id="radish" src="./images/radishpot.png" alt="pork rib"></li>
-      </ul>
-      <div id="droppable"></div>
-      <!-- <div id="trash"></div> -->
+    <div id="game">
+        <ul>
+            <li><a href="#select-order">Pedido</a></li>
+            <li><a href="#select-noodles-and-sauce">Macarão e molho</a></li>
+            <li><a href="#select-coocking">Cozimento</a></li>
+            <li><a href="#select-ingredients">Ingredientes</a></li>
+        </ul>
+        <div id="select-order"></div>
+        <div id="select-noodles-and-sauce">
+            <div class="table" id="table2">
+                <div><img id="noddle1" src="./images/noddle1.png" alt="row noddles"></div>
+                <ul id="broth">
+                    <li id="white"><img src="./images/fishbroth.png" alt="fishbroth"></li>
+                    <li id="yellow"><img src="./images/chickenbroth.png" alt="chickenbroth"></li>
+                    <li id="red"><img src="./images/meatbroth.png" alt="meatbroth"></li>
+                    <li id="pink"><img src="./images/porkbroth.png" alt="porkbroth"></li>
+                    <li id="black"><img src="./images/shoyubroth.png" alt="shoyubroth"></li>
+                </ul>
+                <div id="pot"></div>
+            </div>
+        </div>
+        <div id="select-coocking">
+            <div class="table" id="table4">
+                
+            </div>
+        </div>
+        <div id="select-ingredients">
+            <div class="table" id="table3">
+                <ul id="ingredients">
+                    <li><img id="chicken" src="./images/chickenpot.png" alt="chicken"></li>
+                    <li><img id="nori" src="./images/noripot.png" alt="nori"></li>
+                    <li><img id="naruto" src="./images/narutopot.png" alt="naruto"></li>
+                    <li><img id="porkrib" src="./images/porkribpot.png" alt="pork rib"></li>
+                    <li><img id="carrot" src="./images/carrotpot.png" alt="pork rib"></li>
+                    <li><img id="chashu" src="./images/chashupot.png" alt="pork rib"></li>
+                    <li><img id="egg" src="./images/eggpot.png" alt="pork rib"></li>
+                    <li><img id="mnema" src="./images/mnemapot.png" alt="pork rib"></li>
+                    <li><img id="moyashi" src="./images/moyashipot.png" alt="pork rib"></li>
+                    <li><img id="tofu" src="./images/tofupot.png" alt="pork rib"></li>
+                    <li><img id="shitake" src="./images/shitakepot.png" alt="pork rib"></li>
+                    <li><img id="radish" src="./images/radishpot.png" alt="pork rib"></li>
+                </ul>
+                <div id="box">
+                    <div id="droppable"></div>
+                </div>
+                <!-- <div id="trash"></div> -->
+            </div>
+        </div>
     </div>
-    <div id="select-coocking"></div>
-  </div>
-  <script type="text/javascript" src="script.js" defer></script>
+    <script type="text/javascript" src="script.js" defer></script>
 </body>
 
 </html>
