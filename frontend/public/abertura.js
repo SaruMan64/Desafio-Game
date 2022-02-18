@@ -2,6 +2,13 @@ $(function () {
   $('#btn').click(function () {
     $(this).prop('disabled', true);
 
+    /* $("#doors").css("scale", "4 4");
+    $("#doors").css("opacity", "0");
+    $("#doors").css("top", "-50%");
+    $("#doors").css("transition", "scale 3s linear, opacity 3s linear"); */
+
+    $("#doors").css("animation", "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
+
     setTimeout(() => {
       $("#frontopening").html("");
       const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
@@ -18,33 +25,7 @@ $(function () {
     setTimeout(() => {
       $(".L").css("left", "-50%")
       $(".R").css("left", "100%")
-      //$("#doors").remove();
+      $("#doors").remove();
     }, 2800);
   })
 });
-/* 
-const btn = document.querySelector("#btn");
-btn.onclick = () => {
-  setTimeout(() => {
-    portas.remove();
-  }, 2300);
-  toggleDoor();
-  portas.style.transform = "scale(4)";
-  portas.style.opacity = "0";
-  portas.style.transition = "transform 1.7s, opacity 2s";
-}
-
-function toggleDoor() {
-  const doors = document.querySelectorAll(".door");
-  doors.forEach((el, id) => {
-    switch (id) {
-      case 0:
-        el.classList.toggle("doorOpenL");
-        return true;
-      case 1:
-        el.classList.toggle("doorOpenR");
-        return true;
-    }
-  });
-}
- */
