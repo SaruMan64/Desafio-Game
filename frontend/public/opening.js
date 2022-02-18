@@ -52,7 +52,7 @@ function openingAnimationDoors() {
       $(".R").css(el, "doorR" + animationDoor);
       $("#doors").css(el, "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
     });
-    
+
     $("main").attr("hidden", false);
   }, 500)
 
