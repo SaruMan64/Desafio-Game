@@ -3,7 +3,10 @@
 #doors {
   height: 100%;
   width: 100%;
-  background-color: transparent;
+  background-image: url("../images/opening/SakuraOpening.png");
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
   position: absolute;
   z-index: 2;
   animation-iteration-count: 1;
@@ -14,8 +17,8 @@
   width: 100%;
   background-image: url("../images/opening/FrontOpening.png");
   background-position: center;
-  background-size: cover;
-  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
   position: absolute;
   z-index: 5;
 }
@@ -51,8 +54,8 @@
   width: 250px;
   height: 40px;
   position: absolute;
-  top: calc(62.5% - calc(56px + 40px));
-  left: calc(50% - 125px);
+  top: 52.8vh;
+  left: calc(50% - 120px);
   z-index: 6;
 
   background: #efefef;
@@ -62,7 +65,7 @@
   outline: 1px solid black;
   text-align: center;
 
-  /* font-family: Roboto; */
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -80,8 +83,8 @@
   width: 120px;
   height: 50px;
   position: absolute;
-  top: 62.6%;
-  left: calc(50% - 60px);
+  top: 63vh;
+  left: calc(50% - 55px);
   z-index: 6;
 
   background: #efefef;
@@ -93,7 +96,7 @@
   cursor: pointer;
   transition: 0s 500ms;
 
-  /*   font-family: Roboto; */
+  font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
