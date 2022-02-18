@@ -2,11 +2,6 @@ $(function () {
   $('#btn').click(function () {
     $(this).prop('disabled', true);
 
-    /* $("#doors").css("scale", "4 4");
-    $("#doors").css("opacity", "0");
-    $("#doors").css("top", "-50%");
-    $("#doors").css("transition", "scale 3s linear, opacity 3s linear"); */
-
     $("#doors").css("animation", "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
 
     setTimeout(() => {
