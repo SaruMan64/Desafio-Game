@@ -5,7 +5,6 @@ $(function () {
     $(".L").css("animation", "doorL 2500ms cubic-bezier(1,0,.5,1)")
     $(".R").css("animation", "doorR 2500ms cubic-bezier(1,0,.5,1)")
     setTimeout(() => {
-      $(this).prop('disabled', false);
       $(".L").css("left", "-50%")
       $(".R").css("left", "100%")
       //$("#doors").remove();
