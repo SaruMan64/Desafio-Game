@@ -12,18 +12,39 @@ app.use(cors());
 app.use(express.json());
 
 const getOrder = require("./modules/getOrder.js");
+const register = require("./modules/register");
+const score = require("./modules/score");
+const ranking = require("./modules/ranking");
 
 app.get("/order", (req, res) => {
   res.send(getOrder.getOrder());
 });
 
-app.post("/register", (req, res) => {
-    const player = req.body;
-    player.score = 0;
-    fs.writeFile('./players.json', JSON.stringify(player, null, 2), (err, result) => {
-        console.log(err);
-    });
+// app.post("/register", (req, res) => {
+//     const player = req.body;
+//     player.score = 0;
+//     fs.writeFile('./players.json', JSON.stringify(player, null, 2), (err, result) => {
+//         console.log(err);
+//     });
+// });
+
+app.post("/register", function(req, res) {
+  const name = Object.values(req.query)[0];
+  const newPlayer = register(name);
+  res.send(newPlayer);
 });
+
+app.post("/score", function(req, res) {
+  const name = Object.keys(req.query)[0];
+  const pointing = Number(Object.values(req.query)[0]);
+  const setScore = score(name, pointing);
+  res.send(setScore);
+});
+
+app.get("/ranking", function(req, res) {
+  const rank = ranking();
+  res.send(rank);
+})
 
 /*
 app.put("/:id", (req, res) => {
