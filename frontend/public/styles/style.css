@@ -119,8 +119,11 @@ li {
 
 #pot {
   width: 200px;
-  height: 200px;
-  background-color: #97ff0e;
+  height: 140px;
+  background-color: #add8e6;
+  background-image: url(../images/pan2.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
   border: 1px solid black;
 }
 
