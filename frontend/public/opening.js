@@ -41,7 +41,7 @@ function openingAnimationDoors() {
 
   setTimeout(() => {
     $("#frontopening").html("");
-    const audiott = new Audio("./sonds/Sound-Button-Effect-Sliding.wav");
+    const audiott = new Audio("./sounds/Sound-Button-Effect-Sliding.wav");
     audiott.play();
 
     const animationDoor = " 2800ms cubic-bezier(1,0,.5,1)"
