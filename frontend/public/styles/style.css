@@ -127,10 +127,13 @@ li {
   border: 1px solid black;
 }
 
-#table4 {
-  background-image: url(../images/oven.png);
-  background-size: 100%;
-  background-repeat: no-repeat;
+#oven img{
   width: 465px;
   height: 300px;
+}
+
+#pans {
+  height: 300px;
+  width: 200px;
+  background-color: brown;
 }

@@ -4,7 +4,6 @@ $(function () {
 
     let $ingredients = $("#ingredients"),
         $plate = $("#droppable"),
-        // $trash = $("#trash"),
         $broth = $("#broth"),
         $pot = $("#pot"),
         $noddle = $("#noddle1");
@@ -24,12 +23,11 @@ $(function () {
     $("li", $broth).draggable({
         cursor: "grabbing",
         cancel: "a.ui-icon",
-        revert: "valid",
+        revert: true,
         containment: "#table2"
     });
 
     $pot.droppable({
-        // accept: "#broth > li",
         drop: function (event, ui) {
             console.log(ui.draggable[0].id);
             if (ui.draggable[0].id == "noddle1") {
@@ -45,15 +43,11 @@ $(function () {
         }
     });
 
-    /* $pot.droppable({
-        accept: "#noddle1"
-    }); */
-
     $("li", $ingredients).draggable({
         cursor: "grabbing",
         cancel: "a.ui-icon",
         revert: "invalid",
-        containment: "#table3",
+        containment: "#table4",
         helper: function (event) {
             let deg = Math.floor(Math.random() * (360));
             return $(`<div  id="${event.target.id}">
@@ -76,7 +70,7 @@ $(function () {
             $("#droppable div").addClass("item");
             $(".item").removeClass("ui-draggable")
                 .draggable({
-                    containment: '#table3'
+                    containment: '#table4'
                 });
         }
     });
@@ -122,4 +116,27 @@ $(function () {
             }
         })
     });
+
+    let $pans = $("#pans");
+
+    $("#pan-to-broth").click(function () {
+        let pan = $("#pot");
+        let div = $(`<div>
+                        <img src="./images/pan2.png" style="width: 100px; height: 100px; background-color: ${pan.css("background-color")}"></img>
+                    </div>`);
+        if($("#pot div").length > 0) {
+            div.append(`<img style="width: 100px; height: 100px; position: absolute; top: 0px; left: 0px;" src="./images/noddle1.png"></img>`);
+        }
+        div.draggable({
+            cursor: "grabbing",
+            cancel: "a.ui-icon",
+            revert: "valid",
+            containment: "#table3"
+        });
+        $pans.append(div);
+        $('#game').tabs({
+            active: 2
+        });
+    });
+
 });
