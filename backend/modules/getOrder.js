@@ -1,5 +1,4 @@
 const allIngredients = require("../ingredientsDataBase.json");
-const quantity = (Math.floor(Math.random() * (10 - 4)) + 4);
 
 function aleatory(base, quantity) {
   let ingredients = [];
@@ -19,11 +18,13 @@ function aleatory(base, quantity) {
 }
 
 function getOrder(value) {
+  const quantity = (Math.floor(Math.random() * 6) + 4);
   const order = {
     "id": value,
     "broth": allIngredients.broth[Math.floor(Math.random() * allIngredients.broth.length)],
     "cookingTime": ((Math.floor(Math.random() * 10) * 5) + 10),
-    "ingredients": aleatory(allIngredients.ingredients, quantity),
+    "quantIngredients": quantity,
+    "ingredients": aleatory(allIngredients.ingredients, quantity)
   }
   return order;
 }
