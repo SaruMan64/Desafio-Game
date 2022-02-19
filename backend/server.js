@@ -2,6 +2,7 @@ const cors = require("cors");
 const express = require("express");
 const app = express();
 const port = 4444;
+const fs = require("fs");
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -23,6 +24,7 @@ app.post("/register", (req, res) => {
         console.log(err);
     });
 });
+
 /*
 app.put("/:id", (req, res) => {
 
