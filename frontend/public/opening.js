@@ -3,7 +3,20 @@ $(document).ready(function () {
   // Opening
   openingHTML();
   $('#btn').click(function () {
-    openingAnimationDoors();
+    $.ajax({
+      type: "POST",
+      url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
+      success: function (response) {
+        if(response === true) {
+          openingAnimationDoors();
+        } else {
+          alert(response);
+        }
+      },
+      error: function (error) {
+          console.log(error);
+      }
+    });
   });
 
 })
