@@ -35,7 +35,7 @@ const register = function(name) {
 
     players.push(currentPlayer);
 
-    return currentPlayer;
+    return true;
 }
 
 module.exports = register;

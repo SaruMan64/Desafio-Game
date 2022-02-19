@@ -1,34 +1,3 @@
-// const apiUrl = "http://localhost:4444";
-
-// $("#send").on("click", function () {
-//     const name = document.getElementById("nickname").value;
-
-//     fetch(`${apiUrl}/register?nickname=${name}`)
-//         .then(res => res.text())
-//         .then(data => {
-//             console.log(JSON.stringify(data));
-//         })
-// });
-
-// $("#score").on("click", function () {
-//     const name = document.getElementById("player-name").value;
-//     const score = document.getElementById("player-score").value;
-
-//     fetch(`${apiUrl}score?${name}=${score}`)
-//         .then(res => res.text())
-//         .then(data => {
-//             console.log(data);
-//         })
-// });
-
-// $("#ranking").on("click", function () {
-//     fetch(`${apiUrl}/ranking`)
-//         .then(res => res.text())
-//         .then(data => {
-//             console.log(data);
-//         })
-// });
-
 $("#send").on("click", function () {
     $.ajax({
         type: "POST",
