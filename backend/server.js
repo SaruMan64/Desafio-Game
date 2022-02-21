@@ -28,7 +28,7 @@ app.get("/order", (req, res) => {
 //     });
 // });
 
-app.post("/register", function(req, res) {
+app.get("/register", function(req, res) {
   const name = Object.values(req.query)[0];
   const newPlayer = register(name);
   res.send(newPlayer);
