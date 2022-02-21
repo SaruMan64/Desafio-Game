@@ -1,44 +1,50 @@
-{
-    "players": [
-        {
-            "id": 1,
-            "name": "David",
-            "score": {
-                "current": 0,
-                "final": 450
-            }
-        },
-        {
-            "id": 2,
-            "name": "Joao",
-            "score": {
-                "current": 0,
-                "final": 420
-            }
-        },
-        {
-            "id": 3,
-            "name": "Luan",
-            "score": {
-                "current": 0,
-                "final": 680
-            }
-        },
-        {
-            "id": 4,
-            "name": "Samuel",
-            "score": {
-                "current": 0,
-                "final": 350
-            }
-        },
-        {
-            "id": 5,
-            "name": "Yete",
-            "score": {
-                "current": 0,
-                "final": 600
-            }
-        }
-    ]
-}
+[
+  {
+    "id": 1,
+    "name": "David",
+    "score": {
+      "current": 0,
+      "final": 450
+    }
+  },
+  {
+    "id": 2,
+    "name": "Joao",
+    "score": {
+      "current": 0,
+      "final": 420
+    }
+  },
+  {
+    "id": 3,
+    "name": "Luan",
+    "score": {
+      "current": 0,
+      "final": 680
+    }
+  },
+  {
+    "id": 4,
+    "name": "Samuel",
+    "score": {
+      "current": 0,
+      "final": 350
+    }
+  },
+  {
+    "id": 5,
+    "name": "Yete",
+    "score": {
+      "current": 0,
+      "final": 600
+    }
+  },
+  {
+    "id": 6,
+    "name": "Fabio",
+    "score": {
+      "current": 0,
+      "final": 0
+    }
+  }
+]
