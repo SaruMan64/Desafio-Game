@@ -1,6 +1,6 @@
 const allPlayers = require("../players.json");
 const fs = require('fs');
-const players = allPlayers.players;
+const players = allPlayers;
 
 const player = {
     id: 0,
@@ -12,8 +12,8 @@ const player = {
 };
 
 const register = function(name) {
-    const filterName = /^[a-zA-Z0-9]*$/;
-    if(!filterName.test(name)) { // Checks if the name contains only letters
+    const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
+    if(filterName.test(name)) { // Checks if the name contains only letters
         return ("Os nomes de usuário não podem conter acentos, números ou caracteres especiais.");
     }
 

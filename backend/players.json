@@ -46,5 +46,37 @@
       "current": 0,
       "final": 0
     }
+  },
+  {
+    "id": 7,
+    "name": "Alegre",
+    "score": {
+      "current": 0,
+      "final": 0
+    }
+  },
+  {
+    "id": 8,
+    "name": "Kaio",
+    "score": {
+      "current": 0,
+      "final": 0
+    }
+  },
+  {
+    "id": 9,
+    "name": "Jefe",
+    "score": {
+      "current": 0,
+      "final": 0
+    }
+  },
+  {
+    "id": 10,
+    "name": "Ángel",
+    "score": {
+      "current": 0,
+      "final": 0
+    }
   }
 ]
