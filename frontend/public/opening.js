@@ -4,7 +4,7 @@ $(document).ready(function () {
   openingHTML();
   $('#btn').click(function () {
     $.ajax({
-      type: "POST",
+      type: "GET",
       url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
       success: function (response) {
         if(response === true) {
@@ -14,7 +14,7 @@ $(document).ready(function () {
         }
       },
       error: function (error) {
-          console.log(error);
+        console.log(error);
       }
     });
   });
