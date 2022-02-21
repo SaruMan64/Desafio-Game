@@ -44,11 +44,11 @@ $(document).ready(function () {
     $orders.droppable({ //Possibilidade de retono de pedido a div de todos os pedidos
         accept: ".order",
         drop: function (event, ui) {
-                $(ui.draggable).appendTo($(this));
-                $(ui.draggable).position({
-                    of: this,
-                    collision: "fit"
-                });
+            $(ui.draggable).appendTo($(this));
+            $(ui.draggable).position({
+                of: this,
+                collision: "fit"
+            });
         }
     })
 
@@ -63,18 +63,22 @@ $(document).ready(function () {
                     collision: "fit"
                 });
             } else { // Se possuir pedido o retorna a lista e adiciona o novo que foi arrastado
-                let holder = $(this)[0].innerHTML;
-                $(this)[0].innerHTML = "";
-                $orders.append(holder);
-                $(ui.draggable).appendTo($(this));
-                $(ui.draggable).position({
-                    of: this,
-                    collision: "fit"
-                });
-                $(".order").draggable({
-                    cursor: "grabbing",
-                    revert: true
-                });
+                if (ui.draggable[0].id == $("#curent-order")[0].children[0].id) { // Se for o mesmo elemento não o modifica
+                    console.log("iguais");
+                } else {
+                    let holder = $(this)[0].innerHTML;
+                    $(this)[0].innerHTML = "";
+                    $orders.append(holder);
+                    $(ui.draggable).appendTo($(this));
+                    $(ui.draggable).position({
+                        of: this,
+                        collision: "fit"
+                    });
+                    $(".order").draggable({
+                        cursor: "grabbing",
+                        revert: true
+                    });
+                }
             }
         }
     });
