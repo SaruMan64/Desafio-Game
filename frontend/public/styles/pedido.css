@@ -1,0 +1,35 @@
+/* #pregadorCor {
+  fill: green;
+  animation: pregadorColor 20s linear;
+}
+ */
+ .numbersvg {
+  font-family: cursive;
+  font-size: 2.3rem;
+  fill: black;
+}
+#madeira {
+  fill: green;
+}
+#arame {
+  fill: #858383;
+  stroke: rgb(122, 122, 122);
+}
+
+@keyframes pregadorColor {
+  0% {
+    fill: green;
+  }
+  25% {
+    fill: greenyellow;
+  }
+  50% {
+    fill: yellow;
+  }
+  75% {
+    fill: orangered;
+  }
+  100% {
+    fill: red;
+  }
+}
