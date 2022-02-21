@@ -1,8 +1,14 @@
 const allIngredients = require("../ingredientsDataBase.json");
+const typesOfIngredients = 4;
+const minimum = 5;
+const maximum = 10;
 
 function aleatory(base, quantity) {
     let ingredients = [];
-    for (let i = 0; i < quantity; i++) {
+    for (let i = 0; i < typesOfIngredients; i++) {
+        ingredients.push(base[i]);
+    }
+    for (let i = typesOfIngredients; i < quantity; i++) {
         ingredients.push(base[Math.floor(Math.random() * base.length)]);
     }
     let resp = {};
@@ -19,10 +25,10 @@ function aleatory(base, quantity) {
 
 function selectIngredients(base, quantity) {
     let ingredients = [];
+    let has = true;
     let holder = base[Math.floor(Math.random() * base.length)];
     ingredients.push(holder);
-    for (let i = 0; i < quantity; i++) {
-        let has = true;
+    for (let i = 0; i < quantity - 1; i++) {
         while(has){
             if(ingredients.find(item => item == holder)){
                 holder = base[Math.floor(Math.random() * base.length)];
@@ -30,14 +36,15 @@ function selectIngredients(base, quantity) {
                 has = false;
             }
         }
+        has = true;
         ingredients.push(holder);
     }
     return ingredients;
 }
 
 function getOrder(value) {
-    const quantity = (Math.floor(Math.random() * 6) + 4);
-    const used = selectIngredients(allIngredients.ingredients, 4);
+    const quantity = (Math.floor(Math.random() * (maximum - minimum)) + minimum);
+    const used = selectIngredients(allIngredients.ingredients, typesOfIngredients);
     const order = {
         "id": value,
         "broth": allIngredients.broth[Math.floor(Math.random() * allIngredients.broth.length)],
