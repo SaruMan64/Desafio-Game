@@ -1,4 +1,4 @@
-<svg width="400" height="723" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="723" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
     <path
         d="M0 90.9535C0 85.4563 4.47715 81 10 81H390C395.523 81 400 85.4563 400 90.9535V713.047C400 718.544 395.523 723 390 723H9.99999C4.47714 723 0 718.544 0 713.047V90.9535Z"
         fill="#E5B372" />
@@ -30,10 +30,10 @@
     </g>
     <image id="cook" x="160" y="191" width="80" height="80" href="" />
     <image id="broth" x="160" y="333" width="80" height="80" href="" />
-    <image class="ingredient i1" x="69" y="473" width="80" height="80" href="" />
+    <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" href="" />
     <text class="numbersvg i1" x="155" y="525" fill="black">
     </text>
-    <image class="ingredient i2" x="209" y="473" width="80" height="80" href="" />
+    <image id="ingredient2" class="ingredient i2" x="209" y="473" width="80" height="80" href="" />
     <text class="numbersvg i2" x="290" y="525" fill="black">
     </text>
     <image class="ingredient i3" x="70" y="578" width="80" height="80" href="" />
