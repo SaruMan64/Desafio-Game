@@ -1,15 +1,16 @@
-/* #pregadorCor {
-  fill: green;
-  animation: pregadorColor 20s linear;
+#clothespin {
+  display: none;
 }
- */
- .numbersvg {
+
+.numbersvg {
   font-family: cursive;
   font-size: 2.3rem;
   fill: black;
 }
-#madeira {
+
+#wood {
   fill: green;
+  animation: pregadorColor 5s;
 }
 #arame {
   fill: #858383;
