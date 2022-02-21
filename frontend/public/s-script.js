@@ -1,9 +1,13 @@
 $("#send").on("click", function () {
     $.ajax({
-        type: "POST",
+        type: "GET",
         url: `http://localhost:4444/register?nickname=${$("#nickname").val()}`,
         success: function (response) {
-            console.log(response);
+            if(response === true) {
+                console.log(response);
+            } else {
+                alert(response);
+            }
         },
         error: function (error) {
             console.log(error);

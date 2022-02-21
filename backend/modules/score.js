@@ -1,5 +1,4 @@
-const allPlayers = require("../players.json");
-const players = allPlayers.players;
+const players = require("../players.json");
 
 const score = function(name, pointing) {
     if(isNaN(pointing)) { // Check if the value is number
