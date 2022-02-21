@@ -12,9 +12,8 @@ const player = {
 };
 
 const register = function(name) {
-    // const filterCaract = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-    const filterName = /^([a-zA-Z]+)+$/;
-    if(!filterName.test(name)/* && !filterCaract.test(name)*/) { // Checks if the name contains only letters
+    const filterName = /[^a-zA-Z]/;
+    if(!filterName.test(name)) { // Checks if the name contains only letters
         return ("Os nomes de usuário não podem conter acentos, números ou caracteres especiais.");
     }
 
