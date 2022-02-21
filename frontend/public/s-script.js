@@ -1,38 +1,7 @@
-$("#send").on("click", function () {
-    $.ajax({
-        type: "POST",
-        url: `http://localhost:4444/register?nickname=${$("#nickname").val()}`,
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    });
-});
-
-$("#score").on("click", function () {
-    $.ajax({
-        type: "POST",
-        url: `http://localhost:4444/score?${$("#player-name").val()}=${$("#player-score").val()}`,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function(error) {
-            console.log(error);
-        }
-    });
-});
-
-$("#ranking").on("click", function () {
-    $.ajax({
-        type: "GET",
-        url: `http://localhost:4444/ranking`,
-        success: function(response) {
-            console.log(response);
-        },
-        error: function(error) {
-            console.log(error);
-        }
-    })
-});
+$(document).ready(function () {
+    $("#abacate").load("./images/Pedido/pedido.svg");
+    setTimeout(() => {
+        //$("#clothespin").css("display", "inherit")
+        $("#cook").attr("href", "./images/chashu.png");
+    }, 400)
+})
