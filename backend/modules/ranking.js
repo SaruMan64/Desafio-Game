@@ -1,5 +1,4 @@
 const players = require("../players.json");
-const fs = require('fs');
 
 const ranking = function() {    // Sort by final score
     let counter = players.length;
@@ -13,12 +12,6 @@ const ranking = function() {    // Sort by final score
         }
         counter--;
     }
-
-    fs.writeFile('./ranking.json', JSON.stringify(players, null, 2), (err, result) => {
-        (err) ? console.log(err) : console.log(players);
-    });
-
-
     return players;
 }
 

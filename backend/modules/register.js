@@ -13,11 +13,11 @@ const player = {
 const register = function(name) {
     const filterName = /[^a-zA-Zà-ýÀ-Ý0-9 ]/;
     if(filterName.test(name)) { // Checks if the name does not contain special characters
-        return ("Os nomes de usuário não podem caracteres especiais.");
+        return ("Os nomes de usuário não podem conter caracteres especiais.");
     }
 
-    if(name.length > 15) { // Check if the name is too long
-        return ("Nome de usuário muito longo.");
+    if(name.length < 1 && name.length > 15) { // Check if the name is too long
+        return ("Nome de usuário não tem tamanho suficiente.");
     }
 
     for(let i = 0; i < players.length; i++) { // Checks if the name already exists
@@ -30,12 +30,11 @@ const register = function(name) {
     currentPlayer.id = players.length + 1;
     currentPlayer.name = name;
     currentPlayer.score = { current: 0, final: 0 };
-    currentPlayer.position = 0;
 
     players.push(currentPlayer);
 
-    fs.writeFile('./players.json', JSON.stringify(players, null, 2), (err, result) => {
-        (err) ? console.log(err) : console.log(players);
+    fs.writeFile('./players.json', JSON.stringify(players, null, 2), (err, result) => { // Write player data in players.json
+        console.log(err);
     });
 
     return true;
