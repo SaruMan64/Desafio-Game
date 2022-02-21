@@ -1,6 +1,5 @@
-const allPlayers = require("../players.json");
+const players = require("../players.json");
 const fs = require('fs');
-const players = allPlayers;
 
 const player = {
     id: 0,
@@ -12,9 +11,9 @@ const player = {
 };
 
 const register = function(name) {
-    const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
-    if(filterName.test(name)) { // Checks if the name contains only letters
-        return ("Os nomes de usuário não podem conter acentos, números ou caracteres especiais.");
+    const filterName = /[^a-zA-Zà-ýÀ-Ý0-9 ]/;
+    if(filterName.test(name)) { // Checks if the name does not contain special characters
+        return ("Os nomes de usuário não podem caracteres especiais.");
     }
 
     if(name.length > 15) { // Check if the name is too long
@@ -22,7 +21,6 @@ const register = function(name) {
     }
 
     for(let i = 0; i < players.length; i++) { // Checks if the name already exists
-        console.log(players[i].name);
         if(name.toLowerCase() === players[i].name.toLowerCase()) {
             return("Esse nome de usuário não está disponível. Tente outro nome.");
         };
@@ -32,11 +30,12 @@ const register = function(name) {
     currentPlayer.id = players.length + 1;
     currentPlayer.name = name;
     currentPlayer.score = { current: 0, final: 0 };
+    currentPlayer.position = 0;
 
     players.push(currentPlayer);
 
     fs.writeFile('./players.json', JSON.stringify(players, null, 2), (err, result) => {
-        console.log(err);
+        (err) ? console.log(err) : console.log(players);
     });
 
     return true;
