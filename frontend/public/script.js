@@ -12,6 +12,27 @@ $(document).ready(function () {
         $orders = $("#orders"),
         $crrOrder = $("#curent-order");
 
+    let dishMade = {
+        id: 0,
+        broth: "",
+        cookingTime: 0,
+        quantIngredients: 0,
+        ingredients: {
+            "carrot": 0,
+            "chashu": 0,
+            "chicken": 0,
+            "egg": 0,
+            "mnema": 0,
+            "moyashi": 0,
+            "naruto": 0,
+            "nori": 0,
+            "porkrib": 0,
+            "radish": 0,
+            "shitake": 0,
+            "tofu": 0
+        }
+    }
+
     // Aba de pedidos
     $("#pedido-holder").click(function () {
         $.ajax({
@@ -82,6 +103,7 @@ $(document).ready(function () {
             }
         }
     });
+
     //Aba de cozimento
     $noddle.draggable({ // Retirar macarrão da caixa
         cursor: "grabbing",
@@ -95,7 +117,7 @@ $(document).ready(function () {
         }
     });
 
-    $stove.droppable({
+    $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
@@ -110,7 +132,7 @@ $(document).ready(function () {
                             containment: '#table2',
                             revert: "invalid"
                         });
-                }, 10000);
+                }, 100);
             }
         }
     });
@@ -135,6 +157,7 @@ $(document).ready(function () {
             active: 2
         });
     });
+
     //Aba de molho
     $("li", $broth).draggable({ // Garante que seja arrastável cada ítem dentro da lista
         cursor: "grabbing",
@@ -159,6 +182,7 @@ $(document).ready(function () {
             active: 3
         });
     });
+
     //Aba de ingredientes
     $("li", $ingredients).draggable({ // Garante que seja arrastável cada ítem dentro da lista
         cursor: "grabbing",
@@ -212,6 +236,62 @@ $(document).ready(function () {
                     console.log(item[0], "está correto");
                 }
             });
+        dishMade.broth = $plate.css("background-color");
+        pointing(holder, dishMade);
     });
 
 });
+
+function pointing(dishOrdered, dishMade) {
+    let pointing = 0;
+    const ingredientsDishMade = $("#droppable div");
+
+    for(let i = 0; i < ingredientsDishMade.length; i++) {
+        switch(ingredientsDishMade[i].id) {
+            case "carrot":
+                dishMade.ingredients.carrot++;
+                break;
+            case "chashu":
+                dishMade.ingredients.chashu++;
+                break;
+            case "chicken":
+                dishMade.ingredients.chicken++;
+                break;
+            case "egg":
+                dishMade.ingredients.egg++;
+                break;
+            case "mnema":
+                dishMade.ingredients.mnema++;
+                break;
+            case "moyashi":
+                dishMade.ingredients.moyashi++;
+                break;
+            case "naruto":
+                dishMade.ingredients.naruto++;
+                break;
+            case "nori":
+                dishMade.ingredients.nori++;
+                break;
+            case "porkrib":
+                dishMade.ingredients.porkrib++;
+                break;
+            case "radish":
+                dishMade.ingredients.radish++;
+                break;
+            case "shitake":
+                dishMade.ingredients.shitake++;
+                break;
+            case "tofu":
+                dishMade.ingredients.tofu++;
+                break;
+            default:
+                console.log(`Erro: não encontramos ${ingredientsDishMade[i].id}`);
+        }
+    }
+
+    $("body").append(`<ul id="pointing">
+        <li>Pontuação: ${pointing}</li>
+        <li>Prato Pedido: ${JSON.stringify(dishOrdered)}</li>
+        <li>Prato Feito${JSON.stringify(dishMade)}}</li>
+    </ul>`)
+}
