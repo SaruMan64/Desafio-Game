@@ -1,5 +1,4 @@
-const allPlayers = require("../players.json");
-const players = allPlayers.players;
+const players = require("../players.json");
 
 const ranking = function() {    // Sort by final score
     let counter = players.length;
