@@ -12,27 +12,6 @@ $(document).ready(function () {
         $orders = $("#orders"),
         $crrOrder = $("#curent-order");
 
-    let dishMade = {
-        id: 0,
-        broth: "",
-        cookingTime: 0,
-        quantIngredients: 0,
-        ingredients: {
-            "carrot": 0,
-            "chashu": 0,
-            "chicken": 0,
-            "egg": 0,
-            "mnema": 0,
-            "moyashi": 0,
-            "naruto": 0,
-            "nori": 0,
-            "porkrib": 0,
-            "radish": 0,
-            "shitake": 0,
-            "tofu": 0
-        }
-    }
-
     // Aba de pedidos
     $("#pedido-holder").click(function () {
         $.ajax({
@@ -256,12 +235,51 @@ $(document).ready(function () {
 
 });
 
+let dishMade = {
+    broth: "",
+    cookingTime: 0,
+    quantIngredients: 0,
+    ingredients: {
+        carrot: 0,
+        chashu: 0,
+        chicken: 0,
+        egg: 0,
+        mnema: 0,
+        moyashi: 0,
+        naruto: 0,
+        nori: 0,
+        porkrib: 0,
+        radish: 0,
+        shitake: 0,
+        tofu: 0
+    }
+}
+
 function pointing(dishOrdered, dishMade) {
     let pointing = 0;
-    const ingredientsDishMade = $("#droppable div");
+    dishMade.quantIngredients = $("#droppable div").length;
 
-    for(let i = 0; i < ingredientsDishMade.length; i++) {
-        switch(ingredientsDishMade[i].id) {
+    switch(dishMade.broth) { // Increases broth score
+        case "rgb(255, 255, 255)":
+            (dishOrdered.broth === "fish") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 255, 0)":
+            (dishOrdered.broth === "chicken") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 0, 0)":
+            (dishOrdered.broth === "meat") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 192, 203)":
+            (dishOrdered.broth === "pork") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(0, 0, 0)":
+            (dishOrdered.broth === "shoyu") ? pointing += 50 : pointing -= 50;
+            break;
+        
+    }
+
+    for(let i = 0; i < $("#droppable div").length; i++) { // Count ingredients used
+        switch($("#droppable div")[i].id) {
             case "carrot":
                 dishMade.ingredients.carrot++;
                 break;
@@ -299,9 +317,31 @@ function pointing(dishOrdered, dishMade) {
                 dishMade.ingredients.tofu++;
                 break;
             default:
-                console.log(`Erro: não encontramos ${ingredientsDishMade[i].id}`);
+                console.log(`Erro: não encontramos o ingrediente.`);
         }
     }
+
+    const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
+    const ingredientsDishMade = Object.entries(dishMade.ingredients);
+    let counterIngredientsDishMade = 0;
+    for(let i = 0; i < 4; i++) { // Increases ingredients score
+        for(let j = 0; j < 12; j++) {
+            if(ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
+                if(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
+                    pointing += 10 * ingredientsDishOrdered[i][1];
+                } else {
+                    if(ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
+                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                    } else {
+                        pointing += 10 * ingredientsDishOrdered[i][1];
+                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                    }
+                }
+                counterIngredientsDishMade += ingredientsDishMade[j][1];
+            }
+        }
+    }
+    pointing -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
 
     $("body").append(`<ul id="pointing">
         <li>Pontuação: ${pointing}</li>
