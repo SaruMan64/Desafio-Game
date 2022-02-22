@@ -1,0 +1,77 @@
+@font-face {
+    font-family: "ds-digitalnormal";
+    src: url("../fonts/digi/digi.woff2") format("woff2"),
+      url("../fonts/digi/digi.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* .clock {
+    display: flex;
+}
+
+.clock div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    font-family: "ds-digitalnormal";
+    color: red;
+    font-size: 40px;
+}
+
+.border {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: lightyellow;
+    width: 300px;
+    height: 80px;
+    border-radius: 10px;
+    font-family: "ds-digitalnormal";
+    color: #858383;
+    font-size: 40px;
+}
+
+.back {
+    background: lightyellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 65px;
+    border-radius: 10px;
+} */
+
+.clock {
+    background: #0C0908;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    height: 65px;
+    border: 10px solid #160D08;
+    border-radius: 10px;
+    font-family: "ds-digitalnormal";
+    color: gray;
+    font-size: 100px;
+}
+
+.number {
+    display: flex;
+    font-size: 100px;
+    color: crimson;
+    z-index: 0;
+    
+}
+  
+.number::before {
+    display: flex;
+    position: relative;
+    content: '8';
+    font-size: 100px;
+    color: gray;
+    z-index: -1;
+}

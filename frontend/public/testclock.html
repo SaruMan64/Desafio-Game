@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="./styles/timer.css" />
+    </head>
+    <body>
+        <div>
+            <input type="number" name="test" id="test" />
+            <button>Testar</button>
+        </div>
+        <!-- <div class="clock">
+            <div id="ten-of-minute"></div>
+            <div id="minute"></div>
+            <span>:</span>
+            <div id="ten-of-second"></div>
+            <div id="second"></div>
+        </div>
+        <div class="border">
+            <div class="back">
+                <div>6</div>
+                <div>6</div>
+            </div>
+        </div>
+        <div class="divtest">
+
+        </div> -->
+        <div class="clock">
+            <p class="number"></p>
+            <p class="number"></p>
+            <p>:</p>
+            <span class="number"></span>
+            <span class="number"></span>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                function printTimer(timer, cod) {
+                    if (timer <= 0) {
+                        clearInterval(cod);
+                        console.log("Time finished");
+                    }
+                    let string = timer.toString();
+                    if (timer >= 60) {
+                        string = `0${timer / time}00`;
+                    } else if (timer >= 10) {
+                        string = `00${timer}`;
+                    } else {
+                        string = `000${timer}`;
+                    }
+                    splittedString = string.split("");
+                    let i = 0;
+                    $(".number").each(function () {
+                        $(this).text(splittedString[i]);
+                        i++;
+                    });
+                }
+
+                function startTimer(timer) {
+                    const interval = 1000;
+
+                    let cod;
+                    console.log("Timer started!");
+                    printTimer(timer, cod);
+                    cod = setInterval(() => {
+                        timer-= 1;
+                        printTimer(timer, cod);
+                        return false;
+                    }, interval);
+                }
+
+                $("button").click(function () {
+                    let time = 60;
+                    let initialTimer = $("#test").val();
+                    startTimer(initialTimer);
+                });
+                
+
+            });
+                
+        </script>
+    </body>
+</html>
