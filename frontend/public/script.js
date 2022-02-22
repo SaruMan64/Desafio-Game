@@ -188,7 +188,21 @@ $(document).ready(function () {
             $(".item").removeClass("ui-draggable")
                 .draggable({ // Garante que seja arrastável
                     cursor: "grabbing",
-                    containment: '#table4'
+                    containment: '#table4',
+                    stop: function (event, ui) {
+                        let plateOffset = $("#droppable").offset();
+                        let $this = $(this).offset();
+                        console.log(plateOffset, $this);
+                        if($this.left < (0.95*plateOffset.left)){
+                            $(this).remove();
+                        } else if($this.left > (0.95*(plateOffset.left + $("#droppable").outerWidth()))){
+                            $(this).remove();
+                        } else if($this.top < (0.92*plateOffset.top)){
+                            $(this).remove();
+                        } else if($this.top > (0.90*(plateOffset.top + $("#droppable").outerHeight()))){
+                            $(this).remove();
+                        }
+                    }
                 });
         }
     });
