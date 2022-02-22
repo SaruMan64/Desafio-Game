@@ -16,7 +16,7 @@ function openingHTML() {
     <section id="doors">
       <div id="frontopening">
         <form id="register" onsubmit="return false">
-          <input id="inputName" type="text" placeholder="Insira seu nome..." minlength="1" maxlength="15" pattern="^[a-zA-Zà-ýÀ-Ý0-9 ]{0,15}" required />
+          <input id="inputName" type="text" placeholder="Insira seu nome..." minlength="1" maxlength="15" pattern="^[a-zA-Zà-ýÀ-Ý0-9]{0,15}" required />
         </form>
         <button type="submit" form="register" id="btn">INICIAR</button>
       </div>

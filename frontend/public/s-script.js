@@ -64,5 +64,6 @@ $(document).ready(function () {
     setTimeout(() => {
         $("#clothespin").css("display", "inherit")
         $("#cook").attr("href", "./images/chashu.png");
+        $("#broth").attr("href", "./images/chashu.png");
     }, 400)
 })
