@@ -82,6 +82,7 @@ $(document).ready(function () {
             }
         }
     });
+
     //Aba de cozimento
     $noddle.draggable({ // Retirar macarrão da caixa
         cursor: "grabbing",
@@ -95,7 +96,7 @@ $(document).ready(function () {
         }
     });
 
-    $stove.droppable({
+    $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
@@ -110,7 +111,7 @@ $(document).ready(function () {
                             containment: '#table2',
                             revert: "invalid"
                         });
-                }, 10000);
+                }, 100);
             }
         }
     });
@@ -135,6 +136,7 @@ $(document).ready(function () {
             active: 2
         });
     });
+
     //Aba de molho
     $("li", $broth).draggable({ // Garante que seja arrastável cada ítem dentro da lista
         cursor: "grabbing",
@@ -159,6 +161,7 @@ $(document).ready(function () {
             active: 3
         });
     });
+
     //Aba de ingredientes
     $("li", $ingredients).draggable({ // Garante que seja arrastável cada ítem dentro da lista
         cursor: "grabbing",
@@ -188,7 +191,21 @@ $(document).ready(function () {
             $(".item").removeClass("ui-draggable")
                 .draggable({ // Garante que seja arrastável
                     cursor: "grabbing",
-                    containment: '#table4'
+                    containment: '#table4',
+                    stop: function (event, ui) {
+                        let plateOffset = $("#droppable").offset();
+                        let $this = $(this).offset();
+                        console.log(plateOffset, $this);
+                        if($this.left < (0.95*plateOffset.left)){
+                            $(this).remove();
+                        } else if($this.left > (0.95*(plateOffset.left + $("#droppable").outerWidth()))){
+                            $(this).remove();
+                        } else if($this.top < (0.92*plateOffset.top)){
+                            $(this).remove();
+                        } else if($this.top > (0.90*(plateOffset.top + $("#droppable").outerHeight()))){
+                            $(this).remove();
+                        }
+                    }
                 });
         }
     });
@@ -212,6 +229,123 @@ $(document).ready(function () {
                     console.log(item[0], "está correto");
                 }
             });
+        dishMade.broth = $plate.css("background-color");
+        pointing(holder, dishMade);
     });
 
 });
+
+let dishMade = {
+    broth: "",
+    cookingTime: 0,
+    quantIngredients: 0,
+    ingredients: {
+        carrot: 0,
+        chashu: 0,
+        chicken: 0,
+        egg: 0,
+        mnema: 0,
+        moyashi: 0,
+        naruto: 0,
+        nori: 0,
+        porkrib: 0,
+        radish: 0,
+        shitake: 0,
+        tofu: 0
+    }
+}
+
+function pointing(dishOrdered, dishMade) {
+    let pointing = 0;
+    dishMade.quantIngredients = $("#droppable div").length;
+
+    switch(dishMade.broth) { // Increases broth score
+        case "rgb(255, 255, 255)":
+            (dishOrdered.broth === "fish") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 255, 0)":
+            (dishOrdered.broth === "chicken") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 0, 0)":
+            (dishOrdered.broth === "meat") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(255, 192, 203)":
+            (dishOrdered.broth === "pork") ? pointing += 50 : pointing -= 50;
+            break;
+        case "rgb(0, 0, 0)":
+            (dishOrdered.broth === "shoyu") ? pointing += 50 : pointing -= 50;
+            break;
+        
+    }
+
+    for(let i = 0; i < $("#droppable div").length; i++) { // Count ingredients used
+        switch($("#droppable div")[i].id) {
+            case "carrot":
+                dishMade.ingredients.carrot++;
+                break;
+            case "chashu":
+                dishMade.ingredients.chashu++;
+                break;
+            case "chicken":
+                dishMade.ingredients.chicken++;
+                break;
+            case "egg":
+                dishMade.ingredients.egg++;
+                break;
+            case "mnema":
+                dishMade.ingredients.mnema++;
+                break;
+            case "moyashi":
+                dishMade.ingredients.moyashi++;
+                break;
+            case "naruto":
+                dishMade.ingredients.naruto++;
+                break;
+            case "nori":
+                dishMade.ingredients.nori++;
+                break;
+            case "porkrib":
+                dishMade.ingredients.porkrib++;
+                break;
+            case "radish":
+                dishMade.ingredients.radish++;
+                break;
+            case "shitake":
+                dishMade.ingredients.shitake++;
+                break;
+            case "tofu":
+                dishMade.ingredients.tofu++;
+                break;
+            default:
+                console.log(`Erro: não encontramos o ingrediente.`);
+        }
+    }
+
+    const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
+    const ingredientsDishMade = Object.entries(dishMade.ingredients);
+    let counterIngredientsDishMade = 0;
+    for(let i = 0; i < 4; i++) { // Increases ingredients score
+        for(let j = 0; j < 12; j++) {
+            if(ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
+                if(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
+                    pointing += 10 * ingredientsDishOrdered[i][1];
+                } else {
+                    if(ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
+                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                    } else {
+                        pointing += 10 * ingredientsDishOrdered[i][1];
+                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                    }
+                }
+                counterIngredientsDishMade += ingredientsDishMade[j][1];
+            }
+        }
+    }
+    pointing -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
+
+    $("body").append(`<ul id="pointing">
+        <li>Pontuação: ${pointing}</li>
+        <li>Prato Pedido: ${JSON.stringify(dishOrdered)}</li>
+        <li>Prato Feito${JSON.stringify(dishMade)}}</li>
+    </ul>`)
+}
