@@ -3,35 +3,20 @@ $(document).ready(function () {
   // Opening
   openingHTML();
   $('#btn').click(function () {
-    if (document.getElementById("register").checkValidity()) {
-      //openingAnimationDoors();
-      $.ajax({
-        type: "GET",
-        url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
-        success: function (response) {
-          if (response === true) {
-            openingAnimationDoors();
-          } else {
-            alert(response);
-          }
-        },
-        error: function (error) {
-          console.log(error);
-        }
-      });
-    }
+    openingAJAX()
   });
 
 })
 
 /* Functions */
+//opening
 //Prepend HTML in to body
 function openingHTML() {
   $("body").prepend(`
     <section id="doors">
       <div id="frontopening">
         <form id="register" onsubmit="return false">
-          <input id="inputName" type="text" placeholder="Insira seu nome..." minlength="1" maxlength="15" pattern="^[a-zA-Zà-ýÀ-Ý0-9]{0,15}" required />
+          <input id="inputName" type="text" placeholder="Insira seu nome..." minlength="1" maxlength="15" pattern="^[a-zA-Zà-ýÀ-Ý0-9 ]{0,15}" required />
         </form>
         <button type="submit" form="register" id="btn">INICIAR</button>
       </div>
@@ -77,4 +62,24 @@ function openingAnimationDoors() {
     $(".R").css("left", "100%")
     $("#doors").remove();
   }, 2800);
+}
+
+//AJAX opening
+function openingAJAX() {
+  if (document.getElementById("register").checkValidity()) {
+    $.ajax({
+      type: "GET",
+      url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
+      success: function (response) {
+        if (response === true) {
+          openingAnimationDoors();
+        } else {
+          alert(response);
+        }
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });
+  }
 }
