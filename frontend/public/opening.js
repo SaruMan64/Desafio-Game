@@ -3,28 +3,13 @@ $(document).ready(function () {
   // Opening
   openingHTML();
   $('#btn').click(function () {
-    if (document.getElementById("register").checkValidity()) {
-      //openingAnimationDoors();
-      $.ajax({
-        type: "GET",
-        url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
-        success: function (response) {
-          if (response === true) {
-            openingAnimationDoors();
-          } else {
-            alert(response);
-          }
-        },
-        error: function (error) {
-          console.log(error);
-        }
-      });
-    }
+    openingAJAX()
   });
 
 })
 
 /* Functions */
+//opening
 //Prepend HTML in to body
 function openingHTML() {
   $("body").prepend(`
@@ -77,4 +62,24 @@ function openingAnimationDoors() {
     $(".R").css("left", "100%")
     $("#doors").remove();
   }, 2800);
+}
+
+//AJAX opening
+function openingAJAX() {
+  if (document.getElementById("register").checkValidity()) {
+    $.ajax({
+      type: "GET",
+      url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
+      success: function (response) {
+        if (response === true) {
+          openingAnimationDoors();
+        } else {
+          alert(response);
+        }
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    });
+  }
 }

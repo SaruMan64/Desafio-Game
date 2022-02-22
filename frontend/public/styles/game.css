@@ -1,26 +1,121 @@
-/*
-@import url("");
-*/
+.ui-widget.ui-widget-content,
+.ui-tabs,
+.ui-widget-header {
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0;
+  box-sizing: border-box;
+}
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  border-top-right-radius: 0;
+}
+
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  border-top-left-radius: 0;
+}
+
+.ui-tabs .ui-tabs-nav li {
+  float: none !important;
+  margin: 0 0 0 0 !important;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+.ui-widget-header {
+  background-color: transparent !important;
 }
 
 #game {
+  background-color: rgba(57, 58, 53, 0.9);
   display: flex;
-  flex-direction: row;
 }
 
 #curent-order {
-  width: 300px;
-  height: 500px;
-  background-color: #88371C;
+  width: 500px;
+  height: 100vh;
+  background-color: #88371c;
 }
 
 #kitchen {
-  width: 70vw;
+  width: calc(100% - 500px);
+}
+
+#order-tabs {
+  width: 100%;
+  height: 220px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#btn-tabs {
+  width: 100%;
+  height: 120px;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 100px;
+}
+
+#btn-tabs > li {
+  width: 260px;
+  height: 60px;
+  background-color: transparent;
+  border: none;
+  box-sizing: border-box;
+}
+#btn-tabs > li > a {
+  width: 260px;
+  height: 100%;
+  background-color: rgb(159, 81, 33) !important;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+
+#btn-tabs > li > a:hover,
+#btn-tabs > li > a:active {
+  background-color: rgb(138, 71, 29) !important;
+}
+
+#order-list {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid black;
+  box-sizing: border-box;
+}
+#order-list > ul {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  column-gap: 33px;
+  position: relative;
+  bottom: 20px;
+}
+#order-list > ul > .pedido-varal {
+  width: 67px;
+  height: 120px;
+  background-color: #e5b372;
 }
 
 .table {
@@ -159,5 +254,5 @@ li {
 }
 
 .order {
-  background-color: #E5B372;
+  background-color: #e5b372;
 }
