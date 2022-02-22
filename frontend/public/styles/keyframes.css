@@ -136,3 +136,54 @@
     top: -50%;
   }
 }
+
+/* Pedido animation */
+/* Clothespin change color */
+/* Safari 4+ */
+@-webkit-keyframes clothespinColor {
+  0% {
+    fill: green;
+  }
+  50% {
+    fill: yellow;
+  }
+  100% {
+    fill: red;
+  }
+}
+/* Fx 5+ */
+@-moz-keyframes clothespinColor {
+  0% {
+    fill: green;
+  }
+  50% {
+    fill: yellow;
+  }
+  100% {
+    fill: red;
+  }
+}
+/* Opera 12+ */
+@-o-keyframes clothespinColor {
+  0% {
+    fill: green;
+  }
+  50% {
+    fill: yellow;
+  }
+  100% {
+    fill: red;
+  }
+}
+/* IE 10+, Fx 29+ */
+@keyframes clothespinColor {
+  0% {
+    fill: green;
+  }
+  50% {
+    fill: yellow;
+  }
+  100% {
+    fill: red;
+  }
+}
