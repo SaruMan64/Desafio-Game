@@ -320,14 +320,16 @@ $(document).ready(function () {
         dishMade.broth = $plate.css("background-color");
         pointing(holder, dishMade);
 
-        $(".popup-overlay, .popup-content").addClass("active");
+        $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
         $("#broth-score").html(`Caldo: ${brothScore} pontos`);
         $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
-        $(document).ready(function () {
+
+        $(document).ready(function () { // Show the person
             $("#person-modal").load("./images/Pedido/person.svg");
+            $("#person-modal svg").attr("height", "400px");
             setTimeout(() => {
                 if(orderScore > 150) {
                     $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
@@ -343,7 +345,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#next-order, .popup-overlay").on("click", function () { // Close the modal and continue to the next order
+    $("#next-order, .popup-overlay").on("click", function () { // Close the scoring modal and continue to the next order
         $(".popup-overlay, .popup-content").removeClass("active");
         clearKitchen();
         $('#game').tabs({
@@ -351,9 +353,9 @@ $(document).ready(function () {
         });
     });
     
-    $("#end-game, .popup-overlay").on("click", function () { // Close the modal and end the game
+    $("#end-game, .popup-overlay").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
-        $.ajax({
+        $.ajax({ // Update the score
             type: "GET",
             url: `http://localhost:4444/score?Rick=${totalScore}`,  // ARRUMAR ROTA
             success: function (response) {
@@ -362,6 +364,22 @@ $(document).ready(function () {
             error: function (error) {
                 console.log(error);
             }
+        });
+
+        $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
+        $.ajax({
+                type: "GET",
+                url: `http://localhost:4444/ranking`,
+                success: function (response) {
+                    showRanking(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+
+        $("#play-again").on("click", function () { // Close the ranking modal
+            $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
         });
     });
 });
@@ -491,6 +509,24 @@ function clearKitchen() { // Remove the dish made and the current order
     $("#droppable").css("background-color", "");
     $("#droppable").css("background-image", "");
     $("#order-drop").html("");
+}
+
+function showRanking(players) { // Create the ranking in html
+    $("#ranking").html("");
+    $("#ranking").append(`<table>
+        <tr>
+            <th>Posição</th>
+            <th>Usuário</th>
+            <th>Pontuação</th>
+        </tr>
+    </table>`);
+    for (let i = 0; i < 10; i++) {
+        $("table").append(`<tr>
+            <td>${i+1}</td>
+            <td>${players[i].name}</td>
+            <td>${players[i].score.final}</td>
+        </tr>`);
+    }
 }
 
 // $("#end-order").on("click", function () {
