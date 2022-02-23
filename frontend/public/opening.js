@@ -44,8 +44,7 @@ function openingAnimationDoors() {
 
   setTimeout(() => {
     $("#frontopening").html("");
-    const audiott = new Audio("./sounds/Sound-Button-Effect-Sliding.wav");
-    audiott.play();
+    sound.playMusic('openingDoor')
 
     const animationDoor = " 2800ms cubic-bezier(1,0,.5,1)"
     const animationBrownser = ["-webkit-animation", "-moz-animation", "-o-animation", "animation"]
