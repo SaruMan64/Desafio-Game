@@ -60,17 +60,23 @@
 }
 
 .number {
-    display: flex;
+    width: 50px;
     font-size: 100px;
     color: crimson;
     z-index: 0;
 }
   
+
 .number::after {
     display: flex;
     position: relative;
+}
+
+.number::before {
+    width: 50px;
+    position: absolute;
     content: '8';
     font-size: 100px;
-    color: gray;
+    color: lightgray;
     z-index: -1;
 }
