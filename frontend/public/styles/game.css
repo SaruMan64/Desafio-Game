@@ -32,14 +32,18 @@
   background-color: transparent !important;
 }
 
+#select-order {
+  padding: 0;
+}
+
 #game {
   background-color: rgba(57, 58, 53, 0.9);
   display: flex;
 }
 
 #curent-order {
-  width: 25vw;
-  height: 100vh;
+  width: 25%;
+  height: 100%;
   background-color: #88371c;
 }
 
@@ -90,7 +94,7 @@
 
 #order-tabs {
   width: 100%;
-  height: 60px;
+  height: 23%;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -136,7 +140,7 @@
 #btn-tabs > li > a:active {
   background-color: rgb(138, 71, 29) !important;
 }
-
+/* 
 #order-list {
   width: 100%;
   height: 45%;
@@ -159,16 +163,22 @@
 #order-list > ul > .pedido-varal {
   width: 5.7%;
   height: 120%;
-}
+} */
 
 .table {
   display: flex;
   flex-direction: row;
-  width: 75vw;
+  width: 100%;
+  height: 100%;
 }
 
 #table1 {
   justify-content: flex-start;
+}
+
+#table2 {
+  width: 70%;
+  height: 70vh;
 }
 
 #table3 {
@@ -187,11 +197,11 @@
   width: 400px;
 }
 
-#draggable {
+/* #draggable {
   padding: 0.5em;
   float: left;
   margin: 10px 10px 10px 0;
-}
+} */
 
 #box {
   background-image: url(../images/others/box.png);
@@ -275,8 +285,8 @@ li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 465px;
-  height: 300px;
+  width: 600px;
+  height: 350px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -318,16 +328,34 @@ li {
 
 #orders {
   display: flex;
-  width: 70vw;
-  height: 80vh;
+  width: 90%;
+  height: 50%;
   background-color: lightblue;
 }
 
-.order {
+/* .order {
+  background-image: url(../images/Pedido/pedido.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: fit-content;
   width: fit-content;
   background-color: transparent;
+} */
+.order {
+  height: 100%;
+  background-color: transparent;
 }
+
+/* .order>div{
+  width: 50px;
+  height: 50px;
+} */
+/* 
+#res-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+} */
 
 #side-stove {
   display: flex;
@@ -349,4 +377,9 @@ button > img {
 #select-coocking {
   display: flex;
   flex-direction: row;
+}
+
+.gameTabs {
+  width: 100%;
+  height: 77%;
 }

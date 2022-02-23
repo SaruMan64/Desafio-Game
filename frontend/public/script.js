@@ -75,7 +75,7 @@ class Sounds {
 $(document).ready(function () {
     let idOrder = 0;
     let sound = new Sounds();
-    sound.playMusic("sakuya");
+    //sound.playMusic("sakuya");
     const apiUrl = 'http://localhost:4444';
     $("#game").tabs();
 
@@ -99,7 +99,7 @@ $(document).ready(function () {
 
     // Aba de pedidos
     $("#pedido-holder").click(function () {
-        if ($("#orders div").length < 3) {
+        if ($("#orders > div").length < 6) {
             $(this).prop("disabled", true);
             $.ajax({
                     method: "GET",
@@ -107,20 +107,6 @@ $(document).ready(function () {
                 })
                 .done(function (response) {
                     console.log(response); // Montagem div com pedido
-                    /* let div = `<div id=${JSON.stringify(response)} style="width: 250px; height: 450px;" class="order" style="margin: 10px">
-                                    <div id="res-broth">Caldo: ${response.broth}</div>
-                                    <div id="res-cooking-time">Tempo de cozimento: ${response.cookingTime}</div>
-                                    <div id="res-ingredients">Ingredientes: ${
-                                        Object.keys(response.ingredients)
-                                        .reduce((acc, item) => {
-                                            return acc += `<div>
-                                                <img src="./images/foods/${item}.png" style="width: 30%; height: 30%;"></img>
-                                                : ${response.ingredients[item]}
-                                            </div>`
-                                        }, "")
-                                    }</div>
-                                </div>`;
-                    $orders.append(div); */ //Adiciona novo pedido a lista
                     let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
                     div.load("./images/Pedido/pedido.svg");
                     let ingredients = Object.entries(response.ingredients)
@@ -146,110 +132,43 @@ $(document).ready(function () {
                         });
                         $("#pedido-holder").prop("disabled", false);
                     }, 500);
-                    /* cursorAt: {
-                        top: 50,
-                        left: 50
-                    }, */
-                    /* drag: function (event, ui) {
-                        $(this).css({
-                            "width": "50px",
-                            "height": "80px",
-                            "font-size": "0px"
-                        }) */
-                    // $(".order").toggleClass("small-class");
-                    // },
-                    /* stop: function (event, ui) {
-                        $(this).css({
-                            "width": "250px",
-                            "height": "450px",
-                            "font-size": "16px"
-                        });
-                    } */
-                    // });
-                    /* $(".order").css({
-                        "width": "250px",
-                        "height": "450px"
-                    }); */
                 });
         }
     });
 
-    /* $($orderList).droppable({
-        revert: "invalid",
+    $crrOrder.droppable({
+        accept: ".order",
         drop: function (event, ui) {
-            alert("dropado");
-            $(ui.draggable).appendTo($(this));
-            $(ui.draggable).position({
+            $(ui.draggable).appendTo($crrOrder)
+            .position({
                 of: this,
-                my: "left center",
-                at: "left center",
-                colision: "fit"
-            });
-        }
-    }); */
-
-    $orders.droppable({ //Possibilidade de retono de pedido a div de todos os pedidos
-        accept: ".order",
-        revert: "invalid",
-        drop: function (event, ui) {
-            $(ui.draggable).appendTo($(this));
-            /* $(".order").css({
-                "width": "250px",
-                "height": "450px",
-                "font-size": "16px"
-            }); */
-            $(ui.draggable).position({
-                of: $orders,
-                my: "left",
-                at: "left"
+                my: "center center",
+                at: "center center"
             });
         }
     });
 
-    $crrOrder.droppable({ // Drop para visualização pedido atual
-        accept: ".order",
-        revert: "invalid",
+    $orders.droppable({
+        accept: "#order-drop > div",
         drop: function (event, ui) {
-            console.log($(this)[0].innerHTML);
-            if ($(this)[0].innerHTML == "") { // Se pedido atual vazio apenas adiciona
-                $(ui.draggable).appendTo($(this));
-                $(ui.draggable).position({
-                    of: $crrOrder,
-                    my: "center",
-                    at: "center"
-                });
-            } else { // Se possuir pedido o retorna a lista e adiciona o novo que foi arrastado
-                if (ui.draggable[0].id == $("#order-drop")[0].children[0].id) { // Se for o mesmo elemento não o modifica
-                    console.log("iguais");
-                    $(ui.draggable).appendTo($(this));
-                    $(ui.draggable).position({
-                        of: $crrOrder,
-                        my: "center",
-                        at: "center"
-                    });
-                } else {
-                    let holder = $(this)[0].innerHTML;
-                    $(this)[0].innerHTML = "";
-                    $orders.append(holder);
-                    $(ui.draggable).appendTo($(this));
-                    $(ui.draggable).position({
-                        of: $crrOrder,
-                        my: "center",
-                        at: "center"
-                    });
-                    $(".order").draggable({
-                        cursor: "grabbing",
-                        revert: true
-                    });
-                }
+            let of, my, at;
+            if($("#orders")[0].innerHTML == ''){
+                of = $("#orders")
+                my = "left center";
+                at = "left center";
+            } else {
+                of = $("#orders")[0].lastElementChild;
+                my = "left center";
+                at = "right center";
             }
-            /* $(".order").css({
-                "width": "250px",
-                "height": "500px",
-                "font-size": "16px"
-            }); */
+            $(ui.draggable).appendTo($orders)
+            .position({
+                of: of,
+                my: my,
+                at: at
+            });
         }
-    });
+    })
 
     //Aba de cozimento
     $noddle.draggable({ // Retirar macarrão da caixa
