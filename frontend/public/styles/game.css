@@ -38,7 +38,7 @@
 }
 
 #curent-order {
-  width: 25%;
+  width: 25vw;
   height: 100vh;
   background-color: #88371c;
 }
@@ -80,7 +80,8 @@
 }
 
 #menu > button {
-  height: 8.5%;
+  height: 38.5%;
+  border-radius: 10px;
 } 
 
 #kitchen {
@@ -163,8 +164,16 @@
 .table {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: fit-content;
+  width: 75vw;
+}
+
+#table1 {
+  justify-content: flex-start;
+}
+
+#table3 {
+  display : flex;
+  flex-direction: column;
 }
 
 #noddle1 {
@@ -213,6 +222,11 @@ li {
   list-style: none;
 }
 
+#broth {
+  display: flex;
+  flex-direction: row;
+}
+
 #broth img {
   width: 100px;
   height: 100px;
@@ -238,8 +252,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -247,10 +261,13 @@ li {
 }
 
 #pot {
-  width: 100px;
-  height: 80px;
+  width: 200px;
+  height: 160px;
   background-color: #add8e6;
   border: 1px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #oven {
@@ -301,13 +318,14 @@ li {
 
 #orders {
   display: flex;
-  width: 950px;
-  height: 500px;
+  width: 70vw;
+  height: 80vh;
   background-color: lightblue;
 }
 
 .order {
-  height: 100%;
+  height: fit-content;
+  width: fit-content;
   background-color: transparent;
 }
 
@@ -318,7 +336,17 @@ li {
   margin-left: 50px;
 }
 
+button {
+  width: 60px;
+  height: 60px;
+}
+
 button > img {
   width: 50px;
   height: 50px;
+}
+
+#select-coocking {
+  display: flex;
+  flex-direction: row;
 }

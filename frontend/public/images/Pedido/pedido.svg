@@ -1,4 +1,4 @@
-<svg height="100%" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
+<svg height="400px" width="300px" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg">
     <path
         d="M0 90.9535C0 85.4563 4.47715 81 10 81H390C395.523 81 400 85.4563 400 90.9535V713.047C400 718.544 395.523 723 390 723H9.99999C4.47714 723 0 718.544 0 713.047V90.9535Z"
         fill="#E5B372" />
@@ -47,7 +47,7 @@
     <text id="num4" class="numbersvg i4" x="290" y="630" fill="black">
         10
     </text>
-    <text class="numbersvg id" x="250" y="140" fill="black">
+    <text id="orderNum" class="numbersvg id" x="250" y="140" fill="black">
         0001
     </text>
 </svg>
