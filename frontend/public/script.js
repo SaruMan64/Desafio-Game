@@ -117,7 +117,8 @@ $(document).ready(function () {
                     $orders.append(div); */ //Adiciona novo pedido a lista
                     let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
                     div.load("./images/Pedido/pedido.svg");
-                    let ingredients = Object.entries(response.ingredients)
+                    let ingredients = Object.entries(response.ingredients);
+                    console.log(ingredients);
                     setTimeout(() => {
                         $("#orders").append(div);
                         let lastOrder = $("#orders div").length;
@@ -249,7 +250,7 @@ $(document).ready(function () {
     });
 
     function printTimer(stove, timer, cod) {
-        if (timer <= 0) {
+        if (timer < 0) {
             clearInterval(cod);
             console.log("Time finished");
         }
@@ -267,24 +268,25 @@ $(document).ready(function () {
         });
     }
 
+    let cod;
     function startTimer(stove, timer) {
         const interval = 1000;
 
-        let cod;
         console.log("Timer started!");
         printTimer(stove, timer, cod);
         cod = setInterval(() => {
-            timer-= 5;
+            timer+= 5;
             printTimer(stove, timer, cod);
+            console.log("Continua sim");
             return false;
         }, interval);
     }
-
+    let elapsedTime;
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
         
-            let initialTimer = 20;
+            let initialTimer = 0;
             let reference = $(this).next();
             startTimer(reference, initialTimer);
 
@@ -305,7 +307,10 @@ $(document).ready(function () {
                         .draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
                             containment: '#table2',
-                            revert: "invalid"
+                            revert: "invalid",
+                            start: function (event, ui) {
+                                clearInterval(cod);
+                            }
                         });
                 }, 500);
             }
@@ -377,6 +382,7 @@ $(document).ready(function () {
         accept: ".itemIngredients",
         revert: "invalid",
         drop: function (event, ui) {
+            console.log("Foi");
             $(ui.helper).remove();
         }
     });
@@ -391,6 +397,7 @@ $(document).ready(function () {
                     cursor: "grabbing",
                     containment: '#table4',
                     stop: function (event, ui) {
+                        console.log("Foi nesse");
                         let plateOffset = $("#droppable").offset();
                         let $this = $(this).offset();
                         console.log(plateOffset, $this);
@@ -410,6 +417,7 @@ $(document).ready(function () {
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
         let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
+        console.log(holder);
         // let ing = holder.ingredients;
         // console.log(Object.entries(ing));
         // Object.entries(ing)
@@ -526,6 +534,19 @@ function pointing(dishOrdered, dishMade) {
     brothScore = 0;
     ingredientsScore = 0;
     orderScore = 0;
+
+    let orderTime = dishOrdered.cookingTime;
+    let x;
+    let y;
+    let z;
+    if (elapsedTime < orderTime) {
+        y = elapsedTime * 100;
+        x = y / orderTime;
+    } else {
+        z = elapsedTime * 100;
+        y = y / orderTime;
+        x = (y - 100) * -1;
+    }
 
     switch (dishMade.broth) { // Increases broth score
         case "rgb(255, 255, 255)":
