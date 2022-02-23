@@ -196,6 +196,7 @@ $(document).ready(function () {
             });
         }
     });
+    
 
     $crrOrder.droppable({ // Drop para visualização pedido atual
         accept: ".order",
@@ -249,6 +250,7 @@ $(document).ready(function () {
         }
     });
 
+    
     function printTimer(stove, timer, cod) {
         if (timer < 0) {
             clearInterval(cod);
@@ -276,12 +278,13 @@ $(document).ready(function () {
         printTimer(stove, timer, cod);
         cod = setInterval(() => {
             timer+= 5;
+            dishMade.cookingTime = timer;
             printTimer(stove, timer, cod);
             console.log("Continua sim");
             return false;
         }, interval);
     }
-    let elapsedTime;
+
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
@@ -536,9 +539,12 @@ function pointing(dishOrdered, dishMade) {
     orderScore = 0;
 
     let orderTime = dishOrdered.cookingTime;
+    let elapsedTime = dishMade.cookingTime;
     let x;
     let y;
     let z;
+    console.log(orderTime);
+    console.log(elapsedTime);
     if (elapsedTime < orderTime) {
         y = elapsedTime * 100;
         x = y / orderTime;
