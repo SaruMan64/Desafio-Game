@@ -47,7 +47,7 @@
     <text id="num4" class="numbersvg i4" x="290" y="630" fill="black">
         10
     </text>
-    <text class="numbersvg id" x="250" y="140" fill="black">
+    <text id="orderNum" class="numbersvg id" x="250" y="140" fill="black">
         0001
     </text>
 </svg>
