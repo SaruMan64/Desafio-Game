@@ -248,7 +248,7 @@ $(document).ready(function () {
         }
     });
 
-    function printTimer(timer, cod, reference) {
+    function printTimer(stove, timer, cod) {
         if (timer <= 0) {
             clearInterval(cod);
             console.log("Time finished");
@@ -289,9 +289,8 @@ $(document).ready(function () {
             startTimer(reference, initialTimer);
 
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-                const reference = this;
+    
                 $(this).append($(ui.draggable).clone());
-                //const reference = this;
                 
                 $(this).css({
                     "display": "flex",
@@ -302,10 +301,6 @@ $(document).ready(function () {
                     event.target.innerHTML = "";
                     event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
                     $(".stove img").addClass("itemNoddle");
-                    $(reference).html("AMIGO ESTOU AQUI");
-                    $(reference).next().html("00:00");
-                    console.log(reference.children[0]);
-                    reference.children[0].html("AEHOOOOO");
                     $(".itemNoddle").removeClass("ui-draggable")
                         .draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
