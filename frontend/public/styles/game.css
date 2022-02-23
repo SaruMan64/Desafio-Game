@@ -251,9 +251,6 @@ li {
   height: 80px;
   background-color: #add8e6;
   border: 1px solid black;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 #oven {
@@ -304,14 +301,14 @@ li {
 
 #orders {
   display: flex;
-  flex-direction: row;
   width: 950px;
   height: 500px;
   background-color: lightblue;
 }
 
 .order {
-  background-color: #e5b372;
+  height: 100%;
+  background-color: transparent;
 }
 
 #side-stove {

@@ -1,12 +1,83 @@
+class Sounds {
+
+    constructor() {
+        this.soundsObj = {
+            "openingDoor": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("./sounds/Sound-Button-Effect-Sliding.wav")
+            },
+            "sakuya": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("./sounds/Sakuya-Background-Sound.wav")
+            }
+        }
+    }
+
+    playMusic(_sound) {
+        if (!this.soundsObj[_sound].flag) {
+            this.soundsObj[_sound].flag = true;
+            if (!this.soundsObj[_sound].isInLoop) {
+                setTimeout(() => {
+                    this.soundsObj[_sound].flag = false;
+                }, parseInt((this.soundsObj[_sound].file.duration - this.soundsObj[_sound].file.currentTime) * 1000))
+            }
+            this.soundsObj[_sound].file.play();
+            //console.log(this.soundsObj[_sound].file.currentTime);
+        }
+    }
+    pausedMusic(_sound) {
+        if (this.soundsObj[_sound].flag) {
+            //console.log("pausa");
+            this.soundsObj[_sound].file.pause();
+            this.soundsObj[_sound].flag = false;
+            // console.log(this.soundsObj[_sound].file.currentTime);
+        }
+    }
+    mutedAll() {
+        Object.keys(this.soundsObj).forEach(el => {
+            if (this.soundsObj[el].flag) {
+                if (this.soundsObj[el].isMuted) {
+                    this.soundsObj[el].file.muted = false;
+                    this.soundsObj[el].isMuted = false;
+                    //console.log(this.soundsObj[el].file.currentTime);
+                }
+                else if (!this.soundsObj[el].isMuted) {
+                    this.soundsObj[el].file.muted = true;
+                    this.soundsObj[el].isMuted = true;
+                    //console.log(this.soundsObj[el].file.currentTime);
+                }
+            }
+        });
+    }
+    loopMusic(_sound) {
+        if (this.soundsObj[_sound].isInLoop) {
+            this.soundsObj[_sound].file.loop = false;
+            this.soundsObj[_sound].isInLoop = false;
+            //console.log(this.soundsObj[_sound].isInLoop, this.soundsObj[_sound].file.loop);
+        }
+        else if (!this.soundsObj[_sound].isInLoop) {
+            this.soundsObj[_sound].file.loop = true;
+            this.soundsObj[_sound].isInLoop = true;
+            //console.log(this.soundsObj[_sound].isInLoop, this.soundsObj[_sound].file.loop);
+        }
+    }
+
+}
+
 $(document).ready(function () {
+    let sound = new Sounds();
     const apiUrl = 'http://localhost:4444';
     $("#game").tabs();
 
     const zeroFill = n => {
         return (n < 10) ? ('000' + n) :
             (n < 100) ? ('00' + n) :
-            (n < 1000) ? ('0' + n) :
-            n;
+                (n < 1000) ? ('0' + n) :
+                    n;
     }
 
     let $ingredients = $("#ingredients"),
@@ -25,9 +96,9 @@ $(document).ready(function () {
         if ($("#orders div").length <= 3) {
             $(this).prop("disabled", true);
             $.ajax({
-                    method: "GET",
-                    url: apiUrl + "/order"
-                })
+                method: "GET",
+                url: apiUrl + "/order"
+            })
                 .done(function (response) {
                     console.log(response); // Montagem div com pedido
                     /* let div = `<div id=${JSON.stringify(response)} style="width: 250px; height: 450px;" class="order" style="margin: 10px">
@@ -44,7 +115,7 @@ $(document).ready(function () {
                                     }</div>
                                 </div>`;
                     $orders.append(div); */ //Adiciona novo pedido a lista
-                    let div = $(`<div style="width: 235px; height: 400px;" id=${JSON.stringify(response)} class="order"></div>`);
+                    let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
                     div.load("./images/Pedido/pedido.svg");
                     let ingredients = Object.entries(response.ingredients)
                     setTimeout(() => {
@@ -177,10 +248,48 @@ $(document).ready(function () {
         }
     });
 
+    function printTimer(timer, cod) {
+        if (timer <= 0) {
+            clearInterval(cod);
+            console.log("Time finished");
+        }
+        let string = timer.toString();
+        if (timer >= 10) {
+            string = `${timer}`;
+        } else {
+            string = `0${timer}`;
+        }
+        splittedString = string.split("");
+        let i = 0;
+        $(".clock span").each(function () {
+            $(this).text(splittedString[i]);
+            i++;
+        });
+    }
+
+    function startTimer(timer) {
+        const interval = 1000;
+
+        let cod;
+        console.log("Timer started!");
+        printTimer(timer, cod);
+        cod = setInterval(() => {
+            timer-= 5;
+            printTimer(timer, cod);
+            return false;
+        }, interval);
+    }
+
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
+            console.log("Vai");
+        
+            let initialTimer = 20;
+            startTimer(initialTimer);
+            console.log(this);
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
+                console.log("Oi 2");
                 $(this).append($(ui.draggable).clone());
                 $(this).css({
                     "display": "flex",
@@ -216,7 +325,7 @@ $(document).ready(function () {
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         console.log($("#ready")[0].children[0].src);
-        $pot.css("background-image",`url(${$("#ready")[0].children[0].src})`);
+        $pot.css("background-image", `url(${$("#ready")[0].children[0].src})`);
         $ready[0].innerHTML = "";
         $('#game').tabs({
             active: 2
@@ -320,14 +429,16 @@ $(document).ready(function () {
         dishMade.broth = $plate.css("background-color");
         pointing(holder, dishMade);
 
-        $(".popup-overlay, .popup-content").addClass("active");
+        $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
         $("#broth-score").html(`Caldo: ${brothScore} pontos`);
         $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
-        $(document).ready(function () {
+
+        $(document).ready(function () { // Show the person
             $("#person-modal").load("./images/Pedido/person.svg");
+            $("#person-modal svg").attr("height", "400px");
             setTimeout(() => {
                 if(orderScore > 150) {
                     $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
@@ -343,7 +454,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#next-order, .popup-overlay").on("click", function () {
+    $("#next-order, .popup-overlay").on("click", function () { // Close the scoring modal and continue to the next order
         $(".popup-overlay, .popup-content").removeClass("active");
         clearKitchen();
         $('#game').tabs({
@@ -351,10 +462,35 @@ $(document).ready(function () {
         });
     });
     
-    $("#end-game, .popup-overlay").on("click", function () {
+    $("#end-game, .popup-overlay").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
-    });
+        $.ajax({ // Update the score
+            type: "GET",
+            url: `http://localhost:4444/score?Rick=${totalScore}`,  // ARRUMAR ROTA
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
 
+        $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
+        $.ajax({
+                type: "GET",
+                url: `http://localhost:4444/ranking`,
+                success: function (response) {
+                    showRanking(response);
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+
+        $("#play-again").on("click", function () { // Close the ranking modal
+            $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
+        });
+    });
 });
 
 let dishMade = {
@@ -455,13 +591,13 @@ function pointing(dishOrdered, dishMade) {
     const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
     const ingredientsDishMade = Object.entries(dishMade.ingredients);
     let counterIngredientsDishMade = 0;
-    for(let i = 0; i < 4; i++) { // Increases ingredients score
-        for(let j = 0; j < 12; j++) {
-            if(ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
-                if(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
+    for (let i = 0; i < 4; i++) { // Increases ingredients score
+        for (let j = 0; j < 12; j++) {
+            if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
+                if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
                     ingredientsScore += 10 * ingredientsDishOrdered[i][1];
                 } else {
-                    if(ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
+                    if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
                         ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
                     } else {
                         ingredientsScore += 10 * ingredientsDishOrdered[i][1];
@@ -482,6 +618,24 @@ function clearKitchen() {
     $("#droppable").css("background-color", "");
     $("#droppable").css("background-image", "");
     $("#order-drop").html("");
+}
+
+function showRanking(players) { // Create the ranking in html
+    $("#ranking").html("");
+    $("#ranking").append(`<table>
+        <tr>
+            <th>Posição</th>
+            <th>Usuário</th>
+            <th>Pontuação</th>
+        </tr>
+    </table>`);
+    for (let i = 0; i < 10; i++) {
+        $("table").append(`<tr>
+            <td>${i+1}</td>
+            <td>${players[i].name}</td>
+            <td>${players[i].score.final}</td>
+        </tr>`);
+    }
 }
 
 // $("#end-order").on("click", function () {
