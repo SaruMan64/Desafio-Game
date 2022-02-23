@@ -33,7 +33,7 @@
     <path
         d="M299.5 98C299.5 151.168 252.176 194.5 193.5 194.5C134.824 194.5 87.5 151.168 87.5 98C87.5 44.8321 134.824 1.5 193.5 1.5C252.176 1.5 299.5 44.8321 299.5 98Z"
         fill="#813F16" stroke="black" stroke-width="3" />
-    <image x="122" y="35" width="144" height="60" href="./olho-bravo.svg" />
-    <image x="144" y="110" width="100" height="60" href="./boca-aberta.svg" />
+    <image x="122" y="35" width="144" height="60" href="" id="eyes" />
+    <image x="144" y="110" width="100" height="60" href="" id="mouth" />
 
 </svg>

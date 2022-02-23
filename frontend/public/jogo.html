@@ -1,159 +1,132 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
 
-    <script type="text/javascript" src="script.js" defer></script>
+  <script type="text/javascript" src="script.js" defer></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
-    <link rel="stylesheet" href="./styles/index.css" />
+  <link rel="stylesheet" href="./styles/index.css" />
+  <link rel="stylesheet" href="./styles/modal.css" />
 
-    <link
-      rel="stylesheet"
-      href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
-    />
-  </head>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
+</head>
 
-  <body>
-    <main id="game">
-      <aside id="curent-order">
-        <header id="order-drop"></header>
-        <footer id="menu"></footer>
-      </aside>
-      <section id="kitchen">
-        <header id="order-tabs">
-          <ul id="btn-tabs">
-            <li><a href="#select-order">PEDIDO</a></li>
-            <li><a href="#select-coocking">COZIMENTO</a></li>
-            <li><a href="#select-noodles-and-sauce">CALDO</a></li>
-            <li><a href="#select-ingredients">INGREDIENTES</a></li>
+<body>
+  <main id="game">
+    <aside id="curent-order">
+      <header id="order-drop"></header>
+      <footer id="menu"></footer>
+    </aside>
+    <section id="kitchen">
+      <header id="order-tabs">
+        <ul id="btn-tabs">
+          <li><a href="#select-order">PEDIDO</a></li>
+          <li><a href="#select-coocking">COZIMENTO</a></li>
+          <li><a href="#select-noodles-and-sauce">CALDO</a></li>
+          <li><a href="#select-ingredients">INGREDIENTES</a></li>
+        </ul>
+        <section id="order-list">
+          <ul>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
+            <li class="pedido-varal"></li>
           </ul>
-          <section id="order-list">
-            <ul>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-              <li class="pedido-varal"></li>
-            </ul>
-          </section>
-        </header>
-        <div id="select-order">
-          <input type="button" id="pedido-holder" value="Aceitar pedido" />
-          <div id="orders"></div>
-        </div>
-        <div id="select-coocking">
-          <div class="table" id="table2">
-            <div id="oven">
-              <div class="column">
-                <div class="stove"></div>
-                <div class="stove"></div>
-              </div>
-              <div class="column">
-                <div class="stove"></div>
-              </div>
-              <div class="column">
-                <div class="stove"></div>
-                <div class="stove"></div>
-              </div>
+        </section>
+      </header>
+      <div id="select-order">
+        <input type="button" id="pedido-holder" value="Aceitar pedido" />
+        <div id="orders"></div>
+      </div>
+      <div id="select-coocking">
+        <div class="table" id="table2">
+          <div id="oven">
+            <div class="column">
+              <div class="stove"></div>
+              <div class="stove"></div>
             </div>
-            <div>
-              <img id="noddle1" src="./images/noddle1.png" alt="row noddles" />
+            <div class="column">
+              <div class="stove"></div>
             </div>
-            <div id="ready"></div>
-          </div>
-          <input
-            type="button"
-            id="pan-to-noodles-and-broth"
-            value="Enviar para molho"
-          />
-        </div>
-        <div id="select-noodles-and-sauce">
-          <div class="table" id="table3">
-            <ul id="broth">
-              <li id="white">
-                <img src="./images/fishbroth.png" alt="fishbroth" />
-              </li>
-              <li id="yellow">
-                <img src="./images/chickenbroth.png" alt="chickenbroth" />
-              </li>
-              <li id="red">
-                <img src="./images/meatbroth.png" alt="meatbroth" />
-              </li>
-              <li id="pink">
-                <img src="./images/porkbroth.png" alt="porkbroth" />
-              </li>
-              <li id="black">
-                <img src="./images/shoyubroth.png" alt="shoyubroth" />
-              </li>
-            </ul>
-            <div id="pot"></div>
-            <input
-              type="button"
-              id="pan-to-ingredients"
-              value="Enviar para ingredients"
-            />
-          </div>
-        </div>
-        <div id="select-ingredients">
-          <div class="table" id="table4">
-            <ul id="ingredients">
-              <li>
-                <img id="chicken" src="./images/chickenpot.png" alt="chicken" />
-              </li>
-              <li><img id="nori" src="./images/noripot.png" alt="nori" /></li>
-              <li>
-                <img id="naruto" src="./images/narutopot.png" alt="naruto" />
-              </li>
-              <li>
-                <img
-                  id="porkrib"
-                  src="./images/porkribpot.png"
-                  alt="pork rib"
-                />
-              </li>
-              <li>
-                <img id="carrot" src="./images/carrotpot.png" alt="carrot" />
-              </li>
-              <li>
-                <img id="chashu" src="./images/chashupot.png" alt="chashu" />
-              </li>
-              <li><img id="egg" src="./images/eggpot.png" alt="egg" /></li>
-              <li>
-                <img id="mnema" src="./images/mnemapot.png" alt="mnema" />
-              </li>
-              <li>
-                <img id="moyashi" src="./images/moyashipot.png" alt="moyashi" />
-              </li>
-              <li><img id="tofu" src="./images/tofupot.png" alt="tofu" /></li>
-              <li>
-                <img id="shitake" src="./images/shitakepot.png" alt="shitake" />
-              </li>
-              <li>
-                <img id="radish" src="./images/radishpot.png" alt="radish" />
-              </li>
-            </ul>
-            <div id="box">
-              <div id="droppable"></div>
+            <div class="column">
+              <div class="stove"></div>
+              <div class="stove"></div>
             </div>
-            <input type="button" id="end-order" value="Finalizar pedido" />
-            <!-- <div id="trash"></div> -->
           </div>
+          <div>
+            <img id="noddle1" src="./images/noddle1.png" alt="row noddles" />
+          </div>
+          <div id="ready"></div>
         </div>
-      </section>
-    </main>
-  </body>
+        <input type="button" id="pan-to-noodles-and-broth" value="Enviar para molho" />
+      </div>
+      <div id="select-noodles-and-sauce">
+        <div class="table" id="table3">
+          <ul id="broth">
+            <li id="white"><img src="./images/fishbroth.png" alt="fishbroth" /></li>
+            <li id="yellow"><img src="./images/chickenbroth.png" alt="chickenbroth" /></li>
+            <li id="red"><img src="./images/meatbroth.png" alt="meatbroth" /></li>
+            <li id="pink"><img src="./images/porkbroth.png" alt="porkbroth" /></li>
+            <li id="black"><img src="./images/shoyubroth.png" alt="shoyubroth" /></li>
+          </ul>
+          <div id="pot"></div>
+          <input type="button" id="pan-to-ingredients" value="Enviar para ingredients" />
+        </div>
+      </div>
+      <div id="select-ingredients">
+        <div class="table" id="table4">
+          <ul id="ingredients">
+            <li><img id="chicken" src="./images/chickenpot.png" alt="chicken" /></li>
+            <li><img id="nori" src="./images/noripot.png" alt="nori" /></li>
+            <li><img id="naruto" src="./images/narutopot.png" alt="naruto" /></li>
+            <li><img id="porkrib" src="./images/porkribpot.png" alt="pork rib" /></li>
+            <li><img id="carrot" src="./images/carrotpot.png" alt="carrot" /></li>
+            <li><img id="chashu" src="./images/chashupot.png" alt="chashu" /></li>
+            <li><img id="egg" src="./images/eggpot.png" alt="egg" /></li>
+            <li><img id="mnema" src="./images/mnemapot.png" alt="mnema" /></li>
+            <li><img id="moyashi" src="./images/moyashipot.png" alt="moyashi" /></li>
+            <li><img id="tofu" src="./images/tofupot.png" alt="tofu" /></li>
+            <li><img id="shitake" src="./images/shitakepot.png" alt="shitake" /></li>
+            <li><img id="radish" src="./images/radishpot.png" alt="radish" /></li>
+          </ul>
+          <div id="box">
+            <div id="droppable"></div>
+          </div>
+          <input type="button" id="end-order" value="Finalizar pedido" />
+          <!-- <div id="trash"></div> -->
+        </div>
+      </div>
+    </section>
+    <div class="popup-overlay">
+      <div class="popup-content">
+        <div id="person-modal"></div>
+        <h2>Pontuação</h2>
+        <div>
+          <p id="cooking-score"></p>
+          <p id="broth-score"></p>
+          <p id="ingredients-score"></p>
+          <p id="order-score"></p>
+          <p id="total-score"></p>
+        </div>
+        <button id="next-order">Próximo pedido</button>
+        <button id="end-game">Finalizar jogo</button>
+      </div>
+    </div>
+  </main>
+</body>
 </html>
