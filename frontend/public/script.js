@@ -109,7 +109,8 @@ $(document).ready(function () {
                     console.log(response); // Montagem div com pedido
                     let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
                     div.load("./images/Pedido/pedido.svg");
-                    let ingredients = Object.entries(response.ingredients)
+                    let ingredients = Object.entries(response.ingredients);
+                    console.log(ingredients);
                     setTimeout(() => {
                         $("#orders").append(div);
                         lastOrder = $("#orders div").length;
@@ -183,8 +184,8 @@ $(document).ready(function () {
         }
     });
 
-    function printTimer(timer, cod) {
-        if (timer <= 0) {
+    function printTimer(stove, timer, cod) {
+        if (timer < 0) {
             clearInterval(cod);
             console.log("Time finished");
         }
@@ -196,36 +197,38 @@ $(document).ready(function () {
         }
         splittedString = string.split("");
         let i = 0;
-        $(".clock span").each(function () {
+        $(stove).children().each(function () {
             $(this).text(splittedString[i]);
             i++;
         });
     }
 
-    function startTimer(timer) {
+    let cod;
+    function startTimer(stove, timer) {
         const interval = 1000;
 
-        let cod;
         console.log("Timer started!");
-        printTimer(timer, cod);
+        printTimer(stove, timer, cod);
         cod = setInterval(() => {
-            timer -= 5;
-            printTimer(timer, cod);
+            timer+= 5;
+            printTimer(stove, timer, cod);
+            console.log("Continua sim");
             return false;
         }, interval);
     }
-
+    let elapsedTime;
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
-            console.log("Vai");
+        
+            let initialTimer = 0;
+            let reference = $(this).next();
+            startTimer(reference, initialTimer);
 
-            let initialTimer = 20;
-            startTimer(initialTimer);
-            console.log($(this)[0].children);
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-                console.log("Oi 2");
+    
                 $(this).append($(ui.draggable).clone());
+                
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
@@ -239,7 +242,10 @@ $(document).ready(function () {
                         .draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
                             containment: '#table2',
-                            revert: "invalid"
+                            revert: "invalid",
+                            start: function (event, ui) {
+                                clearInterval(cod);
+                            }
                         });
                 }, 500);
             }
@@ -311,6 +317,7 @@ $(document).ready(function () {
         accept: ".itemIngredients",
         revert: "invalid",
         drop: function (event, ui) {
+            console.log("Foi");
             $(ui.helper).remove();
         }
     });
@@ -325,6 +332,7 @@ $(document).ready(function () {
                     cursor: "grabbing",
                     containment: '#table4',
                     stop: function (event, ui) {
+                        console.log("Foi nesse");
                         let plateOffset = $("#droppable").offset();
                         let $this = $(this).offset();
                         console.log(plateOffset, $this);
@@ -344,6 +352,7 @@ $(document).ready(function () {
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
         let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
+        console.log(holder);
         // let ing = holder.ingredients;
         // console.log(Object.entries(ing));
         // Object.entries(ing)
@@ -547,12 +556,12 @@ $(document).ready(function () {
         totalScore += orderScore;
     }
 
-    function clearKitchen() {
-        $("#droppable").html("");
-        $("#droppable").css("background-color", "");
-        $("#droppable").css("background-image", "");
-        $("#order-drop").html("");
-    }
+function clearKitchen() { // Remove the dish made and the current order
+    $("#droppable").html("");
+    $("#droppable").css("background-color", "");
+    $("#droppable").css("background-image", "");
+    $("#order-drop").html("");
+}
 
     function showRanking(players) { // Create the ranking in html
         $("#ranking").html("");
