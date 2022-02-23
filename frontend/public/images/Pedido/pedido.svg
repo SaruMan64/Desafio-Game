@@ -38,15 +38,15 @@
     <text class="numbersvg i2" x="290" y="525" fill="black">
         10
     </text>
-    <image class="ingredient i3" x="70" y="578" width="80" height="80" href="../chashu.svg" />
+    <image id="ingredient3" class="ingredient i3" x="70" y="578" width="80" height="80" href="../chashu.svg" />
     <text class="numbersvg i3" x="155" y="630" fill="black">
         10
     </text>
-    <image class="ingredient i4" x="209" y="578" width="80" height="80" href="../chashu.svg" />
+    <image id="ingredient4" class="ingredient i4" x="209" y="578" width="80" height="80" href="../chashu.svg" />
     <text class="numbersvg i4" x="290" y="630" fill="black">
         10
     </text>
-    <text class="numbersvg score" x="250" y="140" fill="black">
+    <text class="numbersvg id" x="250" y="140" fill="black">
         0001
     </text>
 </svg>

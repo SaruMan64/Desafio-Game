@@ -11,7 +11,7 @@ const player = {
 };
 
 const register = function(name) {
-    const filterName = /[^a-zA-Zà-ýÀ-Ý0-9 ]/;
+    const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
     if(filterName.test(name)) { // Checks if the name does not contain special characters
         return ("Os nomes de usuário não podem conter caracteres especiais.");
     }
