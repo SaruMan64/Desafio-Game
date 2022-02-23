@@ -148,6 +148,7 @@ $(document).ready(function () {
             });
         }
     });
+    
 
     $orders.droppable({
         accept: "#order-drop > div",
@@ -184,6 +185,7 @@ $(document).ready(function () {
         }
     });
 
+    
     function printTimer(stove, timer, cod) {
         if (timer < 0) {
             clearInterval(cod);
@@ -211,12 +213,13 @@ $(document).ready(function () {
         printTimer(stove, timer, cod);
         cod = setInterval(() => {
             timer+= 5;
+            dishMade.cookingTime = timer;
             printTimer(stove, timer, cod);
             console.log("Continua sim");
             return false;
         }, interval);
     }
-    let elapsedTime;
+
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
@@ -435,6 +438,76 @@ $(document).ready(function () {
             $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
         });
     });
+<<<<<<< HEAD
+=======
+});
+
+let dishMade = {
+    broth: "",
+    cookingTime: 0,
+    quantIngredients: 0,
+    ingredients: {
+        carrot: 0,
+        chashu: 0,
+        chicken: 0,
+        egg: 0,
+        mnema: 0,
+        moyashi: 0,
+        naruto: 0,
+        nori: 0,
+        porkrib: 0,
+        radish: 0,
+        shitake: 0,
+        tofu: 0
+    }
+}
+
+let cookingScore = 0;
+let brothScore = 0;
+let ingredientsScore = 0;
+let orderScore = 0;
+let totalScore = 0;
+
+function pointing(dishOrdered, dishMade) {
+    dishMade.quantIngredients = $("#droppable div").length;
+    cookingScore = 0;
+    brothScore = 0;
+    ingredientsScore = 0;
+    orderScore = 0;
+
+    let orderTime = dishOrdered.cookingTime;
+    let elapsedTime = dishMade.cookingTime;
+    let x;
+    let y;
+    let z;
+    console.log(orderTime);
+    console.log(elapsedTime);
+    if (elapsedTime < orderTime) {
+        y = elapsedTime * 100;
+        x = y / orderTime;
+    } else {
+        z = elapsedTime * 100;
+        y = y / orderTime;
+        x = (y - 100) * -1;
+    }
+
+    switch (dishMade.broth) { // Increases broth score
+        case "rgb(255, 255, 255)":
+            (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 255, 0)":
+            (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 0, 0)":
+            (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 192, 203)":
+            (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(0, 0, 0)":
+            (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
+            break;
+>>>>>>> 082c4d92cdba13dbcb43741037c9affcad86729b
 
     let dishMade = {
         broth: "",
