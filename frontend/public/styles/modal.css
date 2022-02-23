@@ -1,5 +1,4 @@
-.popup-overlay {
-    /*Hides pop-up when there is no "active" class*/
+.popup-overlay, .popup-overlay-ranking {
     visibility: hidden;
     position: absolute;
     background: #ccc;
@@ -10,18 +9,15 @@
     top: 3%
 }
 
-.popup-overlay.active {
-    /*displays pop-up when "active" class is present*/
+.popup-overlay.active, .popup-overlay-ranking.active {
     visibility: visible;
     text-align: center;
 }
 
-.popup-content {
-    /*Hides pop-up content when there is no "active" class */
+.popup-content, .popup-content-ranking {
     visibility: hidden;
 }
 
-.popup-content.active {
-    /*Shows pop-up content when "active" class is present */
+.popup-content.active, .popup-content-ranking.active {
     visibility: visible;
 }
