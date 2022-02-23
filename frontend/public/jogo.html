@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,183 +13,147 @@
 
     <link rel="stylesheet" href="./styles/index.css" />
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+  </head>
 
-<body>
+  <body>
     <main id="game">
-        <aside id="curent-order">
-            <header id="order-drop">
-                <svg height="100%" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M0 90.9535C0 85.4563 4.47715 81 10 81H390C395.523 81 400 85.4563 400 90.9535V713.047C400 718.544 395.523 723 390 723H9.99999C4.47714 723 0 718.544 0 713.047V90.9535Z"
-                        fill="#E5B372" />
-                    <g>
-                        <line x1="50" y1="143.5" x2="350" y2="143.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="178.5" x2="350" y2="178.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="213.5" x2="350" y2="213.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="248.5" x2="350" y2="248.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="283.5" x2="350" y2="283.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="318.5" x2="350" y2="318.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="353.5" x2="350" y2="353.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="388.5" x2="350" y2="388.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="423.5" x2="350" y2="423.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="458.5" x2="350" y2="458.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="493.5" x2="350" y2="493.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="528.5" x2="350" y2="528.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="563.5" x2="350" y2="563.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="598.5" x2="350" y2="598.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="633.5" x2="350" y2="633.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                        <line x1="50" y1="668.5" x2="350" y2="668.5" stroke="black" stroke-opacity="0.5"
-                            stroke-width="3" />
-                    </g>
-                    <g id="clothespin">
-                        <path id="wood"
-                            d="M178.398 0.971225C178.398 0.434833 178.941 0 179.612 0H220.146C220.816 0 221.359 0.434831 221.359 0.971223V161.029C221.359 161.565 220.816 162 220.146 162H179.612C178.941 162 178.398 161.565 178.398 161.029V0.971225Z"
-                            fill="#FF0000" />
-                        <path id="wire"
-                            d="M178.398 52.8345H175V107.223C175 110.012 177.825 112.273 181.311 112.273H218.689C222.175 112.273 225 110.012 225 107.223V52.8345H221.359V107.417C221.359 108.49 220.273 109.36 218.932 109.36H180.825C179.485 109.36 178.398 108.49 178.398 107.417V52.8345Z"
-                            fill="#858383" />
-                    </g>
-                    <image id="cook" x="160" y="191" width="80" height="80" href="../chashu.svg" />
-                    <image id="broth" x="160" y="333" width="80" height="80" href="../chashu.svg" />
-                    <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80"
-                        href="../chashu.svg" />
-                    <text class="numbersvg i1" x="155" y="525" fill="black">
-                        10
-                    </text>
-                    <image id="ingredient2" class="ingredient i2" x="209" y="473" width="80" height="80"
-                        href="../chashu.svg" />
-                    <text class="numbersvg i2" x="290" y="525" fill="black">
-                        10
-                    </text>
-                    <image class="ingredient i3" x="70" y="578" width="80" height="80" href="../chashu.svg" />
-                    <text class="numbersvg i3" x="155" y="630" fill="black">
-                        10
-                    </text>
-                    <image class="ingredient i4" x="209" y="578" width="80" height="80" href="../chashu.svg" />
-                    <text class="numbersvg i4" x="290" y="630" fill="black">
-                        10
-                    </text>
-                    <text class="numbersvg score" x="250" y="140" fill="black">
-                        0001
-                    </text>
-                </svg>
-            </header>
-            <footer id="menu">
-
-            </footer>
-        </aside>
-        <section id="kitchen">
-            <header id="order-tabs">
-                <ul id="btn-tabs">
-                    <li><a href="#select-order">PEDIDO</a></li>
-                    <li><a href="#select-coocking">COZIMENTO</a></li>
-                    <li><a href="#select-noodles-and-sauce">CALDO</a></li>
-                    <li><a href="#select-ingredients">INGREDIENTES</a></li>
-                </ul>
-                <section id="order-list">
-                    <ul>
-                        <li class="pedido-varal"></li>
-                    </ul>
-                </section>
-            </header>
-            <div id="select-order">
-                <input type="button" id="pedido-holder" value="Aceitar pedido" />
-                <div id="orders"></div>
+      <aside id="curent-order">
+        <header id="order-drop"></header>
+        <footer id="menu"></footer>
+      </aside>
+      <section id="kitchen">
+        <header id="order-tabs">
+          <ul id="btn-tabs">
+            <li><a href="#select-order">PEDIDO</a></li>
+            <li><a href="#select-coocking">COZIMENTO</a></li>
+            <li><a href="#select-noodles-and-sauce">CALDO</a></li>
+            <li><a href="#select-ingredients">INGREDIENTES</a></li>
+          </ul>
+          <section id="order-list">
+            <ul>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+              <li class="pedido-varal"></li>
+            </ul>
+          </section>
+        </header>
+        <div id="select-order">
+          <input type="button" id="pedido-holder" value="Aceitar pedido" />
+          <div id="orders"></div>
+        </div>
+        <div id="select-coocking">
+          <div class="table" id="table2">
+            <div id="oven">
+              <div class="column">
+                <div class="stove"></div>
+                <div class="stove"></div>
+              </div>
+              <div class="column">
+                <div class="stove"></div>
+              </div>
+              <div class="column">
+                <div class="stove"></div>
+                <div class="stove"></div>
+              </div>
             </div>
-            <div id="select-coocking">
-                <div class="table" id="table2">
-                    <div id="oven">
-                        <div class="column">
-                            <div class="stove"></div>
-                            <div class="stove"></div>
-                        </div>
-                        <div class="column">
-                            <div class="stove"></div>
-                        </div>
-                        <div class="column">
-                            <div class="stove"></div>
-                            <div class="stove"></div>
-                        </div>
-                    </div>
-                    <div id="select-coocking">
-                        <div class="table" id="table2">
-                            <div id="oven">
-                                <div class="column">
-                                    <div class="stove"></div>
-                                    <div class="stove"></div>
-                                </div>
-                                <div class="column">
-                                    <div class="stove"></div>
-                                </div>
-                                <div class="column">
-                                    <div class="stove"></div>
-                                    <div class="stove"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <img id="noddle1" src="./images/noddle1.png" alt="row noddles" />
-                            </div>
-                            <div id="ready"></div>
-                        </div>
-                        <input type="button" id="pan-to-noodles-and-broth" value="Enviar para molho" />
-                    </div>
-                    <div id="select-noodles-and-sauce">
-                        <div class="table" id="table3">
-                            <ul id="broth">
-                                <li id="white"><img src="./images/fishbroth.png" alt="fishbroth" /></li>
-                                <li id="yellow"><img src="./images/chickenbroth.png" alt="chickenbroth" /></li>
-                                <li id="red"><img src="./images/meatbroth.png" alt="meatbroth" /></li>
-                                <li id="pink"><img src="./images/porkbroth.png" alt="porkbroth" /></li>
-                                <li id="black"><img src="./images/shoyubroth.png" alt="shoyubroth" /></li>
-                            </ul>
-                            <div id="pot"></div>
-                            <input type="button" id="pan-to-ingredients" value="Enviar para ingredients" />
-                        </div>
-                    </div>
-                    <div id="select-ingredients">
-                        <div class="table" id="table4">
-                            <ul id="ingredients">
-                                <li><img id="chicken" src="./images/chickenpot.png" alt="chicken" /></li>
-                                <li><img id="nori" src="./images/noripot.png" alt="nori" /></li>
-                                <li><img id="naruto" src="./images/narutopot.png" alt="naruto" /></li>
-                                <li><img id="porkrib" src="./images/porkribpot.png" alt="pork rib" /></li>
-                                <li><img id="carrot" src="./images/carrotpot.png" alt="carrot" /></li>
-                                <li><img id="chashu" src="./images/chashupot.png" alt="chashu" /></li>
-                                <li><img id="egg" src="./images/eggpot.png" alt="egg" /></li>
-                                <li><img id="mnema" src="./images/mnemapot.png" alt="mnema" /></li>
-                                <li><img id="moyashi" src="./images/moyashipot.png" alt="moyashi" /></li>
-                                <li><img id="tofu" src="./images/tofupot.png" alt="tofu" /></li>
-                                <li><img id="shitake" src="./images/shitakepot.png" alt="shitake" /></li>
-                                <li><img id="radish" src="./images/radishpot.png" alt="radish" /></li>
-                            </ul>
-                            <div id="box">
-                                <div id="droppable"></div>
-                            </div>
-                            <input type="button" id="end-order" value="Finalizar pedido" />
-                            <!-- <div id="trash"></div> -->
-                        </div>
-                    </div>
-                </div>
-        </section>
+            <div>
+              <img id="noddle1" src="./images/noddle1.png" alt="row noddles" />
+            </div>
+            <div id="ready"></div>
+          </div>
+          <input
+            type="button"
+            id="pan-to-noodles-and-broth"
+            value="Enviar para molho"
+          />
+        </div>
+        <div id="select-noodles-and-sauce">
+          <div class="table" id="table3">
+            <ul id="broth">
+              <li id="white">
+                <img src="./images/fishbroth.png" alt="fishbroth" />
+              </li>
+              <li id="yellow">
+                <img src="./images/chickenbroth.png" alt="chickenbroth" />
+              </li>
+              <li id="red">
+                <img src="./images/meatbroth.png" alt="meatbroth" />
+              </li>
+              <li id="pink">
+                <img src="./images/porkbroth.png" alt="porkbroth" />
+              </li>
+              <li id="black">
+                <img src="./images/shoyubroth.png" alt="shoyubroth" />
+              </li>
+            </ul>
+            <div id="pot"></div>
+            <input
+              type="button"
+              id="pan-to-ingredients"
+              value="Enviar para ingredients"
+            />
+          </div>
+        </div>
+        <div id="select-ingredients">
+          <div class="table" id="table4">
+            <ul id="ingredients">
+              <li>
+                <img id="chicken" src="./images/chickenpot.png" alt="chicken" />
+              </li>
+              <li><img id="nori" src="./images/noripot.png" alt="nori" /></li>
+              <li>
+                <img id="naruto" src="./images/narutopot.png" alt="naruto" />
+              </li>
+              <li>
+                <img
+                  id="porkrib"
+                  src="./images/porkribpot.png"
+                  alt="pork rib"
+                />
+              </li>
+              <li>
+                <img id="carrot" src="./images/carrotpot.png" alt="carrot" />
+              </li>
+              <li>
+                <img id="chashu" src="./images/chashupot.png" alt="chashu" />
+              </li>
+              <li><img id="egg" src="./images/eggpot.png" alt="egg" /></li>
+              <li>
+                <img id="mnema" src="./images/mnemapot.png" alt="mnema" />
+              </li>
+              <li>
+                <img id="moyashi" src="./images/moyashipot.png" alt="moyashi" />
+              </li>
+              <li><img id="tofu" src="./images/tofupot.png" alt="tofu" /></li>
+              <li>
+                <img id="shitake" src="./images/shitakepot.png" alt="shitake" />
+              </li>
+              <li>
+                <img id="radish" src="./images/radishpot.png" alt="radish" />
+              </li>
+            </ul>
+            <div id="box">
+              <div id="droppable"></div>
+            </div>
+            <input type="button" id="end-order" value="Finalizar pedido" />
+            <!-- <div id="trash"></div> -->
+          </div>
+        </div>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
