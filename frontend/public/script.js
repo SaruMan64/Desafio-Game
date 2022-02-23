@@ -196,6 +196,7 @@ $(document).ready(function () {
             });
         }
     });
+    
 
     $crrOrder.droppable({ // Drop para visualização pedido atual
         accept: ".order",
@@ -240,7 +241,7 @@ $(document).ready(function () {
     $noddle.draggable({ // Retirar macarrão da caixa
         cursor: "grabbing",
         cancel: "a.ui-icon",
-        revert: "invalid",
+        revert: true,
         containment: "#table2",
         helper: function (event) { // Muda a saída para macarrão do invés da caixa
             return $(`<div>
@@ -249,6 +250,7 @@ $(document).ready(function () {
         }
     });
 
+    
     function printTimer(stove, timer, cod) {
         if (timer >= 12) {
             clearInterval(cod);
@@ -268,8 +270,6 @@ $(document).ready(function () {
         });
     }
 
-
-    
     let cod;
 
     function startTimer(stove, timer) {
@@ -277,6 +277,7 @@ $(document).ready(function () {
         printTimer(stove, "00", cod);
         cod = setInterval(() => {
             timer++;
+            // dishMade.cookingTime = timer;
             printTimer(stove, timer, cod);
             dishMade.cookingTime = timer;
             return timer;
@@ -286,14 +287,13 @@ $(document).ready(function () {
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
-        
-            let initialTimer = 0;
-            let reference = $(this).next();
-            startTimer(reference, initialTimer);
-
+            
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-    
                 $(this).append($(ui.draggable).clone());
+                
+                let initialTimer = 0;
+                let reference = $(this).next();
+                startTimer(reference, initialTimer);
                 
                 $(this).css({
                     "display": "flex",
@@ -533,7 +533,21 @@ function pointing(dishOrdered, dishMade) {
     ingredientsScore = 0;
     orderScore = 0;
 
-    console.log(dishMade.cookingTime);
+    let orderTime = dishOrdered.cookingTime;
+    let elapsedTime = dishMade.cookingTime;
+    let x;
+    let y;
+    let z;
+    console.log(orderTime);
+    console.log(elapsedTime);
+    if (elapsedTime < orderTime) {
+        y = elapsedTime * 100;
+        x = y / orderTime;
+    } else {
+        z = elapsedTime * 100;
+        y = y / orderTime;
+        x = (y - 100) * -1;
+    }
 
     switch (dishMade.broth) { // Increases broth score
         case "rgb(255, 255, 255)":
