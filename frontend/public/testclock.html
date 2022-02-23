@@ -29,31 +29,27 @@
 
         </div> -->
         <div class="clock">
-            <div class="number"></div>
-            <div class="number"></div>
-            <div>:</div>
-            <div class="number"></div>
-            <div class="number"></div>
+            <span></span>
+            <span></span>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script>
             $(document).ready(function () {
+                //console.log($("span:first-of-type").text(3));
                 function printTimer(timer, cod) {
                     if (timer <= 0) {
                         clearInterval(cod);
                         console.log("Time finished");
                     }
                     let string = timer.toString();
-                    if (timer >= 60) {
-                        string = `0${timer / 60}00`;
-                    } else if (timer >= 10) {
-                        string = `00${timer}`;
+                    if (timer >= 10) {
+                        string = `${timer}`;
                     } else {
-                        string = `000${timer}`;
+                        string = `0${timer}`;
                     }
                     splittedString = string.split("");
                     let i = 0;
-                    $(".number").each(function () {
+                    $(".clock span").each(function () {
                         $(this).text(splittedString[i]);
                         i++;
                     });
