@@ -250,7 +250,7 @@ $(document).ready(function () {
     });
 
     function printTimer(stove, timer, cod) {
-        if (timer < 0) {
+        if (timer >= 12) {
             clearInterval(cod);
             console.log("Time finished");
         }
@@ -268,20 +268,21 @@ $(document).ready(function () {
         });
     }
 
+
+    
     let cod;
+
     function startTimer(stove, timer) {
         const interval = 1000;
-
-        console.log("Timer started!");
-        printTimer(stove, timer, cod);
+        printTimer(stove, "00", cod);
         cod = setInterval(() => {
-            timer+= 5;
+            timer++;
             printTimer(stove, timer, cod);
-            console.log("Continua sim");
-            return false;
+            dishMade.cookingTime = timer;
+            return timer;
         }, interval);
     }
-    let elapsedTime;
+
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
@@ -308,7 +309,7 @@ $(document).ready(function () {
                             cursor: "grabbing",
                             containment: '#table2',
                             revert: "invalid",
-                            start: function (event, ui) {
+                            start: function(event, ui) {
                                 clearInterval(cod);
                             }
                         });
@@ -382,7 +383,6 @@ $(document).ready(function () {
         accept: ".itemIngredients",
         revert: "invalid",
         drop: function (event, ui) {
-            console.log("Foi");
             $(ui.helper).remove();
         }
     });
@@ -397,7 +397,6 @@ $(document).ready(function () {
                     cursor: "grabbing",
                     containment: '#table4',
                     stop: function (event, ui) {
-                        console.log("Foi nesse");
                         let plateOffset = $("#droppable").offset();
                         let $this = $(this).offset();
                         console.log(plateOffset, $this);
@@ -417,7 +416,6 @@ $(document).ready(function () {
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
         let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
-        console.log(holder);
         // let ing = holder.ingredients;
         // console.log(Object.entries(ing));
         // Object.entries(ing)
@@ -535,18 +533,7 @@ function pointing(dishOrdered, dishMade) {
     ingredientsScore = 0;
     orderScore = 0;
 
-    let orderTime = dishOrdered.cookingTime;
-    let x;
-    let y;
-    let z;
-    if (elapsedTime < orderTime) {
-        y = elapsedTime * 100;
-        x = y / orderTime;
-    } else {
-        z = elapsedTime * 100;
-        y = y / orderTime;
-        x = (y - 100) * -1;
-    }
+    console.log(dishMade.cookingTime);
 
     switch (dishMade.broth) { // Increases broth score
         case "rgb(255, 255, 255)":
