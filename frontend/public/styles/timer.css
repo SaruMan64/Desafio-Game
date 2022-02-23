@@ -63,13 +63,14 @@
     display: flex;
     font-size: 100px;
     color: crimson;
-    z-index: 0;
+    /* position: relative; */
+    z-index: 2;
     
 }
-  
+
 .number::before {
-    display: flex;
-    position: relative;
+    /* display: flex; */
+    position: absolute;
     content: '8';
     font-size: 100px;
     color: gray;
