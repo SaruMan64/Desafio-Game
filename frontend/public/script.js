@@ -388,21 +388,6 @@ function pointing(dishOrdered, dishMade) {
 
     switch (dishMade.broth) { // Increases broth score
         case "rgb(255, 255, 255)":
-<<<<<<< HEAD
-            (dishOrdered.broth === "fish") ? pointing += 50: pointing -= 50;
-            break;
-        case "rgb(255, 255, 0)":
-            (dishOrdered.broth === "chicken") ? pointing += 50: pointing -= 50;
-            break;
-        case "rgb(255, 0, 0)":
-            (dishOrdered.broth === "meat") ? pointing += 50: pointing -= 50;
-            break;
-        case "rgb(255, 192, 203)":
-            (dishOrdered.broth === "pork") ? pointing += 50: pointing -= 50;
-            break;
-        case "rgb(0, 0, 0)":
-            (dishOrdered.broth === "shoyu") ? pointing += 50: pointing -= 50;
-=======
             (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
             break;
         case "rgb(255, 255, 0)":
@@ -416,7 +401,6 @@ function pointing(dishOrdered, dishMade) {
             break;
         case "rgb(0, 0, 0)":
             (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
->>>>>>> 53e958b39e28396fa7f3dd8e76a5d1b10302bcc4
             break;
 
     }
@@ -467,16 +451,6 @@ function pointing(dishOrdered, dishMade) {
     const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
     const ingredientsDishMade = Object.entries(dishMade.ingredients);
     let counterIngredientsDishMade = 0;
-<<<<<<< HEAD
-    for (let i = 0; i < 4; i++) { // Increases ingredients score
-        for (let j = 0; j < 12; j++) {
-            if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
-                if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
-                    pointing += 10 * ingredientsDishOrdered[i][1];
-                } else {
-                    if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
-                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
-=======
     for(let i = 0; i < 4; i++) { // Increases ingredients score
         for(let j = 0; j < 12; j++) {
             if(ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
@@ -485,7 +459,6 @@ function pointing(dishOrdered, dishMade) {
                 } else {
                     if(ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
                         ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
->>>>>>> 53e958b39e28396fa7f3dd8e76a5d1b10302bcc4
                     } else {
                         ingredientsScore += 10 * ingredientsDishOrdered[i][1];
                         ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
