@@ -248,24 +248,7 @@ $(document).ready(function () {
         }
     });
 
-    function startTimer(timer, reference) {
-    // function startTimer(timer) {
-        const interval = 1000;
-
-        let cod;
-        console.log("Timer started!");
-        printTimer(timer, cod, reference);
-        // printTimer(timer, cod);
-        cod = setInterval(() => {
-            timer-= 5;
-            printTimer(timer, cod, reference);
-            // printTimer(timer, cod);
-            return false;
-        }, interval);
-    }
-
-    // function printTimer(timer, cod) {
-    function printTimer(timer, cod, reference) {
+    function printTimer(stove, timer, cod) {
         if (timer <= 0) {
             clearInterval(cod);
             console.log("Time finished");
@@ -278,26 +261,37 @@ $(document).ready(function () {
         }
         splittedString = string.split("");
         let i = 0;
-        // $(`.clock span`).each(function () {
-        $(`${reference} span`).each(function () {
+        $(stove).children().each(function () {
             $(this).text(splittedString[i]);
             i++;
         });
     }
 
+    function startTimer(stove, timer) {
+        const interval = 1000;
+
+        let cod;
+        console.log("Timer started!");
+        printTimer(stove, timer, cod);
+        cod = setInterval(() => {
+            timer-= 5;
+            printTimer(stove, timer, cod);
+            return false;
+        }, interval);
+    }
+
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
-            console.log("Vai");
         
-            // let initialTimer = 20;
-            // startTimer(initialTimer, reference);
-            // startTimer(initialTimer);
-            console.log(this);
+            let initialTimer = 20;
+            let reference = $(this).next();
+            startTimer(reference, initialTimer);
+
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-                console.log("Oi 2"+`${this}`);
-                const reference = this;
+    
                 $(this).append($(ui.draggable).clone());
+                
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
@@ -307,13 +301,6 @@ $(document).ready(function () {
                     event.target.innerHTML = "";
                     event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
                     $(".stove img").addClass("itemNoddle");
-                    // $(reference).html("AMIGO ESTOU AQUI");
-                    // $(reference).next().html("00:00");
-                    // console.log(reference.children[0]);
-                    // reference.children[0].html("AEHOOOOO");
-                    const referenceNext = $(reference).next();
-                    let initialTimer = 20;
-                    startTimer(initialTimer, referenceNext);
                     $(".itemNoddle").removeClass("ui-draggable")
                         .draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
