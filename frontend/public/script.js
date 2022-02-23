@@ -23,6 +23,7 @@ $(document).ready(function () {
     // Aba de pedidos
     $("#pedido-holder").click(function () {
         if ($("#orders div").length <= 3) {
+            $(this).prop("disabled", true);
             $.ajax({
                     method: "GET",
                     url: apiUrl + "/order"
@@ -60,7 +61,8 @@ $(document).ready(function () {
                         $(".order").draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
                             revert: "invalid",
-                        })
+                        });
+                        $("#pedido-holder").prop("disabled", false);
                     }, 500);
                     /* cursorAt: {
                         top: 50,
@@ -195,7 +197,7 @@ $(document).ready(function () {
                             containment: '#table2',
                             revert: "invalid"
                         });
-                }, 100);
+                }, 500);
             }
         }
     });
@@ -213,9 +215,9 @@ $(document).ready(function () {
     });
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
-        let holder = $ready[0].innerHTML;
+        console.log($("#ready")[0].children[0].src);
+        $pot.css("background-image",`url(${$("#ready")[0].children[0].src})`);
         $ready[0].innerHTML = "";
-        $pot[0].innerHTML = holder;
         $('#game').tabs({
             active: 2
         });
@@ -230,6 +232,7 @@ $(document).ready(function () {
     });
 
     $pot.droppable({ // Muda cor do fundo para a id setada "id=color"
+        accept: "#broth > li",
         drop: function (event, ui) {
             console.log(ui.draggable[0].id);
             $(this).css("background-color", ui.draggable[0].id);
@@ -238,7 +241,7 @@ $(document).ready(function () {
 
     $("#pan-to-ingredients").click(function () { // Transfere macarão com molho para tela com ingredientes
         $plate.css("background-color", $pot.css("background-color"));
-        $plate.css("background-image", `url(${$("#pot")[0].children[0].src})`);
+        $plate.css("background-image", $("#pot").css("background-image"));
         $pot[0].innerHTML = "";
         $pot.css("background-color", "#add8e6");
         $('#game').tabs({
@@ -261,6 +264,7 @@ $(document).ready(function () {
     });
 
     $ingredients.droppable({ // Ingredientes podem ser devolvidos
+        accept: ".item",
         revert: "invalid",
         drop: function (event, ui) {
             $(ui.helper).remove();
@@ -295,7 +299,7 @@ $(document).ready(function () {
     });
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
-        let holder = JSON.parse($("#curent-order")[0].children[0].id || "{}");
+        let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
         // let ing = holder.ingredients;
         // console.log(Object.entries(ing));
         // Object.entries(ing)
@@ -477,7 +481,7 @@ function clearKitchen() {
     $("#droppable").html("");
     $("#droppable").css("background-color", "");
     $("#droppable").css("background-image", "");
-    $("#curent-order").html("");
+    $("#order-drop").html("");
 }
 
 // $("#end-order").on("click", function () {

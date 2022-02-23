@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
-  <script type="text/javascript" src="script.js" defer></script>
+    <script type="text/javascript" src="script.js" defer></script>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 
-  <link rel="stylesheet" href="./styles/index.css" />
-  <link rel="stylesheet" href="./styles/modal.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/modal.css" />
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
 </head>
@@ -22,7 +22,8 @@
     <main id="game">
         <aside id="curent-order">
             <header id="order-drop"></header>
-            <footer id="menu"></footer>
+            <footer id="menu">
+                <button id="pedido-holder"><img src="./images/others/next.png" alt=""></button></footer>
         </aside>
         <section id="kitchen">
             <header id="order-tabs">
@@ -51,7 +52,6 @@
           </section> -->
             </header>
             <div id="select-order">
-                <button id="pedido-holder"><img src="./images/others/next.png" alt=""></button>
                 <div id="orders"></div>
             </div>
             <div id="select-coocking">
@@ -145,19 +145,19 @@
         </section>
         <div class="popup-overlay">
             <div class="popup-content">
-              <div id="person-modal"></div>
-              <h2>Pontuação</h2>
-              <div>
-                <p id="cooking-score"></p>
-                <p id="broth-score"></p>
-                <p id="ingredients-score"></p>
-                <p id="order-score"></p>
-                <p id="total-score"></p>
-              </div>
-              <button id="next-order">Próximo pedido</button>
-              <button id="end-game">Finalizar jogo</button>
+                <div id="person-modal"></div>
+                <h2>Pontuação</h2>
+                <div>
+                    <p id="cooking-score"></p>
+                    <p id="broth-score"></p>
+                    <p id="ingredients-score"></p>
+                    <p id="order-score"></p>
+                    <p id="total-score"></p>
+                </div>
+                <button id="next-order">Próximo pedido</button>
+                <button id="end-game">Finalizar jogo</button>
             </div>
-          </div>
+        </div>
     </main>
 </body>
 
