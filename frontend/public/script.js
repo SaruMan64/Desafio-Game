@@ -10,7 +10,7 @@ $(document).ready(function () {
         $stove = $(".stove"),
         $ready = $("#ready"),
         $orders = $("#orders"),
-        $crrOrder = $("#curent-order");
+        $crrOrder = $("#current-order");
 
     // Aba de pedidos
     $("#pedido-holder").click(function () {
@@ -63,7 +63,7 @@ $(document).ready(function () {
                     collision: "fit"
                 });
             } else { // Se possuir pedido o retorna a lista e adiciona o novo que foi arrastado
-                if (ui.draggable[0].id == $("#curent-order")[0].children[0].id) { // Se for o mesmo elemento não o modifica
+                if (ui.draggable[0].id == $("#current-order")[0].children[0].id) { // Se for o mesmo elemento não o modifica
                     console.log("iguais");
                 } else {
                     let holder = $(this)[0].innerHTML;
@@ -211,7 +211,7 @@ $(document).ready(function () {
     });
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
-        let holder = JSON.parse($("#curent-order")[0].children[0].id || "{}");
+        let holder = JSON.parse($("#current-order")[0].children[0].id || "{}");
         let ing = holder.ingredients;
         console.log(Object.entries(ing));
         Object.entries(ing)
