@@ -296,25 +296,59 @@ $(document).ready(function () {
 
     $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
         let holder = JSON.parse($("#curent-order")[0].children[0].id || "{}");
-        let ing = holder.ingredients;
-        console.log(Object.entries(ing));
-        Object.entries(ing)
-            .forEach((item) => {
-                let quant = 0;
-                for (let i = 0; i < $("#droppable div").length; i++) {
-                    if (item[0] == $("#droppable div")[i].id) {
-                        quant++;
-                    }
-                }
-                if (quant != item[1]) {
-                    //points--; potuação a definir;
-                    console.log(item[0], "está incorreto");
-                } else {
-                    console.log(item[0], "está correto");
-                }
-            });
+        // let ing = holder.ingredients;
+        // console.log(Object.entries(ing));
+        // Object.entries(ing)
+        //     .forEach((item) => {
+        //         let quant = 0;
+        //         for (let i = 0; i < $("#droppable div").length; i++) {
+        //             if (item[0] == $("#droppable div")[i].id) {
+        //                 quant++;
+        //             }
+        //         }
+        //         if (quant != item[1]) {
+        //             //points--; potuação a definir;
+        //             console.log(item[0], "está incorreto");
+        //         } else {
+        //             console.log(item[0], "está correto");
+        //         }
+        //     });
         dishMade.broth = $plate.css("background-color");
         pointing(holder, dishMade);
+
+        $(".popup-overlay, .popup-content").addClass("active");
+        $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
+        $("#broth-score").html(`Caldo: ${brothScore} pontos`);
+        $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+        $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
+        $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+        $(document).ready(function () {
+            $("#person-modal").load("./images/Pedido/person.svg");
+            setTimeout(() => {
+                if(orderScore > 150) {
+                    $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
+                    $("#mouth").attr("href", "./images/Pedido/boca-aberta.svg");
+                } else if(orderScore < 50) {
+                    $("#eyes").attr("href", "./images/Pedido/olho-bravo.svg");
+                    $("#mouth").attr("href", "./images/Pedido/boca-brava.svg");
+                } else {
+                    $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
+                    $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
+                }
+            }, 10)
+        })
+    });
+
+    $("#next-order, .popup-overlay").on("click", function () {
+        $(".popup-overlay, .popup-content").removeClass("active");
+        clearKitchen();
+        $('#game').tabs({
+            active: 0
+        });
+    });
+    
+    $("#end-game, .popup-overlay").on("click", function () {
+        $(".popup-overlay, .popup-content").removeClass("active");
     });
 
 });
@@ -339,12 +373,22 @@ let dishMade = {
     }
 }
 
+let cookingScore = 0;
+let brothScore = 0;
+let ingredientsScore = 0;
+let orderScore = 0;
+let totalScore = 0;
+
 function pointing(dishOrdered, dishMade) {
-    let pointing = 0;
     dishMade.quantIngredients = $("#droppable div").length;
+    cookingScore = 0;
+    brothScore = 0;
+    ingredientsScore = 0;
+    orderScore = 0;
 
     switch (dishMade.broth) { // Increases broth score
         case "rgb(255, 255, 255)":
+<<<<<<< HEAD
             (dishOrdered.broth === "fish") ? pointing += 50: pointing -= 50;
             break;
         case "rgb(255, 255, 0)":
@@ -358,6 +402,21 @@ function pointing(dishOrdered, dishMade) {
             break;
         case "rgb(0, 0, 0)":
             (dishOrdered.broth === "shoyu") ? pointing += 50: pointing -= 50;
+=======
+            (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 255, 0)":
+            (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 0, 0)":
+            (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(255, 192, 203)":
+            (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
+            break;
+        case "rgb(0, 0, 0)":
+            (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
+>>>>>>> 53e958b39e28396fa7f3dd8e76a5d1b10302bcc4
             break;
 
     }
@@ -408,6 +467,7 @@ function pointing(dishOrdered, dishMade) {
     const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
     const ingredientsDishMade = Object.entries(dishMade.ingredients);
     let counterIngredientsDishMade = 0;
+<<<<<<< HEAD
     for (let i = 0; i < 4; i++) { // Increases ingredients score
         for (let j = 0; j < 12; j++) {
             if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
@@ -416,20 +476,56 @@ function pointing(dishOrdered, dishMade) {
                 } else {
                     if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
                         pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+=======
+    for(let i = 0; i < 4; i++) { // Increases ingredients score
+        for(let j = 0; j < 12; j++) {
+            if(ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
+                if(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
+                    ingredientsScore += 10 * ingredientsDishOrdered[i][1];
+                } else {
+                    if(ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
+                        ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+>>>>>>> 53e958b39e28396fa7f3dd8e76a5d1b10302bcc4
                     } else {
-                        pointing += 10 * ingredientsDishOrdered[i][1];
-                        pointing -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                        ingredientsScore += 10 * ingredientsDishOrdered[i][1];
+                        ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
                     }
                 }
                 counterIngredientsDishMade += ingredientsDishMade[j][1];
             }
         }
     }
-    pointing -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
-
-    $("body").append(`<ul id="pointing">
-        <li>Pontuação: ${pointing}</li>
-        <li>Prato Pedido: ${JSON.stringify(dishOrdered)}</li>
-        <li>Prato Feito${JSON.stringify(dishMade)}}</li>
-    </ul>`)
+    ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
+    orderScore = cookingScore + brothScore + ingredientsScore;
+    totalScore += orderScore;
 }
+
+function clearKitchen() {
+    $("#droppable").html("");
+    $("#droppable").css("background-color", "");
+    $("#droppable").css("background-image", "");
+    $("#curent-order").html("");
+}
+
+// $("#end-order").on("click", function () {
+//     $(".popup-overlay, .popup-content").addClass("active");
+//     $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
+//     $("#broth-score").html(`Caldo: ${brothScore} pontos`);
+//     $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+//     $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
+//     $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+// });
+
+// $("#next-order, .popup-overlay").on("click", function () {
+//     $(".popup-overlay, .popup-content").removeClass("active");
+// });
+
+// $("#end-game, .popup-overlay").on("click", function () {
+//     $(".popup-overlay, .popup-content").removeClass("active");
+// });
+
+// $("body").append(`<ul id="pointing">
+//     <li>Pontuação: ${pointing}</li>
+//     <li>Prato Pedido: ${JSON.stringify(dishOrdered)}</li>
+//     <li>Prato Feito${JSON.stringify(dishMade)}}</li>
+// </ul>`)

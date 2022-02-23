@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/modal.css">
     <title>Document</title>
 </head>
+
 <body>
     <main>
         <div>
             <h3>Jogar</h3>
             <div>
-                <input id="nickname"  type="text" placeholder="Nome de usuário">
+                <input id="nickname" type="text" placeholder="Nome de usuário">
                 <input id="send" type="button" value="Jogar">
             </div>
             <h3>Adicionar pontuação</h3>
@@ -24,12 +27,33 @@
             <div>
                 <input id="ranking" type="button" value="Ver ranking">
             </div>
+
+
+            <!--Creates the popup body-->
+            <div class="popup-overlay">
+                <!--Creates the popup content-->
+                <div class="popup-content">
+                    <h2>Pop-Up</h2>
+                    <p> This is an example pop-up that you can make using jQuery.</p>
+                    <img src="images/Pedido/person.svg" width="200px">
+                    <!--popup's close button-->
+                    <button class="next">Próximo pedido</button>
+                    <button class="end">Finalizar jogo</button>
+                </div>
+            </div>
+            <!--Content shown when popup is not displayed-->
+            <h2>Tela de ingredientes para finalizar o pedido</h2>
+            <button class="open">Finalizar pedido!</button>
+
+
+
             <div id="show-ranking"></div>
         </div>
     </main>
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="s-script.js"></script>
 </body>
+
 </html>
