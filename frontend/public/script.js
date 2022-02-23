@@ -248,7 +248,8 @@ $(document).ready(function () {
         }
     });
 
-    function printTimer(timer, cod) {
+    function printTimer(stove, timer, cod) {
+        //console.log(stove[0].children[1]);
         if (timer <= 0) {
             clearInterval(cod);
             console.log("Time finished");
@@ -261,21 +262,21 @@ $(document).ready(function () {
         }
         splittedString = string.split("");
         let i = 0;
-        $(".clock span").each(function () {
+        $(stove).children().each(function () {
             $(this).text(splittedString[i]);
             i++;
         });
     }
 
-    function startTimer(timer) {
+    function startTimer(stove, timer) {
         const interval = 1000;
 
         let cod;
         console.log("Timer started!");
-        printTimer(timer, cod);
+        printTimer(stove, timer, cod);
         cod = setInterval(() => {
             timer-= 5;
-            printTimer(timer, cod);
+            printTimer(stove, timer, cod);
             return false;
         }, interval);
     }
@@ -283,14 +284,15 @@ $(document).ready(function () {
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
-            console.log("Vai");
         
             let initialTimer = 20;
-            startTimer(initialTimer);
-            console.log(this);
+            let reference = $(this).next();
+            startTimer(reference, initialTimer);
+
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-                console.log("Oi 2");
                 $(this).append($(ui.draggable).clone());
+                //const reference = this;
+                
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
