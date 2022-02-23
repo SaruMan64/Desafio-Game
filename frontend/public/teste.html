@@ -8,8 +8,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="s-script.js" defer></script>
-
+    <script type="text/javascript" src="audio.js" defer></script>
+    <!--     <script type="text/javascript" src="s-script.js" defer></script>
+ -->
     <link rel="stylesheet" href="./styles/order.css" />
     <link
       rel="stylesheet"
@@ -19,7 +20,16 @@
 
   <body>
     <main>
-      <div id="abacate"></div>
+      <button onclick="sound.playMusic('sakuya')">openingDoor</button>
+      <button onclick="sound.pausedMusic('sakuya')">stop openingDoor</button>
+      <button onclick="sound.mutedAll()">muted</button>
+      <button onclick="sound.loopMusic('sakuya')">loop</button>
+      <button
+        onclick="console.log(parseInt(teste.duration * 1000));
+      "
+      >
+        teste
+      </button>
     </main>
   </body>
 </html>
