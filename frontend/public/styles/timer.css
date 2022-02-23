@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-/* .clock {
+/*.clock {
     display: flex;
 }
 
@@ -43,7 +43,7 @@
     width: 280px;
     height: 65px;
     border-radius: 10px;
-} */
+}*/
 
 .clock {
     background: #0C0908;
@@ -64,10 +64,9 @@
     font-size: 100px;
     color: crimson;
     z-index: 0;
-    
 }
   
-.number::before {
+.number::after {
     display: flex;
     position: relative;
     content: '8';
