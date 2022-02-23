@@ -34,6 +34,17 @@
 
 .clock > span::before {
     width: 75px;
+    z-index: 0;
+}
+  
+
+.number::after {
+    display: flex;
+    position: relative;
+}
+
+.number::before {
+    width: 50px;
     position: absolute;
     content: '8';
     font-size: 30px;
