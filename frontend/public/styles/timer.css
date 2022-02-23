@@ -6,7 +6,7 @@
     font-style: normal;
 }
 
-/* .clock {
+/*.clock {
     display: flex;
 }
 
@@ -43,7 +43,7 @@
     width: 280px;
     height: 65px;
     border-radius: 10px;
-} */
+}*/
 
 .clock {
     background: #0C0908;
@@ -63,12 +63,27 @@
     width: 50px;
     font-size: 100px;
     color: crimson;
-    z-index: 0;
+<<<<<<< HEAD
+    /* position: relative; */
+    z-index: 2;
     
 }
+
+.number::before {
+    /* display: flex; */
+=======
+    z-index: 0;
+}
   
+
+.number::after {
+    display: flex;
+    position: relative;
+}
+
 .number::before {
     width: 50px;
+>>>>>>> 1207382a55c8ebeca85d0538d9b32e26ac5945fa
     position: absolute;
     content: '8';
     font-size: 100px;
