@@ -255,7 +255,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#next-order, .popup-overlay").on("click", function () {
+    $("#next-order, .popup-overlay").on("click", function () { // Close the modal and continue to the next order
         $(".popup-overlay, .popup-content").removeClass("active");
         clearKitchen();
         $('#game').tabs({
@@ -263,10 +263,19 @@ $(document).ready(function () {
         });
     });
     
-    $("#end-game, .popup-overlay").on("click", function () {
+    $("#end-game, .popup-overlay").on("click", function () { // Close the modal and end the game
         $(".popup-overlay, .popup-content").removeClass("active");
+        $.ajax({
+            type: "GET",
+            url: `http://localhost:4444/score?Rick=${totalScore}`,  // ARRUMAR ROTA
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     });
-
 });
 
 let dishMade = {
@@ -389,7 +398,7 @@ function pointing(dishOrdered, dishMade) {
     totalScore += orderScore;
 }
 
-function clearKitchen() {
+function clearKitchen() { // Remove the dish made and the current order
     $("#droppable").html("");
     $("#droppable").css("background-color", "");
     $("#droppable").css("background-image", "");
