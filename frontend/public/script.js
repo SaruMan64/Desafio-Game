@@ -190,8 +190,8 @@ $(document).ready(function () {
                 setTimeout(function () { // 10 segundos para cozimento
                     event.target.innerHTML = "";
                     event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
-                    $(".stove img").addClass("item");
-                    $(".item").removeClass("ui-draggable")
+                    $(".stove img").addClass("itemNoddle");
+                    $(".itemNoddle").removeClass("ui-draggable")
                         .draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
                             containment: '#table2',
@@ -203,7 +203,7 @@ $(document).ready(function () {
     });
 
     $ready.droppable({ // Quando cozido o macarrão pode ser colocado aqui
-        accept: ".item",
+        accept: ".itemNoddle",
         revert: "invalid",
         drop: function (event, ui) {
             $(ui.draggable).appendTo($(this));
@@ -264,7 +264,7 @@ $(document).ready(function () {
     });
 
     $ingredients.droppable({ // Ingredientes podem ser devolvidos
-        accept: ".item",
+        accept: ".itemIngredients",
         revert: "invalid",
         drop: function (event, ui) {
             $(ui.helper).remove();
@@ -275,8 +275,8 @@ $(document).ready(function () {
         accept: "#ingredients > li",
         drop: function (event, ui) {
             $(this).append($(ui.helper).clone());
-            $("#droppable div").addClass("item");
-            $(".item").removeClass("ui-draggable")
+            $("#droppable div").addClass("itemIngredients");
+            $(".itemIngredients").removeClass("ui-draggable")
                 .draggable({ // Garante que seja arrastável
                     cursor: "grabbing",
                     containment: '#table4',
