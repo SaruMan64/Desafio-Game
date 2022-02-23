@@ -45,7 +45,7 @@
                     }
                     let string = timer.toString();
                     if (timer >= 60) {
-                        string = `0${timer / timer}00`;
+                        string = `0${timer / 60}00`;
                     } else if (timer >= 10) {
                         string = `00${timer}`;
                     } else {
@@ -66,14 +66,13 @@
                     console.log("Timer started!");
                     printTimer(timer, cod);
                     cod = setInterval(() => {
-                        timer-= 1;
+                        timer-= 5;
                         printTimer(timer, cod);
                         return false;
                     }, interval);
                 }
 
                 $("button").click(function () {
-                    let time = 60;
                     let initialTimer = $("#test").val();
                     startTimer(initialTimer);
                 });

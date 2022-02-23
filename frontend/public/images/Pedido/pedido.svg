@@ -28,22 +28,23 @@
             d="M178.398 52.8345H175V107.223C175 110.012 177.825 112.273 181.311 112.273H218.689C222.175 112.273 225 110.012 225 107.223V52.8345H221.359V107.417C221.359 108.49 220.273 109.36 218.932 109.36H180.825C179.485 109.36 178.398 108.49 178.398 107.417V52.8345Z"
             fill="#858383" />
     </g>
-    <image id="cook" x="160" y="191" width="80" height="80" href="../chashu.svg" />
-    <image id="broth" x="160" y="333" width="80" height="80" href="../chashu.svg" />
-    <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" href="../chashu.svg" />
-    <text class="numbersvg i1" x="155" y="525" fill="black">
+    <image id="cook" x="160" y="191" width="80" height="80" href="" />
+    <image id="broth" x="160" y="333" width="80" height="80" href="" />
+
+    <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" />
+    <text id="num1" class="numbersvg i1" x="155" y="525" fill="black">
         10
     </text>
-    <image id="ingredient2" class="ingredient i2" x="209" y="473" width="80" height="80" href="../chashu.svg" />
-    <text class="numbersvg i2" x="290" y="525" fill="black">
+    <image id="ingredient2" class="ingredient i2" x="209" y="473" width="80" height="80" href="" />
+    <text id="num2" class="numbersvg i2" x="290" y="525" fill="black">
         10
     </text>
-    <image id="ingredient3" class="ingredient i3" x="70" y="578" width="80" height="80" href="../chashu.svg" />
-    <text class="numbersvg i3" x="155" y="630" fill="black">
+    <image id="ingredient3" class="ingredient i3" x="70" y="578" width="80" height="80" href="" />
+    <text id="num3" class="numbersvg i3" x="155" y="630" fill="black">
         10
     </text>
-    <image id="ingredient4" class="ingredient i4" x="209" y="578" width="80" height="80" href="../chashu.svg" />
-    <text class="numbersvg i4" x="290" y="630" fill="black">
+    <image id="ingredient4" class="ingredient i4" x="209" y="578" width="80" height="80" href="" />
+    <text id="num4" class="numbersvg i4" x="290" y="630" fill="black">
         10
     </text>
     <text class="numbersvg id" x="250" y="140" fill="black">

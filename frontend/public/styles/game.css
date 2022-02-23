@@ -47,6 +47,7 @@
   width: 100%;
   height: 75.7%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -74,13 +75,21 @@
   height: 90%;
 } */
 
+#menu {
+  height: 24.3%;
+}
+
+#menu > button {
+  height: 8.5%;
+} 
+
 #kitchen {
   width: 75%;
 }
 
 #order-tabs {
   width: 100%;
-  height: 23%;
+  height: 60px;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -176,7 +185,7 @@
 }
 
 #box {
-  background-image: url(../images/box.png);
+  background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -195,8 +204,8 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 250px;
-  height: 200px;
+  width: 220px;
+  height: 180px;
   border: 1px solid black;
 }
 
@@ -225,19 +234,30 @@ li {
   background-color: gray;
 }
 
-#pot {
+#outer-pot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 200px;
-  background-color: #add8e6;
-  background-image: url(../images/box.png);
+  background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#pot {
+  width: 100px;
+  height: 80px;
+  background-color: #add8e6;
   border: 1px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #oven {
-  background-image: url(../images/oven.png);
+  background-image: url(../images/others/oven.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -245,7 +265,7 @@ li {
   height: 300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
@@ -254,13 +274,17 @@ li {
   flex-direction: column;
   justify-content: space-around;
   height: 300px;
-  max-width: 100px;
+  max-width: 150px;
 }
 
 .stove {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border: 1px solid black;
+  background-image: url(../images/others/pan.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #pans {
@@ -270,7 +294,7 @@ li {
 }
 
 #ready {
-  background-image: url(../images/box.png);
+  background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -281,11 +305,23 @@ li {
 #orders {
   display: flex;
   flex-direction: row;
-  width: 600px;
+  width: 950px;
   height: 500px;
   background-color: lightblue;
 }
 
 .order {
   background-color: #e5b372;
+}
+
+#side-stove {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50px;
+}
+
+button > img {
+  width: 50px;
+  height: 50px;
 }
