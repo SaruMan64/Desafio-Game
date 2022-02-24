@@ -47,8 +47,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60vmin;
-  height: 60vmin;
+  width: 50vmin;
+  height: 50vmin;
   background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -58,8 +58,8 @@
 }
 
 #pot {
-  width: 32vmin;
-  height: 26vmin;
+  width: 28vmin;
+  height: 22vmin;
    background-color: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(173,216,230,1) 100%);
   background-size: cover;
   background-repeat: no-repeat;

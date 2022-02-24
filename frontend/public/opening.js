@@ -52,6 +52,7 @@ function openingAnimationDoors() {
       $(".L").css(el, "doorL" + animationDoor);
       $(".R").css(el, "doorR" + animationDoor);
       $("#doors").css(el, "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
+      $("#doors").css("animation-direction", "reverse");
     });
 
   }, 500)

@@ -43,17 +43,23 @@
   justify-content: center;
   align-items: center;
 }
-.stove.ui-droppable > #noddle1{
+
+.stove.ui-droppable > #noddle1 {
   width: 20vmin;
   height: 20vmin;
 }
 
-.stove.ui-droppable > .itemNoddle.ui-draggable.ui-draggable-handle{
+.strove .ui-draggable-dragging {
   width: 20vmin;
   height: 20vmin;
 }
 
-.stove.ui-droppable > .itemNoddle{
+.stove.ui-droppable > .itemNoddle.ui-draggable.ui-draggable-handle {
+  width: 20vmin;
+  height: 20vmin;
+}
+
+.stove.ui-droppable > .itemNoddle {
   width: 20vmin;
   height: 20vmin;
 }
@@ -86,7 +92,7 @@
   height: 20vmin;
 }
 
-#pan-to-noodles-and-broth{
+#pan-to-noodles-and-broth {
   width: 30vmin;
   height: 5vmin;
   border-radius: 10px;
