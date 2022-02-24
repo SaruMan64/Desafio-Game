@@ -170,6 +170,18 @@
   background-color: green;
 }
 
+#balcao {
+  width: 75%;
+  position: absolute;
+  top: 75%;
+}
+
+#person {
+  position: absolute;
+  height: 50%;
+  top: 40%;
+}
+
 /* #trash {
   width: 100px;
   height: 100px;
