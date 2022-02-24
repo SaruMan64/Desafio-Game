@@ -624,6 +624,8 @@ $(document).ready(function () {
     }
 
     function showRanking(players) { // Create the ranking in html
+        console.log(players);
+        console.log(JSON.stringify(players));
         $("#ranking").html("");
         $("#ranking").append(`<table>
         <tr>
@@ -632,7 +634,10 @@ $(document).ready(function () {
             <th>Pontuação</th>
         </tr>
     </table>`);
-        for (let i = 0; i < 10; i++) {
+        let numberPlayersRanking;
+        (players.length <= 10) ? numberPlayersRanking = players.length : numberPlayersRanking = 10;
+        
+        for (let i = 0; i < numberPlayersRanking; i++) {
             $("table").append(`<tr>
             <td>${i+1}</td>
             <td>${players[i].name}</td>
