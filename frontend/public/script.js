@@ -232,7 +232,7 @@ $(document).ready(function () {
 
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
 
-                $(this).append($(ui.draggable).clone());
+                $(this).append($(ui.helper).clone());
 
                 let initialTimer = 0;
                 let reference = $(this).next();
@@ -256,7 +256,7 @@ $(document).ready(function () {
                                 clearInterval(cod);
                             }
                         });
-                }, 500);
+                }, 2000);
             }
         }
     });
@@ -403,7 +403,7 @@ $(document).ready(function () {
                     $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
                     $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
                 }
-            }, 10)
+            }, 500)
         })
     });
 
