@@ -48,7 +48,11 @@
   height: 20vmin;
 }
 
-.itemNoddle.ui-draggable.ui-draggable-handle{
+.stove.ui-droppable > .itemNoddle.ui-draggable.ui-draggable-handle{
+  width: 20vmin;
+  height: 20vmin;
+}
+.stove.ui-droppable > .itemNoddle{
   width: 20vmin;
   height: 20vmin;
 }
