@@ -190,60 +190,26 @@ $(document).ready(function () {
         }
     });
 
-    // let timers = [ 
-    //     {
-    //         id: 1,
-    //         timer: 0
-    //     },
-    //     {
-    //         id: 2,
-    //         timer: 0
-    //     },
-    //     {
-    //         id: 3,
-    //         timer: 0
-    //     },
-    //     {
-    //         id: 4,
-    //         timer: 0
-    //     },
-    //     {
-    //         id: 5,
-    //         timer: 0
-    //     },
-    // ];
-
-    const timers = new Array(5);
-
     let cod1;
     let cod2;
     let cod3;
     let cod4;
     let cod5;
-    
-    function startTimer(stove, timer) {
-        const interval = 1000;
-        console.log("Timer started!");
-        printTimer(stove, "00", cod);
-        cod = setInterval(() => {
-            timer++;
-            dishMade.cookingTime = timer;
-            printTimer(stove, timer, cod);
-            return false;
-        }, interval);
-    }
 
-    function printTimer(stove, timer, cod) {
-        if (timer >= 60) {
-            clearInterval(cod);
-            console.log("Time finished");
-        }
+    function printTimer(stove, timer, cod) { // Show the timer on the stove
         let string = timer.toString();
+        
         if (timer >= 10) {
             string = `${timer}`;
         } else {
             string = `0${timer}`;
         }
+
+        if (timer >= 60) {
+            string = `--`;
+            clearInterval(cod);
+        }
+
         splittedString = string.split("");
         let i = 0;
         $(stove).children().each(function () {
@@ -252,51 +218,48 @@ $(document).ready(function () {
         });
     }
 
-    function setTimer(index) {
+    function setTimer(index) { // Start the stove timer
         let timer = 0;
         const interval = 1000;
         const aux = $(`[value=${index}]`).next();
-        console.log(timer);
-
-        
-        let spaceTime = function () {
-            timer++;
-            dishMade.cookingTime = timer;
-            printTimer(aux, timer, this.cod);
-            return false;
-        }
-
-        console.log("Number(index)");
-        console.log(Number(index));
 
         switch(Number(index)) {
             case 1:
-                console.log("set cod1");
-                cod1 = setInterval(spaceTime, interval);
+                cod1 = setInterval(function() {
+                    timer++;
+                    dishMade.cookingTime = timer;
+                    printTimer(aux, timer, cod1);
+                }, interval);
                 break
             case 2:
-                console.log("set cod2");
-                cod2 = setInterval(spaceTime, interval);
+                cod2 = setInterval(function() {
+                    timer++;
+                    dishMade.cookingTime = timer;
+                    printTimer(aux, timer, cod2);
+                }, interval);
                 break
             case 3:
-                console.log("set cod3");
-                cod3 = setInterval(spaceTime, interval);
+                cod3 = setInterval(function() {
+                    timer++;
+                    dishMade.cookingTime = timer;
+                    printTimer(aux, timer, cod3);
+                }, interval);
                 break
             case 4:
-                console.log("set cod4");
-                cod4 = setInterval(spaceTime, interval);
+                cod4 = setInterval(function() {
+                    timer++;
+                    dishMade.cookingTime = timer;
+                    printTimer(aux, timer, cod4);
+                }, interval);
                 break
             case 5:
-                console.log("set cod5");
-                cod5 = setInterval(spaceTime, interval);
+                cod5 = setInterval(function() {
+                    timer++;
+                    dishMade.cookingTime = timer;
+                    printTimer(aux, timer, cod5);
+                }, interval);
                 break
         }
-        
-
-        // return {
-        //     cod: setInterval(spaceTime, interval),
-        //     timer: this.timer
-        // }
     }
 
     $stove.droppable({
@@ -304,15 +267,11 @@ $(document).ready(function () {
         drop: function (event, ui) {
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
                 $(this).append($(ui.draggable).clone());
-                let initialTimer = 0;
+
                 let reference = $(this);
-                // let k = $(reference).attr("stoveNum");
-                // console.log(`K: ${k}`);
                 let referenceValue = reference[0].getAttribute("value");
                 setTimer(referenceValue);
-                // timers[referenceValue] = setTimer(referenceValue);
-                // console.log(timers);
-                // startTimer(reference, initialTimer);
+
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
@@ -327,84 +286,33 @@ $(document).ready(function () {
                             cursor: "grabbing",
                             containment: '#table2',
                             revert: "invalid",
-                            start: function (event, ui) {
-                                console.log("this.parentNode");
-                                console.log(this.parentNode.getAttribute("value"));
+                            start: function (event, ui) { // Stop the stove timer
                                 let pai = this.parentNode.getAttribute("value");
-                                // console.log("timers[refVal]");
-                                // console.log(timers[referenceValue].timer);
-                                // console.log(reference[0].getAttribute("value"));
-                                // let referenceValue = reference[0].getAttribute("value");
-                                // clearInterval(timers[referenceValue].timer);
-                                console.log("Number(referenceValue)");
-                                console.log(Number(referenceValue));
                                 switch(Number(pai)) {
                                     case 1:
-                                        console.log("clear cod1");
                                         clearInterval(cod1);
                                         break
                                     case 2:
-                                        console.log("clear cod2");
                                         clearInterval(cod2);
                                         break
                                     case 3:
-                                        console.log("clear cod3");
                                         clearInterval(cod3);
                                         break
                                     case 4:
-                                        console.log("clear cod4");
                                         clearInterval(cod4);
                                         break
                                     case 5:
-                                        console.log("clear cod5");
                                         clearInterval(cod5);
                                         break
                                     default:
                                         console.log("clear default");
                                 }
-                                
                             }
                         });
                 }, 2000);
             }
         }
     });
-
-    
-    /* $stove.droppable({
-        accept: "#noddle1",
-        drop: function (event, ui) {
-            if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-
-                $(this).append($(ui.helper).clone());
-
-                let initialTimer = 0;
-                let reference = $(this).next();
-                startTimer(reference, initialTimer);
-
-                $(this).css({
-                    "display": "flex",
-                    "align-itens": "center",
-                    "justify-content": "center"
-                })
-                
-                setTimeout(function () { // 10 segundos para cozimento
-                    event.target.innerHTML = "";
-                    event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
-                    $(".stove img").addClass("itemNoddle");
-                    $(".itemNoddle").removeClass("ui-draggable")
-                        .draggable({ // Garante que seja arrastável
-                            cursor: "grabbing",
-                            containment: '#table2',
-                            revert: "invalid",
-                            start: function (event, ui) {
-                                clearInterval(cod);
-                            }
-                        });
-                }, 2000);
-            }
-        }
-    }); */
 
     $ready.droppable({ // Quando cozido o macarrão pode ser colocado aqui
         accept: ".itemNoddle",
@@ -504,26 +412,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#end-order").click(function () { // Confere se os ingredientes estão de acordo com o pedido
+    $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
         let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
-        console.log(holder);
-        // let ing = holder.ingredients;
-        // console.log(Object.entries(ing));
-        // Object.entries(ing)
-        //     .forEach((item) => {
-        //         let quant = 0;
-        //         for (let i = 0; i < $("#droppable div").length; i++) {
-        //             if (item[0] == $("#droppable div")[i].id) {
-        //                 quant++;
-        //             }
-        //         }
-        //         if (quant != item[1]) {
-        //             //points--; potuação a definir;
-        //             console.log(item[0], "está incorreto");
-        //         } else {
-        //             console.log(item[0], "está correto");
-        //         }
-        //     });
         dishMade.broth = $plate.css("background-color");
         pointing(holder, dishMade);
 
@@ -616,7 +506,7 @@ $(document).ready(function () {
     let orderScore = 0;
     let totalScore = 0;
 
-    function pointing(dishOrdered, dishMade) {
+    function pointing(dishOrdered, dishMade) { // Calculate the score
         dishMade.quantIngredients = $("#droppable div").length;
         cookingScore = 0;
         brothScore = 0;
@@ -639,7 +529,6 @@ $(document).ready(function () {
             case "rgb(0, 0, 0)":
                 (dishOrdered.broth === "shoyu") ? brothScore += 50: brothScore -= 50;
                 break;
-
         }
 
         for (let i = 0; i < $("#droppable div").length; i++) { // Count ingredients used
@@ -735,129 +624,13 @@ $(document).ready(function () {
         }
     }
 
-    // $("#end-order").on("click", function () {
-    //     $(".popup-overlay, .popup-content").addClass("active");
-    //     $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
-    //     $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-    //     $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
-    //     $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
-    //     $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
-    // });
-
-    // $("#next-order, .popup-overlay").on("click", function () {
-    //     $(".popup-overlay, .popup-content").removeClass("active");
-    // });
-
-    // $("#end-game, .popup-overlay").on("click", function () {
-    //     $(".popup-overlay, .popup-content").removeClass("active");
-    // });
-
-    // $("body").append(`<ul id="pointing">
-    //     <li>Pontuação: ${pointing}</li>
-    //     <li>Prato Pedido: ${JSON.stringify(dishOrdered)}</li>
-    //     <li>Prato Feito${JSON.stringify(dishMade)}}</li>
-    // </ul>`)
     $("#btn-tabs li").click(function () {
         sound.playMusic("change");
     });
 
     $("#mute-all").click(function () {
-        console.log(this);
         $(this).toggleClass("imMuted");
         sound.mutedAll();
     })
 
 });
-
-
-// function printTimer(stove, timer, cod) {
-//     //console.log(index);
-//     if (timer >= 60) {
-//         clearInterval(cod);
-//         console.log("Time finished");
-//     }
-//     let string = timer.toString();
-//     if (timer >= 10) {
-//         string = `${timer}`;
-//     } else {
-//         string = `0${timer}`;
-//     }
-//     splittedString = string.split("");
-//     let i = 0;
-//     $(stove).children().each(function () {
-//         $(this).text(splittedString[i]);
-//         i++;
-//     });
-// }
-
-// let cod;
-
-// function startTimer(stove, timer) {
-//     console.log("Timer started!");
-//     printTimer(stove, "00", cod);
-//     cod = setInterval(() => {
-//         timer++;
-//         dishMade.cookingTime = timer;
-//         printTimer(stove, timer, cod);
-//         return false;
-//     }, interval);
-// }
-
-// function setTimer(index) {
-//     let timer = 0;
-//     const interval = 1000;
-//     const aux = $(`[stoveNum=${index}]`).next();
-//     console.log(timer);
-
-//     let spaceTime = function () {
-//         timer++;
-//         dishMade.cookingTime = timer;
-//         printTimer(aux, timer, this.cod);
-//         return false;
-//     }
-
-//     return {
-//         cod: setInterval(spaceTime, interval),
-//         timer: this.timer
-//     }
-// }
-
-// const timers = new Array(5);
-
-// $stove.droppable({
-//     accept: "#noddle1",
-//     drop: function (event, ui) {
-//         if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-
-//             $(this).append($(ui.draggable).clone());
-
-//             let initialTimer = 0;
-//             let reference = $(this);
-//             let k = $(reference).attr("stoveNum");
-//             console.log(k);
-//             timers[k] = setTimer(k);
-//             console.log(timers);
-//             //console.log($(`[stoveNum=${k}]`));
-//             //startTimer(reference, initialTimer);
-//             $(this).css({
-//                 "display": "flex",
-//                 "align-itens": "center",
-//                 "justify-content": "center"
-//             })
-//             setTimeout(function () { // 10 segundos para cozimento
-//                 event.target.innerHTML = "";
-//                 event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
-//                 $(".stove img").addClass("itemNoddle");
-//                 $(".itemNoddle").removeClass("ui-draggable")
-//                     .draggable({ // Garante que seja arrastável
-//                         cursor: "grabbing",
-//                         containment: '#table2',
-//                         revert: "invalid",
-//                         start: function (event, ui) {
-//                             clearInterval(cod);
-//                         }
-//                     });
-//             }, 500);
-//         }
-//     }
-// });
