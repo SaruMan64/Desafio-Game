@@ -32,6 +32,10 @@
   background-color: transparent !important;
 }
 
+#select-order {
+  padding: 0;
+}
+
 #game {
   background-color: rgba(57, 58, 53, 0.9);
   display: flex;
@@ -39,7 +43,7 @@
 
 #curent-order {
   width: 25%;
-  height: 100vh;
+  height: 100%;
   background-color: #88371c;
 }
 
@@ -80,7 +84,8 @@
 }
 
 #menu > button {
-  height: 8.5%;
+  height: 38.5%;
+  border-radius: 10px;
 } 
 
 #kitchen {
@@ -89,7 +94,7 @@
 
 #order-tabs {
   width: 100%;
-  height: 60px;
+  height: 23%;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -135,7 +140,7 @@
 #btn-tabs > li > a:active {
   background-color: rgb(138, 71, 29) !important;
 }
-
+/* 
 #order-list {
   width: 100%;
   height: 45%;
@@ -158,13 +163,27 @@
 #order-list > ul > .pedido-varal {
   width: 5.7%;
   height: 120%;
-}
+} */
 
 .table {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  width: fit-content;
+  width: 100%;
+  height: 100%;
+}
+
+#table1 {
+  justify-content: flex-start;
+}
+
+#table2 {
+  width: 70%;
+  height: 70vh;
+}
+
+#table3 {
+  display : flex;
+  flex-direction: column;
 }
 
 #noddle1 {
@@ -178,11 +197,11 @@
   width: 400px;
 }
 
-#draggable {
+/* #draggable {
   padding: 0.5em;
   float: left;
   margin: 10px 10px 10px 0;
-}
+} */
 
 #box {
   background-image: url(../images/others/box.png);
@@ -213,6 +232,11 @@ li {
   list-style: none;
 }
 
+#broth {
+  display: flex;
+  flex-direction: row;
+}
+
 #broth img {
   width: 100px;
   height: 100px;
@@ -238,8 +262,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -247,8 +271,8 @@ li {
 }
 
 #pot {
-  width: 100px;
-  height: 80px;
+  width: 200px;
+  height: 160px;
   background-color: #add8e6;
   border: 1px solid black;
 }
@@ -258,8 +282,8 @@ li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 465px;
-  height: 300px;
+  width: 600px;
+  height: 350px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -301,15 +325,34 @@ li {
 
 #orders {
   display: flex;
-  width: 950px;
-  height: 500px;
+  width: 90%;
+  height: 50%;
   background-color: lightblue;
 }
 
+/* .order {
+  background-image: url(../images/Pedido/pedido.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: fit-content;
+  width: fit-content;
+  background-color: transparent;
+} */
 .order {
   height: 100%;
   background-color: transparent;
 }
+
+/* .order>div{
+  width: 50px;
+  height: 50px;
+} */
+/* 
+#res-ingredients {
+  display: flex;
+  flex-wrap: wrap;
+} */
 
 #side-stove {
   display: flex;
@@ -318,7 +361,22 @@ li {
   margin-left: 50px;
 }
 
+button {
+  width: 60px;
+  height: 60px;
+}
+
 button > img {
   width: 50px;
   height: 50px;
+}
+
+#select-coocking {
+  display: flex;
+  flex-direction: row;
+}
+
+.gameTabs {
+  width: 100%;
+  height: 77%;
 }

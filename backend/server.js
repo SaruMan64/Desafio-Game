@@ -34,7 +34,7 @@ app.get("/register", function(req, res) {
   res.send(newPlayer);
 });
 
-app.post("/score", function(req, res) {
+app.get("/score", function(req, res) {
   const name = Object.keys(req.query)[0];
   const pointing = Number(Object.values(req.query)[0]);
   const setScore = score(name, pointing);

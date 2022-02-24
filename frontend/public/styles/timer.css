@@ -6,87 +6,39 @@
     font-style: normal;
 }
 
-/*.clock {
-    display: flex;
-}
-
-.clock div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    width: 50px;
-    height: 50px;
-    font-family: "ds-digitalnormal";
-    color: red;
-    font-size: 40px;
-}
-
-.border {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: lightyellow;
-    width: 300px;
-    height: 80px;
-    border-radius: 10px;
-    font-family: "ds-digitalnormal";
-    color: #858383;
-    font-size: 40px;
-}
-
-.back {
-    background: lightyellow;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 65px;
-    border-radius: 10px;
-}*/
-
 .clock {
+    margin-left: 30px;
     background: #0C0908;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 280px;
-    height: 65px;
-    border: 10px solid #160D08;
+    width: 75px;
+    height: 40px;
+    border: 5px solid #160D08;
     border-radius: 10px;
     font-family: "ds-digitalnormal";
-    color: gray;
-    font-size: 100px;
-}
-
-.number {
-    width: 50px;
-    font-size: 100px;
-    color: crimson;
-<<<<<<< HEAD
-    /* position: relative; */
-    z-index: 2;
-    
-}
-
-.number::before {
-    /* display: flex; */
-=======
-    z-index: 0;
-}
-  
-
-.number::after {
-    display: flex;
     position: relative;
 }
 
+.clock > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    font-size: 30px;
+    color: crimson;
+    /* position: relative; */
+    z-index: 1;
+    left: 20;
+}
+
 .number::before {
     width: 50px;
->>>>>>> 1207382a55c8ebeca85d0538d9b32e26ac5945fa
     position: absolute;
     content: '8';
-    font-size: 100px;
+    font-size: 30px;
     color: lightgray;
     z-index: -1;
-}
+    text-align: center;
+    gap: 0;
+} 

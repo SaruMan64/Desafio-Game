@@ -23,14 +23,15 @@
         <aside id="curent-order">
             <header id="order-drop"></header>
             <footer id="menu">
-                <button id="pedido-holder"><img src="./images/others/next.png" alt=""></button></footer>
+                <button id="pedido-holder"><img src="./images/others/next.png" alt=""></button>
+            </footer>
         </aside>
         <section id="kitchen">
             <header id="order-tabs">
                 <ul id="btn-tabs">
                     <li><a href="#select-order">PEDIDO</a></li>
                     <li><a href="#select-coocking">COZIMENTO</a></li>
-                    <li><a href="#select-noodles-and-sauce">CALDO</a></li>
+                    <li><a href="#select-broth">CALDO</a></li>
                     <li><a href="#select-ingredients">INGREDIENTES</a></li>
                 </ul>
                 <!-- <section id="order-list">
@@ -48,10 +49,10 @@
             </ul>
           </section> -->
             </header>
-            <div id="select-order">
+            <div id="select-order" class="gameTabs">
                 <div id="orders"></div>
             </div>
-            <div id="select-coocking">
+            <div id="select-coocking" class="gameTabs">
                 <div class="table" id="table2">
                     <div id="oven">
                         <div class="column">
@@ -60,14 +61,31 @@
                                 <span></span>
                                 <span></span>
                             </div>
+                            
                             <div class="stove"></div>
+                            <div class="clock">
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                         <div class="column">
                             <div class="stove"></div>
+                            <div class="clock">
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                         <div class="column">
                             <div class="stove"></div>
+                            <div class="clock">
+                                <span></span>
+                                <span></span>
+                            </div>
                             <div class="stove"></div>
+                            <div class="clock">
+                                <span></span>
+                                <span></span>
+                            </div>
                         </div>
                     </div>
                     <div id="side-stove">
@@ -77,7 +95,7 @@
                 </div>''
                 <button id="pan-to-noodles-and-broth"><img src="./images/others/next.png" alt=""></button>
             </div>
-            <div id="select-noodles-and-sauce">
+            <div id="select-broth" class="gameTabs">
                 <div class="table" id="table3">
                     <ul id="broth">
                         <li id="white">
@@ -99,10 +117,10 @@
                     <div id="outer-pot">
                         <div id="pot"></div>
                     </div>
-                    <button id="pan-to-ingredients"><img src="./images/others/next.png" alt=""></button>
                 </div>
+                <button id="pan-to-ingredients"><img src="./images/others/next.png" alt=""></button>
             </div>
-            <div id="select-ingredients">
+            <div id="select-ingredients" class="gameTabs">
                 <div class="table" id="table4">
                     <ul id="ingredients">
                         <li>
@@ -160,7 +178,11 @@
             </div>
         </div>
         <div class="popup-overlay-ranking">
+<<<<<<< HEAD
             <div class="popup-content-rank">
+=======
+            <div class="popup-content-ranking">
+>>>>>>> 622d7572b5bce526577fb62ac88b4ed79fd7b496
                 <h2>Ranking</h2>
                 <div id="ranking"></div>
                 <button id="play-again">Jogar novamente</button>
