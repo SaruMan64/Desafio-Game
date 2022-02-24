@@ -190,11 +190,44 @@ $(document).ready(function () {
         }
     });
 
+    let timers = [ 
+        {
+            id: 1,
+            timer: 0
+        },
+        {
+            id: 2,
+            timer: 0
+        },
+        {
+            id: 3,
+            timer: 0
+        },
+        {
+            id: 4,
+            timer: 0
+        },
+        {
+            id: 5,
+            timer: 0
+        },
+    ];
+
+    function startTimer(stove) {
+        const interval = 1000;
+        printTimer(stove, "00", cod);
+        cod = setInterval(() => {
+            timer++;
+            dishMade.cookingTime = timer;
+            printTimer(stove, timer, cod);
+            console.log(cod);
+            return false;
+        }, interval);
+    }
 
     function printTimer(stove, timer, cod) {
-        if (timer >= 60) {
+        if (timer >= 6) {
             clearInterval(cod);
-            console.log("Time finished");
         }
         let string = timer.toString();
         if (timer >= 10) {
@@ -209,39 +242,23 @@ $(document).ready(function () {
             i++;
         });
     }
-
-    let cod;
-
-    function startTimer(stove, timer) {
-        const interval = 1000;
-
-        console.log("Timer started!");
-        printTimer(stove, "00", cod);
-        cod = setInterval(() => {
-            timer++;
-            dishMade.cookingTime = timer;
-            printTimer(stove, timer, cod);
-            return false;
-        }, interval);
-    }
-
+    
     $stove.droppable({
         accept: "#noddle1",
         drop: function (event, ui) {
-
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-
                 $(this).append($(ui.draggable).clone());
-
-                let initialTimer = 0;
-                let reference = $(this).next();
-                startTimer(reference, initialTimer);
-
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
                     "justify-content": "center"
                 })
+
+                // let initialTimer = 0;
+                let reference = $(this).next();
+                startTimer(reference);
+                // startTimer(reference, initialTimer);
+                
                 setTimeout(function () { // 10 segundos para cozimento
                     event.target.innerHTML = "";
                     event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
@@ -612,7 +629,6 @@ $(document).ready(function () {
     //     <li>Prato Feito${JSON.stringify(dishMade)}}</li>
     // </ul>`)
     $("#btn-tabs li").click(function () {
-        console.log(this);
         sound.playMusic("change");
     });
 
