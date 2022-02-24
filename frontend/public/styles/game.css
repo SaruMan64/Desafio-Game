@@ -276,6 +276,9 @@ li {
   height: 160px;
   background-color: #add8e6;
   border: 1px solid black;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #oven {
