@@ -80,8 +80,8 @@ $(document).ready(function () {
     const zeroFill = n => {
         return (n < 10) ? ('000' + n) :
             (n < 100) ? ('00' + n) :
-            (n < 1000) ? ('0' + n) :
-            n;
+                (n < 1000) ? ('0' + n) :
+                    n;
     }
 
     let $ingredients = $("#ingredients"),
@@ -103,9 +103,9 @@ $(document).ready(function () {
         if ($("#orders > div").length < 6) {
             $(this).prop("disabled", true);
             $.ajax({
-                    method: "GET",
-                    url: apiUrl + "/order"
-                })
+                method: "GET",
+                url: apiUrl + "/order"
+            })
                 .done(function (response) {
                     console.log(response); // Montagem div com pedido
                     let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
@@ -158,7 +158,7 @@ $(document).ready(function () {
     $orders.droppable({
         accept: "#order-drop > div",
         drop: function (event, ui) {
-            let of , my, at;
+            let of, my, at;
             if ($("#orders")[0].innerHTML == '') {
                 of = $("#orders")
                 my = "left center";
@@ -170,7 +170,7 @@ $(document).ready(function () {
             }
             $(ui.draggable).appendTo($orders)
                 .position({
-                    of: of ,
+                    of: of,
                     my: my,
                     at: at
                 });
@@ -204,7 +204,7 @@ $(document).ready(function () {
 
     function printTimer(stove, timer, cod) { // Show the timer on the stove
         let string = timer.toString();
-        
+
         if (timer >= 10) {
             string = `${timer}`;
         } else {
@@ -229,37 +229,37 @@ $(document).ready(function () {
         const interval = 1000;
         const aux = $(`[value=${index}]`).next();
 
-        switch(Number(index)) {
+        switch (Number(index)) {
             case 1:
-                cod1 = setInterval(function() {
+                cod1 = setInterval(function () {
                     timer++;
                     dishMade.cookingTime = timer;
                     printTimer(aux, timer, cod1);
                 }, interval);
                 break
             case 2:
-                cod2 = setInterval(function() {
+                cod2 = setInterval(function () {
                     timer++;
                     dishMade.cookingTime = timer;
                     printTimer(aux, timer, cod2);
                 }, interval);
                 break
             case 3:
-                cod3 = setInterval(function() {
+                cod3 = setInterval(function () {
                     timer++;
                     dishMade.cookingTime = timer;
                     printTimer(aux, timer, cod3);
                 }, interval);
                 break
             case 4:
-                cod4 = setInterval(function() {
+                cod4 = setInterval(function () {
                     timer++;
                     dishMade.cookingTime = timer;
                     printTimer(aux, timer, cod4);
                 }, interval);
                 break
             case 5:
-                cod5 = setInterval(function() {
+                cod5 = setInterval(function () {
                     timer++;
                     dishMade.cookingTime = timer;
                     printTimer(aux, timer, cod5);
@@ -285,7 +285,7 @@ $(document).ready(function () {
                 })
                 setTimeout(function () { // 10 segundos para cozimento
                     event.target.innerHTML = "";
-                    event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
+                    event.target.innerHTML = `<img src="./images/foods/noddle2.png" ></img>`;
                     $(".stove img").addClass("itemNoddle");
                     $(".itemNoddle").removeClass("ui-draggable")
                         .draggable({ // Garante que seja arrastável
@@ -294,7 +294,7 @@ $(document).ready(function () {
                             revert: "invalid",
                             start: function (event, ui) { // Stop the stove timer
                                 let pai = this.parentNode.getAttribute("value");
-                                switch(Number(pai)) {
+                                switch (Number(pai)) {
                                     case 1:
                                         console.log(timer);
                                         clearInterval(cod1);
@@ -520,9 +520,9 @@ $(document).ready(function () {
         ingredientsScore = 0;
         orderScore = 0;
 
-        if(dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
+        if (dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
             cookingScore = 50;
-        } else if(Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
+        } else if (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
             cookingScore = 50 - (3 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
         } else {
             cookingScore = 50 - (5 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
@@ -530,19 +530,19 @@ $(document).ready(function () {
 
         switch (dishMade.broth) { // Calculate broth score
             case "rgb(255, 255, 255)":
-                (dishOrdered.broth === "fish") ? brothScore += 50: brothScore -= 50;
+                (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
                 break;
             case "rgb(255, 255, 0)":
-                (dishOrdered.broth === "chicken") ? brothScore += 50: brothScore -= 50;
+                (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
                 break;
             case "rgb(255, 0, 0)":
-                (dishOrdered.broth === "meat") ? brothScore += 50: brothScore -= 50;
+                (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
                 break;
             case "rgb(255, 192, 203)":
-                (dishOrdered.broth === "pork") ? brothScore += 50: brothScore -= 50;
+                (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
                 break;
             case "rgb(0, 0, 0)":
-                (dishOrdered.broth === "shoyu") ? brothScore += 50: brothScore -= 50;
+                (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
                 break;
         }
 
@@ -636,10 +636,10 @@ $(document).ready(function () {
     </table>`);
         let numberPlayersRanking;
         (players.length <= 10) ? numberPlayersRanking = players.length : numberPlayersRanking = 10;
-        
+
         for (let i = 0; i < numberPlayersRanking; i++) {
             $("table").append(`<tr>
-            <td>${i+1}</td>
+            <td>${i + 1}</td>
             <td>${players[i].name}</td>
             <td>${players[i].score.final}</td>
         </tr>`);

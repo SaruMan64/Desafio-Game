@@ -1,0 +1,47 @@
+#select-ingredients {
+  padding: 0;
+}
+
+#ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+  margin-left: 2%;
+}
+
+#box {
+  background-image: url(../images/others/box.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 400px;
+  height: 380px;
+  padding: 0.5em;
+  float: left;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#droppable {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 220px;
+  height: 180px;
+}
+
+#ingredients > li {
+  list-style: none;
+}
+
+#ingredients img {
+  width: 100px;
+  height: 100px;
+}
+
+.foods {
+  width: 80px;
+  height: 80px;
+}
