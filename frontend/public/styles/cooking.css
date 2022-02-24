@@ -1,34 +1,26 @@
 #select-coocking {
   padding: 0;
   display: flex;
-  flex-direction: row;
+  height: 87.5%;
 }
 
 #table2 {
-  width: 85%;
-  height: 70vh;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
-}
-
-#noddle1 {
-  width: 100px;
-  height: 100px;
 }
 
 #oven {
   background-image: url(../images/others/oven.png);
-  background-size: contain;
+  background-size: 100% auto;
   background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 70%;
+  background-position: 0 50%;
+  width: 70%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap;
-  margin-left: 2%;
 }
 
 .column {
@@ -42,25 +34,59 @@
 
 .stove {
   width: 100%;
-  height: 40%;
+  height: 35%;
   background-image: url(../images/others/pan.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.stove.ui-droppable > #noddle1{
+  width: 20vmin;
+  height: 20vmin;
+}
+
+.itemNoddle.ui-draggable.ui-draggable-handle{
+  width: 20vmin;
+  height: 20vmin;
+}
+
+#side-stove {
+  width: 25%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#side-stove > #noddle1 {
+  width: 25vmin;
+  height: 25vmin;
 }
 
 #ready {
   background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  width: 200px;
-  height: 200px;
+  background-position: center, center;
+  width: 30vmin;
+  height: 30vmin;
 }
 
-#side-stove {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px 50px;
+#ready > .itemNoddle {
+  width: 20vmin;
+  height: 20vmin;
+}
+
+#pan-to-noodles-and-broth{
+  width: 30vmin;
+  height: 5vmin;
+  border-radius: 10px;
+}
+
+#pan-to-noodles-and-broth > img {
+  height: 100%;
 }
