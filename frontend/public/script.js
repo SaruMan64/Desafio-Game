@@ -196,6 +196,12 @@ $(document).ready(function () {
     let cod4;
     let cod5;
 
+    // let timer1;
+    // let timer2;
+    // let timer3;
+    // let timer4;
+    // let timer5;
+
     function printTimer(stove, timer, cod) { // Show the timer on the stove
         let string = timer.toString();
         
@@ -290,6 +296,7 @@ $(document).ready(function () {
                                 let pai = this.parentNode.getAttribute("value");
                                 switch(Number(pai)) {
                                     case 1:
+                                        console.log(timer);
                                         clearInterval(cod1);
                                         break
                                     case 2:
@@ -513,7 +520,15 @@ $(document).ready(function () {
         ingredientsScore = 0;
         orderScore = 0;
 
-        switch (dishMade.broth) { // Increases broth score
+        if(dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
+            cookingScore = 50;
+        } else if(Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
+            cookingScore = 50 - (3 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
+        } else {
+            cookingScore = 50 - (5 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
+        }
+
+        switch (dishMade.broth) { // Calculate broth score
             case "rgb(255, 255, 255)":
                 (dishOrdered.broth === "fish") ? brothScore += 50: brothScore -= 50;
                 break;
@@ -577,7 +592,7 @@ $(document).ready(function () {
         const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
         const ingredientsDishMade = Object.entries(dishMade.ingredients);
         let counterIngredientsDishMade = 0;
-        for (let i = 0; i < 4; i++) { // Increases ingredients score
+        for (let i = 0; i < 4; i++) { // Calculate ingredients score
             for (let j = 0; j < 12; j++) {
                 if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
                     if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
@@ -595,6 +610,7 @@ $(document).ready(function () {
             }
         }
         ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
+
         orderScore = cookingScore + brothScore + ingredientsScore;
         totalScore += orderScore;
     }
