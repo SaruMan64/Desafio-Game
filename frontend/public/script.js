@@ -23,7 +23,7 @@ class Sounds {
         }
     }
 
-    playMusic(_sound) {
+    playMusic(_sound) { 	
         if (!this.soundsObj[_sound].flag) {
             this.soundsObj[_sound].flag = true;
             if (!this.soundsObj[_sound].isInLoop) {
