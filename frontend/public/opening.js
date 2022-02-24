@@ -44,7 +44,7 @@ function openingAnimationDoors() {
 
   setTimeout(() => {
     $("#frontopening").html("");
-    sound.playMusic('openingDoor')
+    //sound.playMusic('openingDoor')
 
     const animationDoor = " 2800ms cubic-bezier(1,0,.5,1)"
     const animationBrownser = ["-webkit-animation", "-moz-animation", "-o-animation", "animation"]
@@ -52,7 +52,6 @@ function openingAnimationDoors() {
       $(".L").css(el, "doorL" + animationDoor);
       $(".R").css(el, "doorR" + animationDoor);
       $("#doors").css(el, "zoomFadeOut 3s cubic-bezier(.64,0,.4,.39)");
-      $("#doors").css("animation-direction", "reverse");
     });
 
   }, 500)
@@ -72,6 +71,7 @@ function openingAJAX() {
       url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
       success: function (response) {
         if (response === true) {
+          $name = $("#inputName").val();;
           openingAnimationDoors();
         } else {
           alert(response);

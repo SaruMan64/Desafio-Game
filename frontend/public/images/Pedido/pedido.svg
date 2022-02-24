@@ -32,7 +32,7 @@
     <text id="cookTime" class="numbersvg" x="203" y="245" fill="black" >
         10
     </text>
-    <image id="broth" x="160" y="333" width="80" height="80" href="" />
+    <image id="broth" x="10" y="333" width="80" height="80" href="" />
 
     <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" />
     <text id="num1" class="numbersvg i1" x="155" y="525" fill="black">
