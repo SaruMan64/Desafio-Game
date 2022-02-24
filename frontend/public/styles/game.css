@@ -44,50 +44,60 @@
 #curent-order {
   width: 25%;
   height: 100%;
+  position: relative;
   background-color: #88371c;
 }
 
-#order-drop{
+#order-drop {
   width: 100%;
   height: 75.7%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.2);
+}
+#order-drop > .order {
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+#order-drop #clothespin {
+  display: none;
 }
 
-/* #order-drop::before {
+#order-drop::before {
   content: "";
   display: flex;
-  position: relative;
-  top: 12%;
-  left: 8%;
-  width: 84%;
-  height: 90%;
-  background-color: rgba(0, 255, 0, 1);
+  position: absolute;
+  bottom: 23.5%;
+  width: 87%;
+  height: 68.9%;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  border: 5px double black;
+  box-sizing: border-box;
 }
 
 #order-drop::after {
-  content: "Abacate";
+  content: "COLOQUE O PEDIDO AQUI";
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  bottom: 80%;
-  left: 8%;
-  width: 84%;
-  height: 90%;
-} */
+  position: absolute;
+  bottom: 23.5%;
+  width: 87%;
+  height: 68.9%;
+}
 
 #menu {
-  height: 24.3%;
+  height: 23.5%;
 }
 
 #menu > button {
   height: 38.5%;
   border-radius: 10px;
-} 
+}
 
 #kitchen {
   width: 75%;
@@ -95,7 +105,8 @@
 
 #order-tabs {
   width: 100%;
-  height: 23%;
+  /*   height: 23%; */
+  height: 12.42%;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -105,7 +116,8 @@
 
 #btn-tabs {
   width: 100%;
-  height: 54%;
+  /*   height: 54%;*/
+  height: 100%;
   background-color: transparent;
   display: flex;
   justify-content: center;
@@ -183,7 +195,7 @@
 }
 
 #table3 {
-  display : flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -327,11 +339,28 @@ li {
   height: 200px;
 }
 
+#select-order {
+  display: flex;
+  justify-content: center;
+}
+
 #orders {
   display: flex;
+  column-gap: 1.9%;
   width: 90%;
-  height: 50%;
-  background-color: lightblue;
+  height: 40%;
+  position: relative;
+  background-color: rgba(173, 216, 230, 0);
+}
+
+#orders::before {
+  content: "";
+  width: 111.11%;
+  height: 85%;
+  left: -5.555%;
+  bottom: 0;
+  border-top: 3px solid black;
+  position: absolute;
 }
 
 /* .order {
@@ -343,8 +372,10 @@ li {
   width: fit-content;
   background-color: transparent;
 } */
-.order {
+
+#orders > .order {
   height: 100%;
+  width: clamp(11%, 12.6%, 14%);
   background-color: transparent;
 }
 
