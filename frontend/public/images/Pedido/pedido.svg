@@ -29,6 +29,9 @@
             fill="#858383" />
     </g>
     <image id="cook" x="160" y="191" width="80" height="80" href="" />
+    <text id="cookTime" x="160" y="191" width="80" height="80" fill="black" >
+        10
+    </text>
     <image id="broth" x="160" y="333" width="80" height="80" href="" />
 
     <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" />
