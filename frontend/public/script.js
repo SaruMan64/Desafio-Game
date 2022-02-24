@@ -296,7 +296,6 @@ $(document).ready(function () {
                                 let pai = this.parentNode.getAttribute("value");
                                 switch (Number(pai)) {
                                     case 1:
-                                        console.log(timer);
                                         clearInterval(cod1);
                                         break
                                     case 2:
@@ -457,7 +456,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#end-game, .popup-overlay").on("click", function () { // Close the scoring modal and open ranking modal
+    $("#end-game").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
         $.ajax({ // Update the score
             type: "GET",
