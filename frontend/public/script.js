@@ -45,16 +45,14 @@ class Sounds {
     }
     mutedAll() {
         Object.keys(this.soundsObj).forEach(el => {
-            if (this.soundsObj[el].flag) {
-                if (this.soundsObj[el].isMuted) {
-                    this.soundsObj[el].file.muted = false;
-                    this.soundsObj[el].isMuted = false;
-                    //console.log(this.soundsObj[el].file.currentTime);
-                } else if (!this.soundsObj[el].isMuted) {
-                    this.soundsObj[el].file.muted = true;
-                    this.soundsObj[el].isMuted = true;
-                    //console.log(this.soundsObj[el].file.currentTime);
-                }
+            if (this.soundsObj[el].isMuted) {
+                this.soundsObj[el].file.muted = false;
+                this.soundsObj[el].isMuted = false;
+                //console.log(this.soundsObj[el].file.currentTime);
+            } else if (!this.soundsObj[el].isMuted) {
+                this.soundsObj[el].file.muted = true;
+                this.soundsObj[el].isMuted = true;
+                //console.log(this.soundsObj[el].file.currentTime);
             }
         });
     }
@@ -87,7 +85,7 @@ $(document).ready(function () {
     }
 
     let $ingredients = $("#ingredients"),
-        $orderList = $("#order-list"),
+        // $orderList = $("#order-list"),
         $plate = $("#droppable"),
         $broth = $("#broth"),
         $pot = $("#pot"),
@@ -98,7 +96,10 @@ $(document).ready(function () {
         $crrOrder = $("#order-drop");
 
     // Aba de pedidos
-    $("#pedido-holder").click(function () {
+    $("#make-order").click(function () {
+        $('#game').tabs({
+            active: 0
+        });
         if ($("#orders > div").length < 6) {
             $(this).prop("disabled", true);
             $.ajax({
@@ -126,12 +127,14 @@ $(document).ready(function () {
                         }
                         $("#orders div").eq(lastOrder - 1).find("#broth").attr("href", `./images/broth/${response.broth}broth.png`);
                         $("#orders div").eq(lastOrder - 1).find("#cook").attr("href", `./images/foods/noddle2.png`);
+                        $("#orders div").eq(lastOrder - 1).find("#cookTime").text(`${response.cookingTime}`);
                         $("#orders div").eq(lastOrder - 1).find("#orderNum").text(zeroFill(lastOrder + idOrder));
                         $(".order").draggable({ // Garante que seja arrastável
                             cursor: "grabbing",
                             revert: "invalid",
+                            revert: true,
                         });
-                        $("#pedido-holder").prop("disabled", false);
+                        $("#make-order").prop("disabled", false);
                     }, 500);
                 });
         }
@@ -140,21 +143,23 @@ $(document).ready(function () {
     $crrOrder.droppable({
         accept: ".order",
         drop: function (event, ui) {
-            $(ui.draggable).appendTo($crrOrder)
-            .position({
-                of: this,
-                my: "center center",
-                at: "center center"
-            });
+            if ($("#order-drop")[0].innerHTML == '') {
+                $(ui.draggable).appendTo($crrOrder)
+                    .position({
+                        of: this,
+                        my: "center center",
+                        at: "center center"
+                    });
+            }
         }
     });
-    
+
 
     $orders.droppable({
         accept: "#order-drop > div",
         drop: function (event, ui) {
-            let of, my, at;
-            if($("#orders")[0].innerHTML == ''){
+            let of , my, at;
+            if ($("#orders")[0].innerHTML == '') {
                 of = $("#orders")
                 my = "left center";
                 at = "left center";
@@ -164,11 +169,11 @@ $(document).ready(function () {
                 at = "right center";
             }
             $(ui.draggable).appendTo($orders)
-            .position({
-                of: of,
-                my: my,
-                at: at
-            });
+                .position({
+                    of: of ,
+                    my: my,
+                    at: at
+                });
         }
     })
 
@@ -176,7 +181,7 @@ $(document).ready(function () {
     $noddle.draggable({ // Retirar macarrão da caixa
         cursor: "grabbing",
         cancel: "a.ui-icon",
-        revert: "invalid",
+        revert: true,
         containment: "#table2",
         helper: function (event) { // Muda a saída para macarrão do invés da caixa
             return $(`<div>
@@ -185,7 +190,7 @@ $(document).ready(function () {
         }
     });
 
-    
+
     function printTimer(stove, timer, cod) {
         if (timer < 0) {
             clearInterval(cod);
@@ -206,13 +211,14 @@ $(document).ready(function () {
     }
 
     let cod;
+
     function startTimer(stove, timer) {
         const interval = 1000;
 
         console.log("Timer started!");
         printTimer(stove, timer, cod);
         cod = setInterval(() => {
-            timer+= 5;
+            timer += 5;
             dishMade.cookingTime = timer;
             printTimer(stove, timer, cod);
             console.log("Continua sim");
@@ -223,15 +229,15 @@ $(document).ready(function () {
     $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
         accept: "#noddle1",
         drop: function (event, ui) {
-        
-            let initialTimer = 0;
-            let reference = $(this).next();
-            startTimer(reference, initialTimer);
 
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-    
+
                 $(this).append($(ui.draggable).clone());
-                
+
+                let initialTimer = 0;
+                let reference = $(this).next();
+                startTimer(reference, initialTimer);
+
                 $(this).css({
                     "display": "flex",
                     "align-itens": "center",
@@ -438,76 +444,6 @@ $(document).ready(function () {
             $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
         });
     });
-<<<<<<< HEAD
-=======
-});
-
-let dishMade = {
-    broth: "",
-    cookingTime: 0,
-    quantIngredients: 0,
-    ingredients: {
-        carrot: 0,
-        chashu: 0,
-        chicken: 0,
-        egg: 0,
-        mnema: 0,
-        moyashi: 0,
-        naruto: 0,
-        nori: 0,
-        porkrib: 0,
-        radish: 0,
-        shitake: 0,
-        tofu: 0
-    }
-}
-
-let cookingScore = 0;
-let brothScore = 0;
-let ingredientsScore = 0;
-let orderScore = 0;
-let totalScore = 0;
-
-function pointing(dishOrdered, dishMade) {
-    dishMade.quantIngredients = $("#droppable div").length;
-    cookingScore = 0;
-    brothScore = 0;
-    ingredientsScore = 0;
-    orderScore = 0;
-
-    let orderTime = dishOrdered.cookingTime;
-    let elapsedTime = dishMade.cookingTime;
-    let x;
-    let y;
-    let z;
-    console.log(orderTime);
-    console.log(elapsedTime);
-    if (elapsedTime < orderTime) {
-        y = elapsedTime * 100;
-        x = y / orderTime;
-    } else {
-        z = elapsedTime * 100;
-        y = y / orderTime;
-        x = (y - 100) * -1;
-    }
-
-    switch (dishMade.broth) { // Increases broth score
-        case "rgb(255, 255, 255)":
-            (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
-            break;
-        case "rgb(255, 255, 0)":
-            (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
-            break;
-        case "rgb(255, 0, 0)":
-            (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
-            break;
-        case "rgb(255, 192, 203)":
-            (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
-            break;
-        case "rgb(0, 0, 0)":
-            (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
-            break;
->>>>>>> 082c4d92cdba13dbcb43741037c9affcad86729b
 
     let dishMade = {
         broth: "",
@@ -629,12 +565,12 @@ function pointing(dishOrdered, dishMade) {
         totalScore += orderScore;
     }
 
-function clearKitchen() { // Remove the dish made and the current order
-    $("#droppable").html("");
-    $("#droppable").css("background-color", "");
-    $("#droppable").css("background-image", "");
-    $("#order-drop").html("");
-}
+    function clearKitchen() { // Remove the dish made and the current order
+        $("#droppable").html("");
+        $("#droppable").css("background-color", "");
+        $("#droppable").css("background-image", "");
+        $("#order-drop").html("");
+    }
 
     function showRanking(players) { // Create the ranking in html
         $("#ranking").html("");
@@ -679,6 +615,12 @@ function clearKitchen() { // Remove the dish made and the current order
     $("#btn-tabs li").click(function () {
         console.log(this);
         sound.playMusic("change");
+    });
+
+    $("#mute-all").click(function () {
+        console.log(this);
+        $(this).toggleClass("imMuted");
+        sound.mutedAll();
     })
 
 });
