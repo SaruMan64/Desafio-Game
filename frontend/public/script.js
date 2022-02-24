@@ -285,7 +285,7 @@ $(document).ready(function () {
                 })
                 setTimeout(function () { // 10 segundos para cozimento
                     event.target.innerHTML = "";
-                    event.target.innerHTML = `<img style="width: 100px; height: 100px;" src="./images/foods/noddle2.png" ></img>`;
+                    event.target.innerHTML = `<img src="./images/foods/noddle2.png" ></img>`;
                     $(".stove img").addClass("itemNoddle");
                     $(".itemNoddle").removeClass("ui-draggable")
                         .draggable({ // Garante que seja arrastável
