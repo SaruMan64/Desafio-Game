@@ -1,0 +1,33 @@
+.ui-widget.ui-widget-content,
+.ui-tabs,
+.ui-widget-header {
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  border-top-right-radius: 0;
+}
+
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  border-top-left-radius: 0;
+}
+
+.ui-tabs .ui-tabs-nav li {
+  float: none !important;
+  margin: 0 0 0 0 !important;
+  border: none !important;
+  border-radius: 10px !important;
+}
+
+.ui-widget-header {
+  background-color: transparent !important;
+}

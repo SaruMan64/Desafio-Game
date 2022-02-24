@@ -1,11 +1,3 @@
-@font-face {
-    font-family: "ds-digitalnormal";
-    src: url("../fonts/digi/digi.woff2") format("woff2"),
-      url("../fonts/digi/digi.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-}
-
 .clock {
     /* margin-left: 30px; */
     background: #0C0908;
@@ -16,7 +8,7 @@
     height: 40px;
     border: 5px solid #160D08;
     border-radius: 10px;
-    font-family: "ds-digitalnormal";
+    font-family: digitalnormal;
     position: relative;
 }
 
@@ -25,19 +17,19 @@
     align-items: center;
     justify-content: center;
     width: 50px;
-    font-size: 30px;
+    font-size: 2.5rem;
     color: crimson;
-    /* position: relative; */
-    z-index: 1;
+    position: relative;
+    z-index: 2;
     left: 20;
 }
 
-.number::before {
-    width: 50px;
-    position: absolute;
+.clock > span::before {
     content: '8';
-    font-size: 30px;
-    color: lightgray;
+    position: absolute;
+    width: 50px;
+    font-size: 2.5rem;
+    color: rgba(211, 211, 211, 0.5);
     z-index: -1;
     text-align: center;
     gap: 0;

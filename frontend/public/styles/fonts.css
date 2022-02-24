@@ -1,0 +1,33 @@
+/* Fonts */
+/* Roboto */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Digi */
+@font-face {
+  font-family: "digitalitalic";
+  src: url("../fonts/digi/digii.woff2") format("woff2"),
+    url("../fonts/digi/digii.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "digitalbold_italic";
+  src: url("../fonts/digi/digit.woff2") format("woff2"),
+    url("../fonts/digi/digit.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "digitalnormal";
+  src: url("../fonts/digi/digi.woff2") format("woff2"),
+    url("../fonts/digi/digi.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "digitalbold";
+  src: url("../fonts/digi/digib.woff2") format("woff2"),
+    url("../fonts/digi/digib.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

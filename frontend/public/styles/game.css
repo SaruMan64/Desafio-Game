@@ -1,41 +1,3 @@
-.ui-widget.ui-widget-content,
-.ui-tabs,
-.ui-widget-header {
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 0;
-  box-sizing: border-box;
-}
-
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-right,
-.ui-corner-tr {
-  border-top-right-radius: 0;
-}
-
-.ui-corner-all,
-.ui-corner-top,
-.ui-corner-left,
-.ui-corner-tl {
-  border-top-left-radius: 0;
-}
-
-.ui-tabs .ui-tabs-nav li {
-  float: none !important;
-  margin: 0 0 0 0 !important;
-  border: none !important;
-  border-radius: 10px !important;
-}
-
-.ui-widget-header {
-  background-color: transparent !important;
-}
-
-#select-order {
-  padding: 0;
-}
-
 #game {
   background-color: rgba(57, 58, 53, 0.9);
   display: flex;
@@ -54,11 +16,13 @@
   display: flex;
   justify-content: center;
 }
+
 #order-drop > .order {
   display: flex;
   justify-content: center;
   z-index: 1;
 }
+
 #order-drop #clothespin {
   display: none;
 }
@@ -80,20 +44,6 @@
   border: 5px double black;
   box-sizing: border-box;
 }
-
-/* #order-drop::after {
-  content: "COLOQUE O PEDIDO AQUI";
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 23.5%;
-  width: 87%;
-  height: 68.9%;
-} */
 
 #menu {
   height: 23.5%;
@@ -140,6 +90,7 @@
   border: none;
   box-sizing: border-box;
 }
+
 #btn-tabs > li > a {
   width: 100%;
   height: 100%;
@@ -161,30 +112,11 @@
 #btn-tabs > li > a:active {
   background-color: rgb(138, 71, 29) !important;
 }
-/* 
-#order-list {
+
+.gameTabs {
   width: 100%;
-  height: 45%;
-  display: flex;
-  justify-content: center;
-  border-top: 2px solid black;
-  box-sizing: border-box;
+  height: 77%;
 }
-
-#order-list > ul {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  justify-content: left;
-  column-gap: 2.8%;
-  position: relative;
-  bottom: 20% ;
-}
-
-#order-list > ul > .pedido-varal {
-  width: 5.7%;
-  height: 120%;
-} */
 
 .table {
   display: flex;
@@ -193,170 +125,8 @@
   height: 100%;
 }
 
-#table1 {
-  justify-content: flex-start;
-}
-
-#table2 {
-  width: 85%;
-  height: 70vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#table3 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#only-broth {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2%;
-}
-
-#noddle1 {
-  width: 100px;
-  height: 100px;
-}
-
-#ingredients {
-  display: flex;
-  flex-wrap: wrap;
-  width: 400px;
-  margin-left: 2%;
-}
-
-/* #draggable {
-  padding: 0.5em;
-  float: left;
-  margin: 10px 10px 10px 0;
-} */
-
-#box {
-  background-image: url(../images/others/box.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 400px;
-  height: 380px;
-  padding: 0.5em;
-  float: left;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#droppable {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 220px;
-  height: 180px;
-}
-
-li {
-  list-style: none;
-}
-
-#broth {
-  display: flex;
-  flex-direction: row;
-}
-
-#broth img {
-  width: 100px;
-  height: 100px;
-}
-
-#ingredients img {
-  width: 100px;
-  height: 100px;
-}
-
-.foods {
-  width: 80px;
-  height: 80px;
-}
-
-#trash {
-  width: 100px;
-  height: 100px;
-  background-color: gray;
-}
-
-#outer-pot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
-  height: 400px;
-  background-image: url(../images/others/box.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#pot {
-  width: 200px;
-  height: 160px;
-  background-color: #add8e6;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#oven {
-  background-image: url(../images/others/oven.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 100%;
-  height: 70%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-left: 2%;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 30%;
-}
-
-.stove {
-  width: 100%;
-  height: 40%;
-  background-image: url(../images/others/pan.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-#pans {
-  height: 300px;
-  width: 200px;
-  background-color: brown;
-}
-
-#ready {
-  background-image: url(../images/others/box.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 200px;
-  height: 200px;
-}
-
 #select-order {
+  padding: 0;
   display: flex;
   justify-content: center;
 }
@@ -380,68 +150,28 @@ li {
   position: absolute;
 }
 
-/* .order {
-  background-image: url(../images/Pedido/pedido.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: fit-content;
-  width: fit-content;
-  background-color: transparent;
-} */
-
 #orders > .order {
   height: 100%;
   width: clamp(11%, 12.6%, 14%);
   background-color: transparent;
 }
 
-/* .order>div{
-  width: 50px;
-  height: 50px;
-} */
-/* 
-#res-ingredients {
-  display: flex;
-  flex-wrap: wrap;
-} */
-
-#side-stove {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0px 50px;
-}
-
-button {
+#menu > button {
   width: 60px;
   height: 60px;
 }
 
-button > img {
+#menu > button > img {
   width: 50px;
   height: 50px;
-}
-
-#select-coocking {
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-}
-
-#select-broth {
-  padding: 0;
-}
-
-#select-ingredients {
-  padding: 0;
-}
-
-.gameTabs {
-  width: 100%;
-  height: 77%;
 }
 
 .imMuted {
   background-color: green;
 }
+
+/* #trash {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+} */
