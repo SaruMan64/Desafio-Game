@@ -57,18 +57,23 @@
 #order-drop > .order {
   display: flex;
   justify-content: center;
-  z-index: 2;
+  z-index: 1;
 }
 #order-drop #clothespin {
   display: none;
 }
 
 #order-drop::before {
-  content: "";
+  content: "COLOQUE O PEDIDO AQUI";
+  font-size: clamp(1rem, 1.5rem + 1em, 1.5rem);
+  font-weight: 700;
+  color: #fff;
   display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   bottom: 23.5%;
-  width: 87%;
+  width: clamp(87%, 90%, 87%);
   height: 68.9%;
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
@@ -76,7 +81,7 @@
   box-sizing: border-box;
 }
 
-#order-drop::after {
+/* #order-drop::after {
   content: "COLOQUE O PEDIDO AQUI";
   font-size: 1.5rem;
   font-weight: 700;
@@ -88,10 +93,10 @@
   bottom: 23.5%;
   width: 87%;
   height: 68.9%;
-}
+} */
 
 #menu {
-  height: 24.3%;
+  height: 23.5%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -195,13 +200,13 @@
 #table2 {
   width: 85%;
   height: 70vh;
-  display : flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
 
 #table3 {
-  display : flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
 }
