@@ -272,7 +272,7 @@ $(document).ready(function () {
         accept: "#noddle1",
         drop: function (event, ui) {
             if ($(this)[0].innerHTML == "") { // Se vazio pode adicionar macarrão para cozimento
-                $(this).append($(ui.draggable).clone());
+                $(this).append($(ui.helper).clone());
 
                 let reference = $(this);
                 let referenceValue = reference[0].getAttribute("value");
@@ -460,7 +460,7 @@ $(document).ready(function () {
         $(".popup-overlay, .popup-content").removeClass("active");
         $.ajax({ // Update the score
             type: "GET",
-            url: `http://localhost:4444/score?Rick=${totalScore}`, // ARRUMAR ROTA
+            url: `${apiUrl}/score?Rick=${totalScore}`, // ARRUMAR ROTA
             success: function (response) {
                 console.log(response);
             },
@@ -472,7 +472,7 @@ $(document).ready(function () {
         $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         $.ajax({
             type: "GET",
-            url: `http://localhost:4444/ranking`,
+            url: `${apiUrl}/ranking`,
             success: function (response) {
                 showRanking(response);
             },
