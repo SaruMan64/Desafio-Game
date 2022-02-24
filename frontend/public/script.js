@@ -620,6 +620,7 @@ $(document).ready(function () {
         $("#droppable").css("background-color", "");
         $("#droppable").css("background-image", "");
         $("#order-drop").html("");
+        $("#pot").css("background-image", "");
     }
 
     function showRanking(players) { // Create the ranking in html
