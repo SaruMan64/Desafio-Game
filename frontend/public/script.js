@@ -296,7 +296,6 @@ $(document).ready(function () {
                                 let pai = this.parentNode.getAttribute("value");
                                 switch (Number(pai)) {
                                     case 1:
-                                        console.log(timer);
                                         clearInterval(cod1);
                                         break
                                     case 2:
@@ -427,7 +426,7 @@ $(document).ready(function () {
         $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
         $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-        $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+        $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
 
@@ -449,7 +448,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#next-order, .popup-overlay").on("click", function () { // Close the scoring modal and continue to the next order
+    $("#next-order").on("click", function () { // Close the scoring modal and continue to the next order
         $(".popup-overlay, .popup-content").removeClass("active");
         clearKitchen();
         $('#game').tabs({
@@ -457,7 +456,7 @@ $(document).ready(function () {
         });
     });
 
-    $("#end-game, .popup-overlay").on("click", function () { // Close the scoring modal and open ranking modal
+    $("#end-game").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
         $.ajax({ // Update the score
             type: "GET",

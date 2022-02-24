@@ -1,44 +1,85 @@
 #select-broth {
   padding: 0;
+  display: flex;
   height: 87.5%;
 }
 
 #table3 {
+  width: 100%;
+  height: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
+}
+
+#broth-noodle {
+  width: 80%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 #only-broth {
   display: flex;
-  margin-left: 2%;
+  width: 100%;
+  height: 100%;
 }
 
 #broth {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 5%;
+  width: 100%;
+  list-style: none;
 }
 
 #broth img {
-  width: 100px;
-  height: 100px;
+  width: 25vmin;
+  height: 25vmin;
+  position: relative;
+  z-index: 1;
 }
 
 #outer-pot {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 400px;
-  height: 400px;
+  width: 60vmin;
+  height: 60vmin;
   background-image: url(../images/others/box.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  position: absolute;
+  bottom: 0;
 }
 
 #pot {
-  width: 200px;
-  height: 160px;
-  background-color: #add8e6;
-  background-size: contain;
+  width: 32vmin;
+  height: 26vmin;
+   background-color: radial-gradient(circle, rgba(255,255,255,0) 0%, rgba(173,216,230,1) 100%);
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+#side-broth {
+  width: 25%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#pan-to-ingredients {
+  width: 30vmin;
+  height: 5vmin;
+  border-radius: 10px;
+}
+
+#pan-to-ingredients > img {
+  height: 100%;
 }
