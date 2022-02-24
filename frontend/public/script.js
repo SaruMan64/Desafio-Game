@@ -192,7 +192,7 @@ $(document).ready(function () {
 
 
     function printTimer(stove, timer, cod) {
-        if (timer < 0) {
+        if (timer >= 60) {
             clearInterval(cod);
             console.log("Time finished");
         }
@@ -216,17 +216,16 @@ $(document).ready(function () {
         const interval = 1000;
 
         console.log("Timer started!");
-        printTimer(stove, timer, cod);
+        printTimer(stove, "00", cod);
         cod = setInterval(() => {
-            timer += 5;
+            timer++;
             dishMade.cookingTime = timer;
             printTimer(stove, timer, cod);
-            console.log("Continua sim");
             return false;
         }, interval);
     }
 
-    $stove.droppable({ // DIMINUÍ O TEMPO PARA TESTAR MAIS RÁPIDO
+    $stove.droppable({
         accept: "#noddle1",
         drop: function (event, ui) {
 
