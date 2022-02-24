@@ -528,19 +528,19 @@ $(document).ready(function () {
         }
 
         switch (dishMade.broth) { // Calculate broth score
-            case "rgb(255, 255, 255)":
+            case "#e5d8ac":
                 (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
                 break;
-            case "rgb(255, 255, 0)":
+            case "#ebcf6c":
                 (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
                 break;
-            case "rgb(255, 0, 0)":
+            case "#a5361a":
                 (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
                 break;
-            case "rgb(255, 192, 203)":
+            case "#573519":
                 (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
                 break;
-            case "rgb(0, 0, 0)":
+            case "#2f2412":
                 (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
                 break;
         }

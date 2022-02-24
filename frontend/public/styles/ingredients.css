@@ -5,8 +5,15 @@
 #ingredients {
   display: flex;
   flex-wrap: wrap;
-  width: 400px;
+  width: 50%;
   margin-left: 2%;
+}
+
+#side-ingredients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
 }
 
 #box {
@@ -34,14 +41,25 @@
 
 #ingredients > li {
   list-style: none;
+  width: 25%;
 }
 
 #ingredients img {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
 }
 
 .foods {
   width: 80px;
   height: 80px;
+}
+
+#end-order {
+  width: 30vmin;
+  height: 10vmin;
+  border-radius: 10px;
+}
+
+#end-order > img {
+  height: 100%;
 }
