@@ -91,7 +91,10 @@
 }
 
 #menu {
-  height: 23.5%;
+  height: 24.3%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 #menu > button {
@@ -190,13 +193,23 @@
 }
 
 #table2 {
-  width: 70%;
+  width: 85%;
   height: 70vh;
+  display : flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #table3 {
+  display : flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#only-broth {
   display: flex;
   flex-direction: column;
+  margin-left: 2%;
 }
 
 #noddle1 {
@@ -208,6 +221,7 @@
   display: flex;
   flex-wrap: wrap;
   width: 400px;
+  margin-left: 2%;
 }
 
 /* #draggable {
@@ -221,7 +235,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  border: 1px solid black;
   width: 400px;
   height: 380px;
   padding: 0.5em;
@@ -238,7 +251,6 @@
   background-position: center;
   width: 220px;
   height: 180px;
-  border: 1px solid black;
 }
 
 li {
@@ -261,8 +273,8 @@ li {
 }
 
 .foods {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 #trash {
@@ -287,7 +299,6 @@ li {
   width: 200px;
   height: 160px;
   background-color: #add8e6;
-  border: 1px solid black;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -298,26 +309,27 @@ li {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  width: 600px;
-  height: 350px;
+  width: 100%;
+  height: 70%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-left: 2%;
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  height: 300px;
-  max-width: 150px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
 }
 
 .stove {
-  width: 150px;
-  height: 150px;
-  border: 1px solid black;
+  width: 100%;
+  height: 40%;
   background-image: url(../images/others/pan.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -393,7 +405,7 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 50px;
+  margin: 0px 50px;
 }
 
 button {
@@ -407,8 +419,17 @@ button > img {
 }
 
 #select-coocking {
+  padding: 0;
   display: flex;
   flex-direction: row;
+}
+
+#select-broth {
+  padding: 0;
+}
+
+#select-ingredients {
+  padding: 0;
 }
 
 .gameTabs {
