@@ -426,7 +426,7 @@ $(document).ready(function () {
         $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
         $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-        $("#ingredientes-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+        $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
 
@@ -448,7 +448,7 @@ $(document).ready(function () {
         })
     });
 
-    $("#next-order, .popup-overlay").on("click", function () { // Close the scoring modal and continue to the next order
+    $("#next-order").on("click", function () { // Close the scoring modal and continue to the next order
         $(".popup-overlay, .popup-content").removeClass("active");
         clearKitchen();
         $('#game').tabs({
