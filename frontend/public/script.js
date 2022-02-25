@@ -75,7 +75,7 @@ $(document).ready(function () {
     // Opening
     openingHTML();
     $('#btn').click(function () {
-        $("#inputName").val();
+        $name = $("#inputName").val();
         openingAJAX()
     });
 
@@ -730,7 +730,7 @@ function openingAJAX() {
             url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
             success: function (response) {
                 if (response === true) {
-                    $name = $("#inputName").val();;
+                    //$name = $("#inputName").val();
                     openingAnimationDoors();
                 } else {
                     alert(response);
