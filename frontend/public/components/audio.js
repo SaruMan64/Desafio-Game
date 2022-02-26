@@ -8,6 +8,12 @@ class Sounds {
                 "isInLoop": false,
                 "file": new Audio("./sounds/Sound-Button-Effect-Sliding.wav")
             },
+            "change": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("./sounds/change.wav")
+            },
             "sakuya": {
                 "flag": false,
                 "isMuted": false,
@@ -68,5 +74,6 @@ class Sounds {
 
 }
 
-let sound = new Sounds();
+const sound = new Sounds();
 
+export {Sounds, sound};

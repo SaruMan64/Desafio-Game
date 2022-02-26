@@ -166,8 +166,18 @@
   height: 50px;
 }
 
+.imSound {
+  background-image: url(../images/menu/Sound_Icon.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .imMuted {
-  background-color: gray;
+  background-image: url(../images/menu/Mute_Icon.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 #balcao {
