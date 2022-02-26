@@ -1,13 +1,3 @@
-$(document).ready(function () {
-
-  // Opening
-  openingHTML();
-  $('#btn').click(function () {
-    openingAJAX()
-  });
-
-})
-
 /* Functions */
 //opening
 //Prepend HTML in to body
@@ -71,7 +61,7 @@ function openingAJAX() {
       url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
       success: function (response) {
         if (response === true) {
-          $name = $("#inputName").val();;
+          //$name = $("#inputName").val();;
           openingAnimationDoors();
         } else {
           alert(response);
@@ -83,3 +73,5 @@ function openingAJAX() {
     });
   }
 }
+
+export {openingHTML, openingAJAX, openingAnimationDoors};
