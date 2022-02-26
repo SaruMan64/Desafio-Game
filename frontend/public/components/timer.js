@@ -4,12 +4,6 @@ let cod3;
 let cod4;
 let cod5;
 
-// let timer1;
-// let timer2;
-// let timer3;
-// let timer4;
-// let timer5;
-
 function printTimer(stove, timer, cod) { // Show the timer on the stove
     let string = timer.toString();
 
@@ -99,4 +93,4 @@ function clearOneTimer(num) {
     }
 }
 
-export {printTimer, setTimer, clearOneTimer};
+export {setTimer, clearOneTimer};

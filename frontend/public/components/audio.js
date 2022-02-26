@@ -76,4 +76,4 @@ class Sounds {
 
 const sound = new Sounds();
 
-export {Sounds, sound};
+export {sound};

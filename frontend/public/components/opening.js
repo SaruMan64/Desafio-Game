@@ -74,4 +74,4 @@ function openingAJAX() {
   }
 }
 
-export {openingHTML, openingAJAX, openingAnimationDoors};
+export {openingHTML, openingAJAX};
