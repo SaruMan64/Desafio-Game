@@ -91,6 +91,10 @@ function clearOneTimer(num) {
         default:
             console.log("clear default");
     }
+    const stove = $(`[value=${num}]`).next();
+    $(stove).children().each(function () {
+        $(this).text("");
+    });
 }
 
 export {setTimer, clearOneTimer};

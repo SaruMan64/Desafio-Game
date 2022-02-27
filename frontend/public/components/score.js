@@ -40,19 +40,19 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
     }
 
     switch (dishMade.broth) { // Calculate broth score
-        case "#e5d8ac":
+        case "rbg(229, 216, 172)": // #e5d8ac
             (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
             break;
-        case "#ebcf6c":
+        case "rgb(235, 207, 108)": // #ebcf6c
             (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
             break;
-        case "#a5361a":
+        case "rgb(165, 54, 26)": // #a5361a
             (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
             break;
-        case "#573519":
+        case "rgb(87, 53, 25)": // #573519
             (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
             break;
-        case "#2f2412":
+        case "rgb(47, 36, 18)": // #2f2412
             (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
             break;
     }
