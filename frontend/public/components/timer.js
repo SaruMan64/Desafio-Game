@@ -3,6 +3,7 @@ let cod2;
 let cod3;
 let cod4;
 let cod5;
+const timers = new Array(5);
 
 function printTimer(stove, timer, cod) { // Show the timer on the stove
     let string = timer.toString();
@@ -35,6 +36,7 @@ function setTimer(index) { // Start the stove timer
         case 1:
             cod1 = setInterval(function () {
                 timer++;
+                timers[index - 1] = timer;
                 // dishMade.cookingTime = timer;
                 printTimer(aux, timer, cod1);
             }, interval);
@@ -42,6 +44,7 @@ function setTimer(index) { // Start the stove timer
         case 2:
             cod2 = setInterval(function () {
                 timer++;
+                timers[index - 1] = timer;
                 // dishMade.cookingTime = timer;
                 printTimer(aux, timer, cod2);
             }, interval);
@@ -49,6 +52,7 @@ function setTimer(index) { // Start the stove timer
         case 3:
             cod3 = setInterval(function () {
                 timer++;
+                timers[index - 1] = timer;
                 // dishMade.cookingTime = timer;
                 printTimer(aux, timer, cod3);
             }, interval);
@@ -56,6 +60,7 @@ function setTimer(index) { // Start the stove timer
         case 4:
             cod4 = setInterval(function () {
                 timer++;
+                timers[index - 1] = timer;
                 // dishMade.cookingTime = timer;
                 printTimer(aux, timer, cod4);
             }, interval);
@@ -63,12 +68,12 @@ function setTimer(index) { // Start the stove timer
         case 5:
             cod5 = setInterval(function () {
                 timer++;
+                timers[index - 1] = timer;
                 // dishMade.cookingTime = timer;
                 printTimer(aux, timer, cod5);
             }, interval);
             break
     }
-    return timer;
 }
 
 function clearOneTimer(num) {
@@ -95,6 +100,7 @@ function clearOneTimer(num) {
     $(stove).children().each(function () {
         $(this).text("");
     });
+    return timers[num - 1];
 }
 
 export {setTimer, clearOneTimer};

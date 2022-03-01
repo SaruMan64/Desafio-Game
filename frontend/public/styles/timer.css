@@ -28,7 +28,7 @@
     position: absolute;
     width: 50px;
     font-size: clamp(2rem, 2.5rem, 3rem);
-    color: rgba(211, 211, 211, 0.5);
+    color: rgba(211, 211, 211, 0.2);
     z-index: -1;
     text-align: center;
 } 
