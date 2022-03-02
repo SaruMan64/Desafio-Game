@@ -1,6 +1,69 @@
-@import url("./keyframes.css");
+#select-order {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
 
+#orders {
+  display: flex;
+  column-gap: 7%;
+  width: 90%;
+  height: 20%;
+  position: relative;
+  background-color: rgba(173, 216, 230, 0);
+}
 
+#orders::before {
+  content: "";
+  width: 111.11%;
+  height: 85%;
+  left: -5.555%;
+  bottom: 0;
+  border-top: 3px solid black;
+  position: absolute;
+}
+
+#orders > .order {
+  height: 100%;
+  width: clamp(11%, 12.6%, 14%);
+  background-color: transparent;
+}
+
+#menu > button {
+  width: 60px;
+  height: 60px;
+}
+
+#menu > button > img {
+  width: 50px;
+  height: 50px;
+}
+
+.imSound {
+  background-image: url(../images/menu/Sound_Icon.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.imMuted {
+  background-image: url(../images/menu/Mute_Icon.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#balcao {
+  width: 75%;
+  position: absolute;
+  top: 75%;
+}
+
+#person {
+  position: absolute;
+  height: 50%;
+  top: 40%;
+}
 
 .numbersvg {
   font-family: cursive;
@@ -10,7 +73,7 @@
 
 #wood {
   fill: red;
-/*   animation: clothespinColor 5s; */
+  /*   animation: clothespinColor 5s; */
 }
 #arame {
   fill: #858383;
