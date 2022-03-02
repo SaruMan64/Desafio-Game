@@ -1,23 +1,19 @@
-let cod1;
-let cod2;
-let cod3;
-let cod4;
-let cod5;
+let cods = new Array(5);
 const timers = new Array(5);
 
-function printTimer(stove, timer, cod) { // Show the timer on the stove
-    let string = timer.toString();
+function printTimer(stove, time) { // Show the timer on the stove
+    let string = time.toString();
 
-    if (timer >= 10) {
-        string = `${timer}`;
+    if (time >= 10) {
+        string = `${time}`;
     } else {
-        string = `0${timer}`;
+        string = `0${time}`;
     }
 
-    if (timer >= 60) {
+    /* if (time >= 60) {
         string = `--`;
-        clearInterval(cod);
-    }
+        //clearTimeout(cod);
+    } */
 
     let splittedString = string.split("");
     let i = 0;
@@ -27,75 +23,47 @@ function printTimer(stove, timer, cod) { // Show the timer on the stove
     });
 }
 
+const setCorrectingInterval = function (func, cod, i, delay) {
+	var instance = {};
+
+	function tick(func, delay) {
+		if (!instance.started) {
+			instance.func = func;
+			instance.delay = delay;
+			instance.startTime = new Date().valueOf();
+			instance.target = delay;
+			instance.started = true;
+
+			cod[i] = setTimeout(tick, delay);
+		} else {
+			let elapsed = new Date().valueOf() - instance.startTime;
+            let adjust = instance.target - elapsed;
+
+			instance.func();
+			instance.target += instance.delay;
+
+			cod[i] = setTimeout(tick, instance.delay + adjust);
+		}
+	}
+
+	return tick(func, delay);
+};
+
+
 function setTimer(index) { // Start the stove timer
-    let timer = 0;
     const interval = 1000;
     const aux = $(`[value=${index}]`).next();
 
-    switch (Number(index)) {
-        case 1:
-            cod1 = setInterval(function () {
-                timer++;
-                timers[index - 1] = timer;
-                // dishMade.cookingTime = timer;
-                printTimer(aux, timer, cod1);
-            }, interval);
-            break
-        case 2:
-            cod2 = setInterval(function () {
-                timer++;
-                timers[index - 1] = timer;
-                // dishMade.cookingTime = timer;
-                printTimer(aux, timer, cod2);
-            }, interval);
-            break
-        case 3:
-            cod3 = setInterval(function () {
-                timer++;
-                timers[index - 1] = timer;
-                // dishMade.cookingTime = timer;
-                printTimer(aux, timer, cod3);
-            }, interval);
-            break
-        case 4:
-            cod4 = setInterval(function () {
-                timer++;
-                timers[index - 1] = timer;
-                // dishMade.cookingTime = timer;
-                printTimer(aux, timer, cod4);
-            }, interval);
-            break
-        case 5:
-            cod5 = setInterval(function () {
-                timer++;
-                timers[index - 1] = timer;
-                // dishMade.cookingTime = timer;
-                printTimer(aux, timer, cod5);
-            }, interval);
-            break
-    }
+    let startTime = Date.now();
+    setCorrectingInterval(function () {
+        let time = Math.trunc((Date.now() - startTime) / 1000);
+        timers[index - 1] = time;
+        printTimer(aux, time);
+    }, cods, index, interval);
 }
 
 function clearOneTimer(num) {
-    switch (num) {
-        case 1:
-            clearInterval(cod1);
-            break
-        case 2:
-            clearInterval(cod2);
-            break
-        case 3:
-            clearInterval(cod3);
-            break
-        case 4:
-            clearInterval(cod4);
-            break
-        case 5:
-            clearInterval(cod5);
-            break
-        default:
-            console.log("clear default");
-    }
+    clearTimeout(cods[num]);
     const stove = $(`[value=${num}]`).next();
     $(stove).children().each(function () {
         $(this).text("");

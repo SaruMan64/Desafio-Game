@@ -106,7 +106,6 @@ $stove.droppable({
                             dishMade.cookingTime = parseInt(
                                 clearOneTimer(Number(pai))
                             );
-                            console.log(dishMade.cookingTime);
                         },
                     });
             }, 1000);
