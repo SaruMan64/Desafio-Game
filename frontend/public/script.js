@@ -57,34 +57,47 @@ $(document).ready(function () {
     // Aba ingredientes 
 
     $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
-        let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
-        dishMade.broth = $plate.css("background-color");
-        let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
-        score = totalScore;
+        if($("#order-drop").html() === "") { // If an order was not selected
+            alert("A entrega não pode ser concluída. Especifique o pedido.");
+            $('#game').tabs({ active: 0 });
+        } else if($plate.css("background-image") === "none") { // If there is no pasta on the plate
+            alert("A entrega não pôde ser concluída. Adicione o macarrão.");
+            $('#game').tabs({ active: 1 });
+        } else if($plate.css("background-color") === "rgba(0, 0, 0, 0)" || $plate.css("background-color") === "rgb(173, 216, 230)") { // If there is no broth on the plate
+            alert("A entrega não pôde ser concluída. Adicione o molho.");
+            $('#game').tabs({ active: 2 });
+        } else if($("#droppable div").length < 5) { // If there are not enough ingredients
+            alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
+        } else { // If everything is ok with the previous steps
+            let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
+            dishMade.broth = $plate.css("background-color");
+            let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
+            score = totalScore;
 
-        $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
-        $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
-        $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-        $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
-        $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
-        $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+            $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
+            $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
+            $("#broth-score").html(`Caldo: ${brothScore} pontos`);
+            $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+            $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
+            $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
 
-        $(document).ready(function () { // Show the person
-            $("#person-modal").load("./images/Pedido/person.svg");
-            $("#person-modal svg").attr("height", "400px");
-            setTimeout(() => {
-                if (orderScore > 150) {
-                    $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
-                    $("#mouth").attr("href", "./images/Pedido/boca-aberta.svg");
-                } else if (orderScore < 50) {
-                    $("#eyes").attr("href", "./images/Pedido/olho-bravo.svg");
-                    $("#mouth").attr("href", "./images/Pedido/boca-brava.svg");
-                } else {
-                    $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
-                    $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
-                }
-            }, 500)
-        })
+            $(document).ready(function () { // Show the person
+                $("#person-modal").load("./images/Pedido/person.svg");
+                $("#person-modal svg").attr("height", "400px");
+                setTimeout(() => {
+                    if (orderScore > 150) {
+                        $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
+                        $("#mouth").attr("href", "./images/Pedido/boca-aberta.svg");
+                    } else if (orderScore < 50) {
+                        $("#eyes").attr("href", "./images/Pedido/olho-bravo.svg");
+                        $("#mouth").attr("href", "./images/Pedido/boca-brava.svg");
+                    } else {
+                        $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
+                        $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
+                    }
+                }, 500)
+            })
+        }
     });
 
     $("#next-order").on("click", function () { // Close the scoring modal and continue to the next order
