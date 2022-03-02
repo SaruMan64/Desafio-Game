@@ -1,4 +1,4 @@
-// import {makeWiggle} from "./makeItWiggle";
+import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 
 const zeroFill = n => {
   return (n < 10) ? ('000' + n) :
@@ -56,8 +56,13 @@ function makeOrder(response) {
       },
       revert: "invalid",
       revert: true,
+      drag: function(){
+        makeWiggle(this);
+      },
+      stop: function (){
+        dropWiggle(this);
+      }
     });
-    // makeWiggle();
     $("#make-order").prop("disabled", false);
   }, 500);
 }

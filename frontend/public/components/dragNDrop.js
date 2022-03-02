@@ -69,7 +69,7 @@ $stove.droppable({
 
             let reference = $(this);
             let referenceValue = reference[0].getAttribute("value");
-            dishMade.cookingTime = setTimer(referenceValue);
+            setTimer(referenceValue);
 
             $(this).css({
                 "display": "flex",
@@ -87,10 +87,11 @@ $stove.droppable({
                         revert: "invalid",
                         start: function (event, ui) { // Stop the stove timer
                             let pai = this.parentNode.getAttribute("value");
-                            clearOneTimer(Number(pai));
+                            dishMade.cookingTime = parseInt(clearOneTimer(Number(pai)));
+                            console.log(dishMade.cookingTime);
                         }
                     });
-            }, 10000);
+            }, 1000);
         }
     }
 });

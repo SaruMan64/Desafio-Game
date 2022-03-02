@@ -1,0 +1,12 @@
+#card {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  background-image: url(../images/);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
