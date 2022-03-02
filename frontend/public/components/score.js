@@ -102,44 +102,29 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
         }
     }
 
-    console.log(JSON.stringify(dishOrdered.ingredients));
-    console.log(JSON.stringify(dishMade.ingredients));
-
     const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
     const ingredientsDishMade = Object.entries(dishMade.ingredients);
     let counterIngredientsDishMade = 0;
     for (let i = 0; i < 4; i++) { // Calculate ingredients score
         for (let j = 0; j < 12; j++) {
             if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
-                console.log(`Ordered = Made: ${ingredientsDishMade[j][0]}`);
                 if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) { // If the amount of the ingredient is right, increment the amount multiplied by 10
-                    console.log(`Ordered - Made = 0. Quantidade: ${ingredientsDishMade[j][1]} Pontos: ${10*ingredientsDishOrdered[i][1]}`);                                                                                                     // Coloquei 2 cenouras e pediram 2 cenouras
-                    ingredientsScore += 10 * ingredientsDishOrdered[i][1];                                                                                                                                                                      // Adiciono a pontuação das cenouras
-                    console.log(ingredientsScore);
+                    ingredientsScore += 10 * ingredientsDishOrdered[i][1];
                 } else {
-                    console.log(`Ordered - Made != 0. QuantidadeOrdered: ${ingredientsDishOrdered[i][1]}. QuantidadeMade: ${ingredientsDishMade[j][1]}`);
                     if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) { // If ingredient is missing, decrement the difference multiplied by 10
-                        console.log(`Ordered > Made. Diferença: ${ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]} Pontos: ${(10*ingredientsDishMade[j][1]) - (10*(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]))}`);      // Coloquei 1 cenoura mas pediram 2
-                        ingredientsScore += 10 * ingredientsDishMade[j][1];                                                                                                                                                                     // Adiciono a pontuação da cenoura que coloquei
-                        ingredientsScore -= 10 * (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);                                                                                                                                    // Subtraio a pontuação da cenoura que faltou
-                        console.log(ingredientsScore);
+                        ingredientsScore += 10 * ingredientsDishMade[j][1];
+                        ingredientsScore -= 10 * (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
                     } else { // If you have too many ingredients, decrement the surplus multiplied by 10
-                        console.log(`Ordered < Made. Diferença: ${ingredientsDishMade[j][1] - ingredientsDishOrdered[i][1]} Pontos: ${(10*ingredientsDishOrdered[i][1]) - (10*(ingredientsDishMade[j][1] - ingredientsDishOrdered[i][1]))}`);   // Coloquei 2 cenouras mas pediram 1
-                        ingredientsScore += 10 * ingredientsDishOrdered[i][1];                                                                                                                                                                  // Adiciono a pontuação da cenoura pedida
-                        ingredientsScore -= 10 * (ingredientsDishMade[j][1] - ingredientsDishOrdered[i][1]);                                                                                                                                    // Subtraio a pontuação da cenoura excedente
-                        console.log(ingredientsScore);
+                        ingredientsScore += 10 * ingredientsDishOrdered[i][1];
+                        ingredientsScore -= 10 * (ingredientsDishMade[j][1] - ingredientsDishOrdered[i][1]);
                     }
                 }
                 counterIngredientsDishMade += ingredientsDishMade[j][1];
             }
         }
     }
-    console.log(`Colocou ingredientes que não foram pedidos? Usados: ${dishMade.quantIngredients} Pedido: ${counterIngredientsDishMade} Pontos: ${10*(counterIngredientsDishMade - dishMade.quantIngredients)}`);                               // Coloquei 2 cenouras mas não pediram cenouras
-    ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade); // If the ingredient was not ordered, decrement the amount multiplied by 10                                                                              // Subtraio a pontuação das cenouras excedentes
-    console.log(ingredientsScore);
-    console.log(`Pontuação ficou abaixo de zero? Pontuação: ${ingredientsScore}`);
-    if(ingredientsScore < 0) ingredientsScore = 0;                                                                                                                                                                                              // Pontuação ficou negativa, melhor zerar para ninguém ficar triste.
-    console.log(ingredientsScore);
+    ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade); // If the ingredient was not ordered, decrement the amount multiplied by 10
+    if(ingredientsScore < 0) ingredientsScore = 0;
 
     clearDishMade(dishMade);
 
