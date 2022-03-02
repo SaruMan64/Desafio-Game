@@ -16,11 +16,11 @@ function getOrder() {
   });
 }
 
-function updateScore() {
+function updateScore(name, score) {
   $.ajax({
     // Update the score
     type: "GET",
-    url: `${apiUrl}/score?${$name}=${totalScore}`, // ARRUMAR ROTA
+    url: `${apiUrl}/score?${name}=${score}`, // ARRUMAR ROTA
     success: function (response) {
       console.log(response);
     },

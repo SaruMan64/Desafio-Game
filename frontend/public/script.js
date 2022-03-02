@@ -24,7 +24,7 @@ $(document).ready(function () {
         $("#game").tabs({
           active: 0,
         });
-        if ($("#orders > div").length < 7) {
+        if ($("#orders > div").length < 6) {
           $(this).prop("disabled", true);
           getOrder(); // Montagem div com pedido
         }
