@@ -86,8 +86,8 @@ $stove.droppable({
                         containment: '#table2',
                         revert: "invalid",
                         start: function (event, ui) { // Stop the stove timer
-                            let pai = this.parentNode.getAttribute("value");
-                            dishMade.cookingTime = parseInt(clearOneTimer(Number(pai)));
+                            let parent = this.parentNode.getAttribute("value");
+                            dishMade.cookingTime = parseInt(clearOneTimer(Number(parent)), 10);
                             console.log(dishMade.cookingTime);
                         }
                     });
