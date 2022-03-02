@@ -4,13 +4,14 @@ import {dishMadeMold, pointing, clearKitchen} from "./components/score.js";
 import {getOrder, updateScore, updateRanking} from "./components/requests.js";
 import {$plate, $pot, $ready} from "./components/dragNDrop.js";
 
-let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
+let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito? Agora existe
+let score;
 
 $(document).ready(function () {
     let $name;
     // Opening
-    // openingHTML();
-    // sound.playMusic("sakuya");
+    openingHTML();
+    sound.playMusic("sakuya");
     $('#btn').click(function () {
         $name = $("#inputName").val();
         openingAJAX();
@@ -22,10 +23,10 @@ $(document).ready(function () {
 
     $("#make-order").click(function () {
         $("#game").tabs({
-          active: 0,
+            active: 0,
         });
         if ($("#orders > div").length < 6) {
-          $(this).prop("disabled", true);
+            $(this).prop("disabled", true);
           getOrder(); // Montagem div com pedido
         }
     });
@@ -59,6 +60,7 @@ $(document).ready(function () {
         let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
         dishMade.broth = $plate.css("background-color");
         let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
+        score = totalScore;
 
         $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
@@ -95,7 +97,7 @@ $(document).ready(function () {
 
     $("#end-game").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
-        updateScore();
+        updateScore($name, score);
 
         $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
