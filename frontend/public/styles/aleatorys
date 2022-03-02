@@ -5,8 +5,15 @@
   background: transparent;
   border-radius: 6px;
   cursor: pointer;
-  background-image: url(../images/);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.normal-spider {
+  background-image: url(../images/normal-spider);
+}
+
+.kenji-spider {
+  background-image: url(../images/kenji-spider);
 }
