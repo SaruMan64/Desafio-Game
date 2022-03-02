@@ -53,10 +53,10 @@ function makeOrder(response) {
       revert: "invalid",
       revert: true,
       drag: function(){
-        makeWiggle(document.querySelector(".order"));
+        makeWiggle(this);
       },
       stop: function (){
-        dropWiggle(document.querySelector(".order"));
+        dropWiggle(this);
       }
     });
     $("#make-order").prop("disabled", false);

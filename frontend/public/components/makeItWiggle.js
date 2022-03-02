@@ -12,7 +12,6 @@ $(document).mousemove(function (event) {
   MousePosition.y = event.pageY;
 });
 
-
 function makeWiggle($card) {
   xVelocity = MousePosition.x - CardPosition.x;
 
