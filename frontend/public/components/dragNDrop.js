@@ -159,7 +159,7 @@ $("li", $ingredients).draggable({
     helper: function (event) {
         // Muda saída para o ingrediente ao invés do pote
         let deg = Math.floor(Math.random() * 360);
-        return $(`<div style="width: 80px; height: 80px;  id="${event.target.id}">
+        return $(`<div style="width: 80px; height: 80px;"  id="${event.target.id}">
                     <img class="foods" style="transform: rotate(${deg}deg)" src="./images/foods/${event.target.id}.png">
                 </div>`);
     },
