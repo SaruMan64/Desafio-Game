@@ -4,8 +4,7 @@ import {dishMadeMold, pointing, clearKitchen} from "./components/score.js";
 import {getOrder, updateScore, updateRanking} from "./components/requests.js";
 import {$plate, $pot, $ready} from "./components/dragNDrop.js";
 
-let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito? Agora existe
-let score;
+let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 
 $(document).ready(function () {
     let $name;
@@ -23,11 +22,11 @@ $(document).ready(function () {
 
     $("#make-order").click(function () {
         $("#game").tabs({
-            active: 0,
+          active: 0,
         });
-        if ($("#orders > div").length < 7) {
-            $(this).prop("disabled", true);
-            getOrder(); // Montagem div com pedido
+        if ($("#orders > div").length < 6) {
+          $(this).prop("disabled", true);
+          getOrder(); // Montagem div com pedido
         }
     });
 
@@ -35,7 +34,7 @@ $(document).ready(function () {
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         console.log($("#ready")[0].children[0].src);
-        $pot.css("background-image", `url(${$("#ready")[0].children[0].src})`);
+        $pot.css("background", `url(${$("#ready")[0].children[0].src}) no-repeat center/cover`);
         $ready[0].innerHTML = "";
         $('#game').tabs({
             active: 2
@@ -110,7 +109,7 @@ $(document).ready(function () {
 
     $("#end-game").on("click", function () { // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
-        updateScore($name, score);
+        updateScore();
 
         $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
