@@ -1,207 +1,247 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
 
-    
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script type="module" src="script.js" defer></script>
-    
+
     <link rel="stylesheet" href="./styles/index.css" />
     <link rel="stylesheet" href="./styles/modal.css" />
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css" />
-</head>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"
+    />
+  </head>
 
-<body>
+  <body>
     <main id="game" hidden>
-        <aside id="curent-order">
-            <header id="order-drop"></header>
-            <footer id="menu">
-                <button id="make-order">
-                    <img src="./images/menu/yes.png" alt="" />
-                </button>
-                <button id="mute-all" class="imSound">
-                </button>
-                <button id="exit-game">
-                    <img src="./images/menu/exit.png" alt="" />
-                </button>
-            </footer>
-        </aside>
-        <section id="kitchen">
-            <header id="order-tabs">
-                <ul id="btn-tabs">
-                    <li><a href="#select-order">PEDIDO</a></li>
-                    <li><a href="#select-coocking">COZIMENTO</a></li>
-                    <li><a href="#select-broth">CALDO</a></li>
-                    <li><a href="#select-ingredients">INGREDIENTES</a></li>
+      <aside id="curent-order">
+        <header id="order-drop"></header>
+        <footer id="menu">
+          <button id="make-order">
+            <img src="./images/menu/yes.png" alt="" />
+          </button>
+          <button id="mute-all" class="imSound"></button>
+          <button id="exit-game">
+            <img src="./images/menu/exit.png" alt="" />
+          </button>
+        </footer>
+      </aside>
+      <section id="kitchen">
+        <header id="order-tabs">
+          <ul id="btn-tabs">
+            <li><a id="btn-select-order" href="#select-order"></a></li>
+            <li><a id="btn-select-cooking" href="#select-cooking"></a></li>
+            <li><a id="btn-select-broth" href="#select-broth"></a></li>
+            <li>
+              <a id="btn-select-ingredients" href="#select-ingredients"></a>
+            </li>
+          </ul>
+        </header>
+        <div id="select-order" class="gameTabs">
+          <div id="orders"></div>
+          <img id="person" src="images/Pedido/person-normal.svg" />
+          <img id="balcao" src="images/Pedido/balcao.svg" />
+        </div>
+        <div id="select-cooking" class="gameTabs">
+          <div class="table" id="table2">
+            <div id="oven">
+              <div class="column">
+                <div class="stove" value="1"></div>
+                <div class="clock">
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="stove" value="2"></div>
+                <div class="clock">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="column">
+                <div class="stove" value="3"></div>
+                <div class="clock">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="column">
+                <div class="stove" value="4"></div>
+                <div class="clock">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="stove" value="5"></div>
+                <div class="clock">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <div id="side-stove">
+              <img
+                id="noddle1"
+                src="./images/pots/noddlePot.png"
+                alt="row noddles"
+              />
+              <div id="ready"></div>
+              <button id="pan-to-noodles-and-broth">
+                <img src="./images/menu/next.png" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+        <div id="select-broth" class="gameTabs">
+          <div class="table" id="table3">
+            <div id="broth-noodle">
+              <div id="only-broth">
+                <ul id="broth">
+                  <li id="#e5d8ac">
+                    <img src="./images/broth/fishbroth.png" alt="fishbroth" />
+                  </li>
+                  <li id="#ebcf6c">
+                    <img
+                      src="./images/broth/chickenbroth.png"
+                      alt="chickenbroth"
+                    />
+                  </li>
+                  <li id="#a5361a">
+                    <img src="./images/broth/meatbroth.png" alt="meatbroth" />
+                  </li>
+                  <li id="#573519">
+                    <img src="./images/broth/porkbroth.png" alt="porkbroth" />
+                  </li>
+                  <li id="#2f2412">
+                    <img src="./images/broth/shoyubroth.png" alt="shoyubroth" />
+                  </li>
                 </ul>
-            </header>
-            <div id="select-order" class="gameTabs">
-                <div id="orders"></div>
-                <img id="person" src="images/Pedido/person-normal.svg">
-                <img id="balcao" src="images/Pedido/balcao.svg">
+              </div>
+              <div id="outer-pot">
+                <div id="pot"></div>
+              </div>
             </div>
-            <div id="select-coocking" class="gameTabs">
-                <div class="table" id="table2">
-                    <div id="oven">
-                        <div class="column">
-                            <div class="stove" value="1"></div>
-                            <div class="clock">
-                                <span></span>
-                                <span></span>
-                            </div>
-
-                            <div class="stove" value="2"></div>
-                            <div class="clock">
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="stove" value="3"></div>
-                            <div class="clock">
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="stove" value="4"></div>
-                            <div class="clock">
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <div class="stove" value="5"></div>
-                            <div class="clock">
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="side-stove">
-                        <img id="noddle1" src="./images/pots/noddlePot.png" alt="row noddles" />
-                        <div id="ready"></div>
-                        <button id="pan-to-noodles-and-broth">
-                            <img src="./images/menu/next.png" alt="" />
-                        </button>
-                    </div>
-                </div>
+            <div id="side-broth">
+              <button id="pan-to-ingredients">
+                <img src="./images/menu/next.png" alt="" />
+              </button>
             </div>
-            <div id="select-broth" class="gameTabs">
-                <div class="table" id="table3">
-                    <div id="broth-noodle">
-                        <div id="only-broth">
-                            <ul id="broth">
-                                <li id="#e5d8ac">
-                                    <img src="./images/broth/fishbroth.png" alt="fishbroth" />
-                                </li>
-                                <li id="#ebcf6c">
-                                    <img src="./images/broth/chickenbroth.png" alt="chickenbroth" />
-                                </li>
-                                <li id="#a5361a">
-                                    <img src="./images/broth/meatbroth.png" alt="meatbroth" />
-                                </li>
-                                <li id="#573519">
-                                    <img src="./images/broth/porkbroth.png" alt="porkbroth" />
-                                </li>
-                                <li id="#2f2412">
-                                    <img src="./images/broth/shoyubroth.png" alt="shoyubroth" />
-                                </li>
-                            </ul>
-                        </div>
-                        <div id="outer-pot">
-                            <div id="pot"></div>
-                        </div>
-                    </div>
-                    <div id="side-broth">
-                        <button id="pan-to-ingredients">
-                            <img src="./images/menu/next.png" alt="" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div id="select-ingredients" class="gameTabs">
-                <div class="table" id="table4">
-                    <ul id="ingredients">
-                        <li>
-                            <img id="chicken" src="./images/pots/chickenpot.png" alt="chicken" />
-                        </li>
-                        <li>
-                            <img id="nori" src="./images/pots/noripot.png" alt="nori" />
-                        </li>
-                        <li>
-                            <img id="naruto" src="./images/pots/narutopot.png" alt="naruto" />
-                        </li>
-                        <li>
-                            <img id="porkrib" src="./images/pots/porkribpot.png" alt="pork rib" />
-                        </li>
-                        <li>
-                            <img id="carrot" src="./images/pots/carrotpot.png" alt="carrot" />
-                        </li>
-                        <li>
-                            <img id="chashu" src="./images/pots/chashupot.png" alt="chashu" />
-                        </li>
-                        <li><img id="egg" src="./images/pots/eggpot.png" alt="egg" /></li>
-                        <li>
-                            <img id="mnema" src="./images/pots/mnemapot.png" alt="mnema" />
-                        </li>
-                        <li>
-                            <img id="moyashi" src="./images/pots/moyashipot.png" alt="moyashi" />
-                        </li>
-                        <li>
-                            <img id="tofu" src="./images/pots/tofupot.png" alt="tofu" />
-                        </li>
-                        <li>
-                            <img id="shitake" src="./images/pots/shitakepot.png" alt="shitake" />
-                        </li>
-                        <li>
-                            <img id="radish" src="./images/pots/radishpot.png" alt="radish" />
-                        </li>
-                    </ul>
-                    <div id="side-ingredients">
-                        <div id="box">
-                            <div id="droppable"></div>
-                        </div>
-                        <button id="end-order">
-                            <img src="./images/menu/yes.png" alt="" />
-                        </button>
-                    </div>
-                    <!-- <div id="trash"></div> -->
-                </div>
-            </div>
-        </section>
-        <div class="popup-overlay">
-            <div class="popup-content">
-                <div id="person-modal"></div>
-                <div id="info-score">
-                    <h2>Pontuação</h2>
-                    <div>
-                        <p id="cooking-score"></p>
-                        <p id="broth-score"></p>
-                        <p id="ingredients-score"></p>
-                        <p id="order-score"></p>
-                        <p id="total-score"></p>
-                    </div>
-                    <div id="btn-modal">
-                        <button id="next-order">Próximo pedido</button>
-                        <button id="end-game">Finalizar jogo</button>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="popup-overlay-ranking">
-            <div class="popup-content-ranking">
-                <h2>Ranking</h2>
-                <div id="ranking"></div>
-                <button id="play-again">Jogar novamente</button>
+        <div id="select-ingredients" class="gameTabs">
+          <div class="table" id="table4">
+            <ul id="ingredients">
+              <li>
+                <img
+                  id="chicken"
+                  src="./images/pots/chickenpot.png"
+                  alt="chicken"
+                />
+              </li>
+              <li>
+                <img id="nori" src="./images/pots/noripot.png" alt="nori" />
+              </li>
+              <li>
+                <img
+                  id="naruto"
+                  src="./images/pots/narutopot.png"
+                  alt="naruto"
+                />
+              </li>
+              <li>
+                <img
+                  id="porkrib"
+                  src="./images/pots/porkribpot.png"
+                  alt="pork rib"
+                />
+              </li>
+              <li>
+                <img
+                  id="carrot"
+                  src="./images/pots/carrotpot.png"
+                  alt="carrot"
+                />
+              </li>
+              <li>
+                <img
+                  id="chashu"
+                  src="./images/pots/chashupot.png"
+                  alt="chashu"
+                />
+              </li>
+              <li><img id="egg" src="./images/pots/eggpot.png" alt="egg" /></li>
+              <li>
+                <img id="mnema" src="./images/pots/mnemapot.png" alt="mnema" />
+              </li>
+              <li>
+                <img
+                  id="moyashi"
+                  src="./images/pots/moyashipot.png"
+                  alt="moyashi"
+                />
+              </li>
+              <li>
+                <img id="tofu" src="./images/pots/tofupot.png" alt="tofu" />
+              </li>
+              <li>
+                <img
+                  id="shitake"
+                  src="./images/pots/shitakepot.png"
+                  alt="shitake"
+                />
+              </li>
+              <li>
+                <img
+                  id="radish"
+                  src="./images/pots/radishpot.png"
+                  alt="radish"
+                />
+              </li>
+            </ul>
+            <div id="side-ingredients">
+              <div id="box">
+                <div id="droppable"></div>
+              </div>
+              <button id="end-order">
+                <img src="./images/menu/yes.png" alt="" />
+              </button>
             </div>
+            <!-- <div id="trash"></div> -->
+          </div>
         </div>
+      </section>
+      <div class="popup-overlay">
+        <div class="popup-content">
+          <div id="person-modal"></div>
+          <div id="info-score">
+            <h2>Pontuação</h2>
+            <div>
+              <p id="cooking-score"></p>
+              <p id="broth-score"></p>
+              <p id="ingredients-score"></p>
+              <p id="order-score"></p>
+              <p id="total-score"></p>
+            </div>
+            <div id="btn-modal">
+              <button id="next-order">Próximo pedido</button>
+              <button id="end-game">Finalizar jogo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-overlay-ranking">
+        <div class="popup-content-ranking">
+          <h2>Ranking</h2>
+          <div id="ranking"></div>
+          <button id="play-again">Jogar novamente</button>
+        </div>
+      </div>
     </main>
-</body>
-
+  </body>
 </html>

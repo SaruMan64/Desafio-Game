@@ -12,10 +12,16 @@ const linearRoutes = {
     },
 };
 
+const radialRouts = {
+    route0: { rx: width, ry: height, cx: width, cy: height },
+    route1: { rx: 1000, ry: 1000, cx: 0, cy: 0 },
+};
+
 function linearSpiderKenji(num) {
-    let div = document.createElement("div");
+    /* let div = document.createElement("div");
     div.setAttribute("id", "card");
-    $("body").append(div);
+    div.addClass("normal-spider");
+    $("body").append(div); */
 
     const start = {
         x: linearRoutes["route" + num].start.x,
@@ -60,15 +66,10 @@ function linearSpiderKenji(num) {
     );
 }
 
-const radialRouts = {
-    route0: { rx: width, ry: height, cx: width, cy: height },
-    route1: { rx: 1000, ry: 1000, cx: 0, cy: 0 },
-};
-
 function radialSpiderKenji(num) {
-    let div = document.createElement("div");
+    /* let div = document.createElement("div");
     div.setAttribute("id", "card");
-    $("body").append(div);
+    $("body").append(div); */
     let angle = 90;
 
     var timer = setInterval(function () {
@@ -101,10 +102,23 @@ function radialSpiderKenji(num) {
 
 function aleatoryChance(num) {
     let chance = Math.round(Math.random() * 100);
-    if(chance <= num){
+    let changeSkin = Math.round(Math.random() * 100);
+
+    if (chance <= num) {
+        let div = document.createElement("div");
+        div.setAttribute("id", "card");
+        div.addClass("normal-spider");
+
+        if (changeSkin <= num * 0.1) {
+            div.removeClass("normal-spider");
+            div.addClass("kenji-spider");
+        }
+
+        $("body").append(div);
+
         let whatFunction = Math.round(Math.random());
         let whatRoute = Math.round(Math.random());
-        switch(whatFunction){
+        switch (whatFunction) {
             case 0:
                 linearSpiderKenji(whatRoute);
                 break;
@@ -114,7 +128,6 @@ function aleatoryChance(num) {
             default:
                 console.log("Como chegamos aqui");
         }
-        
     }
 }
 
