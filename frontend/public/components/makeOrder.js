@@ -51,8 +51,7 @@ function makeOrder(response) {
       // Garante que seja arrastável
       cursor: "grabbing",
       cursorAt: {
-        top: Math.floor($(".order").height() / 9),
-        left: Math.floor($(".order").width() / 2)
+        top: Math.floor($(".order").height() / 7),
       },
       revert: "invalid",
       revert: true,

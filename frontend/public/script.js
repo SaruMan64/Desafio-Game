@@ -34,7 +34,7 @@ $(document).ready(function () {
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         console.log($("#ready")[0].children[0].src);
-        $pot.css("background-image", `url(${$("#ready")[0].children[0].src})`);
+        $pot.css("background", `url(${$("#ready")[0].children[0].src}) no-repeat center/cover`);
         $ready[0].innerHTML = "";
         $('#game').tabs({
             active: 2

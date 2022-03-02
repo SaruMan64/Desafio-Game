@@ -1,16 +1,16 @@
-import {setTimer, clearOneTimer} from "./timer.js";
-import {dishMade} from "../script.js";
+import { setTimer, clearOneTimer } from "./timer.js";
+import { dishMade } from "../script.js";
 
 let $ingredients = $("#ingredients"),
-        // $orderList = $("#order-list"),
-        $plate = $("#droppable"),
-        $broth = $("#broth"),
-        $pot = $("#pot"),
-        $noddle = $("#noddle1"),
-        $stove = $(".stove"),
-        $ready = $("#ready"),
-        $orders = $("#orders"),
-        $crrOrder = $("#order-drop");
+    // $orderList = $("#order-list"),
+    $plate = $("#droppable"),
+    $broth = $("#broth"),
+    $pot = $("#pot"),
+    $noddle = $("#noddle1"),
+    $stove = $(".stove"),
+    $ready = $("#ready"),
+    $orders = $("#orders"),
+    $crrOrder = $("#order-drop");
 
 $crrOrder.droppable({
     accept: ".order",
@@ -120,12 +120,12 @@ $pot.droppable({ // Muda cor do fundo para a id setada "id=color"
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        $(this).css("background-color", ui.draggable[0].id);
+        $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%), url('../images/foods/noddle2.png') no-repeat center/cover`);
     }
 });
 
- //Aba de ingredientes
- $("li", $ingredients).draggable({ // Garante que seja arrastável cada ítem dentro da lista
+//Aba de ingredientes
+$("li", $ingredients).draggable({ // Garante que seja arrastável cada ítem dentro da lista
     cursor: "grabbing",
     cancel: "a.ui-icon",
     revert: "invalid",
@@ -175,4 +175,4 @@ $plate.droppable({ // Cria um clone dos ingredientes arrastados até a caixa
     }
 });
 
-export {$ingredients, $plate, $broth, $pot, $noddle, $stove, $ready, $orders, $crrOrder};
+export { $ingredients, $plate, $broth, $pot, $noddle, $stove, $ready, $orders, $crrOrder };
