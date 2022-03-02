@@ -83,7 +83,7 @@ $stove.droppable({
             setTimer(referenceValue);
 
             $(this).css({
-                display: "flex",
+                "display": "flex",
                 "align-itens": "center",
                 "justify-content": "center",
             });
