@@ -1,5 +1,4 @@
-const allPlayers = require("../players.json");
-const players = allPlayers;
+const players = require("../players.json");
 
 const score = function(name, pointing) {
     if(isNaN(pointing)) { // Check if the value is number
@@ -9,7 +8,7 @@ const score = function(name, pointing) {
     let playerExists = false;
     for(let i = 0; i < players.length; i++) { // Checks if the player is already registered
         if(name.toLowerCase() === players[i].name.toLowerCase()) {
-            players[i].score.final = pointing;
+            players[i].score = pointing;
             playerExists = true;
             return(`O jogador: ${players[i].name} atingiu ${pointing} pontos.`);
         }

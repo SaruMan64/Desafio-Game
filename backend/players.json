@@ -2,49 +2,6 @@
   {
     "id": 1,
     "name": "David",
-    "score": {
-      "current": 0,
-      "final": 450
-    }
-  },
-  {
-    "id": 2,
-    "name": "SaruMan64",
-    "score": {
-      "current": 0,
-      "final": 0
-    }
-  },
-  {
-    "id": 3,
-    "name": "Chuchu",
-    "score": {
-      "current": 0,
-      "final": 0
-    }
-  },
-  {
-    "id": 4,
-    "name": "SinucaPlayer93",
-    "score": {
-      "current": 0,
-      "final": 0
-    }
-  },
-  {
-    "id": 5,
-    "name": "as",
-    "score": {
-      "current": 0,
-      "final": 0
-    }
-  },
-  {
-    "id": 6,
-    "name": "aaaaaaaaaaaa",
-    "score": {
-      "current": 0,
-      "final": 0
-    }
+    "score": 450
   }
 ]

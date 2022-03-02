@@ -4,10 +4,7 @@ const fs = require('fs');
 const player = {
     id: 0,
     name: "",
-    score: {
-        current: 0,
-        final: 0
-    }
+    score: 0
 };
 
 const register = function(name) {
@@ -29,7 +26,7 @@ const register = function(name) {
     const currentPlayer = Object.create(player); // Fill player
     currentPlayer.id = players.length + 1;
     currentPlayer.name = name;
-    currentPlayer.score = { current: 0, final: 0 };
+    currentPlayer.score = 0;
 
     players.push(currentPlayer);
 

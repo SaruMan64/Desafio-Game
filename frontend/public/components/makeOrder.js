@@ -1,10 +1,10 @@
-// import {makeWiggle} from "./makeItWiggle";
+import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 
 const zeroFill = n => {
-    return (n < 10) ? ('000' + n) :
-        (n < 100) ? ('00' + n) :
-            (n < 1000) ? ('0' + n) :
-                n;
+  return (n < 10) ? ('000' + n) :
+    (n < 100) ? ('00' + n) :
+      (n < 1000) ? ('0' + n) :
+        n;
 }
 
 let idOrder = 0;
@@ -50,10 +50,19 @@ function makeOrder(response) {
     $(".order").draggable({
       // Garante que seja arrastável
       cursor: "grabbing",
+      /* cursorAt: {
+        top: Math.floor($(".order").height() / 9),
+        left: Math.floor($(".order").width() / 2)
+      }, */
       revert: "invalid",
       revert: true,
+      drag: function(){
+        makeWiggle(this);
+      },
+      stop: function (){
+        dropWiggle(this);
+      }
     });
-    // makeWiggle();
     $("#make-order").prop("disabled", false);
   }, 500);
 }

@@ -1,0 +1,19 @@
+#card {
+  position: fixed;
+  width: 250px;
+  height: 250px;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.normal-spider {
+  background-image: url(../images/normal-spider);
+}
+
+.kenji-spider {
+  background-image: url(../images/kenji-spider);
+}

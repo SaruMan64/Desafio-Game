@@ -33,27 +33,29 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
 
     if (dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
         cookingScore = 50;
-    } else if (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
+    } else if(Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
         cookingScore = 50 - (3 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
-    } else {
+    } else if(Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 10) {
         cookingScore = 50 - (5 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
+    } else {
+        cookingScore = 0;
     }
 
     switch (dishMade.broth) { // Calculate broth score
-        case "rbg(229, 216, 172)": // #e5d8ac
-            (dishOrdered.broth === "fish") ? brothScore += 50 : brothScore -= 50;
+        case "rgb(229, 216, 172)": // #e5d8ac
+            (dishOrdered.broth === "fish") ? brothScore = 50 : brothScore = 0;
             break;
         case "rgb(235, 207, 108)": // #ebcf6c
-            (dishOrdered.broth === "chicken") ? brothScore += 50 : brothScore -= 50;
+            (dishOrdered.broth === "chicken") ? brothScore = 50 : brothScore = 0;
             break;
         case "rgb(165, 54, 26)": // #a5361a
-            (dishOrdered.broth === "meat") ? brothScore += 50 : brothScore -= 50;
+            (dishOrdered.broth === "meat") ? brothScore = 50 : brothScore = 0;
             break;
         case "rgb(87, 53, 25)": // #573519
-            (dishOrdered.broth === "pork") ? brothScore += 50 : brothScore -= 50;
+            (dishOrdered.broth === "pork") ? brothScore = 50 : brothScore = 0;
             break;
         case "rgb(47, 36, 18)": // #2f2412
-            (dishOrdered.broth === "shoyu") ? brothScore += 50 : brothScore -= 50;
+            (dishOrdered.broth === "shoyu") ? brothScore = 50 : brothScore = 0;
             break;
     }
 
@@ -106,38 +108,51 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
     for (let i = 0; i < 4; i++) { // Calculate ingredients score
         for (let j = 0; j < 12; j++) {
             if (ingredientsDishOrdered[i][0] === ingredientsDishMade[j][0]) {
-                if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) {
+                if (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1] === 0) { // If the amount of the ingredient is right, increment the amount multiplied by 10
                     ingredientsScore += 10 * ingredientsDishOrdered[i][1];
                 } else {
-                    if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) {
-                        ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
-                    } else {
+                    if (ingredientsDishOrdered[i][1] > ingredientsDishMade[j][1]) { // If ingredient is missing, decrement the difference multiplied by 10
+                        ingredientsScore += 10 * ingredientsDishMade[j][1];
+                        ingredientsScore -= 10 * (ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                    } else { // If you have too many ingredients, decrement the surplus multiplied by 10
                         ingredientsScore += 10 * ingredientsDishOrdered[i][1];
-                        ingredientsScore -= 10 * Math.abs(ingredientsDishOrdered[i][1] - ingredientsDishMade[j][1]);
+                        ingredientsScore -= 10 * (ingredientsDishMade[j][1] - ingredientsDishOrdered[i][1]);
                     }
                 }
                 counterIngredientsDishMade += ingredientsDishMade[j][1];
             }
         }
     }
-    ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade);
+    ingredientsScore -= 10 * (dishMade.quantIngredients - counterIngredientsDishMade); // If the ingredient was not ordered, decrement the amount multiplied by 10
+    if(ingredientsScore < 0) ingredientsScore = 0;
+
+    clearDishMade(dishMade);
 
     orderScore = cookingScore + brothScore + ingredientsScore;
     totalScore += orderScore;
     return {cookingScore, brothScore, ingredientsScore, orderScore, totalScore};
 }
 
-function clearKitchen() { // Remove the dish made and the current order
-    $("#droppable").html("");
-    $("#droppable").css("background-color", "");
-    $("#droppable").css("background-image", "");
-    $("#order-drop").html("");
-    $("#pot").css("background-image", "");
+function clearDishMade(dishMade) {
+    dishMade.broth = "";
+    dishMade.cookingTime = 0;
+    dishMade.quantIngredients = 0;
+    dishMade.ingredients.carrot = 0;
+    dishMade.ingredients.chashu = 0;
+    dishMade.ingredients.chicken = 0;
+    dishMade.ingredients.egg = 0;
+    dishMade.ingredients.mnema = 0;
+    dishMade.ingredients.moyashi = 0;
+    dishMade.ingredients.naruto = 0;
+    dishMade.ingredients.nori = 0;
+    dishMade.ingredients.porkrib = 0;
+    dishMade.ingredients.radish = 0;
+    dishMade.ingredients.shitake = 0;
+    dishMade.ingredients.tofu = 0;
 }
 
+
 function showRanking(players) { // Create the ranking in html
-    console.log(players);
-    console.log(JSON.stringify(players));
     $("#ranking").html("");
     $("#ranking").append(`<table>
     <tr>
@@ -153,9 +168,17 @@ function showRanking(players) { // Create the ranking in html
         $("table").append(`<tr>
         <td>${i + 1}</td>
         <td>${players[i].name}</td>
-        <td>${players[i].score.final}</td>
+        <td>${players[i].score}</td>
     </tr>`);
     }
+}
+
+function clearKitchen() { // Remove the dish made and the current order
+    $("#droppable").html("");
+    $("#droppable").css("background-color", "");
+    $("#droppable").css("background-image", "");
+    $("#order-drop").html("");
+    $("#pot").css("background-image", "");
 }
 
 export {dishMadeMold, pointing, clearKitchen, showRanking};
