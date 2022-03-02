@@ -16,10 +16,10 @@ function makeWiggle($card) {
   xVelocity = MousePosition.x - CardPosition.x;
 
   CardPosition.x = MousePosition.x;
-  CardPosition.y = MousePosition.y;
+//   CardPosition.y = MousePosition.y;
 
   rotation = rotation * 0.9 + sigmoid(xVelocity) * 1.5;
-  $card.style.top = CardPosition.y + "px";
+//   $card.style.top = CardPosition.y + "px";
   $card.style.left = MousePosition.x - 25 + "px";
   if (Math.abs(rotation) < 0.01) rotation = 0;
   $card.style.transform = `rotate(${rotation}deg)`;

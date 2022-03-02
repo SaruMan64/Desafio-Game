@@ -50,10 +50,10 @@ function makeOrder(response) {
     $(".order").draggable({
       // Garante que seja arrastável
       cursor: "grabbing",
-      cursorAt: {
+      /* cursorAt: {
         top: Math.floor($(".order").height() / 9),
         left: Math.floor($(".order").width() / 2)
-      },
+      }, */
       revert: "invalid",
       revert: true,
       drag: function(){
