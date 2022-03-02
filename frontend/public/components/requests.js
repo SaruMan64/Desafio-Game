@@ -1,5 +1,6 @@
 import {showRanking} from "./score.js";
-import {makeOrder} from "./makeOrder.js";
+// import {makeOrder} from "./makeOrder.js";
+import { clientOrder } from "./incomingClients.js";
 
 const apiUrl = "http://localhost:4444";
 
@@ -8,7 +9,8 @@ function getOrder() {
     method: "GET",
     url: apiUrl + "/order",
     success: function (response) {
-        makeOrder(response);
+        clientOrder(response);
+        // makeOrder(response);
     },
     error: function (error) {
       console.log(error);
@@ -20,7 +22,7 @@ function updateScore(name, score) {
   $.ajax({
     // Update the score
     type: "GET",
-    url: `${apiUrl}/score?${name}=${score}`, // ARRUMAR ROTA
+    url: `${apiUrl}/score?${name}=${score}`,
     success: function (response) {
       console.log(response);
     },

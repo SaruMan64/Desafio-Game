@@ -10,6 +10,7 @@ const zeroFill = n => {
 let idOrder = 0;
 
 function makeOrder(response) {
+  // console.log(`MakeOrder: ${JSON.stringify(response)}`);
   let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
   div.load("./images/Pedido/pedido.svg");
   let ingredients = Object.entries(response.ingredients);

@@ -1,3 +1,4 @@
+import {sound} from "./audio.js";
 /* Functions */
 //opening
 //Prepend HTML in to body

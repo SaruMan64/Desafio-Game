@@ -10,12 +10,12 @@ let score;
 $(document).ready(function () {
     let $name;
     // Opening
-    openingHTML();
-    sound.playMusic("sakuya");
-    $('#btn').click(function () {
-        $name = $("#inputName").val();
-        openingAJAX();
-    });
+    // openingHTML();
+    // $('#btn').click(function () {
+        // sound.playMusic("sakuya");
+    //     $name = $("#inputName").val();
+    //     openingAJAX();
+    // });
 
     $("#game").tabs();
     
@@ -58,13 +58,13 @@ $(document).ready(function () {
 
     $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
         if($("#order-drop").html() === "") { // If an order was not selected
-            alert("A entrega não pode ser concluída. Especifique o pedido.");
+            alert("A entrega não pôde ser concluída. Especifique o pedido.");
             $('#game').tabs({ active: 0 });
         } else if($plate.css("background-image") === "none") { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
         } else if($plate.css("background-color") === "rgba(0, 0, 0, 0)" || $plate.css("background-color") === "rgb(173, 216, 230)") { // If there is no broth on the plate
-            alert("A entrega não pôde ser concluída. Adicione o molho.");
+            alert("A entrega não pôde ser concluída. Adicione o caldo.");
             $('#game').tabs({ active: 2 });
         } else if($("#droppable div").length < 5) { // If there are not enough ingredients
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);

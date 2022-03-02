@@ -1,3 +1,4 @@
+.popup-overlay-order,
 .popup-overlay,
 .popup-overlay-ranking {
   visibility: hidden;
@@ -11,12 +12,14 @@
   top: 3%;
 }
 
+.popup-overlay-order.active,
 .popup-overlay.active,
 .popup-overlay-ranking.active {
   visibility: visible;
   text-align: center;
 }
 
+.popup-content-order,
 .popup-content,
 .popup-content-ranking {
   visibility: hidden;
@@ -36,6 +39,12 @@
   color: #000;
 }
 
+.popup-content-order.active,
+.popup-content.active,
+.popup-content-ranking.active {
+  visibility: visible;
+}
+
 #person-modal {
   height: 70%;
 }
@@ -47,10 +56,6 @@
   align-items: center;
   height: 29.2%;
   width: 100%;
-}
-.popup-content.active,
-.popup-content-ranking.active {
-  visibility: visible;
 }
 
 h2 {
