@@ -29,40 +29,17 @@
   background-color: transparent;
 }
 
-#menu > button {
-  width: 60px;
-  height: 60px;
-}
-
-#menu > button > img {
-  width: 50px;
-  height: 50px;
-}
-
-.imSound {
-  background-image: url('../images/menu/Sound_Icon.svg.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.imMuted {
-  background-image: url('../images/menu/Mute_Icon.svg.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
 #balcao {
-  width: 75%;
+  width: 100%;
+  height: 19.26%;
   position: absolute;
-  top: 75%;
+  bottom: 0;
 }
 
 #person {
   position: absolute;
   height: 50%;
-  top: 40%;
+  bottom: 19.26%;
 }
 
 .numbersvg {
@@ -75,7 +52,35 @@
   fill: red;
   /*   animation: clothespinColor 5s; */
 }
+
 #arame {
   fill: #858383;
   stroke: rgb(122, 122, 122);
+}
+
+#all-clients {
+  display: flex;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  justify-content: space-around;
+  align-items: flex-end;
+}
+
+#all-clients > div {
+  height: 100%;
+}
+
+#accept-decline {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+#accept {
+  background-color: green;
+}
+
+#decline {
+  background-color: red;
 }

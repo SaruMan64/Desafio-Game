@@ -3,6 +3,7 @@ import {openingHTML, openingAJAX} from "./components/opening.js";
 import {dishMadeMold, pointing, clearKitchen} from "./components/score.js";
 import {getOrder, updateScore, updateRanking} from "./components/requests.js";
 import {$plate, $pot, $ready} from "./components/dragNDrop.js";
+import {clientOrder} from "./components/incomingClients.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 
@@ -22,11 +23,12 @@ $(document).ready(function () {
 
     $("#make-order").click(function () {
         $("#game").tabs({
-          active: 0,
+            active: 0,
         });
         if ($("#orders > div").length < 6) {
-          $(this).prop("disabled", true);
-          getOrder(); // Montagem div com pedido
+            $(this).prop("disabled", true);
+            // getOrder(); // Montagem div com pedido
+            clientOrder();
         }
     });
 

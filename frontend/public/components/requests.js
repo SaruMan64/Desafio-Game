@@ -1,6 +1,6 @@
 import {showRanking} from "./score.js";
-// import {makeOrder} from "./makeOrder.js";
-import { clientOrder } from "./incomingClients.js";
+import {makeOrder} from "./makeOrder.js";
+// import { clientOrder } from "./incomingClients.js";
 
 const apiUrl = "http://localhost:4444";
 
@@ -9,8 +9,8 @@ function getOrder() {
     method: "GET",
     url: apiUrl + "/order",
     success: function (response) {
-        clientOrder(response);
-        // makeOrder(response);
+        // clientOrder(response);
+        makeOrder(response);
     },
     error: function (error) {
       console.log(error);
