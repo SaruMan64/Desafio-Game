@@ -60,6 +60,7 @@
 
 #all-clients {
   display: flex;
+  height: 15%;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -67,7 +68,7 @@
   align-items: flex-end;
 }
 
-#all-clients > div {
+#all-clients > div, #all-clients img {
   height: 100%;
 }
 
