@@ -26,7 +26,7 @@ $(document).ready(function () {
             active: 0,
         });
         if ($("#orders > div").length < 6) {
-            $(this).prop("disabled", true);
+            // $(this).prop("disabled", true);
             // getOrder(); // Montagem div com pedido
             clientOrder();
         }

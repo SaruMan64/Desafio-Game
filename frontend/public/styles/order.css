@@ -72,16 +72,35 @@
   height: 100%;
 }
 
-#accept-decline {
+.take-my-order {
+  height: 100px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+}
+
+.take-my-order > img {
+  width: 20%;
+  height: 40%;
+}
+
+.accept-decline {
+  display: flex;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.accept-decline > div {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
 
-#accept {
+.accept {
   background-color: green;
 }
 
-#decline {
+.decline {
   background-color: red;
 }
