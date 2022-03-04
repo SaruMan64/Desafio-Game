@@ -7,7 +7,7 @@ const zeroFill = n => {
         n;
 }
 
-let idOrder = 0;
+let idOrder = 1;
 
 function makeOrder(response) {
   // console.log(`MakeOrder: ${JSON.stringify(response)}`);
@@ -17,11 +17,11 @@ function makeOrder(response) {
   setTimeout(() => {
     $("#orders").append(div);
     let lastOrder = $("#orders div").length;
-    if ($("#order-drop")[0].innerHTML !== "") {
+    /* if ($("#order-drop")[0].innerHTML !== "") {
       idOrder = 1;
     } else {
       idOrder = 0;
-    }
+    } */
     for (let i = 0; i < 4; i++) {
       $("#orders div")
         .eq(lastOrder - 1)
@@ -47,7 +47,8 @@ function makeOrder(response) {
     $("#orders div")
       .eq(lastOrder - 1)
       .find("#orderNum")
-      .text(zeroFill(lastOrder + idOrder));
+      .text(zeroFill(idOrder));
+      idOrder++;
     $(".order").draggable({
       // Garante que seja arrastável
       cursor: "grabbing",
