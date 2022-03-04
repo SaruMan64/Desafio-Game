@@ -64,7 +64,7 @@ function makeOrder(response) {
         dropWiggle(this);
       }
     });
-    $("#make-order").prop("disabled", false);
+    // $("#make-order").prop("disabled", false);
   }, 500);
 }
 
