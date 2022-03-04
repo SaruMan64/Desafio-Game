@@ -37,9 +37,9 @@
 }
 
 #person {
-  position: absolute;
   height: 50%;
-  bottom: 19.26%;
+  bottom: 14.26%;
+  position: absolute;
 }
 
 .numbersvg {
