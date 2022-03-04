@@ -118,11 +118,14 @@ $ready.droppable({
     accept: ".itemNoddle",
     revert: "invalid",
     drop: function (event, ui) {
-        $(ui.draggable).appendTo($(this));
-        $(ui.draggable).position({
-            of: this,
-            collision: "fit",
-        });
+        if ($(this).children().length == 0) {
+            $(ui.draggable).appendTo($(this));
+            $(ui.draggable).position({
+                of: this,
+                collision: "fit",
+            });
+            $(this).droppable("disable");
+        }
     },
 });
 
