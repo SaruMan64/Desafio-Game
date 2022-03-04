@@ -14,7 +14,7 @@ function clientOrder(){
                             </div
                         </div>`);
             item.append(div[0]);
-            div = $(`<img src='../images/Pedido/client-${whatClientIsComming}-seat.png' />`);
+            div = $(`<img class="client-on-seat" src='../images/Pedido/client-${whatClientIsComming}-seat.png' />`);
             item.append(div[0]);
             $(".accept").click(function() {
                 console.log("OI!");
@@ -22,7 +22,8 @@ function clientOrder(){
             });
             $(".decline").click(function() {
                 item.innerHTML = "";
-                item.append(`<img src="../images/Pedido/seat.png" />`);
+                div = $(`<img class="seat" src="../images/Pedido/seat.png" />`);
+                item.append(div[0]);
             });
             return false;
         }

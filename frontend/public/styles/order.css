@@ -60,7 +60,7 @@
 
 #all-clients {
   display: flex;
-  height: 15%;
+  height: 45%;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -68,8 +68,16 @@
   align-items: flex-end;
 }
 
-#all-clients > div, #all-clients img {
+#all-clients > div {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.seat {
+  height: 30%;
+  width: 100%;
 }
 
 .take-my-order {
@@ -77,6 +85,7 @@
   width: 150px;
   display: flex;
   flex-direction: row;
+  background-color: white;
 }
 
 .take-my-order > img {
@@ -86,7 +95,6 @@
 
 .accept-decline {
   display: flex;
-  background-color: white;
   display: flex;
   flex-direction: column;
 }
@@ -103,4 +111,9 @@
 
 .decline {
   background-color: red;
+}
+
+.client-on-seat {
+  height: 60%;
+  width: 50%;
 }
