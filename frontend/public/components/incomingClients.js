@@ -24,10 +24,17 @@ function clientOrder() {
                 console.log("OI!");
                 getOrder();
             });
-            $(".decline").click(function () {
-                /* item.innerHTML = "";
+            /* $(".decline").click(function () {
+                item.innerHTML = "";
                 div = $(`<img src="../images/Pedido/seat.png" />`);
-                item.append(div[0]); */
+                item.append(div[0]);
+            }); */
+            $(".decline").each(function(){
+                $(this).click(function(){
+                    div = $(`<img src="../images/Pedido/seat.png" />`);
+                    $(this).parent().parent().parent()[0].innerHTML = "";
+                    $(this).parent().parent().parent()[0].append(div[0]);
+                });
             });
             }, 500);
             return false;
