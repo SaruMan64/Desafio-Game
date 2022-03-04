@@ -60,23 +60,29 @@
 
 #all-clients {
   display: flex;
-  height: 45%;
+  height: 65%;
   width: 100%;
   position: absolute;
   bottom: 0;
   justify-content: space-around;
   align-items: flex-end;
 }
-
+/* 
 #all-clients > div {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
-
+ */
 .seat {
-  height: 30%;
+  width: 16%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat > img {
   width: 100%;
 }
 
@@ -113,7 +119,7 @@
   background-color: red;
 }
 
-.client-on-seat {
+/* .client-on-seat {
   height: 60%;
   width: 50%;
-}
+} */
