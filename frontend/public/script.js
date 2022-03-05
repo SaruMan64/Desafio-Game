@@ -49,7 +49,7 @@ $(document).ready(function () {
         $plate.css("background-color", $pot.css("background-color"));
         $plate.css("background-image", $("#pot").css("background-image"));
         $pot[0].innerHTML = "";
-        $pot.css("background-color", "#add8e6");
+        $pot.css("background-color", "transparent");
         $('#game').tabs({
             active: 3
         });

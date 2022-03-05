@@ -140,7 +140,7 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%), url('../images/foods/noddle2.png') no-repeat center/cover`);
+        $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%)`);
     }
 });
 
