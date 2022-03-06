@@ -21,13 +21,18 @@ function incomeClient(seat, client) {
     let div = $(`<img src='../images/Pedido/client-${client}-seat.png' />`);
     item.append(div[0]);
     setTimeout(() => {
+        /* <img src='../images/Pedido/pedido-branco.svg' /> */
         div = $(`<div class='take-my-order'>
-                            <img src='../images/Pedido/pedido.png' />
-                            <div class="accept-decline">
-                                <div class="accept"></div>
-                                <div class="decline"></div>
-                            </div
+                            <div class="order-balloon"></div> 
+                            <div class="accept-decline"></div
                         </div>`);
+        setTimeout(() => {
+            $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
+            $(".accept-decline").html(`
+                <button class="accept"></button>
+                <button class="decline"></button>
+            `)
+        }, 500);
         item.prepend(div[0]);
     }, 500);
 }
