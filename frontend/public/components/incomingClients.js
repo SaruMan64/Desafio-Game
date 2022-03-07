@@ -1,59 +1,60 @@
 import { getOrder } from "./requests.js";
-import { makeOrder } from "./makeOrder.js";
+let freeSeats = [];
+
+$(document).on("click", ".accept", function () {
+    console.log($(this));
+    $(this).parents(".take-my-order").remove();
+    getOrder();
+});
+
+$(document).on("click", ".decline", function () {
+    let div = $(`<img src="../images/Pedido/seat.png" />`);
+    let reference = $(this).parents(".seat");
+    reference.html("");
+    reference.append(div[0]);
+});
+
+function incomeClient(seat, client) {
+    let allSeats = $("#all-clients > div");
+    let item = allSeats[seat];
+    item.innerHTML = "";
+    let div = $(`<img src='../images/Pedido/client-${client}-seat.png' />`);
+    item.append(div[0]);
+    setTimeout(() => {
+        /* <img src='../images/Pedido/pedido-branco.svg' /> */
+        div = $(`<div class='take-my-order'>
+                            <div class="order-balloon"></div> 
+                            <div class="accept-decline"></div
+                        </div>`);
+        setTimeout(() => {
+            $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
+            $(".accept-decline").html(`
+                <button class="accept"></button>
+                <button class="decline"></button>
+            `)
+        }, 500);
+        item.prepend(div[0]);
+    }, 500);
+}
 
 function clientOrder() {
-    let whatClientIsComming = Math.floor(Math.random() * 6) + 1;
     $("#all-clients > div").each(function (i, item) {
         let act = item.children;
         let hold = act[act.length - 1].src.split("/");
         if (hold[hold.length - 1] == "seat.png") {
-            item.innerHTML = "";
-            let div = $(
-                `<img src='../images/Pedido/client-${whatClientIsComming}-seat.png' />`
-            );
-            item.append(div[0]);
-            setTimeout(() => {
-                // div = $(`<div class='take-my-order'>
-                //             <img src='../images/Pedido/pedido.png' />
-                //             <div class="accept-decline">
-                //                 <div class="accept"></div>
-                //                 <div class="decline"></div>
-                //             </div
-                //         </div>`);
-                div = $(`<div class="popup-overlay-order">
-                            <div class="popup-content-order">
-                                <img src='../images/Pedido/pedido.png' style="margin: 3%" width="90%"/>
-                                <div class="btn-modal">
-                                    <button class="accept-order" style="background-color: green">Aceitar</button>
-                                    <button class="reject-order" style="background-color: red">Rejeitar</button>
-                                </div>
-                            </div>
-                        </div>`);
-            item.prepend(div[0]);
-            $(".popup-overlay-order, .popup-content-order").addClass("active");
-            $(".accept-order").click(function () {
-                $(".popup-overlay-order, .popup-content-order").removeClass("active");
-                console.log("OI!");
-                makeOrder();
-                // getOrder();
-            });
-            /* $(".decline").click(function () {
-                item.innerHTML = "";
-                div = $(`<img src="../images/Pedido/seat.png" />`);
-                item.append(div[0]);
-            }); */
-            $(".reject-order").each(function(){
-                $(this).click(function(){
-                    $(".popup-overlay-order, .popup-content-order").removeClass("active");
-                    div = $(`<img src="../images/Pedido/seat.png" />`);
-                    $(this).parent().parent().parent()[0].innerHTML = "";
-                    $(this).parent().parent().parent()[0].append(div[0]);
-                });
-            });
-            }, 500);
-            return false;
+            freeSeats.push(i);
         }
     });
+    if (freeSeats.length !== 0) {
+        let whatClientIsComming = Math.floor(Math.random() * 6) + 1;
+        let whatSeatToSeat =
+            freeSeats[Math.floor(Math.random() * freeSeats.length)];
+        console.log(whatClientIsComming, whatSeatToSeat);
+        incomeClient(whatSeatToSeat, whatClientIsComming);
+        freeSeats = [];
+    } else {
+        console.log("Sem bancos disponíveis");
+    }
 }
 
 export { clientOrder };
