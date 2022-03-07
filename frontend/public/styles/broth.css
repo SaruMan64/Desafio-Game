@@ -57,9 +57,9 @@
 }
 
 #pot {
-  width: 28vmin;
+  width: 33vmin;
   height: 22vmin;
-  background: url("../frontend/public/images/foods/noddle2.png") no-repeat center/cover;
+  /* background: url("../frontend/public/images/foods/noddle2.png") no-repeat center/cover; */
   position: relative;
 }
 

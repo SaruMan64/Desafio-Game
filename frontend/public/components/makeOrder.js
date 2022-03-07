@@ -35,7 +35,7 @@ function makeOrder(response) {
     $("#orders div")
       .eq(lastOrder - 1)
       .find("#broth")
-      .attr("href", `./images/broth/${response.broth}broth.png`);
+      .attr("href", `./images/broth/${response.broth}-broth.png`);
     $("#orders div")
       .eq(lastOrder - 1)
       .find("#cook")

@@ -91,7 +91,7 @@ $stove.droppable({
             setTimeout(function () {
                 // 10 segundos para cozimento
                 event.target.innerHTML = "";
-                event.target.innerHTML = `<img src="./images/foods/noddle2.png" ></img>`;
+                event.target.innerHTML = `<img src="./images/foods/noddle3.png" ></img>`;
                 $(".stove img").addClass("itemNoddle");
                 $(".itemNoddle")
                     .removeClass("ui-draggable")
@@ -143,7 +143,14 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%)`);
+        if($("#pot").css("background-image") === "none") {
+            $("#outer-pot").css("background-image", `url("./images/broth/${ui.draggable[0].id}.png")`);
+        } else {
+            $("#outer-pot").css("background-image", `url("./images/others/noddle-with-${ui.draggable[0].id}.png")`);
+        }
+        $("#pot").css("background", "");
+        // $("#outer-pot").html("");
+        // $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%)`);
     }
 });
 

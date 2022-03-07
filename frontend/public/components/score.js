@@ -41,22 +41,8 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
         cookingScore = 0;
     }
 
-    switch (dishMade.broth) { // Calculate broth score
-        case "rgb(229, 216, 172)": // #e5d8ac
-            (dishOrdered.broth === "fish") ? brothScore = 50 : brothScore = 0;
-            break;
-        case "rgb(235, 207, 108)": // #ebcf6c
-            (dishOrdered.broth === "chicken") ? brothScore = 50 : brothScore = 0;
-            break;
-        case "rgb(165, 54, 26)": // #a5361a
-            (dishOrdered.broth === "meat") ? brothScore = 50 : brothScore = 0;
-            break;
-        case "rgb(87, 53, 25)": // #573519
-            (dishOrdered.broth === "pork") ? brothScore = 50 : brothScore = 0;
-            break;
-        case "rgb(47, 36, 18)": // #2f2412
-            (dishOrdered.broth === "shoyu") ? brothScore = 50 : brothScore = 0;
-            break;
+    if(dishMade.broth.includes(dishOrdered.broth)) {
+        brothScore = 50;
     }
 
     for (let i = 0; i < $("#droppable div").length; i++) { // Count ingredients used
@@ -174,11 +160,9 @@ function showRanking(players) { // Create the ranking in html
 }
 
 function clearKitchen() { // Remove the dish made and the current order
+    $("#box").css("background-image", "url(./images/others/box.png)");
     $("#droppable").html("");
-    $("#droppable").css("background-color", "");
-    $("#droppable").css("background-image", "");
     $("#order-drop").html("");
-    $("#pot").css("background-image", "");
 }
 
 export {dishMadeMold, pointing, clearKitchen, showRanking};
