@@ -6,6 +6,7 @@ import {$plate, $pot, $ready} from "./components/dragNDrop.js";
 import {clientOrder} from "./components/incomingClients.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
+let score;
 
 $(document).ready(function () {
     let $name;
@@ -35,7 +36,7 @@ $(document).ready(function () {
     // Aba cozimento
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
-        console.log($("#ready")[0].children[0].src);
+        $("#outer-pot").css("background-image", "url(./images/others/box.png");
         $pot.css("background", `url(${$("#ready")[0].children[0].src}) no-repeat center/cover`);
         $ready.droppable("enable");
         $ready[0].innerHTML = "";
@@ -47,10 +48,13 @@ $(document).ready(function () {
     // Aba molho
 
     $("#pan-to-ingredients").click(function () { // Transfere macarão com molho para tela com ingredientes
-        $plate.css("background-color", $pot.css("background-color"));
-        $plate.css("background-image", $("#pot").css("background-image"));
-        $pot[0].innerHTML = "";
-        $pot.css("background-color", "transparent");
+        $("#box").css("background-image", $("#outer-pot").css("background-image"));
+        $("#droppable").css("background-image", $("#pot").css("background-image"));
+        $("#outer-pot").css("background-image", "url(./images/others/box.png");
+        // $plate.css("background-color", $pot.css("background-color"));
+        // $plate.css("background-image", $("#pot").css("background-image"));
+        // $pot[0].innerHTML = "";
+        // $pot.css("background-color", "transparent");
         $('#game').tabs({
             active: 3
         });
@@ -62,17 +66,18 @@ $(document).ready(function () {
         if($("#order-drop").html() === "") { // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
             $('#game').tabs({ active: 0 });
-        } else if($plate.css("background-image") === "none") { // If there is no pasta on the plate
+        } else if(!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
-        } else if($plate.css("background-color") === "rgba(0, 0, 0, 0)" || $plate.css("background-color") === "rgb(173, 216, 230)") { // If there is no broth on the plate
+        } else if(!$("#box").css("background-image").includes("broth")) { // If there is no broth on the plate
             alert("A entrega não pôde ser concluída. Adicione o caldo.");
             $('#game').tabs({ active: 2 });
         } else if($("#droppable div").length < 5) { // If there are not enough ingredients
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else { // If everything is ok with the previous steps
             let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
-            dishMade.broth = $plate.css("background-color");
+            // dishMade.broth = $plate.css("background-color");
+            dishMade.broth = $("#box").css("background-image");
             let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
             score = totalScore;
 
