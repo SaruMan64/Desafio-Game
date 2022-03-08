@@ -124,6 +124,22 @@ $(document).ready(function () {
 
         $("#play-again").on("click", function () { // Close the ranking modal
             $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
+            $('#game').tabs({
+                active: 0
+            });
+            let orderNumber = Number($("#order-drop")[0].children[0].children[0].children[14].innerHTML); // numero pedido
+            $("#all-clients > div").each(function(i, item) {
+                try {
+                    if(item.children[0].id == orderNumber){
+                       console.log(item.children);
+                        item.children[0].remove();
+                        let div = $(`<img src="../images/Pedido/seat.png" />`);
+                        item.append(div[0]);
+                    }
+                } catch (e) {
+                    console.log("Existe não");
+                }
+            });
         });
     });
 
