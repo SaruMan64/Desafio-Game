@@ -1,10 +1,11 @@
 import { getOrder } from "./requests.js";
 import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 let freeSeats = [];
+let numberClient = 1;
 
 $(document).on("click", ".accept", function () {
-    console.log($(this));
-    console.log($(this).parents(".take-my-order").children(".order-balloon").html());
+    // console.log($(this));
+    // console.log($(this).parents(".take-my-order").children(".order-balloon").html());
     $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
     $(this).parents(".take-my-order").remove();
 
@@ -24,6 +25,8 @@ $(document).on("click", ".accept", function () {
             dropWiggle(this);
         }
     });
+    // getOrder($(this).parents(".take-my-order").next()[0].id);
+    // $(this).parents(".take-my-order").remove();
 });
 
 $(document).on("click", ".decline", function () {
@@ -37,7 +40,9 @@ function incomeClient(seat, client) {
     let allSeats = $("#all-clients > div");
     let item = allSeats[seat];
     item.innerHTML = "";
-    let div = $(`<img src='../images/Pedido/client-${client}-seat.png' />`);
+    let div = $(
+        `<img id=${numberClient} src='../images/Pedido/client-${client}-seat.png' />`
+    );
     item.append(div[0]);
     setTimeout(() => {
         /* <img src='../images/Pedido/pedido-branco.svg' /> */
@@ -48,10 +53,13 @@ function incomeClient(seat, client) {
         setTimeout(() => {
             // $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
             getOrder();
+            // getOrder($(this).parents(".take-my-order").next()[0].id);
+            $(this).parents(".take-my-order").remove();
             $(".accept-decline").html(`
                 <button class="accept"></button>
                 <button class="decline"></button>
-            `)
+            `);
+            numberClient++;
         }, 500);
         item.prepend(div[0]);
     }, 500);

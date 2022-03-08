@@ -1,17 +1,16 @@
 // import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 
-const zeroFill = n => {
-  return (n < 10) ? ('000' + n) :
-    (n < 100) ? ('00' + n) :
-      (n < 1000) ? ('0' + n) :
-        n;
-}
-
-let idOrder = 1;
+const zeroFill = (n) => {
+    return n < 10 ? "000" + n
+    : n < 100 ? "00" + n
+    : n < 1000 ? "0" + n
+    : n;
+};
 
 
 // COMEÇAR A PARTIR DO "RETURN DIV"
 
+let idOrder = 1;
 function makeOrder(response) { 
   // console.log(`MakeOrder: ${JSON.stringify(response)}`);
   let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
