@@ -1,10 +1,29 @@
 import { getOrder } from "./requests.js";
+import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 let freeSeats = [];
 
 $(document).on("click", ".accept", function () {
     console.log($(this));
+    console.log($(this).parents(".take-my-order").children(".order-balloon").html());
+    $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
     $(this).parents(".take-my-order").remove();
-    getOrder();
+
+    $(".order").draggable({
+        // Garante que seja arrastável
+        cursor: "grabbing",
+        /* cursorAt: {
+            top: Math.floor($(".order").height() / 9),
+            left: Math.floor($(".order").width() / 2)
+        }, */
+        revert: "invalid",
+        revert: true,
+        drag: function(){
+            makeWiggle(this);
+        },
+        stop: function (){
+            dropWiggle(this);
+        }
+    });
 });
 
 $(document).on("click", ".decline", function () {
@@ -27,7 +46,8 @@ function incomeClient(seat, client) {
                             <div class="accept-decline"></div
                         </div>`);
         setTimeout(() => {
-            $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
+            // $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
+            getOrder();
             $(".accept-decline").html(`
                 <button class="accept"></button>
                 <button class="decline"></button>
