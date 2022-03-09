@@ -4,8 +4,6 @@ let freeSeats = [];
 let numberClient = 1;
 
 $(document).on("click", ".accept", function () {
-    // console.log($(this));
-    // console.log($(this).parents(".take-my-order").children(".order-balloon").html());
     $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
     $(this).parents(".take-my-order").remove();
 
@@ -25,8 +23,6 @@ $(document).on("click", ".accept", function () {
             dropWiggle(this);
         }
     });
-    // getOrder($(this).parents(".take-my-order").next()[0].id);
-    // $(this).parents(".take-my-order").remove();
 });
 
 $(document).on("click", ".decline", function () {
@@ -45,16 +41,12 @@ function incomeClient(seat, client) {
     );
     item.append(div[0]);
     setTimeout(() => {
-        /* <img src='../images/Pedido/pedido-branco.svg' /> */
-        div = $(`<div class='take-my-order'>
+        div = $(`<div id='order-${numberClient}' class='take-my-order'>
                             <div class="order-balloon"></div> 
                             <div class="accept-decline"></div
                         </div>`);
         setTimeout(() => {
-            // $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
-            getOrder();
-            // getOrder($(this).parents(".take-my-order").next()[0].id);
-            $(this).parents(".take-my-order").remove();
+            getOrder(numberClient);
             $(".accept-decline").html(`
                 <button class="accept"></button>
                 <button class="decline"></button>

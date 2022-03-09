@@ -41,7 +41,7 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
         cookingScore = 0;
     }
 
-    if(dishMade.broth.includes(dishOrdered.broth)) {
+    if(dishMade.broth.includes(dishOrdered.broth)) { // Calculate broth score
         brothScore = 50;
     }
 
@@ -147,6 +147,7 @@ function showRanking(players) { // Create the ranking in html
         <th>Pontuação</th>
     </tr>
 </table>`);
+
     let numberPlayersRanking;
     (players.length <= 10) ? numberPlayersRanking = players.length : numberPlayersRanking = 10;
 
