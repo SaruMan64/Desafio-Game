@@ -110,6 +110,7 @@
   border-right: 3px solid black;
   border-bottom: 3px solid black;
   rotate: 45deg;
+  transform: rotate(45deg);
 }
 
 .order-balloon {
