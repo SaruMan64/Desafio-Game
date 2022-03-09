@@ -27,7 +27,8 @@
         transparent 45%
       )
       no-repeat center 100% / auto 99%,
-    url("../images/foods/noddle2.png") no-repeat center/70%,
+    /* url("../images/foods/noddle2.png") no-repeat center/70%, */
+      url("../images/foods/noddle3.png") no-repeat center/55%,
     url("../images/others/pan.png") no-repeat center/contain,
     radial-gradient(
         circle,
@@ -47,6 +48,12 @@
   display: flex;
   flex-direction: column;
   height: 87.5%;
+}
+
+#noddle1 {
+  width: 20%;
+  object-fit: contain;
+  align-self: center;
 }
 
 #oven {
@@ -73,44 +80,32 @@
 .stove {
   width: 100%;
   height: 35%;
-  background: var(--pan-noddle-2);
+  background: var(--pan-off);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.stove.ui-droppable > #noddle1 {
-  width: 20vmin;
-  height: 20vmin;
+.itemNoddle {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.strove .ui-draggable-dragging {
-  width: 20vmin;
-  height: 20vmin;
-}
-
-.stove.ui-droppable > .itemNoddle.ui-draggable.ui-draggable-handle {
-  width: 20vmin;
-  height: 20vmin;
-}
-
-.stove.ui-droppable > .itemNoddle {
-  width: 20vmin;
-  height: 20vmin;
+.itemNoddle > img {
+  object-fit: contain;
+  object-position: center;
 }
 
 #side-stove {
   width: 25%;
-  height: 80%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
-
-#side-stove > #noddle1 {
-  width: 25vmin;
-  height: 25vmin;
 }
 
 #ready {
