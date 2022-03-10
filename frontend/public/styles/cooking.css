@@ -28,7 +28,7 @@
       )
       no-repeat center 100% / auto 99%,
     /* url("../images/foods/noddle2.png") no-repeat center/70%, */
-      url("../images/foods/noddle3.png") no-repeat center/55%,
+      url("../images/foods/noddle3.png") no-repeat center/55% 60%,
     url("../images/others/pan.png") no-repeat center/contain,
     radial-gradient(
         circle,
@@ -95,7 +95,9 @@
 }
 
 .itemNoddle > img {
-  object-fit: contain;
+  width: 55%;
+  height: 60%;
+  object-fit: fill;
   object-position: center;
 }
 
@@ -109,7 +111,7 @@
 }
 
 #ready {
-  background-image: url("../images/others/box.png");
+  background-image: url("../images/others/bowl.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center, center;
@@ -130,4 +132,10 @@
 
 #pan-to-noodles-and-broth > img {
   height: 100%;
+}
+
+@media (max-aspect-ratio: 16/9){
+  #oven{
+    column-gap: 3%;
+  }
 }

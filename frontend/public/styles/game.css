@@ -1,9 +1,10 @@
 #game {
   background: linear-gradient(
-    241.55deg,
-    rgba(221, 154, 86, 0.9) 17.13%,
-    rgba(180, 110, 60, 0.9) 72.34%
-  );
+      241.55deg,
+      rgba(221, 154, 86, 0.9) 17.13%,
+      rgba(180, 110, 60, 0.9) 72.34%
+    ),
+    linear-gradient(#f5f5f5 0%, #f5f5f5 100%);
   display: flex;
 }
 
@@ -219,14 +220,14 @@
 }
 
 .imSound {
-  background-image: url('../images/menu/Sound_Icon.svg.png');
+  background-image: url("../images/menu/Sound_Icon.svg.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .imMuted {
-  background-image: url('../images/menu/Mute_Icon.svg.png');
+  background-image: url("../images/menu/Mute_Icon.svg.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

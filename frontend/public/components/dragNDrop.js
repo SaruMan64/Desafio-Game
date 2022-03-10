@@ -72,13 +72,13 @@ $stove.droppable({
     drop: function (event, ui) {
         if ($(this)[0].innerHTML == "") {
             // Se vazio pode adicionar macarrão para cozimento
-            
+
             $(this).append(
                 $(`<div class="itemNoddle">
             
             </div>`)
             );
-            
+
             $(this).css("background", "var(--pan-noddle-1)")
 
             let reference = $(this);
@@ -87,7 +87,7 @@ $stove.droppable({
 
             setTimeout(function () {
                 console.log(reference[0].children[0].children[0]);
-                
+
                 // 10 segundos para cozimento
                 $(reference).css("background", "var(--pan-noddle-2)")
                 $(".itemNoddle")
