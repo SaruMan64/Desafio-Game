@@ -4,6 +4,7 @@ let freeSeats = [];
 let numberClient = 1;
 
 $(document).on("click", ".accept", function () {
+    $(this).parents(".take-my-order").children().children().children().attr("viewBox", "0 0 400 723");
     $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
     $(this).parents(".take-my-order").remove();
 
