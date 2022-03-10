@@ -127,6 +127,23 @@ $(document).ready(function () {
             $('#game').tabs({
                 active: 0
             });
+<<<<<<< HEAD
+            let orderNumber = Number($("#order-drop")[0].children[0].children[0].children[14].innerHTML); // numero pedido
+            $("#all-clients > div").each(function(i, item) {
+                try {
+                    if(item.children[0].id == orderNumber){
+                       console.log(item.children);
+                        item.children[0].remove();
+                        let div = $(`<img src="../images/Pedido/seat.png" />`);
+                        item.append(div[0]);
+                        $("#order-drop")[0].children[0].remove();
+                    }
+                } catch (e) {
+                    console.log("Existe não");
+                }
+            });
+=======
+>>>>>>> d1defd980a1f62c8a52c7318071c0195e562c871
         });
     });
 
