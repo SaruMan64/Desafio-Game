@@ -1,62 +1,53 @@
-<svg height="100%" viewBox="0 0 400 723" fill="none" xmlns="http://www.w3.org/2000/svg"
+<svg height="100%" viewBox="0 0 400 654" fill="none" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <path
-        d="M0 90.9535C0 85.4563 4.47715 81 10 81H390C395.523 81 400 85.4563 400 90.9535V713.047C400 718.544 395.523 723 390 723H9.99999C4.47714 723 0 718.544 0 713.047V90.9535Z"
+        d="M0 10.1203C0 4.53099 4.47715 0 10 0H390C395.523 0 400 4.53099 400 10.1202V642.636C400 648.225 395.523 652.756 390 652.756H9.99999C4.47714 652.756 0 648.225 0 642.636V10.1203Z"
         fill="#E5B372" />
     <g>
-        <line x1="50" y1="143.5" x2="350" y2="143.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <line x1="50" y1="178.5" x2="350" y2="178.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <!-- <line x1="50" y1="213.5" x2="350" y2="213.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <!-- <line x1="50" y1="248.5" x2="350" y2="248.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <line x1="50" y1="283.5" x2="350" y2="283.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <line x1="50" y1="318.5" x2="350" y2="318.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <!-- <line x1="50" y1="353.5" x2="350" y2="353.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <!-- <line x1="50" y1="388.5" x2="350" y2="388.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <line x1="50" y1="423.5" x2="350" y2="423.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <line x1="50" y1="458.5" x2="350" y2="458.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <!-- <line x1="50" y1="493.5" x2="350" y2="493.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <!-- <line x1="50" y1="528.5" x2="350" y2="528.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <line x1="50" y1="563.5" x2="350" y2="563.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
-        <!-- <line x1="50" y1="598.5" x2="350" y2="598.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <!-- <line x1="50" y1="633.5" x2="350" y2="633.5" stroke="black" stroke-opacity="0.5" stroke-width="3" /> -->
-        <line x1="50" y1="668.5" x2="350" y2="668.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 65.0723L50 65.0722L50 62.022L350 62.022L350 65.0723Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 100.659L50 100.659L50 97.6084L350 97.6084L350 100.659Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 207.418L50 207.418L50 204.368L350 204.368L350 207.418Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 243.004L50 243.004L50 239.954L350 239.954L350 243.004Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 349.763L50 349.763L50 346.713L350 346.713L350 349.763Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 385.35L50 385.35L50 382.299L350 382.299L350 385.35Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 492.109L50 492.109L50 489.059L350 489.059L350 492.109Z"
+            fill="black" fill-opacity="0.5" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M350 598.868L50 598.868L50 595.818L350 595.818L350 598.868Z"
+            fill="black" fill-opacity="0.5" />
     </g>
-    <g id="clothespin">
-        <path id="wood"
-            d="M178.398 0.971225C178.398 0.434833 178.941 0 179.612 0H220.146C220.816 0 221.359 0.434831 221.359 0.971223V161.029C221.359 161.565 220.816 162 220.146 162H179.612C178.941 162 178.398 161.565 178.398 161.029V0.971225Z"
-            fill="#FF0000" />
-        <path id="wire"
-            d="M178.398 52.8345H175V107.223C175 110.012 177.825 112.273 181.311 112.273H218.689C222.175 112.273 225 110.012 225 107.223V52.8345H221.359V107.417C221.359 108.49 220.273 109.36 218.932 109.36H180.825C179.485 109.36 178.398 108.49 178.398 107.417V52.8345Z"
-            fill="#858383" />
-    </g>
-    <image id="cook" x="118" y="191" width="80" height="80" href="./images/Pedido/rabisco.png" />
-    <text id="cookTime" class="numbersvg" x="203" y="245" width="80" height="80" fill="black">
+    <image id="cook" x="118" y="111" width="80" height="80" href="./images/Pedido/rabisco.png" />
+    <text id="cookTime" class="numbersvg" x="203" y="165" width="80" height="80" fill="black">
         00
     </text>
-    <image id="broth" x="160" y="333" width="80" height="80" href="./images/Pedido/rabisco.png" />
+    <image id="broth" x="160" y="253" width="80" height="80" href="./images/Pedido/rabisco.png" />
 
-    <image id="ingredient1" class="ingredient i1" x="69" y="473" width="80" height="80" href="./images/Pedido/rabisco.png" />
-    <text id="num1" class="numbersvg i1" x="155" y="525" fill="black">
+    <image id="ingredient1" class="ingredient i1" x="69" y="393" width="80" height="80"
+        href="./images/Pedido/rabisco.png" />
+    <text id="num1" class="numbersvg i1" x="155" y="445" fill="black">
         00
     </text>
-    <image id="ingredient2" class="ingredient i2" x="204" y="473" width="80" height="80" href="./images/Pedido/rabisco.png" />
-    <text id="num2" class="numbersvg i2" x="290" y="525" fill="black">
+    <image id="ingredient2" class="ingredient i2" x="204" y="393" width="80" height="80"
+        href="./images/Pedido/rabisco.png" />
+    <text id="num2" class="numbersvg i2" x="290" y="445" fill="black">
         00
     </text>
-    <image id="ingredient3" class="ingredient i3" x="70" y="578" width="80" height="80" href="./images/Pedido/rabisco.png" />
-    <text id="num3" class="numbersvg i3" x="155" y="630" fill="black">
+    <image id="ingredient3" class="ingredient i3" x="70" y="498" width="80" height="80"
+        href="./images/Pedido/rabisco.png" />
+    <text id="num3" class="numbersvg i3" x="155" y="550" fill="black">
         00
     </text>
-    <image id="ingredient4" class="ingredient i4" x="204" y="578" width="80" height="80" href="./images/Pedido/rabisco.png" />
-    <text id="num4" class="numbersvg i4" x="290" y="630" fill="black">
+    <image id="ingredient4" class="ingredient i4" x="204" y="498" width="80" height="80"
+        href="./images/Pedido/rabisco.png" />
+    <text id="num4" class="numbersvg i4" x="290" y="550" fill="black">
         00
     </text>
-    <text id="orderNum" class="numbersvg id" x="250" y="140" fill="black">
+    <text id="orderNum" class="numbersvg id" x="250" y="60" fill="black">
         0000
     </text>
-    <style>
-        #clothespin {
-            display: none;
-        }
-    </style>
 </svg>

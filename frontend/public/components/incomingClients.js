@@ -1,11 +1,29 @@
 import { getOrder } from "./requests.js";
+import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
 let freeSeats = [];
 let numberClient = 1;
 
 $(document).on("click", ".accept", function () {
-    console.log($(this));
-    getOrder($(this).parents(".take-my-order").next()[0].id);
+    $(this).parents(".take-my-order").children().children().children().attr("viewBox", "0 0 400 723");
+    $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
     $(this).parents(".take-my-order").remove();
+
+    $(".order").draggable({
+        // Garante que seja arrastável
+        cursor: "grabbing",
+        /* cursorAt: {
+            top: Math.floor($(".order").height() / 9),
+            left: Math.floor($(".order").width() / 2)
+        }, */
+        revert: "invalid",
+        revert: true,
+        drag: function(){
+            makeWiggle(this);
+        },
+        stop: function (){
+            dropWiggle(this);
+        }
+    });
 });
 
 $(document).on("click", ".decline", function () {
@@ -24,13 +42,12 @@ function incomeClient(seat, client) {
     );
     item.append(div[0]);
     setTimeout(() => {
-        /* <img src='../images/Pedido/pedido-branco.svg' /> */
-        div = $(`<div class='take-my-order'>
+        div = $(`<div id='order-${numberClient}' class='take-my-order'>
                             <div class="order-balloon"></div> 
                             <div class="accept-decline"></div
                         </div>`);
         setTimeout(() => {
-            $(".order-balloon").load("../images/Pedido/pedido-branco.svg");
+            getOrder(numberClient);
             $(".accept-decline").html(`
                 <button class="accept"></button>
                 <button class="decline"></button>
@@ -50,7 +67,7 @@ function clientOrder() {
         }
     });
     if (freeSeats.length !== 0) {
-        let whatClientIsComming = Math.floor(Math.random() * 6) + 1;
+        let whatClientIsComming = Math.floor(Math.random() * 4) + 1;
         let whatSeatToSeat =
             freeSeats[Math.floor(Math.random() * freeSeats.length)];
         console.log(whatClientIsComming, whatSeatToSeat);

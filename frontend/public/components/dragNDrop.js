@@ -72,27 +72,24 @@ $stove.droppable({
     drop: function (event, ui) {
         if ($(this)[0].innerHTML == "") {
             // Se vazio pode adicionar macarrão para cozimento
+            
             $(this).append(
-                $(`<div style="width: 80px; height: 120px">
-            <img style="width: 100%; height: 100%" class="foods" src="./images/foods/noddle1.png">
+                $(`<div class="itemNoddle">
+            
             </div>`)
             );
+            
+            $(this).css("background", "var(--pan-noddle-1)")
 
             let reference = $(this);
             let referenceValue = reference[0].getAttribute("value");
             setTimer(referenceValue);
 
-            $(this).css({
-                "display": "flex",
-                "align-itens": "center",
-                "justify-content": "center",
-            });
-
             setTimeout(function () {
+                console.log(reference[0].children[0].children[0]);
+                
                 // 10 segundos para cozimento
-                event.target.innerHTML = "";
-                event.target.innerHTML = `<img src="./images/foods/noddle3.png" ></img>`;
-                $(".stove img").addClass("itemNoddle");
+                $(reference).css("background", "var(--pan-noddle-2)")
                 $(".itemNoddle")
                     .removeClass("ui-draggable")
                     .draggable({
@@ -101,10 +98,12 @@ $stove.droppable({
                         containment: "#table2",
                         revert: "invalid",
                         start: function (event, ui) {
+                            $(this).html(`<img class="foods" src="./images/foods/noddle3.png">`)
+                            $(reference).css("background", "var(--pan-off)")
                             // Stop the stove timer
-                            let pai = this.parentNode.getAttribute("value");
+                            let father = this.parentNode.getAttribute("value");
                             dishMade.cookingTime = parseInt(
-                                clearOneTimer(Number(pai))
+                                clearOneTimer(Number(father))
                             );
                         },
                     });
@@ -124,6 +123,7 @@ $ready.droppable({
                 of: this,
                 collision: "fit",
             });
+            $(ui.draggable).draggable("disable");
             $(this).droppable("disable");
         }
     },
@@ -143,14 +143,12 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        if($("#pot").css("background-image") === "none") {
+        if ($("#pot").css("background-image") === "none") {
             $("#outer-pot").css("background-image", `url("./images/broth/${ui.draggable[0].id}.png")`);
         } else {
             $("#outer-pot").css("background-image", `url("./images/others/noddle-with-${ui.draggable[0].id}.png")`);
         }
         $("#pot").css("background", "");
-        // $("#outer-pot").html("");
-        // $(this).css("background", `radial-gradient(circle, rgba(255, 255, 255, 0) 15%, ${ui.draggable[0].id} 80%)`);
     }
 });
 

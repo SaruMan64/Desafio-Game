@@ -75,35 +75,35 @@ $(document).ready(function () {
         } else if($("#droppable div").length < 5) { // If there are not enough ingredients
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else { // If everything is ok with the previous steps
+
             let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
-            // dishMade.broth = $plate.css("background-color");
             dishMade.broth = $("#box").css("background-image");
             let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
             score = totalScore;
 
-            $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
-            $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
-            $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-            $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
-            $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
-            $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
-
-            $(document).ready(function () { // Show the person
-                $("#person-modal").load("./images/Pedido/person.svg");
-                $("#person-modal svg").attr("height", "400px");
-                setTimeout(() => {
-                    if (orderScore > 150) {
-                        $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
-                        $("#mouth").attr("href", "./images/Pedido/boca-aberta.svg");
-                    } else if (orderScore < 50) {
-                        $("#eyes").attr("href", "./images/Pedido/olho-bravo.svg");
-                        $("#mouth").attr("href", "./images/Pedido/boca-brava.svg");
-                    } else {
-                        $("#eyes").attr("href", "./images/Pedido/olho-normal.svg");
-                        $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
+            const orderNumber = Number($("#order-drop")[0].children[0].children[0].children[14].innerHTML);
+            $("#all-clients > div").each(function(i, item) { // Fill the scoring modal and removes the client from the seat
+                try {
+                    if(Number(item.children[0].id) === orderNumber){
+                        const clientNumber = (item.children[0].getAttribute("src")).split("-")[1];
+                        $("#person-modal").html("");
+                        $("#person-modal").append(`<img src="./images/Pedido/client-${clientNumber}-front.png" />`);
+                        $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
+                        $("#broth-score").html(`Caldo: ${brothScore} pontos`);
+                        $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
+                        $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
+                        $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+                        item.children[0].remove();
+                        let div = $(`<img src="../images/Pedido/seat.png" />`);
+                        item.append(div[0]);
                     }
-                }, 500)
-            })
+                } catch (e) {
+                    console.log("Existe não");
+                }
+            });
+
+            
+            $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         }
     });
 
@@ -122,11 +122,12 @@ $(document).ready(function () {
         $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
 
-        $("#play-again").on("click", function () { // Close the ranking modal
+        $("#play-again").on("click", function () { // Close the ranking modal               // PRECISA LIMPAR OS ASSENTOS E LEVAR PARA A OPENING
             $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
             $('#game').tabs({
                 active: 0
             });
+<<<<<<< HEAD
             let orderNumber = Number($("#order-drop")[0].children[0].children[0].children[14].innerHTML); // numero pedido
             $("#all-clients > div").each(function(i, item) {
                 try {
@@ -141,6 +142,8 @@ $(document).ready(function () {
                     console.log("Existe não");
                 }
             });
+=======
+>>>>>>> d1defd980a1f62c8a52c7318071c0195e562c871
         });
     });
 
