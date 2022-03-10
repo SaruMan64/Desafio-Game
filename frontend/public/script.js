@@ -135,6 +135,7 @@ $(document).ready(function () {
                         item.children[0].remove();
                         let div = $(`<img src="../images/Pedido/seat.png" />`);
                         item.append(div[0]);
+                        $("#order-drop")[0].children[0].remove();
                     }
                 } catch (e) {
                     console.log("Existe não");
