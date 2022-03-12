@@ -29,7 +29,7 @@
       )
       no-repeat center 100% / auto 99%,
     /* url("../images/foods/noddle2.png") no-repeat center/70%, */
-      url("../images/foods/noddle3.png") no-repeat center/55% 60%,
+      url("../images/foods/noddle3.png") no-repeat center/55%,
     url("../images/others/pan.png") no-repeat center/contain,
     radial-gradient(
         circle,

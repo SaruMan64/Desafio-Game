@@ -84,13 +84,8 @@ $stove.droppable({
             setTimer(referenceValue);
 
             setTimeout(function () {
-<<<<<<< HEAD
-                console.log(reference[0]);
-                
-=======
                 console.log(reference[0].children[0].children[0]);
 
->>>>>>> 25bdf5af4081a1d64fd1f78bd1ce05459a6bf3af
                 // 10 segundos para cozimento
                 $(reference).css("background", "var(--pan-noddle-2)")
                 $(".itemNoddle")
@@ -146,10 +141,10 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        if ($("#pot").css("background-image") === "none") {
-            $("#outer-pot").css("background-image", `url("./images/broth/${ui.draggable[0].id}.png")`);
+        if ($("#pot").css("background") === "var(--broth-off)") {
+            $("#outer-pot").css("background", `var(--broth-noddle)`);
         } else {
-            $("#outer-pot").css("background-image", `url("./images/others/noddle-with-${ui.draggable[0].id}.png")`);
+            $("#outer-pot").css("background", `var(--${ui.draggable[0].id})`);
         }
         $("#pot").css("background", "");
     }

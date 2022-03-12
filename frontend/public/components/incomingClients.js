@@ -67,7 +67,7 @@ function clientOrder() {
         }
     });
     if (freeSeats.length !== 0) {
-        let whatClientIsComming = Math.floor(Math.random() * 4) + 1;
+        let whatClientIsComming = Math.floor(Math.random() * 6) + 1;
         let whatSeatToSeat =
             freeSeats[Math.floor(Math.random() * freeSeats.length)];
         console.log(whatClientIsComming, whatSeatToSeat);
