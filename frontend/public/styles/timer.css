@@ -1,34 +1,35 @@
 .clock {
-    background: #0C0908;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 8vmin;
-    height: 4vmin;
-    border: 5px solid #160D08;
-    border-radius: 10px;
-    font-family: digitalnormal;
-    position: relative;
+  width: 7vmin;
+  height: 4vmin;
+  background: #0c0908;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10%/20%;
+  font-family: digitalnormal;
+  position: relative;
 }
 
 .clock > span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    font-size: clamp(2rem, 2.5rem, 3rem);
-    color: crimson;
-    position: relative;
-    z-index: 2;
-    left: 20;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.8vmin;
+  color: crimson;
+  position: relative;
+  z-index: 2;
+  left: 20;
 }
 
 .clock > span::before {
-    content: '8';
-    position: absolute;
-    width: 50px;
-    font-size: clamp(2rem, 2.5rem, 3rem);
-    color: rgba(211, 211, 211, 0.2);
-    z-index: -1;
-    text-align: center;
-} 
+  content: "8";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  font-size: 3.8vmin;
+  color: rgba(211, 211, 211, 0.2);
+  z-index: -1;
+  text-align: center;
+}
