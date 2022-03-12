@@ -49,17 +49,76 @@ const setCorrectingInterval = function (func, cod, i, delay) {
 	return tick(func, delay);
 };
 
-
 function setTimer(index) { // Start the stove timer
-    const interval = 1000;
-    const aux = $(`[value=${index}]`).next();
+  const interval = 1000;
+  const aux = $(`[value=${index}]`).next();
 
-    let startTime = Date.now();
-    setCorrectingInterval(function () {
-        let time = Math.trunc((Date.now() - startTime) / 1000);
-        timers[index - 1] = time;
-        printTimer(aux, time);
-    }, cods, index, interval);
+  let startTime = Date.now();
+  let functions = factory();
+  let cod = functions.setCorrectingInterval(function () {
+      let time = Math.trunc((Date.now() - startTime) / 1000);
+      timers[index - 1] = time;
+      printTimer(aux, time);
+  }, interval);
+}
+
+function factory() {
+    // Track running intervals
+    let numIntervals = 0;
+    let intervals = {};
+  
+    // Polyfill Date.now
+    let now = Date.now || function() {
+      return new Date().valueOf();
+    };
+  
+    let setCorrectingInterval = function(func, delay) {
+        let id = numIntervals++;
+        let planned = now() + delay;
+  
+      // Normalize func as function
+      switch (typeof func) {
+        case 'function':
+          break;
+        case 'string':
+          var sFunc = func;
+          func = function() {
+            eval(sFunc);
+          };
+          break;
+        default:
+          func = function() { };
+      }
+  
+      function tick() {
+        func();
+  
+        // Only re-register if clearCorrectingInterval was not called during function
+        if (intervals[id]) {
+          planned += delay;
+          intervals[id] = setTimeout(tick, planned - now());
+        }
+      }
+  
+      intervals[id] = setTimeout(tick, delay);
+      return id;
+    };
+  
+    let clearCorrectingInterval = function(id) {
+      clearTimeout(intervals[id]);
+      delete intervals[id];
+    };
+  
+    return {
+      setCorrectingInterval: setCorrectingInterval,
+      clearCorrectingInterval: clearCorrectingInterval
+    };
+}
+
+function abc() {
+  return function () {
+    console.log("abc");
+  };
 }
 
 function clearOneTimer(num) {
@@ -71,4 +130,4 @@ function clearOneTimer(num) {
     return timers[num - 1];
 }
 
-export {setTimer, clearOneTimer};
+export {setTimer, clearOneTimer, factory};

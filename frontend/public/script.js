@@ -3,9 +3,35 @@ import {openingHTML, openingAJAX} from "./components/opening.js";
 import {dishMadeMold, pointing, clearKitchen} from "./components/score.js";
 import {getOrder, updateScore, updateRanking} from "./components/requests.js";
 import {$plate, $pot, $ready} from "./components/dragNDrop.js";
-import {clientOrder} from "./components/incomingClients.js";
+import {clientOrder, newClient} from "./components/incomingClients.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
+
+function setCorrectingInterval(func, delay) {
+	var instance = {};
+    let cod;
+	function tick(func, delay) {
+		if (!instance.started) {
+			instance.func = func;
+			instance.delay = delay;
+			instance.startTime = new Date().valueOf();
+			instance.target = delay;
+			instance.started = true;
+
+			cod = setTimeout(tick, delay);
+		} else {
+			let elapsed = new Date().valueOf() - instance.startTime
+			let adjust = instance.target - elapsed;
+
+			instance.func();
+			instance.target += instance.delay;
+
+			cod = setTimeout(tick, instance.delay + adjust);
+		}
+	}
+
+	return tick(func, delay);
+};
 
 $(document).ready(function () {
     let $name;
@@ -18,7 +44,9 @@ $(document).ready(function () {
     // });
 
     $("#game").tabs();
-    
+
+    newClient(3);
+
     // Aba de pedidos
 
     $("#make-order").click(function () {
@@ -66,7 +94,8 @@ $(document).ready(function () {
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
         } else if($plate.css("background-color") === "rgba(0, 0, 0, 0)" || $plate.css("background-color") === "rgb(173, 216, 230)") { // If there is no broth on the plate
-            alert("A entrega não pôde ser concluída. Adicione o caldo.");
+            //alert("A entrega não pôde ser concluída. Adicione o caldo.");
+            console.log($plate.css("background-color"));
             $('#game').tabs({ active: 2 });
         } else if($("#droppable div").length < 5) { // If there are not enough ingredients
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
@@ -74,9 +103,9 @@ $(document).ready(function () {
             let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
             dishMade.broth = $plate.css("background-color");
             let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
-            score = totalScore;
+            //score = totalScore;
 
-            $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
+            /* $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
             $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
             $("#broth-score").html(`Caldo: ${brothScore} pontos`);
             $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
@@ -98,7 +127,11 @@ $(document).ready(function () {
                         $("#mouth").attr("href", "./images/Pedido/boca-normal.svg");
                     }
                 }, 500)
-            })
+            }) */
+            $('#game').tabs({
+                active: 0
+            });
+            newClient(3);
         }
     });
 
