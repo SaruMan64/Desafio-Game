@@ -74,9 +74,7 @@ $stove.droppable({
             // Se vazio pode adicionar macarrão para cozimento
             
             $(this).append(
-                $(`<div class="itemNoddle">
-            
-            </div>`)
+                $(`<div class="itemNoddle"></div>`)
             );
             
             $(this).css("background", "var(--pan-noddle-1)")
@@ -86,7 +84,7 @@ $stove.droppable({
             setTimer(referenceValue);
 
             setTimeout(function () {
-                console.log(reference[0].children[0].children[0]);
+                console.log(reference[0]);
                 
                 // 10 segundos para cozimento
                 $(reference).css("background", "var(--pan-noddle-2)")
@@ -99,7 +97,7 @@ $stove.droppable({
                         revert: "invalid",
                         start: function (event, ui) {
                             $(this).html(`<img class="foods" src="./images/foods/noddle3.png">`)
-                            $(reference).css("background", "var(--pan-off)")
+                            $(this).parent().css("background", "var(--pan-off)")
                             // Stop the stove timer
                             let father = this.parentNode.getAttribute("value");
                             dishMade.cookingTime = parseInt(

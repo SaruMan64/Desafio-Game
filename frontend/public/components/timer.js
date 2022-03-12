@@ -52,7 +52,7 @@ const setCorrectingInterval = function (func, cod, i, delay) {
 
 function setTimer(index) { // Start the stove timer
     const interval = 1000;
-    const aux = $(`[value=${index}]`).next();
+    const aux = $(`[value=${index}]`).siblings(".clock")[index - 1]; // aqui havia um .next(); no lugar do siblings
 
     let startTime = Date.now();
     setCorrectingInterval(function () {
@@ -64,7 +64,7 @@ function setTimer(index) { // Start the stove timer
 
 function clearOneTimer(num) {
     clearTimeout(cods[num]);
-    const stove = $(`[value=${num}]`).next();
+    const stove = $(`[value=${num}]`).siblings(".clock")[num - 1]; // aqui tbm
     $(stove).children().each(function () {
         $(this).text("");
     });
