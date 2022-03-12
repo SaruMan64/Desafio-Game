@@ -71,6 +71,7 @@
   justify-content: space-around;
   align-items: flex-end;
 }
+
 /* 
 #all-clients > div {
   height: 100%;
@@ -79,6 +80,7 @@
   justify-content: end;
 }
  */
+
 .seat {
   width: 16%;
   display: flex;
@@ -91,7 +93,7 @@
 }
 
 .take-my-order {
-  height: 25vmin;
+  height: 20vmin;
   width: 90%;
   position: relative;
   display: flex;
@@ -113,7 +115,6 @@
   background: linear-gradient(135deg, transparent 30%, white 30%);
   border-right: 3px solid black;
   border-bottom: 3px solid black;
-  rotate: 45deg;
   transform: rotate(45deg);
 }
 

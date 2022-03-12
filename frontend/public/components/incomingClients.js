@@ -1,5 +1,5 @@
 import { getOrder } from "./requests.js";
-import {makeWiggle, dropWiggle} from "./makeItWiggle.js";
+import { makeWiggle, dropWiggle } from "./makeItWiggle.js";
 let freeSeats = [];
 let numberClient = 1;
 
@@ -17,10 +17,10 @@ $(document).on("click", ".accept", function () {
         }, */
         revert: "invalid",
         revert: true,
-        drag: function(){
+        drag: function () {
             makeWiggle(this);
         },
-        stop: function (){
+        stop: function () {
             dropWiggle(this);
         }
     });
@@ -55,7 +55,7 @@ function incomeClient(seat, client) {
             numberClient++;
         }, 500);
         item.prepend(div[0]);
-    }, 500);
+    }, 100);
 }
 
 function clientOrder() {

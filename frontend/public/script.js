@@ -1,9 +1,9 @@
-import {sound} from "./components/audio.js";
-import {openingHTML, openingAJAX} from "./components/opening.js";
-import {dishMadeMold, pointing, clearKitchen} from "./components/score.js";
-import {getOrder, updateScore, updateRanking} from "./components/requests.js";
-import {$plate, $pot, $ready} from "./components/dragNDrop.js";
-import {clientOrder} from "./components/incomingClients.js";
+import { sound } from "./components/audio.js";
+import { openingHTML, openingAJAX } from "./components/opening.js";
+import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
+import { getOrder, updateScore, updateRanking } from "./components/requests.js";
+import { $plate, $pot, $ready } from "./components/dragNDrop.js";
+import { clientOrder } from "./components/incomingClients.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -13,13 +13,13 @@ $(document).ready(function () {
     // Opening
     // openingHTML();
     // $('#btn').click(function () {
-        // sound.playMusic("sakuya");
+    // sound.playMusic("sakuya");
     //     $name = $("#inputName").val();
     //     openingAJAX();
     // });
 
     $("#game").tabs();
-    
+
     // Aba de pedidos
 
     $("#make-order").click(function () {
@@ -63,28 +63,28 @@ $(document).ready(function () {
     // Aba ingredientes 
 
     $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
-        if($("#order-drop").html() === "") { // If an order was not selected
+        if ($("#order-drop").html() === "") { // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
             $('#game').tabs({ active: 0 });
-        } else if(!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
+        } else if (!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
-        } else if(!$("#box").css("background-image").includes("broth")) { // If there is no broth on the plate
+        } else if (!$("#box").css("background-image").includes("broth")) { // If there is no broth on the plate
             alert("A entrega não pôde ser concluída. Adicione o caldo.");
             $('#game').tabs({ active: 2 });
-        } else if($("#droppable div").length < 5) { // If there are not enough ingredients
+        } else if ($("#droppable div").length < 5) { // If there are not enough ingredients
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else { // If everything is ok with the previous steps
 
             let holder = JSON.parse($("#order-drop")[0].children[0].id || "{}");
             dishMade.broth = $("#box").css("background-image");
-            let {cookingScore, brothScore, ingredientsScore, orderScore, totalScore} = pointing(holder, dishMade);
+            let { cookingScore, brothScore, ingredientsScore, orderScore, totalScore } = pointing(holder, dishMade);
             score = totalScore;
 
             const orderNumber = Number($("#order-drop")[0].children[0].children[0].children[14].innerHTML);
-            $("#all-clients > div").each(function(i, item) { // Fill the scoring modal and removes the client from the seat
+            $("#all-clients > div").each(function (i, item) { // Fill the scoring modal and removes the client from the seat
                 try {
-                    if(Number(item.children[0].id) === orderNumber){
+                    if (Number(item.children[0].id) === orderNumber) {
                         const clientNumber = (item.children[0].getAttribute("src")).split("-")[1];
                         $("#person-modal").html("");
                         $("#person-modal").append(`<img src="./images/Pedido/client-${clientNumber}-front.png" />`);
@@ -102,7 +102,7 @@ $(document).ready(function () {
                 }
             });
 
-            
+
             $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
         }
     });
@@ -141,4 +141,4 @@ $(document).ready(function () {
 
 });
 
-export {dishMade};
+export { dishMade };
