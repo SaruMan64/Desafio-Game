@@ -141,7 +141,7 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        if ($("#pot").css("background") === "var(--broth-off)") {
+        if ($("#pot").css("background") === "var(--broth-noddle)") {
             $("#outer-pot").css("background", `var(--broth-noddle)`);
         } else {
             $("#outer-pot").css("background", `var(--${ui.draggable[0].id})`);

@@ -1,8 +1,8 @@
 :root {
-  --broth-off: url("../images/others/bowl.png") no-repeat bottom/20vmin;
+  --broth-off: url("../images/others/bowl.png") no-repeat center/20vmin;
 
-  --broth-noddle: url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+  --broth-noddle: url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 
   --fish-broth: radial-gradient(
         circle,
@@ -10,9 +10,9 @@
         rgba(221, 205, 156, 0.8) 64%,
         transparent 64%
       )
-      no-repeat bottom/20vmin 20vmin,
-    url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 
   --chicken-broth: radial-gradient(
         circle,
@@ -20,9 +20,9 @@
         rgba(230, 198, 93, 0.8) 64%,
         transparent 64%
       )
-      no-repeat bottom/20vmin 20vmin,
-    url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 
   --meat-broth: radial-gradient(
         circle,
@@ -30,9 +30,9 @@
         rgba(151, 47, 18, 0.9) 64%,
         transparent 64%
       )
-      no-repeat bottom/20vmin 20vmin,
-    url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 
   --pork-broth: radial-gradient(
         circle,
@@ -40,9 +40,9 @@
         rgba(74, 47, 15, 0.9) 64%,
         transparent 64%
       )
-      no-repeat bottom/20vmin 20vmin,
-    url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 
   --shoyu-broth: radial-gradient(
         circle,
@@ -50,9 +50,9 @@
         rgba(38, 32, 11, 0.9) 64%,
         transparent 64%
       )
-      no-repeat bottom/20vmin 20vmin,
-    url("../images/foods/noddle3.png") no-repeat center 92%/16.5vmin,
-    url("../images/others/bowl.png") no-repeat bottom/20vmin;
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 }
 
 #select-broth {
@@ -62,17 +62,13 @@
   height: 87.5%;
 }
 
-/* #table3 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+#table3 {
+  flex-direction: column;
+}
 
 #broth-noodle {
-  width: 80%;
-  height: 90%;
+  width: 100%;
+  height: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,18 +83,14 @@
 
 #broth {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  column-gap: 5%;
+  justify-content: space-around;
   list-style: none;
 }
 
 #broth > li {
-  width: 30%;
-  height: 22vmin;
-  position: relative;
-  z-index: 1;
+  width: 18%;
 }
+
 #broth img {
   width: 100%;
   height: 100%;
@@ -109,32 +101,29 @@
   display: flex;
   align-items: end;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 20vmin;
+  height: 20vmin;
   background: var(--broth-off);
-  position: absolute;
-  bottom: 0;
 }
 
 #pot {
-  width: 20vmin;
-  height: 20vmin;
-  /* background: url("../frontend/public/images/foods/noddle2.png") no-repeat center/cover; */
-  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 #inner-pot {
   width: 100%;
   height: 100%;
-  /* background: radial-gradient(circle, rgba(255, 255, 255, 0) 15%, red 80%); */
 }
 
 #side-broth {
-  width: 25%;
-  height: 80%;
+  width: 50%;
+  height: 50%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  align-self: center;
+  justify-self: center;
 }
 
 #pan-to-ingredients {
