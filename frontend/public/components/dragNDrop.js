@@ -84,8 +84,8 @@ $stove.droppable({
             setTimer(referenceValue);
 
             setTimeout(function () {
-                console.log(reference[0].children[0].children[0]);
-
+                console.log(reference[0]);
+                
                 // 10 segundos para cozimento
                 $(reference).css("background", "var(--pan-noddle-2)")
                 $(".itemNoddle")
