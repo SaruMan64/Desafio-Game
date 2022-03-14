@@ -247,7 +247,7 @@
 .table {
   width: 100%;
   height: 70%;
-  background: url("../images/others/rockywall.png");
+  background: linear-gradient(rgba(248, 248, 255, 0.3) 0%, rgba(248, 248, 255, 0.3) 100%), url("../images/others/rockywall.png");
   display: flex;
   justify-content: center;
   align-items: flex-start;
