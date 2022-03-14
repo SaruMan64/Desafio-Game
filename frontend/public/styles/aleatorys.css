@@ -2,18 +2,20 @@
   position: fixed;
   width: 250px;
   height: 250px;
-  background: transparent;
+  z-index: 15;
+  /* background: transparent; */
   border-radius: 6px;
   cursor: pointer;
+  background-color: gray;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .normal-spider {
-  background-image: url(../images/normal-spider);
+  background-image: url(../images/others/normal-spider.png);
 }
 
 .kenji-spider {
-  background-image: url(../images/kenji-spider);
+  background-image: url(../images/others/kenji-spider.png);
 }
