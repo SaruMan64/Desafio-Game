@@ -141,10 +141,10 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        if ($("#pot").css("background-image") === "none") {
-            $("#outer-pot").css("background-image", `url("./images/broth/${ui.draggable[0].id}.png")`);
+        if ($("#pot").css("background") === "var(--broth-noddle)") {
+            $("#outer-pot").css("background", `var(--broth-noddle)`);
         } else {
-            $("#outer-pot").css("background-image", `url("./images/others/noddle-with-${ui.draggable[0].id}.png")`);
+            $("#outer-pot").css("background", `var(--${ui.draggable[0].id})`);
         }
         $("#pot").css("background", "");
     }
