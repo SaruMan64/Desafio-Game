@@ -36,7 +36,7 @@ $(document).ready(function () {
     // Aba cozimento
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
-        $("#outer-pot").css("background-image", "url(./images/others/box.png");
+        $("#outer-pot").css("background", "var(--broth-noddle)");
         $pot.css("background", `url(${$("#ready")[0].children[0].src}) no-repeat center/cover`);
         $ready.droppable("enable");
         $ready[0].innerHTML = "";
@@ -48,9 +48,9 @@ $(document).ready(function () {
     // Aba molho
 
     $("#pan-to-ingredients").click(function () { // Transfere macarão com molho para tela com ingredientes
-        $("#box").css("background-image", $("#outer-pot").css("background-image"));
-        $("#droppable").css("background-image", $("#pot").css("background-image"));
-        $("#outer-pot").css("background-image", "url(./images/others/box.png");
+        $("#box").css("background", $("#outer-pot").css("background"));
+        //$("#droppable").css("background-image", $("#pot").css("background-image"));
+        //$("#outer-pot").css("background-image", "url(./images/others/box.png");
         // $plate.css("background-color", $pot.css("background-color"));
         // $plate.css("background-image", $("#pot").css("background-image"));
         // $pot[0].innerHTML = "";
