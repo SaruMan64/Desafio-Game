@@ -2,12 +2,13 @@
   --pan-off: url("../images/others/pan.png") no-repeat center/contain;
   --pan-noddle-1: radial-gradient(
         circle,
-        transparent 0%,
-        rgba(63, 94, 251, 0.5) 45%,
+        /* 
+        transparent 0%, 
+        */ rgba(63, 94, 251, 0.5) 45%,
         transparent 45%
       )
       no-repeat center 100% / auto 99%,
-    url("../images/foods/noddle1.png") no-repeat center/40%,
+    url("../images/foods/noddle1.png") no-repeat center/33%,
     url("../images/others/pan.png") no-repeat center/contain,
     radial-gradient(
         circle,
@@ -28,7 +29,7 @@
       )
       no-repeat center 100% / auto 99%,
     /* url("../images/foods/noddle2.png") no-repeat center/70%, */
-      url("../images/foods/noddle3.png") no-repeat center/55% 60%,
+      url("../images/foods/noddle3.png") no-repeat center/55%,
     url("../images/others/pan.png") no-repeat center/contain,
     radial-gradient(
         circle,
@@ -52,6 +53,7 @@
 
 #noddle1 {
   width: 20%;
+  height: 50%;
   object-fit: contain;
   align-self: center;
 }
@@ -74,16 +76,39 @@
   align-items: center;
   justify-content: center;
   height: 96.15%;
-  width: 24.5%;
+  width: 29%;
+}
+
+.stove-clock {
+  width: 100%;
+  height: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.stove-clock > .stove {
+  width: 100%;
+  height: 75%;
+}
+
+.column > .stove {
+  width: 100%;
+  height: 35%;
 }
 
 .stove {
-  width: 100%;
-  height: 35%;
   background: var(--pan-off);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.stove > .itemNoddle > img {
+  width: 50%;
+  height: 55%;
+  object-fit: fill;
+  object-position: center;
 }
 
 .itemNoddle {
@@ -95,8 +120,8 @@
 }
 
 .itemNoddle > img {
-  width: 55%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   object-fit: fill;
   object-position: center;
 }
@@ -106,8 +131,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
+  row-gap: 10%;
 }
 
 #ready {
@@ -115,13 +141,13 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center, center;
-  width: 30vmin;
-  height: 30vmin;
+  width: 15vmin;
+  height: 15vmin;
 }
 
 #ready > .itemNoddle {
-  width: 20vmin;
-  height: 20vmin;
+  width: 15vmin;
+  height: 15vmin;
 }
 
 #pan-to-noodles-and-broth {
@@ -132,10 +158,4 @@
 
 #pan-to-noodles-and-broth > img {
   height: 100%;
-}
-
-@media (max-aspect-ratio: 16/9){
-  #oven{
-    column-gap: 3%;
-  }
 }

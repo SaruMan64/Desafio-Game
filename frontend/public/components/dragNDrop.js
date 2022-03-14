@@ -74,9 +74,7 @@ $stove.droppable({
             // Se vazio pode adicionar macarrão para cozimento
 
             $(this).append(
-                $(`<div class="itemNoddle">
-            
-            </div>`)
+                $(`<div class="itemNoddle"></div>`)
             );
 
             $(this).css("background", "var(--pan-noddle-1)")
@@ -99,7 +97,7 @@ $stove.droppable({
                         revert: "invalid",
                         start: function (event, ui) {
                             $(this).html(`<img class="foods" src="./images/foods/noddle3.png">`)
-                            $(reference).css("background", "var(--pan-off)")
+                            $(this).parent().css("background", "var(--pan-off)")
                             // Stop the stove timer
                             let father = this.parentNode.getAttribute("value");
                             dishMade.cookingTime = parseInt(
@@ -143,10 +141,10 @@ $pot.droppable({
     accept: "#broth > li",
     drop: function (event, ui) {
         console.log(ui.draggable[0].id);
-        if ($("#pot").css("background-image") === "none") {
-            $("#outer-pot").css("background-image", `url("./images/broth/${ui.draggable[0].id}.png")`);
+        if ($("#pot").css("background") === "var(--broth-noddle)") {
+            $("#outer-pot").css("background", `var(--broth-noddle)`);
         } else {
-            $("#outer-pot").css("background-image", `url("./images/others/noddle-with-${ui.draggable[0].id}.png")`);
+            $("#outer-pot").css("background", `var(--${ui.draggable[0].id})`);
         }
         $("#pot").css("background", "");
     }
