@@ -99,11 +99,8 @@
 }
 
 #droppable {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  width: 220px;
-  height: 180px;
+  width: 24vmin;
+  height: 24vmin;
 }
 
 #ingredients > li {
