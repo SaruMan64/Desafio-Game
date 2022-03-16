@@ -111,6 +111,7 @@ function aleatoryChance(num) {
             let div = document.createElement("div");
             div.setAttribute("id", "card");
             div.setAttribute("class", "normal-spider");
+            div.setAttribute("z-index", "15");
 
             if (changeSkin <= num * 0.1) {
                 div.removeClass("normal-spider");

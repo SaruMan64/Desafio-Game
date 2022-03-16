@@ -2,11 +2,11 @@
   position: fixed;
   width: 250px;
   height: 250px;
-  z-index: 15;
+  z-index: 0;
   /* background: transparent; */
   border-radius: 6px;
   cursor: pointer;
-  background-color: gray;
+  /* background-color: gray; */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
