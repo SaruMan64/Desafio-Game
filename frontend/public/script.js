@@ -142,7 +142,7 @@ $(document).ready(function () {
 
     $(document).on("click", function(){
         console.log("arainha");
-        aleatoryChance(50);
+        aleatoryChance(90);
     });
 
 });
