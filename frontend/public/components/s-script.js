@@ -76,7 +76,7 @@ $(".end, .popup-overlay").on("click", function () {
 });
 
 $(document).ready(function () {
-    $("#abacate").load("./images/Pedido/pedido.svg");
+    $("#abacate").load("./images/order/pedido.svg");
     setTimeout(() => {
         $("#clothespin").css("display", "inherit")
         $("#cook").attr("href", "./images/chashu.png");

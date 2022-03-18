@@ -158,7 +158,7 @@
 
 .accept {
   background-color: green;
-  mask-image: url("../images/Pedido/check.png");
+  mask-image: url("../images/order/check.png");
   mask-size: cover;
   mask-repeat: no-repeat;
   mask-position: center;
@@ -169,7 +169,7 @@
 
 .decline {
   background-color: red;
-  mask-image: url("../images/Pedido/deny.png");
+  mask-image: url("../images/order/deny.png");
   mask-size: cover;
   mask-repeat: no-repeat;
   mask-position: center;

@@ -2,6 +2,10 @@ let hasSpiderOnScreen = false;
 let width = window.innerWidth;
 let height = window.innerHeight;
 
+$(document).on("click", ".spider-web", function () {
+    $(this).remove();
+});
+
 const linearRoutes = {
     route0: {
         start: { x: -500, y: -500 },
@@ -19,10 +23,6 @@ const radialRouts = {
 };
 
 function linearSpiderKenji(num, time1, time2) {
-    /* let div = document.createElement("div");
-    div.setAttribute("id", "card");
-    div.addClass("normal-spider");
-    $("body").append(div); */
 
     const start = {
         x: linearRoutes["route" + num].start.x,
@@ -101,11 +101,47 @@ function radialSpiderKenji(num) {
     });
 }
 
+function addWebs() {
+    const img1 = new Image();
+    img1.src = "../images/others/web-1.png";
+    let imgWidth, imgHeight;
+    img1.onload = function () {
+        imgWidth = this.width;
+        imgHeight = this.height;
+        console.log(`width: ${imgWidth} - height: ${imgHeight}`);
+
+        $("body").append(img1);
+
+        let img = $(img1);
+        img.css({
+            width: String(imgWidth * 0.2) + "px",
+        });
+
+        img.addClass("spider-web");
+        imgWidth = this.width;
+        imgHeight = this.height;
+        console.log(`width: ${imgWidth} - height: ${imgHeight}`);
+
+        img.css({
+            position: "absolute",
+            left:
+                String(Math.abs(Math.floor(Math.random() * width - imgWidth))) +
+                "px",
+            top:
+                String(
+                    Math.abs(Math.floor(Math.random() * height - imgHeight))
+                ) + "px",
+        });
+        console.log(img);
+    };
+}
+
 function aleatoryChance(num) {
+    addWebs();
     if (!hasSpiderOnScreen) {
         let chance = Math.round(Math.random() * 100);
         let changeSkin = Math.round(Math.random() * 100);
-        
+
         if (chance <= num) {
             hasSpiderOnScreen = true;
             let div = document.createElement("div");
@@ -119,6 +155,7 @@ function aleatoryChance(num) {
             }
 
             $("body").append(div);
+            addWebs();
 
             let whatFunction = Math.round(Math.random());
             let whatRoute = Math.round(Math.random());
@@ -136,12 +173,14 @@ function aleatoryChance(num) {
     }
 }
 
-function ifItWorks() { // Se a aranha for pega
+function ifItWorks() {
+    // Se a aranha for pega
     hasSpiderOnScreen = false;
     console.log("Removido a tempo");
 }
 
-function ifItNotWorks() { // Se a aranha não for pega
+function ifItNotWorks() {
+    // Se a aranha não for pega
     hasSpiderOnScreen = false;
     console.log("LA LA LA");
 }

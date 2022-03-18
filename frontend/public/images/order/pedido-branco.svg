@@ -21,29 +21,29 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M350 598.868L50 598.868L50 595.818L350 595.818L350 598.868Z"
             fill="black" fill-opacity="0.5" />
     </g>
-    <image id="cook" x="118" y="111" width="80" height="80" href="./images/Pedido/rabisco.png" />
+    <image id="cook" x="118" y="111" width="80" height="80" href="./images/order/rabisco.png" />
     <text id="cookTime" class="numbersvg" x="203" y="165" width="80" height="80" fill="black">
         00
     </text>
-    <image id="broth" x="160" y="253" width="80" height="80" href="./images/Pedido/rabisco.png" />
+    <image id="broth" x="160" y="253" width="80" height="80" href="./images/order/rabisco.png" />
 
     <image id="ingredient1" class="ingredient i1" x="69" y="393" width="80" height="80"
-        href="./images/Pedido/rabisco.png" />
+        href="./images/order/rabisco.png" />
     <text id="num1" class="numbersvg i1" x="155" y="445" fill="black">
         00
     </text>
     <image id="ingredient2" class="ingredient i2" x="204" y="393" width="80" height="80"
-        href="./images/Pedido/rabisco.png" />
+        href="./images/order/rabisco.png" />
     <text id="num2" class="numbersvg i2" x="290" y="445" fill="black">
         00
     </text>
     <image id="ingredient3" class="ingredient i3" x="70" y="498" width="80" height="80"
-        href="./images/Pedido/rabisco.png" />
+        href="./images/order/rabisco.png" />
     <text id="num3" class="numbersvg i3" x="155" y="550" fill="black">
         00
     </text>
     <image id="ingredient4" class="ingredient i4" x="204" y="498" width="80" height="80"
-        href="./images/Pedido/rabisco.png" />
+        href="./images/order/rabisco.png" />
     <text id="num4" class="numbersvg i4" x="290" y="550" fill="black">
         00
     </text>
