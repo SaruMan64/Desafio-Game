@@ -3,7 +3,7 @@ import { openingHTML, openingAJAX } from "./components/opening.js";
 import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import { clientOrder } from "./components/incomingClients.js";
+import { clientOrder, newClient } from "./components/incomingClients.js";
 import {aleatoryChance} from "./components/aleatoryEvents.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
@@ -21,6 +21,8 @@ $(document).ready(function () {
 
     $("#game").tabs();
 
+    newClient(0);
+
     // Aba de pedidos
 
     $("#make-order").click(function () {
@@ -37,7 +39,7 @@ $(document).ready(function () {
     // Aba cozimento
 
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
-        $("#outer-pot").css("background-image", "url(./images/others/box.png");
+        $("#outer-pot").css("background", "var(--broth-noddle)");
         $pot.css("background", `url(${$("#ready")[0].children[0].src}) no-repeat center/cover`);
         $ready.droppable("enable");
         $ready[0].innerHTML = "";
@@ -49,9 +51,9 @@ $(document).ready(function () {
     // Aba molho
 
     $("#pan-to-ingredients").click(function () { // Transfere macarão com molho para tela com ingredientes
-        $("#box").css("background-image", $("#outer-pot").css("background-image"));
-        $("#droppable").css("background-image", $("#pot").css("background-image"));
-        $("#outer-pot").css("background-image", "url(./images/others/box.png");
+        $("#box").css("background", $("#outer-pot").css("background"));
+        //$("#droppable").css("background-image", $("#pot").css("background-image"));
+        //$("#outer-pot").css("background-image", "url(./images/others/box.png");
         // $plate.css("background-color", $pot.css("background-color"));
         // $plate.css("background-image", $("#pot").css("background-image"));
         // $pot[0].innerHTML = "";

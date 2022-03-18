@@ -1,7 +1,7 @@
 import { setTimer, clearOneTimer } from "./timer.js";
 import { dishMade } from "../script.js";
 
-let $ingredients = $("#ingredients"),
+let $ingredients = $(".ingredients"),
     // $orderList = $("#order-list"),
     $plate = $("#droppable"),
     $broth = $("#broth"),
@@ -163,7 +163,7 @@ $("li", $ingredients).draggable({ // Garante que seja arrastável cada ítem den
     helper: function (event) {
         // Muda saída para o ingrediente ao invés do pote
         let deg = Math.floor(Math.random() * 360);
-        return $(`<div style="width: 80px; height: 80px;"  id="${event.target.id}">
+        return $(`<div style="width: 80px; height: 80px;; z-index: 2;"  id="${event.target.id}">
                     <img class="foods" style="transform: rotate(${deg}deg)" src="./images/foods/${event.target.id}.png">
                 </div>`);
     },
@@ -187,7 +187,7 @@ $ingredients.droppable({
 
 $plate.droppable({
     // Cria um clone dos ingredientes arrastados até a caixa
-    accept: "#ingredients > li",
+    accept: ".ingredients > li",
     drop: function (event, ui) {
         $(this).append($(ui.helper).clone());
         $("#droppable div").addClass("itemIngredients");
