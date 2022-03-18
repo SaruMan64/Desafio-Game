@@ -21,6 +21,7 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M350 598.868L50 598.868L50 595.818L350 595.818L350 598.868Z"
             fill="black" fill-opacity="0.5" />
     </g>
+    <!-- <image id="cook" x="118" y="111" width="80" height="80" href="./images/Pedido/rabisco.png" /> -->
     <text id="cookTime" class="numbersvg" x="160" y="165" width="80" height="80" fill="black">
         00
     </text>
