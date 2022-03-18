@@ -2,6 +2,35 @@ import { getOrder } from "./requests.js";
 import { makeWiggle, dropWiggle } from "./makeItWiggle.js";
 let freeSeats = [];
 let numberClient = 1;
+let services = new Array(6);
+
+function timeOrder(i) {
+    let startTime = Date.now();
+    services[i] = factory();
+    let time = Math.floor(Math.random() * (30 - 5 + 5) + 5);
+    console.log("O novo pedido virá em " + time + " segundos.");
+    let cod = services[i].setCorrectingInterval(function () {
+        let x = Date.now() - startTime;
+        console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+    }, 1000);
+    newClient(time);
+    console.log(cod);
+}
+
+function newClient(time) {
+    let startTime = Date.now();
+    let timer = factory();
+    let cod = timer.setCorrectingInterval(function () {
+        let x = Date.now() - startTime;
+        console.log('New client: ' + x + 'ms elapsed');
+        if (x >= (time * 1000)) {
+            clientOrder();
+            timer.clearCorrectingInterval(cod);
+        }
+    }, 1000);
+    console.log(cod);
+}
+
 
 $(document).on("click", ".accept", function () {
     $(this).parents(".take-my-order").children().children().children().attr("viewBox", "0 0 400 723");
