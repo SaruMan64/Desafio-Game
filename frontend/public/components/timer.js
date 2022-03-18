@@ -1,5 +1,6 @@
-let cods = new Array(5);
+const cods = new Array(5);
 const timers = new Array(5);
+const stoves = new Array(5);
 
 function printTimer(stove, time) { // Show the timer on the stove
     let string = time.toString();
@@ -23,7 +24,7 @@ function printTimer(stove, time) { // Show the timer on the stove
     });
 }
 
-const setCorrectingInterval = function (func, cod, i, delay) {
+/* const setCorrectingInterval = function (func, cod, i, delay) {
 	var instance = {};
 
 	function tick(func, delay) {
@@ -47,28 +48,83 @@ const setCorrectingInterval = function (func, cod, i, delay) {
 	}
 
 	return tick(func, delay);
-};
-
+}; */
 
 function setTimer(index) { // Start the stove timer
-    const interval = 1000;
-    const aux = $(`[value=${index}]`).siblings(".clock")[index - 1]; // aqui havia um .next(); no lugar do siblings
+  const interval = 1000;
+  const aux = $(`[value=${index}]`).next();
 
-    let startTime = Date.now();
-    setCorrectingInterval(function () {
-        let time = Math.trunc((Date.now() - startTime) / 1000);
-        timers[index - 1] = time;
-        printTimer(aux, time);
-    }, cods, index, interval);
+  let startTime = Date.now();
+  stoves[index] = new factory();
+  cods[index] = stoves[index].setCorrectingInterval(function () {
+      let time = Math.trunc((Date.now() - startTime) / 1000);
+      timers[index - 1] = time;
+      printTimer(aux, time);
+  }, interval);
+  console.log(cods[index]);
+}
+
+function factory() {
+    // Track running intervals
+    let numIntervals = 0;
+    let intervals = {};
+  
+    // Polyfill Date.now
+    let now = Date.now || function() {
+      return new Date().valueOf();
+    };
+  
+    let setCorrectingInterval = function(func, delay) {
+        let id = numIntervals++;
+        let planned = now() + delay;
+  
+      // Normalize func as function
+      switch (typeof func) {
+        case 'function':
+          break;
+        case 'string':
+          var sFunc = func;
+          func = function() {
+            eval(sFunc);
+          };
+          break;
+        default:
+          func = function() { };
+      }
+  
+      function tick() {
+        func();
+  
+        // Only re-register if clearCorrectingInterval was not called during function
+        if (intervals[id]) {
+          planned += delay;
+          intervals[id] = setTimeout(tick, planned - now());
+        }
+      }
+  
+      intervals[id] = setTimeout(tick, delay);
+      return id;
+    };
+  
+    let clearCorrectingInterval = function(id) {
+      clearTimeout(intervals[id]);
+      delete intervals[id];
+    };
+  
+    return {
+      setCorrectingInterval: setCorrectingInterval,
+      clearCorrectingInterval: clearCorrectingInterval
+    };
 }
 
 function clearOneTimer(num) {
-    clearTimeout(cods[num]);
-    const stove = $(`[value=${num}]`).siblings(".clock")[num - 1]; // aqui tbm
+    stoves[num].clearCorrectingInterval(cods[num]);
+    const stove = $(`[value=${num}]`).next();
     $(stove).children().each(function () {
         $(this).text("");
     });
+    console.log(timers[num - 1]);
     return timers[num - 1];
 }
 
-export {setTimer, clearOneTimer};
+export {setTimer, clearOneTimer, factory};

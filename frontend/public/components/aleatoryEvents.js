@@ -1,3 +1,4 @@
+let hasSpiderOnScreen = false;
 let width = window.innerWidth;
 let height = window.innerHeight;
 
@@ -17,7 +18,7 @@ const radialRouts = {
     route1: { rx: 1000, ry: 1000, cx: 0, cy: 0 },
 };
 
-function linearSpiderKenji(num) {
+function linearSpiderKenji(num, time1, time2) {
     /* let div = document.createElement("div");
     div.setAttribute("id", "card");
     div.addClass("normal-spider");
@@ -42,28 +43,28 @@ function linearSpiderKenji(num) {
         ifItWorks();
     });
 
-    $("#card").toggle(
-        $("#card").animate(
-            {
-                left: end.x,
-                top: end.y,
-            },
-            2000
-        ),
+    $("#card").animate(
+        {
+            left: end.x,
+            top: end.y,
+        },
+        time1
+    );
+    setTimeout(() => {
         $("#card").animate(
             {
                 left: start.x,
                 top: start.y,
             },
-            8000,
+            time2,
             function () {
                 if ($("#card").length !== 0) {
                     $("#card").remove();
                     ifItNotWorks();
                 }
             }
-        )
-    );
+        );
+    }, time1);
 }
 
 function radialSpiderKenji(num) {
@@ -101,40 +102,48 @@ function radialSpiderKenji(num) {
 }
 
 function aleatoryChance(num) {
-    let chance = Math.round(Math.random() * 100);
-    let changeSkin = Math.round(Math.random() * 100);
+    if (!hasSpiderOnScreen) {
+        let chance = Math.round(Math.random() * 100);
+        let changeSkin = Math.round(Math.random() * 100);
+        
+        if (chance <= num) {
+            hasSpiderOnScreen = true;
+            let div = document.createElement("div");
+            div.setAttribute("id", "card");
+            div.setAttribute("class", "normal-spider");
+            div.setAttribute("z-index", "15");
 
-    if (chance <= num) {
-        let div = document.createElement("div");
-        div.setAttribute("id", "card");
-        div.addClass("normal-spider");
+            if (changeSkin <= num * 0.1) {
+                div.removeClass("normal-spider");
+                div.addClass("kenji-spider");
+            }
 
-        if (changeSkin <= num * 0.1) {
-            div.removeClass("normal-spider");
-            div.addClass("kenji-spider");
-        }
+            $("body").append(div);
 
-        $("body").append(div);
-
-        let whatFunction = Math.round(Math.random());
-        let whatRoute = Math.round(Math.random());
-        switch (whatFunction) {
-            case 0:
-                linearSpiderKenji(whatRoute);
-                break;
-            case 1:
-                radialSpiderKenji(whatRoute);
-                break;
-            default:
-                console.log("Como chegamos aqui");
+            let whatFunction = Math.round(Math.random());
+            let whatRoute = Math.round(Math.random());
+            switch (whatFunction) {
+                case 0:
+                    linearSpiderKenji(whatRoute, 8000, 8000);
+                    break;
+                case 1:
+                    radialSpiderKenji(whatRoute);
+                    break;
+                default:
+                    console.log("Como chegamos aqui");
+            }
         }
     }
 }
 
-function ifItWorks() {
+function ifItWorks() { // Se a aranha for pega
+    hasSpiderOnScreen = false;
     console.log("Removido a tempo");
 }
 
-function ifItNotWorks() {
+function ifItNotWorks() { // Se a aranha não for pega
+    hasSpiderOnScreen = false;
     console.log("LA LA LA");
 }
+
+export { aleatoryChance };
