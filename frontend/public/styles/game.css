@@ -28,6 +28,11 @@
   z-index: 1;
 }
 
+#order-drop > .order:hover {
+  cursor: grab;
+  transform: scale(1.1);
+}
+
 #order-drop #clothespin {
   display: none;
 }
@@ -247,7 +252,11 @@
 .table {
   width: 100%;
   height: 70%;
-  background: linear-gradient(rgba(248, 248, 255, 0.3) 0%, rgba(248, 248, 255, 0.3) 100%), url("../images/others/rockywall.png");
+  background: linear-gradient(
+      rgba(248, 248, 255, 0.3) 0%,
+      rgba(248, 248, 255, 0.3) 100%
+    ),
+    url("../images/others/rockywall.png");
   display: flex;
   justify-content: center;
   align-items: flex-start;

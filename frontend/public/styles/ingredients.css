@@ -79,9 +79,14 @@
 }
 
 .ingredients li img {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   object-fit: contain;
+}
+
+.ingredients li img:hover {
+  cursor: grab;
+  transform: scale(1.03);
 }
 
 #side-ingredients {

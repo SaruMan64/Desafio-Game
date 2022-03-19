@@ -97,6 +97,12 @@
   object-fit: contain;
 }
 
+#broth img:hover {
+  margin-top: 1vmin;
+  transform: scale(1.1);  
+  cursor:grab;
+}
+
 #outer-pot {
   display: flex;
   align-items: end;

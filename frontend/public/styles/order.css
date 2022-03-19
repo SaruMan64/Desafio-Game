@@ -13,6 +13,11 @@
   background-color: rgba(173, 216, 230, 0);
 }
 
+#orders > .order:hover {
+  cursor: grab;
+  transform: scale(1.1);
+}
+
 #orders::before {
   content: "";
   width: 111.11%;
