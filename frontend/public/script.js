@@ -90,14 +90,14 @@ $(document).ready(function () {
                     if (Number(item.children[0].id) === orderNumber) {
                         const clientNumber = (item.children[0].getAttribute("src")).split("-")[1];
                         $("#person-modal").html("");
-                        $("#person-modal").append(`<img src="./images/Pedido/client-${clientNumber}-front.png" />`);
+                        $("#person-modal").append(`<img src="./images/order/client-${clientNumber}-front.png" />`);
                         $("#cooking-score").html(`Cozimento: ${cookingScore} pontos`);
                         $("#broth-score").html(`Caldo: ${brothScore} pontos`);
                         $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
                         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
                         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
                         item.children[0].remove();
-                        let div = $(`<img src="../images/Pedido/seat.png" />`);
+                        let div = $(`<img src="../images/order/seat.png" />`);
                         item.append(div[0]);
                     }
                 } catch (e) {
@@ -144,7 +144,7 @@ $(document).ready(function () {
 
     $(document).on("click", function(){
         console.log("arainha");
-        aleatoryChance(90);
+        aleatoryChance(5);
     });
 
 });

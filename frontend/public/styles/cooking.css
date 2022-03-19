@@ -42,6 +42,27 @@
         transparent 75%
       )
       no-repeat center/contain;
+  --pan-noddle-3: radial-gradient(
+        circle,
+        transparent 0%,
+        rgba(63, 94, 251, 0.5) 45%,
+        transparent 45%
+      )
+      no-repeat center 100% / auto 99%,
+    /* url("../images/foods/noddle2.png") no-repeat center/70%, */
+      url("../images/foods/noddle3.png") no-repeat center/60%,
+    url("../images/others/pan.png") no-repeat center/contain,
+    radial-gradient(
+        circle,
+        rgba(161, 1, 0, 1) 30%,
+        rgba(218, 31, 5, 0.9) 40%,
+        rgba(218, 31, 5, 0.8) 45%,
+        rgba(254, 101, 13, 0.7) 50%,
+        rgba(255, 193, 31, 0.6) 55%,
+        rgba(255, 247, 93, 0.5) 60%,
+        transparent 75%
+      )
+      no-repeat center/contain;
 }
 
 #select-cooking {
@@ -56,6 +77,11 @@
   height: 50%;
   object-fit: contain;
   align-self: center;
+}
+
+#noddle1:hover {
+  cursor: grab;
+  transform: scale(1.01);
 }
 
 #oven {
@@ -102,6 +128,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.stove:hover {
+  cursor: grab;
 }
 
 .stove > .itemNoddle > img {

@@ -10,7 +10,8 @@ let $ingredients = $(".ingredients"),
     $stove = $(".stove"),
     $ready = $("#ready"),
     $orders = $("#orders"),
-    $crrOrder = $("#order-drop");
+    $crrOrder = $("#order-drop"),
+    $orderCompleted = $("#order-completed");
 
 $crrOrder.droppable({
     accept: ".order",
@@ -221,6 +222,19 @@ $plate.droppable({
             });
     },
 });
+
+$orderCompleted.droppable({
+    accept: "#order-drop > div",
+    drop: function (event, ui) {
+        if ($("#order-completed")[0].innerHTML == "") {
+            $(ui.draggable).appendTo($orderCompleted).position({
+                of: this,
+                my: "center center",
+                at: "center center",
+            });
+        }
+    },
+})
 
 export {
     $ingredients,

@@ -43,6 +43,7 @@ $(document).on("click", ".accept", function () {
     $(".order").draggable({
         // Garante que seja arrastável
         cursor: "grabbing",
+        containment: "main",
         /* cursorAt: {
             top: Math.floor($(".order").height() / 9),
             left: Math.floor($(".order").width() / 2)
@@ -59,7 +60,7 @@ $(document).on("click", ".accept", function () {
 });
 
 $(document).on("click", ".decline", function () {
-    let div = $(`<img src="../images/Pedido/seat.png" />`);
+    let div = $(`<img src="../images/order/seat.png" />`);
     let reference = $(this).parents(".seat");
     reference.html("");
     reference.append(div[0]);
@@ -71,7 +72,7 @@ function incomeClient(seat, client) {
     let item = allSeats[seat];
     item.innerHTML = "";
     let div = $(
-        `<img id=${numberClient} src='../images/Pedido/client-${client}-seat.png' />`
+        `<img id=${numberClient} src='../images/order/client-${client}-seat.png' />`
     );
     item.append(div[0]);
     setTimeout(() => {
