@@ -23,7 +23,6 @@ const radialRouts = {
 };
 
 function linearSpiderKenji(num, time1, time2) {
-
     const start = {
         x: linearRoutes["route" + num].start.x,
         y: linearRoutes["route" + num].start.y,
@@ -102,47 +101,48 @@ function radialSpiderKenji(num) {
 }
 
 function addWebs() {
-    const img1 = new Image();
-    img1.src = "../images/others/web-1.png";
-    let imgWidth, imgHeight;
-    img1.onload = function () {
-        imgWidth = this.width;
-        imgHeight = this.height;
-        console.log(`width: ${imgWidth} - height: ${imgHeight}`);
+    let manySpiderWebs = Math.floor(Math.random() * 3 + 2);
+    for (let i = 0; i < manySpiderWebs; i++) {
+        const img1 = new Image();
+        img1.src = "../images/others/web-1.png";
+        let imgWidth, imgHeight;
+        img1.onload = function () {
+            imgWidth = this.width;
+            imgHeight = this.height;
 
-        $("body").append(img1);
+            $("body").append(img1);
 
-        let img = $(img1);
-        img.css({
-            width: String(imgWidth * 0.2) + "px",
-        });
+            let img = $(img1);
+            img.css({
+                width: String(imgWidth * 0.2) + "px",
+            });
 
-        img.addClass("spider-web");
-        imgWidth = this.width;
-        imgHeight = this.height;
-        console.log(`width: ${imgWidth} - height: ${imgHeight}`);
+            img.addClass("spider-web");
+            imgWidth = this.width;
+            imgHeight = this.height;
 
-        img.css({
-            position: "absolute",
-            left:
-                String(Math.abs(Math.floor(Math.random() * width - imgWidth))) +
-                "px",
-            top:
-                String(
-                    Math.abs(Math.floor(Math.random() * height - imgHeight))
-                ) + "px",
-        });
-        console.log(img);
-    };
+            img.css({
+                position: "absolute",
+                left:
+                    String(
+                        Math.abs(Math.floor(Math.random() * width - imgWidth))
+                    ) + "px",
+                top:
+                    String(
+                        Math.abs(Math.floor(Math.random() * height - imgHeight))
+                    ) + "px",
+            });
+        };
+    }
 }
 
 function aleatoryChance(num) {
-    addWebs();
     if (!hasSpiderOnScreen) {
         let chance = Math.round(Math.random() * 100);
         let changeSkin = Math.round(Math.random() * 100);
 
         if (chance <= num) {
+            addWebs();
             hasSpiderOnScreen = true;
             let div = document.createElement("div");
             div.setAttribute("id", "card");

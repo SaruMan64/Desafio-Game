@@ -43,6 +43,7 @@ $(document).on("click", ".accept", function () {
     $(".order").draggable({
         // Garante que seja arrastável
         cursor: "grabbing",
+        containment: "main",
         /* cursorAt: {
             top: Math.floor($(".order").height() / 9),
             left: Math.floor($(".order").width() / 2)
