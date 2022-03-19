@@ -7,7 +7,7 @@ const zeroFill = (n) => {
 
 function makeOrder(response, numberClient) { 
   let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
-  div.load("./images/Pedido/pedido.svg");
+  div.load("./images/order/pedido.svg");
   let ingredients = Object.entries(response.ingredients);
   setTimeout(() => {
     $(`#order-${numberClient} .order-balloon`).html(div);
