@@ -43,11 +43,7 @@ $(document).on("click", ".accept", function () {
     $(".order").draggable({
         // Garante que seja arrastável
         cursor: "grabbing",
-        containment: "main",
-        /* cursorAt: {
-            top: Math.floor($(".order").height() / 9),
-            left: Math.floor($(".order").width() / 2)
-        }, */
+        // containment: "main",
         revert: "invalid",
         revert: true,
         drag: function () {
@@ -63,8 +59,14 @@ $(document).on("click", ".decline", function () {
     let div = $(`<img src="../images/order/seat.png" />`);
     let reference = $(this).parents(".seat");
     reference.html("");
+    let seat = reference.attr("id").split("").pop();
+
+    $(".seat-top-view").each(function(index){
+        let img = $(this).children()[5 - seat]
+        $(img).attr("src", "../images/others/seat-top-view.svg");
+    });
+
     reference.append(div[0]);
-    console.log($(this).parents());
 });
 
 function incomeClient(seat, client) {
@@ -92,6 +94,13 @@ function incomeClient(seat, client) {
     }, 100);
 }
 
+function copyClient(seat, client) {
+    $(".seat-top-view").each(function(index){
+        let img = $(this).children()[5 - seat]
+        $(img).attr("src", `../images/order/client-${client}-topview.png`);
+    });
+}
+
 function clientOrder() {
     $("#all-clients > div").each(function (i, item) {
         let act = item.children;
@@ -101,11 +110,11 @@ function clientOrder() {
         }
     });
     if (freeSeats.length !== 0) {
-        let whatClientIsComming = Math.floor(Math.random() * 6) + 1;
+        let whatClientIsComming = Math.floor(Math.random() * 9) + 1;
         let whatSeatToSeat =
             freeSeats[Math.floor(Math.random() * freeSeats.length)];
-        console.log(whatClientIsComming, whatSeatToSeat);
         incomeClient(whatSeatToSeat, whatClientIsComming);
+        copyClient(whatSeatToSeat, whatClientIsComming);
         freeSeats = [];
     } else {
         console.log("Sem bancos disponíveis");
