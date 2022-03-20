@@ -109,7 +109,9 @@
   justify-content: center;
   width: 20vmin;
   height: 20vmin;
-  background: var(--broth-off);
+  /* background: var(--broth-off); */
+  background-image: url(../images/others/bowl.png);
+  background-size: cover;
 }
 
 #pot {
