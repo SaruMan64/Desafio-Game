@@ -161,9 +161,9 @@ function showRanking(players) { // Create the ranking in html
 }
 
 function clearKitchen() { // Remove the dish made and the current order
-    $("#box").css("background-image", "url(./images/others/box.png)");
+    $("#box").css("background-image", "url(./images/others/bowl.png)");
     $("#droppable").html("");
-    $("#order-drop").html("");
+    $("#order-completed").html("");
 }
 
 export {dishMadeMold, pointing, clearKitchen, showRanking};
