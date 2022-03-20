@@ -53,6 +53,15 @@
       no-repeat center/20vmin 20vmin,
     url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
     url("../images/others/bowl.png") no-repeat center/20vmin;
+  --vegetable-broth: radial-gradient(
+        circle,
+        transparent 0%,
+        rgba(69, 125, 0, 0.8) 64%,
+        transparent 65%
+      )
+      no-repeat center/20vmin 20vmin,
+    url("../images/foods/noddle3.png") no-repeat center/16.5vmin,
+    url("../images/others/bowl.png") no-repeat center/20vmin;
 }
 
 #select-broth {
@@ -61,14 +70,14 @@
   flex-direction: column;
   height: 87.5%;
 }
-
+/* 
 #table3 {
   flex-direction: column;
 }
-
+ */
 #broth-noodle {
-  width: 100%;
-  height: 40%;
+  width: 70%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,11 +93,14 @@
 #broth {
   display: flex;
   justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: wrap;
   list-style: none;
 }
 
 #broth > li {
-  width: 18%;
+  width: 30%;
+  height: 50%;
 }
 
 #broth img {
@@ -99,8 +111,8 @@
 
 #broth img:hover {
   margin-top: 1vmin;
-  transform: scale(1.1);  
-  cursor:grab;
+  transform: scale(1.1);
+  cursor: grab;
 }
 
 #outer-pot {
@@ -125,9 +137,10 @@
 }
 
 #side-broth {
-  width: 50%;
-  height: 50%;
+  width: 30%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
   align-self: center;
