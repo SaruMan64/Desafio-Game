@@ -52,7 +52,11 @@ function printTimer(stove, time) { // Show the timer on the stove
 
 function setTimer(index) { // Start the stove timer
   const interval = 1000;
-  const aux = $(`[value=${index}]`).next();
+  let aux = $(`[value=${index}]`).prev();
+  if (aux.length === 0) {
+    aux = $(`[value=${index}]`).next();
+  }
+  
 
   let startTime = Date.now();
   stoves[index] = new factory();
