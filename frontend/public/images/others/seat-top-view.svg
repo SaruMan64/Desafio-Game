@@ -1,7 +1,7 @@
-<svg height="100%" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="150" height="150" rx="35" fill="#FAD386" />
-    <rect width="140" height="140" x="5" y="5" rx="35" fill="#B5264A" />
-    <rect width="120" height="120" x="15" y="15" rx="35" fill="#CD2E54" />
+<svg height="100%" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="150" height="150" x="15" y="15" rx="35" fill="#FAD386" />
+    <rect width="140" height="140" x="20" y="20" rx="35" fill="#B5264A" />
+    <rect width="120" height="120" x="30" y="30" rx="35" fill="#CD2E54" />
     <!-- <circle cx="80" cy="80" r="80" fill="#FAD386" /> -->
     <!-- <circle cx="80" cy="80" r="70" fill="#B5264A" /> -->
     <!-- <circle cx="80" cy="80" r="55" fill="#CD2E54" /> -->
