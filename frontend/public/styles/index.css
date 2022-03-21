@@ -55,6 +55,13 @@ body {
     width: 100vw;
     height: 50vw;
   }
+  #bonus-aranha {
+    position: absolute;
+    width: 100vw;
+    height: 50vw;
+    z-index: 20;
+    background-color: transparent;
+  }
 }
 
 @media (min-aspect-ratio: 16/8) {
@@ -66,5 +73,13 @@ body {
   main {
     width: 200vh;
     height: 100vh;
+  }
+
+  #bonus-aranha {
+    position: absolute;
+    width: 200vh;
+    height: 100vh;
+    z-index: 20;
+    background-color: transparent;
   }
 }

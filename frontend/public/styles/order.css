@@ -57,6 +57,10 @@
   fill: black;
 }
 
+#cookTime {
+  background: aqua;
+}
+
 #wood {
   fill: red;
   /*   animation: clothespinColor 5s; */
@@ -76,15 +80,6 @@
   justify-content: space-around;
   align-items: flex-end;
 }
-
-/* 
-#all-clients > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-}
- */
 
 .seat {
   width: 16%;
