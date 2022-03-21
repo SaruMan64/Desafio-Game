@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
+  border: 0.4vmin solid rgb(52, 49, 48);
   border-radius: 10%/20%;
   font-family: digitalnormal;
   position: relative;
@@ -12,9 +14,9 @@
 
 .clock > span {
   width: 2.1vmin;
-  height: 100%;
+  height: 4vmin;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   font-size: 3.8vmin;
   color: crimson;
@@ -32,4 +34,18 @@
   color: rgba(211, 211, 211, 0.2);
   z-index: -1;
   text-align: center;
+}
+
+#backtimesvg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #0c0908;
+  stroke: rgb(52, 49, 48);
+  stroke-width: 5px;
+}
+
+.numbertime {
+  font-family: digitalnormal;
+  font-size: 60px;
 }
