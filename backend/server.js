@@ -12,9 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 const getOrder = require("./modules/getOrder.js");
-const register = require("./modules/register");
-const score = require("./modules/score");
-const ranking = require("./modules/ranking");
+const register = require("./modules/register.js");
+const score = require("./modules/score.js");
+const ranking = require("./modules/ranking.js");
 
 app.get("/order", (req, res) => {
   res.send(getOrder.getOrder());
