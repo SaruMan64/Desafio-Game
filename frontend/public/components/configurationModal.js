@@ -4,11 +4,14 @@ import { updateRanking } from "./requests.js";
 function showConfigurationModal() {
     console.log("modal");
     let div = $(`<div id="configuration-modal" style="position: fixed;">
-                    <button id="change-sound" class="1"></button>
-                    <button id="exit-game"></button>
-                    <button id="instructions"></button>
-                    <button id="ranking"></button>
-                    <button id="credits"></button>
+                    <h1>${$("#configuration").attr("local")}</h1>
+                    <div>
+                        <button id="change-sound" class="volume" level="1"></button>
+                        <button id="exit-game"></button>
+                        <button id="instructions"></button>
+                        <button id="ranking"></button>
+                        <button id="credits"></button>
+                    </div>
                 </div>`);
     console.log(div[0]);
     $("body").append(div[0]);
@@ -31,22 +34,22 @@ function showCreditsModal() {
 }
 
 $(document).on("click", "#change-sound", function () {
-    let level = $(this).attr("class");
+    let level = $(this).attr("level");
     switch(level){
         case 1:
-            sound.volumeAll(0.33);
+            sound.volumeAll(1);
             break;
         case 2:
             sound.volumeAll(0.66);
             break;
         case 3:
-            sound.volumeAll(1);
+            sound.volumeAll(0.33);
             break;
         case 4:
             sound.mutedAll();
             break;
     }
-    level == 4 ? $(this).attr("class", "1") : $(this).attr("class", String(level + 1));
+    level == 4 ? $(this).attr("level", "1") : $(this).attr("level", String(Number(level) + 1));
 });
 
 $(document).on("click", "#exit-game", function () {

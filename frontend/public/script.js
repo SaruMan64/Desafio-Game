@@ -22,6 +22,15 @@ $(document).ready(function () {
 
     $("#game").tabs();
 
+    // background kitchen
+    $("#btn-tabs > li > a").click(() => {
+        if ($("#btn-select-order").parent("li").attr("aria-expanded") === "true") {
+            $("#game").css("background", "var(--order)");
+        } else {
+            $("#game").css("background", "var(--no-order)");
+        }
+    })
+
     newClient(0);
 
     // Aba de pedidos
@@ -42,7 +51,7 @@ $(document).ready(function () {
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         // $("#outer-pot").css("background", "var(--broth-noddle)");
         $("#outer-pot").css("background-image", "url(./images/others/bowl.png)");
-        try{
+        try {
             $("#pot").css("background", `url(${$("#ready")[0].children[0].children[0].src}) no-repeat center`);
         } catch (e) {
             console.log("vazio");
@@ -77,7 +86,7 @@ $(document).ready(function () {
         console.log(services[3]);
         console.log(services[4]);
         console.log(services[5]);
-        
+
         if (!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
@@ -114,12 +123,12 @@ $(document).ready(function () {
                         console.log(item.children[0]);
                         item.children[0].remove();
 
-                        $(".seat-top-view").each(function(index){
+                        $(".seat-top-view").each(function (index) {
                             let img = $(this).children()[5 - i]
                             console.log(img);
                             $(img).attr("src", "../images/others/seat-top-view.svg");
                         });
-                        
+
                         let div = $(`<img src="../images/order/seat.png" />`);
                         item.append(div[0]);
                     }
@@ -163,12 +172,12 @@ $(document).ready(function () {
     $("#configuration").click(function () {
         showConfigurationModal();
     });
-/* 
+
     $(document).on("click", function () {
         console.log("arainha");
         aleatoryChance(5);
     });
- */
+
 });
 
 export { dishMade };

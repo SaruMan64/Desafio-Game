@@ -10,8 +10,20 @@
     background-size: contain;
 }
 
-#change-sound {
-    background-image: url("../images/others/Mute_Icon.svg.png");
+.volume[level="1"] {
+    background-image: url("../images/others/volume-high.png");
+}
+
+.volume[level="2"] {
+    background-image: url("../images/others/volume-middle.png");
+}
+
+.volume[level="3"] {
+    background-image: url("../images/others/volume-low.png");
+}
+
+.volume[level="4"] {
+    background-image: url("../images/others/volume-mute.png");
 }
 
 #exit-game {
