@@ -43,7 +43,7 @@ function selectIngredients(base, quantity) {
 }
 
 function getOrder(value) {
-    const quantity = (Math.floor(Math.random() * (maximum - minimum)) + minimum);
+    const quantity = (Math.round(Math.random() * (maximum - minimum)) + minimum);
     const used = selectIngredients(allIngredients.ingredients, typesOfIngredients);
     const order = {
         "id": value,
