@@ -11,29 +11,29 @@ let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
 
 /* function setCorrectingInterval(func, delay) {
-	var instance = {};
+    var instance = {};
     let cod;
-	function tick(func, delay) {
-		if (!instance.started) {
-			instance.func = func;
-			instance.delay = delay;
-			instance.startTime = new Date().valueOf();
-			instance.target = delay;
-			instance.started = true;
+    function tick(func, delay) {
+        if (!instance.started) {
+            instance.func = func;
+            instance.delay = delay;
+            instance.startTime = new Date().valueOf();
+            instance.target = delay;
+            instance.started = true;
 
-			cod = setTimeout(tick, delay);
-		} else {
-			let elapsed = new Date().valueOf() - instance.startTime
-			let adjust = instance.target - elapsed;
+            cod = setTimeout(tick, delay);
+        } else {
+            let elapsed = new Date().valueOf() - instance.startTime
+            let adjust = instance.target - elapsed;
 
-			instance.func();
-			instance.target += instance.delay;
+            instance.func();
+            instance.target += instance.delay;
 
-			cod = setTimeout(tick, instance.delay + adjust);
-		}
-	}
+            cod = setTimeout(tick, instance.delay + adjust);
+        }
+    }
 
-	return tick(func, delay);
+    return tick(func, delay);
 }; */
 
 $(document).ready(function () {

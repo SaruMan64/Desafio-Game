@@ -48,11 +48,11 @@ body {
 
 @media (max-aspect-ratio: 16/8) {
   body {
-    background: url("../images/opening/SakuraOpening.png") no-repeat
-      center/cover;
+    background: url("../images/opening/SakuraTree.png") no-repeat center/cover;
   }
 
-  main {
+  main,
+  #door {
     width: 100vw;
     height: 50vw;
   }
@@ -60,18 +60,18 @@ body {
     position: absolute;
     width: 100vw;
     height: 50vw;
-    z-index: 20;
+    z-index: 21;
     background-color: transparent;
   }
 }
 
 @media (min-aspect-ratio: 16/8) {
   body {
-    background: url("../images/opening/SakuraOpening.png") repeat-x
-      center/contain;
+    background: url("../images/opening/SakuraTree.png") repeat-x center/contain;
   }
 
-  main {
+  main,
+  #door {
     width: 200vh;
     height: 100vh;
   }
@@ -80,7 +80,7 @@ body {
     position: absolute;
     width: 200vh;
     height: 100vh;
-    z-index: 20;
+    z-index: 21;
     background-color: transparent;
   }
 }
