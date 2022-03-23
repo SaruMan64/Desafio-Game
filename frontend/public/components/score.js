@@ -31,7 +31,13 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
     ingredientsScore = 0;
     orderScore = 0;
 
-    if (dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
+    cookingScore = (dishMade.cookingTime * 100) / dishOrdered.cookingTime;
+    if (cookingScore > 100) {
+        let penalty = (parseInt(cookingScore) - 100) * 2;
+        cookingScore = cookingScore - penalty;
+    }
+
+   /*  if (dishOrdered.cookingTime === dishMade.cookingTime) { // Calculate cooking score
         cookingScore = 50;
     } else if(Math.abs(dishOrdered.cookingTime - dishMade.cookingTime) <= 2) {
         cookingScore = 50 - (3 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
@@ -39,7 +45,7 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
         cookingScore = 50 - (5 * (Math.abs(dishOrdered.cookingTime - dishMade.cookingTime)));
     } else {
         cookingScore = 0;
-    }
+    } */
 
     if(dishMade.broth.includes(dishOrdered.broth)) { // Calculate broth score
         brothScore = 50;
@@ -87,6 +93,22 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
                 console.log(`Erro: não encontramos o ingrediente.`);
         }
     }
+
+    /* let keys = Object.keys(dishOrdered.ingredients);
+    let ordered = dishOrdered.ingredients;
+    let made = disMade.ingredients;
+    let points = 0;
+    let requested = 0;
+    keys.forEach((key) => {
+        if (ordered[key] <= made[key]) {
+            points += made[key];
+        } else {
+            points += ordered[key];
+        }
+        requested += ordered[key];
+    })
+    ingredientsScore += (50 * made) / requested; */
+
 
     const ingredientsDishOrdered = Object.entries(dishOrdered.ingredients);
     const ingredientsDishMade = Object.entries(dishMade.ingredients);

@@ -63,7 +63,13 @@ function setTimer(index) { // Start the stove timer
   cods[index] = stoves[index].setCorrectingInterval(function () {
       let time = Math.trunc((Date.now() - startTime) / 1000);
       timers[index - 1] = time;
+      if (time > 59) {
+        time = 0;
+        printTimer(aux, time);
+        stoves[index].clearCorrectingInterval(cods[index]);
+      }
       printTimer(aux, time);
+
   }, interval);
   console.log(cods[index]);
 }

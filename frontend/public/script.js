@@ -3,7 +3,7 @@ import { openingHTML, openingAJAX } from "./components/opening.js";
 import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import { clientOrder, newClient } from "./components/incomingClients.js";
+import { clientOrder, newClient, services } from "./components/incomingClients.js";
 import {aleatoryChance} from "./components/aleatoryEvents.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
@@ -66,6 +66,13 @@ $(document).ready(function () {
     // Aba ingredientes 
 
     $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
+        console.log(services[0]);
+        console.log(services[1]);
+        console.log(services[2]);
+        console.log(services[3]);
+        console.log(services[4]);
+        console.log(services[5]);
+        
         if (!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });

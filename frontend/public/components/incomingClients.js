@@ -8,11 +8,12 @@ let services = new Array(6);
 function timeOrder(i) {
     let startTime = Date.now();
     services[i] = factory();
-    let time = Math.floor(Math.random() * (30 - 5 + 5) + 5);
+    let time = Math.floor(Math.random() * (30 - 15 + 15) + 15);
     console.log("O novo pedido virá em " + time + " segundos.");
     let cod = services[i].setCorrectingInterval(function () {
         let x = Date.now() - startTime;
-        //console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        services[i].time = x;
     }, 1000);
     newClient(time);
 }
@@ -32,9 +33,9 @@ function newClient(time) {
 
 
 $(document).on("click", ".accept", function () {
-    let string = $(this).parents().parents()[1].id;
+    /* let string = $(this).parents().parents()[1].id;
     let seat = parseInt(string.substr(6)) - 1;
-    timeOrder(seat);
+    timeOrder(seat); */
 
     $(this).parents(".take-my-order").children().children().children().attr("viewBox", "0 0 400 723");
     $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
@@ -113,6 +114,7 @@ function clientOrder() {
         let whatClientIsComming = Math.floor(Math.random() * 9) + 1;
         let whatSeatToSeat =
             freeSeats[Math.floor(Math.random() * freeSeats.length)];
+        timeOrder(whatSeatToSeat);
         incomeClient(whatSeatToSeat, whatClientIsComming);
         copyClient(whatSeatToSeat, whatClientIsComming);
         freeSeats = [];
@@ -121,4 +123,4 @@ function clientOrder() {
     }
 }
 
-export { clientOrder, newClient };
+export { clientOrder, newClient, services };
