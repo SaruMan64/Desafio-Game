@@ -4,7 +4,7 @@ import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient } from "./components/incomingClients.js";
-import {aleatoryChance} from "./components/aleatoryEvents.js";
+import { aleatoryChance } from "./components/aleatoryEvents.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -76,7 +76,7 @@ $(document).ready(function () {
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else if ($("#order-completed").html() === "") { // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
-            if($("#order-drop").html() === ""){
+            if ($("#order-drop").html() === "") {
                 $('#game').tabs({ active: 0 });
             }
         } else { // If everything is ok with the previous steps
@@ -143,12 +143,12 @@ $(document).ready(function () {
         $(this).toggleClass("imMuted");
         sound.mutedAll();
     });
-
-    $(document).on("click", function(){
+/* 
+    $(document).on("click", function () {
         console.log("arainha");
         aleatoryChance(5);
     });
-
+ */
 });
 
 export { dishMade };
