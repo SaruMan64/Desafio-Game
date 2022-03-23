@@ -41,7 +41,11 @@ $(document).ready(function () {
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         // $("#outer-pot").css("background", "var(--broth-noddle)");
         $("#outer-pot").css("background-image", "url(./images/others/bowl.png)");
-        $("#pot").css("background", `url(${$("#ready")[0].children[0].children[0].src}) no-repeat center`);
+        try{
+            $("#pot").css("background", `url(${$("#ready")[0].children[0].children[0].src}) no-repeat center`);
+        } catch (e) {
+            console.log("vazio");
+        }
         $("#pot").css("background-size", "80%");
         $("#ready").droppable("enable");
         $("#ready")[0].innerHTML = "";
@@ -93,10 +97,11 @@ $(document).ready(function () {
             let { cookingScore, brothScore, ingredientsScore, orderScore, totalScore } = pointing(holder, dishMade);
             score = totalScore;
 
-            const orderNumber = Number($("#order-completed")[0].children[0].children[0].children[13].innerHTML);
+            const orderNumber = Number($("#order-completed").find("#orderNum").html());
             $("#all-clients > div").each(function (i, item) { // Fill the scoring modal and removes the client from the seat
                 try {
                     if (Number(item.children[0].id) === orderNumber) {
+                        console.log(Number(item.children[0].id), orderNumber);
                         const clientNumber = (item.children[0].getAttribute("src")).split("-")[1];
                         $("#person-modal").html("");
                         $("#person-modal").append(`<img src="./images/order/client-${clientNumber}-front.png" />`);
@@ -105,7 +110,15 @@ $(document).ready(function () {
                         $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
                         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
                         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+                        console.log(item.children[0]);
                         item.children[0].remove();
+
+                        $(".seat-top-view").each(function(index){
+                            let img = $(this).children()[5 - i]
+                            console.log(img);
+                            $(img).attr("src", "../images/others/seat-top-view.svg");
+                        });
+                        
                         let div = $(`<img src="../images/order/seat.png" />`);
                         item.append(div[0]);
                     }

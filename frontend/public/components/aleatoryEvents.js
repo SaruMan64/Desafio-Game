@@ -67,9 +67,6 @@ function linearSpiderKenji(num, time1, time2) {
 }
 
 function radialSpiderKenji(num) {
-    /* let div = document.createElement("div");
-    div.setAttribute("id", "card");
-    $("body").append(div); */
     let angle = 90;
 
     var timer = setInterval(function () {
@@ -102,9 +99,12 @@ function radialSpiderKenji(num) {
 
 function addWebs() {
     let manySpiderWebs = Math.floor(Math.random() * 3 + 2);
+    let webImages = ["../images/others/web-1.png",
+                    "../images/others/web-2.png",
+                    "../images/others/web-3.png"];
     for (let i = 0; i < manySpiderWebs; i++) {
         const img1 = new Image();
-        img1.src = "../images/others/web-1.png";
+        img1.src = webImages[Math.floor(Math.random() * webImages.length)];
         let imgWidth, imgHeight;
         img1.onload = function () {
             imgWidth = this.width;
@@ -176,7 +176,7 @@ function aleatoryChance(num) {
 function ifItWorks() {
     // Se a aranha for pega
     hasSpiderOnScreen = false;
-    console.log("Removido a tempo");
+    console.log("Peguei muleke");
 }
 
 function ifItNotWorks() {
