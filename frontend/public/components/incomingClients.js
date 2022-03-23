@@ -13,7 +13,7 @@ function timeOrder(i) {
     console.log("O novo pedido virá em " + time + " segundos.");
     let cod = services[i].setCorrectingInterval(function () {
         let x = Date.now() - startTime;
-        console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        // console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
         services[i].time = x;
     }, 1000);
     newClient(time);

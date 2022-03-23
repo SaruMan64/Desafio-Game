@@ -1,4 +1,4 @@
-#configuration-modal {
+.modal {
     width: 50vmin;
     height: 30vmin;
     background-color: brown;
@@ -24,4 +24,13 @@
 
 #credits {
     background-image: url("../images/others/warning.png");
+}
+
+.close-modal {
+    background-image: url("../images/order/deny.png");
+    position: absolute;
+    width: 6vmin;
+    height: 6vmin;
+    top: 0;
+    right: 0;
 }
