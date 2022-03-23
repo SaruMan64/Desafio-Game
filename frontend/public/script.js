@@ -5,6 +5,7 @@ import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services } from "./components/incomingClients.js";
 import {aleatoryChance} from "./components/aleatoryEvents.js";
+import {factory} from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -18,7 +19,15 @@ $(document).ready(function () {
     //     $name = $("#inputName").val();
     //     openingAJAX();
     // });
-
+    const generalTime = factory();
+    let startTime = Date.now();
+    let cod = generalTime.setCorrectingInterval(function () {
+        let x = (Date.now() - startTime) / 1000;
+        if (x >= 10) {
+            generalTime.clearCorrectingInterval(cod);
+        }
+        //console.log(`Tempo jogo: ${x}s elapsed`);
+    }, 1000);
     $("#game").tabs();
 
     newClient(0);
