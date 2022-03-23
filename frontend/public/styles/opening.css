@@ -1,8 +1,6 @@
 @import url("./keyframes.css");
 
 #doors {
-  height: 100%;
-  width: 100%;
   background-image: url("../images/opening/SakuraOpening.png");
   background-position: center;
   background-repeat: repeat-x;
@@ -15,7 +13,7 @@
 #frontopening {
   height: 100%;
   width: 100%;
-  background-image: url("../images/opening/FrontOpening.png");
+  background-image: url("../images/opening/FrontOpeningFullHD.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: auto 100%;

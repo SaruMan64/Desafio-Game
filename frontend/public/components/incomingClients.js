@@ -33,6 +33,35 @@ function newClient(time) {
 }
 
 
+/* function timeOrder() {
+    let startTime = Date.now();
+    let factoryVar = factory();
+    let time = Math.floor(Math.random() * (30 - 5 + 5) + 1);
+    console.log("O novo pedido virá em " + time + " segundos.");
+    let cod = factoryVar.setCorrectingInterval(function () {
+        let x = Date.now() - startTime;
+        console.log(x + 'ms elapsed');
+        if (x > time) {
+            newClient(0);
+            factoryVar.clearCorrectingInterval(cod);
+        }
+    }, 1000);
+}
+
+function newClient(time) {
+    let startTime = Date.now();
+    let factoryVar = factory();
+    let cod = factoryVar.setCorrectingInterval(function () {
+        let x = Date.now() - startTime;
+        console.log(x + 'ms elapsed');
+        if (x >= (time * 1000)) {
+            clientOrder();
+            factoryVar.clearCorrectingInterval(cod);
+        }
+    }, 1000);
+  }
+ */
+
 $(document).on("click", ".accept", function () {
     /* let string = $(this).parents().parents()[1].id;
     let seat = parseInt(string.substr(6)) - 1;
@@ -134,4 +163,4 @@ function clientOrder() {
     }
 }
 
-export { clientOrder, newClient, services };
+export { clientOrder, newClient, services};
