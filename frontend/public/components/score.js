@@ -161,8 +161,8 @@ function clearDishMade(dishMade) {
 
 
 function showRanking(players) { // Create the ranking in html
-    $("#ranking").html("");
-    $("#ranking").append(`<table>
+    $("#ranking-modal").html("");
+    $("#ranking-modal").append(`<table>
     <tr>
         <th>Posição</th>
         <th>Usuário</th>

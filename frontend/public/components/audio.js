@@ -59,6 +59,11 @@ class Sounds {
             }
         });
     }
+    volumeAll(value = 0.5) {
+        Object.keys(this.soundsObj).forEach(el => {
+            this.soundsObj[el].file.volume = value;
+        });
+    }
     loopMusic(_sound) {
         if (this.soundsObj[_sound].isInLoop) {
             this.soundsObj[_sound].file.loop = false;

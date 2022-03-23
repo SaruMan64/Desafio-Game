@@ -4,7 +4,8 @@ import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services } from "./components/incomingClients.js";
-import {aleatoryChance} from "./components/aleatoryEvents.js";
+import { aleatoryChance } from "./components/aleatoryEvents.js";
+import { showConfigurationModal } from "./components/configurationModal.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -159,9 +160,8 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#mute-all").click(function () {
-        $(this).toggleClass("imMuted");
-        sound.mutedAll();
+    $("#configuration").click(function () {
+        showConfigurationModal();
     });
 
     $(document).on("click", function(){
