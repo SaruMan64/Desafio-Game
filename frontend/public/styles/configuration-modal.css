@@ -1,0 +1,27 @@
+#configuration-modal {
+    width: 50vmin;
+    height: 30vmin;
+    background-color: brown;
+}
+
+#configuration-modal button {
+    width: 6vmin;
+    height: 6vmin;
+    background-size: contain;
+}
+
+#change-sound {
+    background-image: url("../images/others/Mute_Icon.svg.png");
+}
+
+#exit-game {
+    background-image: url("../images/others/exit.png");
+}
+
+#ranking {
+    background-image: url("../images/others/ranksimbol.png");
+}
+
+#credits {
+    background-image: url("../images/others/warning.png");
+}

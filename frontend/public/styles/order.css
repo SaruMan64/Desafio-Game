@@ -6,7 +6,7 @@
 
 #orders {
   display: flex;
-  column-gap: 7%;
+  column-gap: 11%;
   width: 90%;
   height: 20%;
   position: relative;
@@ -16,6 +16,10 @@
 #orders > .order:hover {
   cursor: grab;
   transform: scale(1.1);
+}
+
+.order.ui-draggable.ui-draggable-handle.ui-draggable-dragging {
+  height: 30vmin;
 }
 
 #orders::before {
@@ -30,8 +34,10 @@
 
 #orders > .order {
   height: 100%;
-  width: clamp(11%, 12.6%, 14%);
+  width: 8%;
   background-color: transparent;
+  display: flex;
+  justify-content: center;
 }
 
 #orders #clothespin {

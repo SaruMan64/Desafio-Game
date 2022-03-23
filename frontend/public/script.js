@@ -4,8 +4,9 @@ import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services } from "./components/incomingClients.js";
-import {aleatoryChance} from "./components/aleatoryEvents.js";
-import {factory} from "./components/timer.js";
+import { aleatoryChance } from "./components/aleatoryEvents.js";
+import { showConfigurationModal } from "./components/configurationModal.js";
+import { factory } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -26,7 +27,7 @@ $(document).ready(function () {
         if (x >= 10) {
             generalTime.clearCorrectingInterval(cod);
         }
-        //console.log(`Tempo jogo: ${x}s elapsed`);
+        console.log(`Tempo jogo: ${x}s elapsed`);
     }, 1000);
     $("#game").tabs();
 
@@ -96,7 +97,7 @@ $(document).ready(function () {
             alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else if ($("#order-completed").html() === "") { // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
-            if($("#order-drop").html() === ""){
+            if ($("#order-drop").html() === "") {
                 $('#game').tabs({ active: 0 });
             }
         } else { // If everything is ok with the previous steps
@@ -168,16 +169,15 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#mute-all").click(function () {
-        $(this).toggleClass("imMuted");
-        sound.mutedAll();
+    $("#configuration").click(function () {
+        showConfigurationModal();
     });
-
-    $(document).on("click", function(){
+/* 
+    $(document).on("click", function () {
         console.log("arainha");
         aleatoryChance(5);
     });
-
+ */
 });
 
 export { dishMade };
