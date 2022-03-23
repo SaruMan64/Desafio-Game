@@ -3,8 +3,9 @@ import { openingHTML, openingAJAX } from "./components/opening.js";
 import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import { clientOrder, newClient } from "./components/incomingClients.js";
+import { clientOrder, newClient, services } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
+import { showConfigurationModal } from "./components/configurationModal.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -41,7 +42,11 @@ $(document).ready(function () {
     $("#pan-to-noodles-and-broth").click(function () { // Transfere macarão cozido para tela com molho
         // $("#outer-pot").css("background", "var(--broth-noddle)");
         $("#outer-pot").css("background-image", "url(./images/others/bowl.png)");
-        $("#pot").css("background", `url(${$("#ready")[0].children[0].children[0].src}) no-repeat center`);
+        try{
+            $("#pot").css("background", `url(${$("#ready")[0].children[0].children[0].src}) no-repeat center`);
+        } catch (e) {
+            console.log("vazio");
+        }
         $("#pot").css("background-size", "80%");
         $("#ready").droppable("enable");
         $("#ready")[0].innerHTML = "";
@@ -66,6 +71,13 @@ $(document).ready(function () {
     // Aba ingredientes 
 
     $("#end-order").click(function () { // End the order, calculate score and open the scoring modal
+        console.log(services[0]);
+        console.log(services[1]);
+        console.log(services[2]);
+        console.log(services[3]);
+        console.log(services[4]);
+        console.log(services[5]);
+        
         if (!$("#box").css("background-image").includes("noddle") && !$("#droppable").css("background-image").includes("noddle")) { // If there is no pasta on the plate
             alert("A entrega não pôde ser concluída. Adicione o macarrão.");
             $('#game').tabs({ active: 1 });
@@ -86,10 +98,11 @@ $(document).ready(function () {
             let { cookingScore, brothScore, ingredientsScore, orderScore, totalScore } = pointing(holder, dishMade);
             score = totalScore;
 
-            const orderNumber = Number($("#order-completed")[0].children[0].children[0].children[13].innerHTML);
+            const orderNumber = Number($("#order-completed").find("#orderNum").html());
             $("#all-clients > div").each(function (i, item) { // Fill the scoring modal and removes the client from the seat
                 try {
                     if (Number(item.children[0].id) === orderNumber) {
+                        console.log(Number(item.children[0].id), orderNumber);
                         const clientNumber = (item.children[0].getAttribute("src")).split("-")[1];
                         $("#person-modal").html("");
                         $("#person-modal").append(`<img src="./images/order/client-${clientNumber}-front.png" />`);
@@ -98,7 +111,15 @@ $(document).ready(function () {
                         $("#ingredients-score").html(`Ingredientes: ${ingredientsScore} pontos`);
                         $("#order-score").html(`Pontuação do pedido: ${orderScore} pontos`);
                         $("#total-score").html(`Pontuação total: ${totalScore} pontos`);
+                        console.log(item.children[0]);
                         item.children[0].remove();
+
+                        $(".seat-top-view").each(function(index){
+                            let img = $(this).children()[5 - i]
+                            console.log(img);
+                            $(img).attr("src", "../images/others/seat-top-view.svg");
+                        });
+                        
                         let div = $(`<img src="../images/order/seat.png" />`);
                         item.append(div[0]);
                     }
@@ -139,9 +160,8 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#mute-all").click(function () {
-        $(this).toggleClass("imMuted");
-        sound.mutedAll();
+    $("#configuration").click(function () {
+        showConfigurationModal();
     });
 /* 
     $(document).on("click", function () {

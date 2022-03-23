@@ -34,6 +34,14 @@
   transform: scale(1.1);
 }
 
+.order.ui-draggable.ui-draggable-handle.ui-draggable-dragging {
+  height: 30vmin;
+}
+
+.ui-draggable.ui-draggable-handle.ui-draggable-dragging {
+  z-index: 20;
+}
+
 #order-drop #clothespin {
   display: none;
 }

@@ -11,7 +11,27 @@
   },
   {
     "id": 3,
+    "name": "luan1",
+    "score": 0
+  },
+  {
+    "id": 4,
     "name": "Yeté",
     "score": 8001
+  },
+  {
+    "id": 5,
+    "name": "joao",
+    "score": 0
+  },
+  {
+    "id": 6,
+    "name": "PamonhaQuentin",
+    "score": 0
+  },
+  {
+    "id": 7,
+    "name": "Pamonha2",
+    "score": 0
   }
 ]

@@ -2,17 +2,19 @@ import { getOrder } from "./requests.js";
 import { factory } from "./timer.js";
 import { makeWiggle, dropWiggle } from "./makeItWiggle.js";
 let freeSeats = [];
+let clientsIn = [];
 let numberClient = 1;
 let services = new Array(6);
 
 function timeOrder(i) {
     let startTime = Date.now();
     services[i] = factory();
-    let time = Math.floor(Math.random() * (30 - 5 + 5) + 5);
+    let time = Math.floor(Math.random() * (30 - 15 + 15) + 15);
     console.log("O novo pedido virá em " + time + " segundos.");
     let cod = services[i].setCorrectingInterval(function () {
         let x = Date.now() - startTime;
-        //console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        services[i].time = x;
     }, 1000);
     newClient(time);
 }
@@ -32,9 +34,9 @@ function newClient(time) {
 
 
 $(document).on("click", ".accept", function () {
-    let string = $(this).parents().parents()[1].id;
+    /* let string = $(this).parents().parents()[1].id;
     let seat = parseInt(string.substr(6)) - 1;
-    timeOrder(seat);
+    timeOrder(seat); */
 
     $(this).parents(".take-my-order").children().children().children().attr("viewBox", "0 0 400 723");
     $("#orders").append($(this).parents(".take-my-order").children(".order-balloon").html());
@@ -46,6 +48,12 @@ $(document).on("click", ".accept", function () {
         // containment: "main",
         revert: "invalid",
         revert: true,
+        start: function (event, ui) {
+            $(this).draggable("instance").offset.click = {
+                left: Math.floor(ui.helper.width() / 2),
+                top: Math.floor(ui.helper.height() / 2),
+            };
+        },
         drag: function () {
             makeWiggle(this);
         },
@@ -111,8 +119,13 @@ function clientOrder() {
     });
     if (freeSeats.length !== 0) {
         let whatClientIsComming = Math.floor(Math.random() * 9) + 1;
+        while(clientsIn.includes(whatClientIsComming)) {
+            whatClientIsComming = Math.floor(Math.random() * 9) + 1;
+        }
+        clientsIn.push(whatClientIsComming);
         let whatSeatToSeat =
             freeSeats[Math.floor(Math.random() * freeSeats.length)];
+        timeOrder(whatSeatToSeat);
         incomeClient(whatSeatToSeat, whatClientIsComming);
         copyClient(whatSeatToSeat, whatClientIsComming);
         freeSeats = [];
@@ -121,4 +134,4 @@ function clientOrder() {
     }
 }
 
-export { clientOrder, newClient };
+export { clientOrder, newClient, services };
