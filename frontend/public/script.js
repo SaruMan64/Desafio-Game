@@ -10,7 +10,7 @@ import { showConfigurationModal } from "./components/configurationModal.js";
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
 
-function setCorrectingInterval(func, delay) {
+/* function setCorrectingInterval(func, delay) {
 	var instance = {};
     let cod;
 	function tick(func, delay) {
@@ -34,7 +34,7 @@ function setCorrectingInterval(func, delay) {
 	}
 
 	return tick(func, delay);
-};
+}; */
 
 $(document).ready(function () {
     let $name;

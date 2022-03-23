@@ -33,7 +33,7 @@ function newClient(time) {
 }
 
 
-function timeOrder() {
+/* function timeOrder() {
     let startTime = Date.now();
     let factoryVar = factory();
     let time = Math.floor(Math.random() * (30 - 5 + 5) + 1);
@@ -60,6 +60,7 @@ function newClient(time) {
         }
     }, 1000);
   }
+ */
 
 $(document).on("click", ".accept", function () {
     /* let string = $(this).parents().parents()[1].id;
