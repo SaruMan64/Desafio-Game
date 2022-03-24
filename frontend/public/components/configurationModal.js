@@ -1,12 +1,13 @@
 import { sound } from "./audio.js";
 import { updateRanking } from "./requests.js";
+import { showSlides } from "./carrousel.js";
 
 const closeButton = $(`<button class="close-modal"></button>`);
 
 function showConfigurationModal() {
     console.log("modal");
     if ($("body").find("#configuration-modal").length == 0) {
-    let div = $(`<div id="configuration-modal" style="position: fixed;">
+        let div = $(`<div id="configuration-modal" style="position: fixed;">
                     <h1>${$("#configuration").attr("local")}</h1>
                     <button class="close-modal"></button>
                     <div>
@@ -23,12 +24,48 @@ function showConfigurationModal() {
 }
 
 function showInstructionModal() {
-    let div = $(`<div id="instructions-modal" class="modal" style="position: fixed;">Instruções<button class="close-modal"></button></div>`);
+    let div = $(
+        `<div id="instructions-modal" class="modal" style="position: fixed;">
+            <div class="slideshow-container">
+                <div class="mySlides fade">
+                    <div class="numbertext">1 / 3</div>
+                    <img src="../images/order/banquin.png" style="width:50%">
+                    <div class="text">Tela 1</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">2 / 3</div>
+                    <img src="../images/others/kenji-spider.png" style="width:50%">
+                    <div class="text">Tela 2</div>
+                </div>
+
+                <div class="mySlides fade">
+                    <div class="numbertext">3 / 3</div>
+                    <img src="../images/others/conf.png" style="width:50%">
+                    <div class="text">Tela 3</div>
+                </div>
+
+                <a class="prev"">&#10094;</a>
+                <a class="next">&#10095;</a>
+            </div>
+            <br>
+
+            <div id="all-dots" style="text-align:center">
+                <span class="dot" level="1"></span>
+                <span class="dot" level="2"></span>
+                <span class="dot" level="3"></span>
+            </div>
+            <button class="close-modal"></button>
+        </div>`
+    );
     $("body").append(div[0]);
+    showSlides(1);
 }
 
 function showRankingModal() {
-    let div = $(`<div id="ranking-modal" class="modal" style="position: fixed;"></div>`);
+    let div = $(
+        `<div id="ranking-modal" class="modal" style="position: fixed;"></div>`
+    );
     $("body").append(div[0]);
     updateRanking();
     setTimeout(() => {
@@ -37,7 +74,9 @@ function showRankingModal() {
 }
 
 function showCreditsModal() {
-    let div = $(`<div id="credits-modal" class="modal" style="position: fixed;">Créditos<button class="close-modal"></button></div>`);
+    let div = $(
+        `<div id="credits-modal" class="modal" style="position: fixed;">Créditos<button class="close-modal"></button></div>`
+    );
     $("body").append(div[0]);
 }
 
@@ -48,7 +87,7 @@ function closeThisModal(target) {
 
 $(document).on("click", "#change-sound", function () {
     let level = $(this).attr("level");
-    switch(level){
+    switch (level) {
         case 1:
             sound.volumeAll(1);
             break;
@@ -62,7 +101,9 @@ $(document).on("click", "#change-sound", function () {
             sound.mutedAll();
             break;
     }
-    level == 4 ? $(this).attr("level", "1") : $(this).attr("level", String(Number(level) + 1));
+    level == 4
+        ? $(this).attr("level", "1")
+        : $(this).attr("level", String(Number(level) + 1));
 });
 
 $(document).on("click", "#exit-game", function () {
