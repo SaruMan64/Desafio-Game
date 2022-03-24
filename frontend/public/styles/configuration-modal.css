@@ -124,9 +124,22 @@
   align-items: center;
 }
 
+#configuration-modal > div:last-child > p {
+  font-size: 3vmin;
+  text-align: center;
+  color: #f5f5f5;
+  font-family: "Antonio-wght";
+}
+
 #configuration-modal > div:last-child > button {
   cursor: pointer;
   background-color: rgba(230, 198, 93, 0.8);
+
+  color: black;
+  font-family: "Antonio-wght";
+  font-weight: bold;
+  font-size: 4vmin;
+  line-height: 1.2;
 }
 
 #configuration-modal > div:last-child > button:hover {

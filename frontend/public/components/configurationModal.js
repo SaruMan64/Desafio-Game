@@ -29,11 +29,27 @@ function showInstructionModal() {
     addCarrousel();
 }
 
+function showExitGame() {
+    let div = $(
+        `<div id="configuration-modal" class="modal-menu">
+            <div>
+                <h1>SAIR</h1>
+            </div>
+            <div class="line-head">
+                <p>VOCÊ GOSTARIA DE SAIR DO JOGO?</p>
+                <button id="exit-yes">SIM</button>
+                <button id="exit-no">NÃO</button>
+            </div>
+        </div>`
+    );
+    $(".popup-overlay").append(div[0]);
+}
+
 function showRankingModal() {
     let div = $(
         `<div id="ranking-modal" class="modal" style="position: fixed;"></div>`
     );
-    $("body").append(div[0]);
+    $(".popup-overlay").append(div[0]);
     updateRanking();
     setTimeout(() => {
         $("#ranking-modal").append(closeButton[0]);
@@ -49,7 +65,7 @@ function showCreditsModal() {
 
 function closeThisModal(target) {
     let reference = $(target).parent();
-    if(reference.attr("class") == "line-head") {
+    if (reference.attr("class") == "line-head") {
         reference = $(reference).parents(".popup-overlay");
     }
     reference.remove();
@@ -77,7 +93,7 @@ $(document).on("click", "#change-sound", function () {
 });
 
 $(document).on("click", "#exit-game", function () {
-    // Para onde vamos?
+    showExitGame();
 });
 
 $(document).on("click", "#instructions", function () {
@@ -93,6 +109,10 @@ $(document).on("click", "#credits", function () {
 });
 
 $(document).on("click", ".close-modal", function (event) {
+    closeThisModal(event.target);
+});
+
+$(document).on("click", "#exit-no", function (event) {
     closeThisModal(event.target);
 });
 
