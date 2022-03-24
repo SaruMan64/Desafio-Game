@@ -19,6 +19,18 @@ class Sounds {
                 "isMuted": false,
                 "isInLoop": false,
                 "file": new Audio("./sounds/Sakuya-Background-Sound.wav")
+            },
+            "winning": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("./sounds/winning.mp3")
+            },
+            "loosing": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("./sounds/loosing.mp3")
             }
         }
     }
@@ -59,7 +71,8 @@ class Sounds {
             }
         });
     }
-    volumeAll(value = 0.5) {
+    volumeAll(value) {
+        console.log("volume ", value);
         Object.keys(this.soundsObj).forEach(el => {
             this.soundsObj[el].file.volume = value;
         });

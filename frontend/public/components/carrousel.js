@@ -8,6 +8,49 @@ function currentSlide(n) {
     showSlides((slideIndex = n));
 }
 
+function addCarrousel() {
+    let div = $(
+        `<div id="instructions-modal" class="modal-bigger" style="position: fixed;">
+            <div class="line-head">
+                <h1>TUTORIAL</h1>
+                <button class="close-modal"></button>
+            </div>
+            <div>
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="../images/opening/SakuraTree.png" style="width:100%">
+                        <div class="text">Tela 1</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="../images/opening/SakuraOpening.png" style="width:100%">
+                        <div class="text">Tela 2</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
+                        <div class="text">Tela 3</div>
+                    </div>
+
+                    <a class="prev"">&#10094;</a>
+                    <a class="next">&#10095;</a>
+                </div>
+
+                <div id="all-dots" style="text-align:center">
+                    <span class="dot" level="1"></span>
+                    <span class="dot" level="2"></span>
+                    <span class="dot" level="3"></span>
+                </div>
+            </div>
+        </div>`
+    );
+    $(".popup-overlay").append(div[0]);
+    showSlides(slideIndex);
+}
+
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
@@ -41,4 +84,4 @@ $(document).on("click", ".dot", function (event) {
     currentSlide(num);
 });
 
-export { showSlides };
+export { addCarrousel };

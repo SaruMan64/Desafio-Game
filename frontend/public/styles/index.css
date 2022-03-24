@@ -58,6 +58,12 @@ body {
     width: 100vw;
     height: 50vw;
   }
+
+  .popup-overlay .modal-bigger {
+    width: calc(100vw * 0.75);
+    height: calc(50vw * 0.85);
+  }
+
   #bonus-aranha {
     position: absolute;
     width: 100vw;
@@ -77,6 +83,11 @@ body {
   .popup-overlay {
     width: 200vh;
     height: 100vh;
+  }
+
+  .popup-overlay .modal-bigger {
+    width: calc(200vh * 0.75);
+    height: calc(100vh * 0.85);
   }
 
   #bonus-aranha {

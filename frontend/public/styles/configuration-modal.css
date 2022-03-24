@@ -1,4 +1,15 @@
-.modal {
+.modal-bigger {
+  background: linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1vmin solid black;
+  border-radius: 2.5%/5%;
+}
+
+.modal-menu {
   width: 50vmin;
   height: 30vmin;
   background: linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
@@ -11,22 +22,18 @@
   border-radius: 5%/10%;
 }
 
-#configuration-modal {
-  width: 50vmin;
-  height: 30vmin;
-  background: linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  box-sizing: border-box;
-  border: 1vmin solid black;
-  border-radius: 5%/10%;
+.modal-bigger > div:first-child {
+  width: 98%;
+  height: 6vmin;
 }
 
-.configuration-modal > div:first-child {
+.modal-menu > div:first-child {
   width: 46vmin;
   height: 6vmin;
+}
+
+.modal-bigger > div:first-child,
+.modal-menu > div:first-child {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -34,9 +41,18 @@
   align-items: center;
 }
 
-.configuration-modal > div:first-child > h1 {
+.modal-bigger > div:first-child > h1 {
+  width: 50%;
+  height: 6vmin;
+}
+
+.modal-menu > div:first-child > h1 {
   width: 25vmin;
   height: 6vmin;
+}
+
+.modal-bigger > div:first-child > h1,
+.modal-menu > div:first-child > h1 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -51,9 +67,26 @@
   line-height: 1.2;
 }
 
-.configuration-modal > div:last-child {
+.modal-bigger > div:last-child {
+  width: 98%;
+  height: 85%;
+}
+
+.modal-menu > div:last-child {
   width: 30vmin;
   height: 18vmin;
+}
+
+.modal-bigger > div:last-child {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  column-gap: 2vmin;
+  row-gap: 1vmin;
+}
+
+.modal-menu > div:last-child {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -133,7 +166,15 @@
 }
 
 .close-modal {
-  mask: url("../images/menu/close.png") no-repeat center/70%;
+  -webkit-mask-image: url("../images/menu/close.png");
+  -webkit-mask-size: 70%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-image: url("../images/menu/close.png");
+  mask-size: 70%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  /* mask: url("../images/menu/close.png") no-repeat center/70%; */
   background-color: #f5f5f5;
   width: 6vmin;
   height: 6vmin;
