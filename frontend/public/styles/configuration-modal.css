@@ -101,39 +101,39 @@
 }
 
 .volume[level="1"] {
-  background-image: url("../images/others/volume-high.png");
+  background-image: url("../images/menu/volume-high.png");
 }
 
 .volume[level="2"] {
-  background-image: url("../images/others/volume-middle.png");
+  background-image: url("../images/menu/volume-middle.png");
 }
 
 .volume[level="3"] {
-  background-image: url("../images/others/volume-low.png");
+  background-image: url("../images/menu/volume-low.png");
 }
 
 .volume[level="4"] {
-  background-image: url("../images/others/volume-mute.png");
+  background-image: url("../images/menu/volume-mute.png");
 }
 
 #exit-game {
-  background-image: url("../images/others/exit.png");
+  background-image: url("../images/menu/exit.png");
 }
 
 #instructions {
-  background: url("../images/others/interrogation.png");
+  background: url("../images/menu/interrogation.png");
 }
 
 #ranking {
-  background-image: url("../images/others/ranking.png");
+  background-image: url("../images/menu/ranking.png");
 }
 
 #credits {
-  background-image: url("../images/others/developer.png");
+  background-image: url("../images/menu/developer.png");
 }
 
 .close-modal {
-  mask: url("../images/others/close.png") no-repeat center/70%;
+  mask: url("../images/menu/close.png") no-repeat center/70%;
   background-color: #f5f5f5;
   width: 6vmin;
   height: 6vmin;
