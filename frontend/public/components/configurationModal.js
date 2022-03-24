@@ -31,7 +31,7 @@ function showInstructionModal() {
 
 function showExitGame() {
     let div = $(
-        `<div id="configuration-modal" class="modal-menu">
+        `<div id="configuration-modal" class="modal-menu"  style="position: fixed;">
             <div>
                 <h1>SAIR</h1>
             </div>
@@ -47,12 +47,19 @@ function showExitGame() {
 
 function showRankingModal() {
     let div = $(
-        `<div id="ranking-modal" class="modal" style="position: fixed;"></div>`
+        `<div class="modal-bigger menu-ranking" style="position: fixed;">
+        <div class="line-head">
+            <h1>Ranking</h1>
+            <button class="close-modal"></button>
+        </div>
+        <div id="ranking-modal" >
+        </div>
+        </div>`
     );
     $(".popup-overlay").append(div[0]);
     updateRanking();
     setTimeout(() => {
-        $("#ranking-modal").append(closeButton[0]);
+        $("#ranking-modal > div:last-child").append(closeButton[0]);
     }, 100);
 }
 
