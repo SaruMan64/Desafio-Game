@@ -13,7 +13,7 @@ function timeOrder(i) {
     console.log("O novo pedido virá em " + time + " segundos.");
     let cod = services[i].setCorrectingInterval(function () {
         let x = Date.now() - startTime;
-        console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
+        //console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
         services[i].time = x;
     }, 1000);
     newClient(time);
@@ -120,7 +120,7 @@ function incomeClient(seat, client) {
                             <div class="accept-decline"></div
                         </div>`);
         setTimeout(() => {
-            getOrder(numberClient);
+            getOrder(numberClient, seat);
             $(".accept-decline").html(`
                 <button class="accept"></button>
                 <button class="decline"></button>
@@ -163,4 +163,4 @@ function clientOrder() {
     }
 }
 
-export { clientOrder, newClient, services};
+export { clientOrder, newClient, services };
