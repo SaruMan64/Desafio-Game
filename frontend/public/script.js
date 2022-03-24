@@ -6,6 +6,7 @@ import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
 import { showConfigurationModal } from "./components/configurationModal.js";
+import { factory } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let score;
@@ -38,14 +39,25 @@ let score;
 
 $(document).ready(function () {
     let $name;
-    // Opening
-    // openingHTML();
-    // $('#btn').click(function () {
-    // sound.playMusic("sakuya");
-    //     $name = $("#inputName").val();
-    //     openingAJAX();
-    // });
-
+    //Opening
+   /*  openingHTML();
+    $('#btn').click(function () {
+    sound.playMusic("sakuya");
+         $name = $("#inputName").val();
+         openingAJAX();
+    }); */
+    const generalTime = factory();
+    let startTime = Date.now();
+    let cod = generalTime.setCorrectingInterval(function () {
+        let x = (Date.now() - startTime) / 1000;
+        let time = x / 1000;
+        if (x >= 15) {
+            generalTime.clearCorrectingInterval(cod);
+            console.log(`Jogo terminou`);
+            
+        }
+        console.log(`Tempo jogo: ${x}s elapsed`);
+    }, 1000);
     $("#game").tabs();
 
     // background kitchen

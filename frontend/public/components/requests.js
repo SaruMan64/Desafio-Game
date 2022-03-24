@@ -4,13 +4,13 @@ import {makeOrder} from "./makeOrder.js";
 
 const apiUrl = "http://localhost:4444";
 
-function getOrder(numberClient) {
+function getOrder(numberClient, seat) {
   $.ajax({
     method: "GET",
     url: apiUrl + "/order",
     success: function (response) {
         // clientOrder(response);
-        makeOrder(response, numberClient);
+        makeOrder(response, numberClient, seat);
     },
     error: function (error) {
       console.log(error);

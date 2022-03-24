@@ -1,5 +1,5 @@
 :root {
-  --order: url("../images/others/fundo-completo.jpg") no-repeat right/contain,
+  --order: url("../images/others/fundo-completo.jpg") no-repeat right/75% 100%,
     linear-gradient(#f5f5f5 0%, #f5f5f5 100%);
   --no-order: url("../images/others/floor.png") repeat-x top right/auto 32.6%,
     linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%) no-repeat
