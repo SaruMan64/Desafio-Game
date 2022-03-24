@@ -142,18 +142,25 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  align-self: center;
-  justify-self: center;
+  row-gap: 10%;
 }
 
 #pan-to-ingredients {
-  width: 30vmin;
+  width: 20vmin;
   height: 5vmin;
+  background: url("../images/menu/next.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+  box-sizing: border-box;
   border-radius: 10px;
+  border: 0.5vmin solid black;
+  cursor: pointer;
 }
 
-#pan-to-ingredients > img {
-  height: 100%;
+#pan-to-ingredients:hover {
+  background: url("../images/menu/next.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 1) 0%, rgba(230, 198, 93, 1) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
 }

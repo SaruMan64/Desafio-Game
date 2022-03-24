@@ -181,11 +181,19 @@
 }
 
 #pan-to-noodles-and-broth {
-  width: 30vmin;
+  width: 20vmin;
   height: 5vmin;
+  background: url("../images/menu/next.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+  box-sizing: border-box;
   border-radius: 10px;
+  border: 0.5vmin solid black;
+  cursor: pointer;
 }
 
-#pan-to-noodles-and-broth > img {
-  height: 100%;
+#pan-to-noodles-and-broth:hover {
+  background: url("../images/menu/next.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 1) 0%, rgba(230, 198, 93, 1) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
 }

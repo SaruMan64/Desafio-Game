@@ -183,12 +183,20 @@
   height: 100%;
 }
 
-#end-order {
-  width: 30vmin;
+#end-order  {
+  width: 20vmin;
   height: 10vmin;
+  background: url("../images/menu/check.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+  box-sizing: border-box;
   border-radius: 10px;
+  border: 0.5vmin solid black;
+  cursor: pointer;
 }
 
-#end-order > img {
-  height: 100%;
+#end-order:hover  {
+  background: url("../images/menu/check.png") no-repeat center/ auto 90%,
+    linear-gradient(rgba(230, 198, 93, 1) 0%, rgba(230, 198, 93, 1) 100%),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
 }
