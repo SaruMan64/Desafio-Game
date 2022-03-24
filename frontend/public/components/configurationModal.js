@@ -6,24 +6,10 @@ const closeButton = $(`<button class="close-modal"></button>`);
 
 function showConfigurationModal() {
     console.log("modal");
-<<<<<<< HEAD
-    if ($("body").find("#configuration-modal").length == 0) {
-        let div = $(`<div id="configuration-modal" style="position: fixed;">
-                    <h1>${$("#configuration").attr("local")}</h1>
-                    <button class="close-modal"></button>
-                    <div>
-                        <button id="change-sound" class="volume" level="1"></button>
-                        <button id="exit-game"></button>
-                        <button id="instructions"></button>
-                        <button id="ranking"></button>
-                        <button id="credits"></button>
-                    </div>
-                </div>`);
-=======
-    if ($("body").find("#configuration-modal")) {
+    if ($("body").find(".popup-overlay").length == 0) {
         let div = $(`<div class="popup-overlay">
                         <div id="configuration-modal" class="configuration-modal">
-                            <div>
+                            <div id="line-head">
                                 <h1>${$("#configuration").attr("local")}</h1>
                                 <button class="close-modal"></button>
                             </div>
@@ -36,7 +22,6 @@ function showConfigurationModal() {
                             </div>
                         </div>
                     </div>`);
->>>>>>> a219bddfdf55269a98249afa33d28cebcd06608c
         console.log(div[0]);
         $("body").append(div[0]);
     }
@@ -101,6 +86,9 @@ function showCreditsModal() {
 
 function closeThisModal(target) {
     let reference = $(target).parent();
+    if(reference.attr("id") == "line-head") {
+        reference = $(reference).parents(".popup-overlay");
+    }
     reference.remove();
 }
 
