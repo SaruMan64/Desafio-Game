@@ -8,7 +8,7 @@ function showConfigurationModal() {
     if ($("body").find(".popup-overlay").length == 0) {
         let div = $(`<div class="popup-overlay">
                         <div id="configuration-modal" class="modal-menu">
-                            <div class="line-head">
+                            <div id="close-menu" class="line-head">
                                 <h1>${$("#configuration").attr("local")}</h1>
                                 <button class="close-modal"></button>
                             </div>
@@ -60,13 +60,17 @@ function showCreditsModal() {
     let div = $(
         `<div id="credits-modal" class="modal" style="position: fixed;">Créditos<button class="close-modal"></button></div>`
     );
-    $("body").append(div[0]);
+    $(".popup-overlay").append(div[0]);
 }
 
 function closeThisModal(target) {
     let reference = $(target).parent();
     if (reference.attr("class") == "line-head") {
-        reference = $(reference).parents(".popup-overlay");
+        if (reference.attr("id") == "close-menu") {
+            reference = $(reference).parents(".popup-overlay");
+        } else {
+            reference = $(reference).parent();
+        }
     }
     reference.remove();
 }

@@ -10,6 +10,7 @@
 }
 
 .modal-menu {
+  position: absolute;
   width: 50vmin;
   height: 30vmin;
   background: linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
