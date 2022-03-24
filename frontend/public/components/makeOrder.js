@@ -5,7 +5,8 @@ const zeroFill = (n) => {
     : n;
 };
 
-function makeOrder(response, numberClient) { 
+function makeOrder(response, numberClient, seat) {
+  response.seat = seat; 
   let div = $(`<div id=${JSON.stringify(response)} class="order"></div>`);
   div.load("./images/order/pedido.svg");
   let ingredients = Object.entries(response.ingredients);

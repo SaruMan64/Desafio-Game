@@ -1,4 +1,4 @@
-//import { services } from "./components/incomingClients.js";
+import { services } from "./incomingClients.js";
 
 let dishMadeMold = {
     broth: "",
@@ -32,8 +32,17 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
     brothScore = 0;
     ingredientsScore = 0;
     orderScore = 0;
+    
+    let z = dishOrdered.seat;
+    console.log(z);
+    console.log(services[z].time);
+    let aa = services[z].time + 35000;
+    if (aa <= 90000) {
 
-    console.log()
+    } else {
+
+    }
+    
     cookingScore = (dishMade.cookingTime * 100) / dishOrdered.cookingTime;
     if (cookingScore > 100) {
         let penalty = (parseInt(cookingScore) - 100) * 2;
