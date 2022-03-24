@@ -1,11 +1,10 @@
-import { sound } from "./audio.js";
+import { sound } from "../script.js";
 import { updateRanking } from "./requests.js";
-import { showSlides } from "./carrousel.js";
+import { addCarrousel } from "./carrousel.js";
 
 const closeButton = $(`<button class="close-modal"></button>`);
 
 function showConfigurationModal() {
-    console.log("modal");
     if ($("body").find(".popup-overlay").length == 0) {
         let div = $(`<div class="popup-overlay">
                         <div id="configuration-modal" class="configuration-modal">
@@ -22,48 +21,12 @@ function showConfigurationModal() {
                             </div>
                         </div>
                     </div>`);
-        console.log(div[0]);
         $("body").append(div[0]);
     }
 }
 
 function showInstructionModal() {
-    let div = $(
-        `<div id="instructions-modal" class="modal" style="position: fixed;">
-            <div class="slideshow-container">
-                <div class="mySlides fade">
-                    <div class="numbertext">1 / 3</div>
-                    <img src="../images/order/banquin.png" style="width:50%">
-                    <div class="text">Tela 1</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">2 / 3</div>
-                    <img src="../images/others/kenji-spider.png" style="width:50%">
-                    <div class="text">Tela 2</div>
-                </div>
-
-                <div class="mySlides fade">
-                    <div class="numbertext">3 / 3</div>
-                    <img src="../images/others/conf.png" style="width:50%">
-                    <div class="text">Tela 3</div>
-                </div>
-
-                <a class="prev"">&#10094;</a>
-                <a class="next">&#10095;</a>
-            </div>
-            <br>
-
-            <div id="all-dots" style="text-align:center">
-                <span class="dot" level="1"></span>
-                <span class="dot" level="2"></span>
-                <span class="dot" level="3"></span>
-            </div>
-            <button class="close-modal"></button>
-        </div>`
-    );
-    $("body").append(div[0]);
-    showSlides(1);
+    addCarrousel();
 }
 
 function showRankingModal() {

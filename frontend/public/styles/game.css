@@ -266,3 +266,10 @@
   box-sizing: border-box;
   border-top: 10vmin solid rgba(0, 0, 0, 0.2);
 }
+
+#configuration {
+  background-image: url("../images/menu/conf.png");
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
