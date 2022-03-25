@@ -161,6 +161,7 @@ function showEndOrderModal(clientNumber, scoreGeral) {
 
 function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) {
     const finalScore = totalOrderScore + acceptancePointing + spidersPointing;
+<<<<<<< HEAD
     let div = $(`<div class="popup-overlay">
                     <div class="modal-bigger end-order" style="position: fixed;">
                         <div id="close-menu" class="line-head">
@@ -187,6 +188,34 @@ function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) 
                         </div>
                     </div>
                 </div>`);
+=======
+    let div = $(
+        `<div class="modal-bigger end-order" style="position: fixed;">
+        <div id="close-menu" class="line-head">
+            <h1>Fim do Jogo</h1>
+            <button class="close-modal"></button>
+        </div>
+        <div>
+        <div id="person-modal">
+            <img src="./images/order/client-chef-2.png" />
+        </div>
+        <div id="info-score">
+            <h2>Pontuação</h2>
+            <div>
+                <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
+                <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
+                <p id="spider-score">Bônus das aranhas: ${spidersPointing} pontos</p>
+                <p id="final-score">Pontuação final: ${finalScore} pontos</p>
+            </div>
+            <div class="btn-modal">
+                <button id="see-ranking">Ver Ranking</button>
+                <button id="leave-game">Sair</button>
+            </div>
+        </div>
+        </div>
+    </div>`
+    );
+>>>>>>> 4b23527c45c224c068bd545170d6f51a84918446
     $(".popup-overlay").append(div[0]);
 }
 
