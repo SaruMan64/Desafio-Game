@@ -202,29 +202,13 @@ $(document).ready(function () {
                 // Fill the scoring modal and removes the client from the seat
                 try {
                     if (Number(item.children[0].id) === orderNumber) {
+                        console.log("entrei no if");
                         console.log(Number(item.children[0].id), orderNumber);
                         const clientNumber = item.children[0]
                             .getAttribute("src")
                             .split("-")[1];
                         showEndOrderModal(clientNumber, scoreGeral);
-                        // $("#person-modal").html("");
-                        // $("#person-modal").append(
-                        //     `<img src="./images/order/client-${clientNumber}-front.png" />`
-                        // );
-                        // $("#cooking-score").html(
-                        //     `Cozimento: ${cookingScore} pontos`
-                        // );
-                        // $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-                        // $("#ingredients-score").html(
-                        //     `Ingredientes: ${ingredientsScore} pontos`
-                        // );
-                        // $("#order-score").html(
-                        //     `Pontuação do pedido: ${orderScore} pontos`
-                        // );
-                        // $("#total-score").html(
-                        //     `Pontuação total: ${totalScore} pontos`
-                        // );
-                        console.log(item.children[0]);
+                        console.log("entrei no if dps do modal");
                         item.children[0].remove();
 
                         $(".seat-top-view").each(function (index) {
@@ -251,42 +235,41 @@ $(document).ready(function () {
 
     $("#next-order").on("click", function () {
         // Close the scoring modal and continue to the next order
-        $(".popup-overlay, .popup-content").removeClass("active");
+        // $(".popup-overlay, .popup-content").removeClass("active");
         $("#game").tabs({
             active: 0,
         });
     });
-
-    $("#end-game").on("click", function () {
+    // $("#end-game").on("click", function () {
+    $(document).on("click", "#end-game", function () {
         // Close the scoring modal and open ranking modal
-        $(".popup-overlay, .popup-content").removeClass("active");
+        // $(".popup-overlay, .popup-content").removeClass("active");
         const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
         const spiderScore = spidersPointing(spidersCaught);
+        console.log("end-game haha");
         showEndGameModal(score, acceptanceScore, spiderScore);
         updateScore();
         $("#score-game").html(score);
 
-        $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
+        // $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
 
         $("#play-again").on("click", function () {
             // Close the ranking modal               // PRECISA LIMPAR OS ASSENTOS E LEVAR PARA A OPENING
-            $(".popup-overlay-ranking, .popup-content-ranking").removeClass(
-                "active"
-            );
+            // $(".popup-overlay-ranking, .popup-content-ranking").removeClass("active");
             $("#game").tabs({
                 active: 0,
             });
         });
     });
 
-    function endGame() {
-        updateScore();
-        updateRanking();
-        showEndGameModal(); // Mostrar mensagem de parabéns, somatório (pontuação dos pedidos, bônus por pedidos aceitos, bônus por aranha), pontuação total, total de clientes atendidos e chefinho feliz, botão de sair e botão de ranking.
-        clearGame(); // Limpar personagens dos assentos, pedidos do varal, pedido do order-drop, conteúdo das panelas, zerar timer das panelas, limpar tijela do macarrão, limpar tijela do molho, limpar tijela dos ingredientes, limpar pedido da bandeja, limpar teias de aranha.
-        clearTimer(); // Zerar timer do jogo e deixar pausado.
-    }
+    // function endGame() {
+    //     updateScore();
+    //     updateRanking();
+    //     showEndGameModal(); // Mostrar mensagem de parabéns, somatório (pontuação dos pedidos, bônus por pedidos aceitos, bônus por aranha), pontuação total, total de clientes atendidos e chefinho feliz, botão de sair e botão de ranking.
+    //     clearGame(); // Limpar personagens dos assentos, pedidos do varal, pedido do order-drop, conteúdo das panelas, zerar timer das panelas, limpar tijela do macarrão, limpar tijela do molho, limpar tijela dos ingredientes, limpar pedido da bandeja, limpar teias de aranha.
+    //     clearTimer(); // Zerar timer do jogo e deixar pausado.
+    // }
 
     
     function clearGame() {

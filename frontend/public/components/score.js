@@ -43,7 +43,7 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
 
     }
     
-    cookingScore = (dishMade.cookingTime * 100) / dishOrdered.cookingTime;
+    cookingScore = Math.round((dishMade.cookingTime * 100) / dishOrdered.cookingTime);
     if (cookingScore > 100) {
         let penalty = (parseInt(cookingScore) - 100) * 2;
         cookingScore = cookingScore - penalty;

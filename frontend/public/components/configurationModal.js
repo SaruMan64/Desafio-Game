@@ -121,70 +121,72 @@ function showCreditsModal() {
 }
  */
 function showEndOrderModal(clientNumber, scoreGeral) {
-    let facialExpression;
-    if(scoreGeral.totalScore >= 150 ) {
-        facialExpression = "front";
-    } else {
-        facialExpression = "sad";
+    if ($("body").find(".popup-overlay").length == 0) {
+        let facialExpression;
+        if(scoreGeral.totalScore >= 150 ) {
+            facialExpression = "front";
+        } else {
+            facialExpression = "sad";
+        }
+        let div = $(`<div class="popup-overlay">
+                        <div class="modal-bigger end-order" style="position: fixed;">
+                            <div id="close-menu" class="line-head">
+                                <h1>Fim do Pedido</h1>
+                                <button class="close-modal"></button>
+                            </div>
+                            <div>
+                                <div id="person-modal">
+                                    <img src="./images/order/client-${clientNumber}-${facialExpression}.png" />
+                                </div>
+                                <div id="info-score">
+                                    <h2>Pontuação</h2>
+                                    <div>
+                                        <p id="cooking-score">Cozimento: ${scoreGeral.cookingScore} pontos</p>
+                                        <p id="broth-score">Caldo: ${scoreGeral.brothScore} pontos</p>
+                                        <p id="ingredients-score">Ingredientes: ${scoreGeral.ingredientsScore} pontos</p>
+                                        <p id="order-score">Pontuação do pedido: ${scoreGeral.orderScore} pontos</p>
+                                        <p id="total-score">Pontuação total: ${scoreGeral.totalScore} pontos</p>
+                                    </div>
+                                    <div class="btn-modal">
+                                        <button id="next-order">Próximo pedido</button>
+                                        <button id="end-game">Finalizar jogo</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`);
+        $("body").append(div[0]);
     }
-    let div = $(
-        `<div class="modal-bigger end-order" style="position: fixed;">
-        <div id="close-menu" class="line-head">
-            <h1>Fim do Pedido</h1>
-            <button class="close-modal"></button>
-        </div>
-        <div>
-        <div id="person-modal">
-            <img src="./images/order/client-${clientNumber}-${facialExpression}.png" />
-        </div>
-        <div id="info-score">
-            <h2>Pontuação</h2>
-            <div>
-                <p id="cooking-score">Cozimento: ${scoreGeral.cookingScore} pontos</p>
-                <p id="broth-score">Caldo: ${scoreGeral.brothScore} pontos</p>
-                <p id="ingredients-score">Ingredientes: ${scoreGeral.ingredientsScore} pontos</p>
-                <p id="order-score">Pontuação do pedido: ${scoreGeral.orderScore} pontos</p>
-                <p id="total-score">Pontuação total: ${scoreGeral.totalScore} pontos</p>
-            </div>
-            <div class="btn-modal">
-                <button id="next-order">Próximo pedido</button>
-                <button id="end-game">Finalizar jogo</button>
-            </div>
-        </div>
-        </div>
-    </div>`
-    );
-    $(".popup-overlay").append(div[0]);
 }
 
 function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) {
     const finalScore = totalOrderScore + acceptancePointing + spidersPointing;
-    let div = $(
-        `<div class="modal-bigger end-order" style="position: fixed;">
-        <div id="close-menu" class="line-head">
-            <h1>Fim do Jogo</h1>
-            <button class="close-modal"></button>
-        </div>
-        <div>
-        <div id="person-modal">
-            <img src="./images/order/client-chef-2.png" />
-        </div>
-        <div id="info-score">
-            <h2>Pontuação</h2>
-            <div>
-                <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
-                <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
-                <p id="spider-score">Bônus das aranhas: ${spiderPointing} pontos</p>
-                <p id="final-score">Pontuação final: ${finalScore} pontos</p>
-            </div>
-            <div class="btn-modal">
-                <button id="see-ranking">Ver Ranking</button>
-                <button id="leave-game">Sair</button>
-            </div>
-        </div>
-        </div>
-    </div>`
-    );
+    let div = $(`<div class="popup-overlay">
+                    <div class="modal-bigger end-order" style="position: fixed;">
+                        <div id="close-menu" class="line-head">
+                            <h1>Fim do Jogo</h1>
+                            <button class="close-modal"></button>
+                        </div>
+                        <div>
+                            <div id="info-score">
+                                <h2>Pontuação</h2>
+                                <div>
+                                    <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
+                                    <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
+                                    <p id="spider-score">Bônus das aranhas: ${spidersPointing} pontos</p>
+                                    <p id="final-score">Pontuação final: ${finalScore} pontos</p>
+                                </div>
+                                <div class="btn-modal">
+                                    <button id="see-ranking">Ver Ranking</button>
+                                    <button id="leave-game">Sair</button>
+                                </div>
+                            </div>
+                            <div id="person-modal">
+                                <img src="./images/order/chef-2.png" />
+                            </div>
+                        </div>
+                    </div>
+                </div>`);
     $(".popup-overlay").append(div[0]);
 }
 
