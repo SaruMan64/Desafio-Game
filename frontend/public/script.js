@@ -6,7 +6,7 @@ import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services, stopTimers } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
 import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
-import { factory, printGeneralTimer } from "./components/timer.js";
+import { factory, printGeneralTimer, clearOneTimer } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let auxTotalOrderScore = 0;
@@ -67,19 +67,20 @@ $(document).ready(function () {
          $name = $("#inputName").val();
          $("#name-player").html($name);
          openingAJAX();
+         let startTime = Date.now();
+         generalTime.time = 0;
+         generalTime.cod = generalTime.setCorrectingInterval(function () {
+             generalTime.time = (Date.now() - startTime) / 1000;
+             printGeneralTimer($(".clock-menu"), generalTime.time);
+             if (generalTime.time >= generalTime.limit) {
+     
+                 endGame();
+             }
+             //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
+         }, 1000);
+         newClient(0);
      });
 
-    let startTime = Date.now();
-    generalTime.time = 0;
-    generalTime.cod = generalTime.setCorrectingInterval(function () {
-        generalTime.time = (Date.now() - startTime) / 1000;
-        printGeneralTimer($(".clock-menu"), generalTime.time);
-        if (generalTime.time >= generalTime.limit) {
-
-            endGame();
-        }
-        //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
-    }, 1000);
     $("#game").tabs();
 
     // background kitchen
@@ -92,8 +93,6 @@ $(document).ready(function () {
             $("#game").css("background", "var(--no-order)");
         }
     });
-
-    newClient(0);
 
     // Aba de pedidos
 
