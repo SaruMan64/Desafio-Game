@@ -1,75 +1,7 @@
 [
   {
-<<<<<<< HEAD
-    "id": 4,
-=======
-    "id": 6,
->>>>>>> 5252a44c16dd95b95168b33e30d374fa261e9cdd
-    "name": "Yeté",
-    "score": 8001
-  },
-  {
     "id": 1,
     "name": "David",
     "score": 450
-  },
-  {
-    "id": 2,
-    "name": "Luan",
-    "score": 0
-  },
-  {
-    "id": 3,
-    "name": "João",
-    "score": 0
-  },
-  {
-<<<<<<< HEAD
-    "id": 5,
-    "name": "joao",
-=======
-    "id": 4,
-    "name": "Núbia",
->>>>>>> 5252a44c16dd95b95168b33e30d374fa261e9cdd
-    "score": 0
-  },
-  {
-    "id": 5,
-    "name": "Samuel",
-    "score": 0
-  },
-  {
-    "id": 7,
-<<<<<<< HEAD
-    "name": "Pamonha2",
-    "score": 0
-  },
-  {
-    "id": 8,
-    "name": "gjfj",
-    "score": 0
-  },
-  {
-    "id": 9,
-    "name": "ghfdg",
-    "score": 0
-  },
-  {
-    "id": 10,
-    "name": "khgjhg",
-    "score": 0
-  },
-  {
-    "id": 11,
-    "name": "sxsaxsa",
-    "score": 0
-  },
-  {
-    "id": 12,
-    "name": "mkjmj",
-=======
-    "name": "PamonhaQuentin",
->>>>>>> 5252a44c16dd95b95168b33e30d374fa261e9cdd
-    "score": 0
   }
 ]
