@@ -24,43 +24,43 @@ class Sounds {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/winning.mp3")
+                "file": new Audio("../sounds/winning.wav")
             },
             "loosing": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/loosing.mp3")
+                "file": new Audio("../sounds/loosing.wav")
             },
             "cooking": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/cooking.mp3")
+                "file": new Audio("../sounds/cooking.wav")
             },
             "web": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/web.mp3")
+                "file": new Audio("../sounds/web.wav")
             },
             "put-broth": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/put-broth.mp3")
+                "file": new Audio("../sounds/put-broth.wav")
             },
             "time-passing": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/time-passing.mp3")
+                "file": new Audio("../sounds/time-passing.wav")
             },
             "paper-effect": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("../sounds/paper-effect.mp3")
+                "file": new Audio("../sounds/paper-effect.wav")
             }
         }
     }
