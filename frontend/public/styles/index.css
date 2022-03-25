@@ -47,6 +47,10 @@ body {
   align-items: center;
 }
 
+.popup-overlay{
+  z-index: 10;
+}
+
 @media (max-aspect-ratio: 16/8) {
   body {
     background: url("../images/opening/SakuraTree.png") no-repeat center/cover;
