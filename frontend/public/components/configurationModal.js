@@ -14,7 +14,7 @@ function showConfigurationModal() {
                                 <button class="close-modal"></button>
                             </div>
                             <div>
-                                <button id="change-sound" class="volume" level="1"></button>
+                                <button id="change-sound" class="volume" level="2"></button>
                                 <button id="exit-game"></button>
                                 <button id="instructions"></button>
                                 <button id="ranking"></button>

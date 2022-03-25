@@ -16,9 +16,9 @@ let spidersCaught = 0;
 
 const zeroFill = (n) => {
     return n < 10 ? "000" + n
-    : n < 100 ? "00" + n
-    : n < 1000 ? "0" + n
-    : n;
+        : n < 100 ? "00" + n
+            : n < 1000 ? "0" + n
+                : n;
 };
 
 const generalTime = factory();
@@ -58,40 +58,43 @@ function endGame() {
 }
 
 $(document).ready(function () {
+    $("#game").hide();
     let $name;
     $("#name-player").html($name);
     //Opening
-    /*  openingHTML();
+    openingHTML();
     $('#btn').click(function () {
-    sound.playMusic("sakuya");
-         $name = $("#inputName").val();
-         openingAJAX();
-    }); */
-    let startTime = Date.now();
-    generalTime.time = 0;
-    generalTime.cod = generalTime.setCorrectingInterval(function () {
-        generalTime.time = (Date.now() - startTime) / 1000;
-        printGeneralTimer($(".clock-menu"), generalTime.time);
-        if (generalTime.time >= generalTime.limit) {
-            
-           endGame();
-        }
-        //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
-    }, 1000);
-    $("#game").tabs();
+        sound.playMusic("sakuya");
+        sound.volumeAll(0.5);
+        $name = $("#inputName").val();
+        openingAJAX();
 
-    // background kitchen
-    $("#btn-tabs > li > a").click(() => {
-        if (
-            $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
-        ) {
-            $("#game").css("background", "var(--order)");
-        } else {
-            $("#game").css("background", "var(--no-order)");
-        }
+        let startTime = Date.now();
+        generalTime.time = 0;
+        generalTime.cod = generalTime.setCorrectingInterval(function () {
+            generalTime.time = (Date.now() - startTime) / 1000;
+            printGeneralTimer($(".clock-menu"), generalTime.time);
+            if (generalTime.time >= generalTime.limit) {
+
+                endGame();
+            }
+            //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
+        }, 1000);
+        $("#game").tabs();
+
+        // background kitchen
+        $("#btn-tabs > li > a").click(() => {
+            if (
+                $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
+            ) {
+                $("#game").css("background", "var(--order)");
+            } else {
+                $("#game").css("background", "var(--no-order)");
+            }
+        });
+
+        newClient(0);
     });
-
-    newClient(0);
 
     // Aba de pedidos
 
@@ -118,8 +121,7 @@ $(document).ready(function () {
         try {
             $("#pot").css(
                 "background",
-                `url(${
-                    $("#ready")[0].children[0].children[0].src
+                `url(${$("#ready")[0].children[0].children[0].src
                 }) no-repeat center`
             );
         } catch (e) {
@@ -175,8 +177,7 @@ $(document).ready(function () {
         } else if ($("#droppable div").length < 5) {
             // If there are not enough ingredients
             alert(
-                `A entrega não pôde ser concluída. Adicione pelo menos ${
-                    5 - $("#droppable div").length
+                `A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length
                 } ingredientes`
             );
         } else if ($("#order-completed").html() === "") {
@@ -271,7 +272,7 @@ $(document).ready(function () {
     //     clearTimer(); // Zerar timer do jogo e deixar pausado.
     // }
 
-    
+
     function clearGame() {
         clearSpiderWeb();
         clearClients();
@@ -280,22 +281,22 @@ $(document).ready(function () {
         clearTimerOven()
         clearBowls();
     }
-    
+
     function clearSpiderWeb() {
-        $(".spider-web").each(function() {
+        $(".spider-web").each(function () {
             this.remove();
         });
     }
 
     function clearClients() {
-        $("#all-clients > div").each(function() {
+        $("#all-clients > div").each(function () {
             this.innerHTML = `<img src="./images/order/seat.png" />`;
         });
-        $(".seat-top-view > img").each(function() {
+        $(".seat-top-view > img").each(function () {
             this.src = "./images/others/seat-top-view.svg";
         });
     }
-    
+
     function clearOrders() {
         $("#orders").html("");
         $("#order-drop").html("");
@@ -303,14 +304,14 @@ $(document).ready(function () {
     }
 
     function clearOven() {
-        $(".stove").each(function() {
+        $(".stove").each(function () {
             this.style = "background: var(--pan-off);";
             this.innerHTML = "";
         });
     }
 
     function clearTimerOven() {
-        $(".stove").each(function(index) {
+        $(".stove").each(function (index) {
             clearOneTimer(index + 1);
         });
     }
