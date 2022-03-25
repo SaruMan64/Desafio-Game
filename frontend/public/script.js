@@ -1,31 +1,12 @@
 import { sound } from "./components/audio.js";
 import { openingHTML, openingAJAX } from "./components/opening.js";
-import {
-    dishMadeMold,
-    pointing,
-    clearKitchen,
-    acceptancePointing,
-    spidersPointing,
-} from "./components/score.js";
+import { dishMadeMold, pointing, clearKitchen, acceptancePointing, spidersPointing } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import {
-    clientOrder,
-    newClient,
-    services,
-    stopTimers,
-} from "./components/incomingClients.js";
+import { clientOrder, newClient, services, stopTimers } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
-import {
-    showConfigurationModal,
-    showEndOrderModal,
-    showEndGameModal,
-} from "./components/configurationModal.js";
-import {
-    factory,
-    printGeneralTimer,
-    clearOneTimer,
-} from "./components/timer.js";
+import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
+import { factory, printGeneralTimer, clearOneTimer } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let auxTotalOrderScore = 0;
@@ -70,6 +51,7 @@ let score;
 function endGame() {
     generalTime.clearCorrectingInterval(generalTime.cod);
     stopTimers();
+    showEndGameModal();
     console.log(`Jogo terminou`);
 }
 
@@ -108,6 +90,21 @@ $(document).ready(function () {
     });
 
     $("#game").tabs();
+
+    $(document).on("click", "#card", function () {
+        spidersCaught++;
+        console.log(`Aranhas foram capturadas: ${spidersCaught} vezes kkk`);
+    })
+
+    $(document).on("click", ".accept", function () {
+        ordersAccepted++;
+        console.log(`Fui aceitado: ${ordersAccepted} vezes kkk`);
+    })
+    
+    $(document).on("click", ".decline", function () {
+        ordersDeclined++;
+        console.log(`Fui rejeitado: ${ordersDeclined} vezes kkk`);
+    })
 
     // Aba de pedidos
 
@@ -190,11 +187,7 @@ $(document).ready(function () {
             $("#game").tabs({ active: 2 });
         } else if ($("#droppable div").length < 5) {
             // If there are not enough ingredients
-            alert(
-                `A entrega não pôde ser concluída. Adicione pelo menos ${
-                    5 - $("#droppable div").length
-                } ingredientes`
-            );
+            alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
         } else if ($("#order-completed").html() === "") {
             // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
