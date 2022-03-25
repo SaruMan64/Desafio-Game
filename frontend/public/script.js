@@ -32,6 +32,7 @@ let auxTotalOrderScore = 0;
 let ordersAccepted = 0;
 let ordersDeclined = 0;
 let spidersCaught = 0;
+const apiUrl = "http://localhost:4444";
 
 const zeroFill = (n) => {
     return n < 10 ? "000" + n : n < 100 ? "00" + n : n < 1000 ? "0" + n : n;
@@ -78,36 +79,53 @@ $(document).ready(function () {
     let $name;
     //Opening
     openingHTML();
-    $("#btn").click(async function () {
+    $("#btn").click(function () {
         $name = $("#inputName").val();
         const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
         if (!filterName.test($name)) {
-            let check = await openingAJAX();
-            setTimeout(() => {
-                console.log(check);
-                if (check) {
-                    sound.playMusic("sakuya");
-                    $("#name-player").html($name);
-                    let startTime = Date.now();
-                    generalTime.time = 0;
-                    generalTime.cod = generalTime.setCorrectingInterval(
-                        function () {
-                            generalTime.time = (Date.now() - startTime) / 1000;
-                            printGeneralTimer($(".clock-menu"), generalTime.time);
-                            if (generalTime.time >= generalTime.limit) {
-                                endGame();
-                            }
-                            //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
-                        },
-                        1000
-                    );
-                    newClient(0);
-                }
-            }, 1000);
+            fetch(apiUrl + "/check?name=" + $name)
+                .then((response) => response.json())
+                .then((res) => {
+                    console.log(res);
+                    if (!res) {
+                        sound.playMusic("sakuya");
+                        $("#name-player").html($name);
+                        openingAJAX();
+                        let startTime = Date.now();
+                        generalTime.time = 0;
+                        generalTime.cod = generalTime.setCorrectingInterval(
+                            function () {
+                                generalTime.time =
+                                    (Date.now() - startTime) / 1000;
+                                printGeneralTimer(
+                                    $(".clock-menu"),
+                                    generalTime.time
+                                );
+                                if (generalTime.time >= generalTime.limit) {
+                                    endGame();
+                                }
+                                //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
+                            },
+                            1000
+                        );
+                        newClient(0);
+                    }
+                });
         }
     });
 
     $("#game").tabs();
+
+    // background kitchen
+    $("#btn-tabs > li > a").click(() => {
+        if (
+            $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
+        ) {
+            $("#game").css("background", "var(--order)");
+        } else {
+            $("#game").css("background", "var(--no-order)");
+        }
+    });
 
     // Aba de pedidos
 
@@ -362,11 +380,7 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $('#configuration[local="CONFIGURAÇÃO"]').click(function () {
-        showConfigurationModal();
-    });
-    
-    $('#configuration[local="PAUSE"]').click(function () {
+    $("#configuration").click(function () {
         showConfigurationModal();
     });
 

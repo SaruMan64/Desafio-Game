@@ -1,5 +1,10 @@
 [
   {
+    "id": 4,
+    "name": "Yeté",
+    "score": 8001
+  },
+  {
     "id": 1,
     "name": "David",
     "score": 450
@@ -15,11 +20,6 @@
     "score": 0
   },
   {
-    "id": 4,
-    "name": "Yeté",
-    "score": 8001
-  },
-  {
     "id": 5,
     "name": "joao",
     "score": 0
@@ -28,7 +28,6 @@
     "id": 6,
     "name": "PamonhaQuentin",
     "score": 0
-<<<<<<< HEAD
   },
   {
     "id": 7,
@@ -129,7 +128,75 @@
     "id": 26,
     "name": "nbhnhnh",
     "score": 0
-=======
->>>>>>> 17fd9005441034b10f4514aa7ac5385e4109fc9c
+  },
+  {
+    "id": 27,
+    "name": "sfdgfvhbhv",
+    "score": 0
+  },
+  {
+    "id": 28,
+    "name": "zzzzzzzzzzzzzzz",
+    "score": 0
+  },
+  {
+    "id": 29,
+    "name": "zxzxczxc",
+    "score": 0
+  },
+  {
+    "id": 30,
+    "name": "ghgnjmn",
+    "score": 0
+  },
+  {
+    "id": 31,
+    "name": "hfjhhjhj",
+    "score": 0
+  },
+  {
+    "id": 32,
+    "name": "mnbvnmb",
+    "score": 0
+  },
+  {
+    "id": 33,
+    "name": "mjhghh",
+    "score": 0
+  },
+  {
+    "id": 34,
+    "name": "bgnh",
+    "score": 0
+  },
+  {
+    "id": 35,
+    "name": "nhfghg",
+    "score": 0
+  },
+  {
+    "id": 36,
+    "name": "nhmj",
+    "score": 0
+  },
+  {
+    "id": 37,
+    "name": "hjgmn",
+    "score": 0
+  },
+  {
+    "id": 38,
+    "name": "ghjkh",
+    "score": 0
+  },
+  {
+    "id": 39,
+    "name": "kjkjm",
+    "score": 0
+  },
+  {
+    "id": 40,
+    "name": "luanretr",
+    "score": 0
   }
 ]
