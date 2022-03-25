@@ -194,7 +194,7 @@ function showEndGameModal(totalOrderScore = 0, acceptancePointing = 0, spidersPo
                                 </div>
                             </div>
                             <div id="person-modal">
-                                <img src="./images/order/chef-2.png" />
+                                <img src="./images/devs/todos.png" />
                             </div>
                         </div>
                     </div>
