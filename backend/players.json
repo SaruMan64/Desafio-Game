@@ -1,10 +1,5 @@
 [
   {
-    "id": 4,
-    "name": "Yeté",
-    "score": 8001
-  },
-  {
     "id": 1,
     "name": "David",
     "score": 450
@@ -20,6 +15,11 @@
     "score": 0
   },
   {
+    "id": 4,
+    "name": "Yeté",
+    "score": 8001
+  },
+  {
     "id": 5,
     "name": "joao",
     "score": 0
@@ -28,6 +28,7 @@
     "id": 6,
     "name": "PamonhaQuentin",
     "score": 0
+<<<<<<< HEAD
   },
   {
     "id": 7,
@@ -128,5 +129,7 @@
     "id": 26,
     "name": "nbhnhnh",
     "score": 0
+=======
+>>>>>>> 17fd9005441034b10f4514aa7ac5385e4109fc9c
   }
 ]

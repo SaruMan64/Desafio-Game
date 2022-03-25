@@ -25,6 +25,7 @@ function openingHTML() {
           srcset="./images/opening/Door.svg"
         />
       </div>
+      <button id="configuration" local="CONFIGURAÇÃO"></button>
     </section>
   `);
 }

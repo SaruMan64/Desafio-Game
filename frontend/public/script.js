@@ -109,17 +109,6 @@ $(document).ready(function () {
 
     $("#game").tabs();
 
-    // background kitchen
-    $("#btn-tabs > li > a").click(() => {
-        if (
-            $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
-        ) {
-            $("#game").css("background", "var(--order)");
-        } else {
-            $("#game").css("background", "var(--no-order)");
-        }
-    });
-
     // Aba de pedidos
 
     $("#make-order").click(function () {
@@ -373,7 +362,11 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#configuration").click(function () {
+    $('#configuration[local="CONFIGURAÇÃO"]').click(function () {
+        showConfigurationModal();
+    });
+    
+    $('#configuration[local="PAUSE"]').click(function () {
         showConfigurationModal();
     });
 
