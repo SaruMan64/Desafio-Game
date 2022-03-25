@@ -152,8 +152,7 @@ $(document).ready(function () {
         try {
             $("#pot").css(
                 "background",
-                `url(${
-                    $("#ready")[0].children[0].children[0].src
+                `url(${$("#ready")[0].children[0].children[0].src
                 }) no-repeat center`
             );
         } catch (e) {
@@ -209,8 +208,7 @@ $(document).ready(function () {
         } else if ($("#droppable div").length < 5) {
             // If there are not enough ingredients
             alert(
-                `A entrega não pôde ser concluída. Adicione pelo menos ${
-                    5 - $("#droppable div").length
+                `A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length
                 } ingredientes`
             );
         } else if ($("#order-completed").html() === "") {
@@ -380,7 +378,12 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#configuration").click(function () {
+    $('#configuration[local="CONFIGURAÇÃO"]').click(function () {
+        showConfigurationModal();
+        $("#exit-game").remove();
+    });
+
+    $('#configuration[local="PAUSE"]').click(function () {
         showConfigurationModal();
     });
 
