@@ -1,12 +1,31 @@
 import { sound } from "./components/audio.js";
 import { openingHTML, openingAJAX } from "./components/opening.js";
-import { dishMadeMold, pointing, clearKitchen, acceptancePointing, spidersPointing } from "./components/score.js";
+import {
+    dishMadeMold,
+    pointing,
+    clearKitchen,
+    acceptancePointing,
+    spidersPointing,
+} from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import { clientOrder, newClient, services, stopTimers } from "./components/incomingClients.js";
+import {
+    clientOrder,
+    newClient,
+    services,
+    stopTimers,
+} from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
-import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
-import { factory, printGeneralTimer, clearOneTimer } from "./components/timer.js";
+import {
+    showConfigurationModal,
+    showEndOrderModal,
+    showEndGameModal,
+} from "./components/configurationModal.js";
+import {
+    factory,
+    printGeneralTimer,
+    clearOneTimer,
+} from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
 let auxTotalOrderScore = 0;
@@ -15,10 +34,7 @@ let ordersDeclined = 0;
 let spidersCaught = 0;
 
 const zeroFill = (n) => {
-    return n < 10 ? "000" + n
-        : n < 100 ? "00" + n
-            : n < 1000 ? "0" + n
-                : n;
+    return n < 10 ? "000" + n : n < 100 ? "00" + n : n < 1000 ? "0" + n : n;
 };
 
 const generalTime = factory();
@@ -61,25 +77,35 @@ $(document).ready(function () {
     $("#game").hide();
     let $name;
     //Opening
-     openingHTML();
-     $('#btn').click(function () {
-         sound.playMusic("sakuya");
-         $name = $("#inputName").val();
-         $("#name-player").html($name);
-         openingAJAX();
-         let startTime = Date.now();
-         generalTime.time = 0;
-         generalTime.cod = generalTime.setCorrectingInterval(function () {
-             generalTime.time = (Date.now() - startTime) / 1000;
-             printGeneralTimer($(".clock-menu"), generalTime.time);
-             if (generalTime.time >= generalTime.limit) {
-     
-                 endGame();
-             }
-             //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
-         }, 1000);
-         newClient(0);
-     });
+    openingHTML();
+    $("#btn").click(async function () {
+        $name = $("#inputName").val();
+        const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
+        if (!filterName.test($name)) {
+            let check = await openingAJAX();
+            setTimeout(() => {
+                console.log(check);
+                if (check) {
+                    sound.playMusic("sakuya");
+                    $("#name-player").html($name);
+                    let startTime = Date.now();
+                    generalTime.time = 0;
+                    generalTime.cod = generalTime.setCorrectingInterval(
+                        function () {
+                            generalTime.time = (Date.now() - startTime) / 1000;
+                            printGeneralTimer($(".clock-menu"), generalTime.time);
+                            if (generalTime.time >= generalTime.limit) {
+                                endGame();
+                            }
+                            //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
+                        },
+                        1000
+                    );
+                    newClient(0);
+                }
+            }, 1000);
+        }
+    });
 
     $("#game").tabs();
 
@@ -119,7 +145,8 @@ $(document).ready(function () {
         try {
             $("#pot").css(
                 "background",
-                `url(${$("#ready")[0].children[0].children[0].src
+                `url(${
+                    $("#ready")[0].children[0].children[0].src
                 }) no-repeat center`
             );
         } catch (e) {
@@ -175,7 +202,8 @@ $(document).ready(function () {
         } else if ($("#droppable div").length < 5) {
             // If there are not enough ingredients
             alert(
-                `A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length
+                `A entrega não pôde ser concluída. Adicione pelo menos ${
+                    5 - $("#droppable div").length
                 } ingredientes`
             );
         } else if ($("#order-completed").html() === "") {
@@ -259,7 +287,10 @@ $(document).ready(function () {
     $("#end-game").on("click", function () {
         // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
-        const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
+        const acceptanceScore = acceptancePointing(
+            ordersAccepted,
+            ordersDeclined
+        );
         const spiderScore = spidersPointing(spidersCaught);
         showEndGameModal(score, acceptanceScore, spiderScore);
         updateScore();
@@ -287,13 +318,12 @@ $(document).ready(function () {
         clearTimer(); // Zerar timer do jogo e deixar pausado.
     }
 
-
     function clearGame() {
         clearSpiderWeb();
         clearClients();
         clearOrders();
         clearOven();
-        clearTimerOven()
+        clearTimerOven();
         clearBowls();
     }
 

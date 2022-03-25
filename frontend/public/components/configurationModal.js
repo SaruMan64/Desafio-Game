@@ -174,7 +174,7 @@ function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) 
             <div>
                 <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
                 <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
-                <p id="spider-score">Bônus das aranhas: ${spiderPointing} pontos</p>
+                <p id="spider-score">Bônus das aranhas: ${spidersPointing} pontos</p>
                 <p id="final-score">Pontuação final: ${finalScore} pontos</p>
             </div>
             <div class="btn-modal">
