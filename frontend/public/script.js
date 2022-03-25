@@ -5,7 +5,7 @@ import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
 import { clientOrder, newClient, services, stopTimers } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
-import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
+import { showConfigurationModal, showEndOrderModal, showEndGameModal, closeThisModal } from "./components/configurationModal.js";
 import { factory, printGeneralTimer } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
@@ -203,13 +203,11 @@ $(document).ready(function () {
                 // Fill the scoring modal and removes the client from the seat
                 try {
                     if (Number(item.children[0].id) === orderNumber) {
-                        console.log("entrei no if");
                         console.log(Number(item.children[0].id), orderNumber);
                         const clientNumber = item.children[0]
                             .getAttribute("src")
                             .split("-")[1];
                         showEndOrderModal(clientNumber, scoreGeral);
-                        console.log("entrei no if dps do modal");
                         item.children[0].remove();
 
                         $(".seat-top-view").each(function (index) {
@@ -229,18 +227,20 @@ $(document).ready(function () {
                 }
             });
 
-            $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
+            // $(".popup-overlay, .popup-content").addClass("active"); // Open the scoring modal
             clearKitchen();
         }
     });
 
-    $("#next-order").on("click", function () {
-        // Close the scoring modal and continue to the next order
-        // $(".popup-overlay, .popup-content").removeClass("active");
-        $("#game").tabs({
-            active: 0,
-        });
-    });
+    // $("#next-order").on("click", function () {
+    // $(document).on("click", "#next-order", function (event) {
+    //     // Close the scoring modal and continue to the next order
+    //     // $(".popup-overlay, .popup-content").removeClass("active");
+    //     $("#game").tabs({
+    //         active: 0,
+    //     });
+    //     closeThisModal(event.target);
+    // });
     // $("#end-game").on("click", function () {
     $(document).on("click", "#end-game", function () {
         // Close the scoring modal and open ranking modal

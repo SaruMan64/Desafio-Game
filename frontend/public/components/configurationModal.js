@@ -147,7 +147,7 @@ function showEndOrderModal(clientNumber, scoreGeral) {
                                         <p id="order-score">Pontuação do pedido: ${scoreGeral.orderScore} pontos</p>
                                         <p id="total-score">Pontuação total: ${scoreGeral.totalScore} pontos</p>
                                     </div>
-                                    <div class="btn-modal">
+                                    <div class="line-head">
                                         <button id="next-order">Próximo pedido</button>
                                         <button id="end-game">Finalizar jogo</button>
                                     </div>
@@ -253,4 +253,12 @@ $(document).on("click", "#exit-no", function (event) {
     closeThisModal(event.target);
 });
 
-export { showConfigurationModal, showEndOrderModal, showEndGameModal };
+$(document).on("click", "#next-order", function (event) {
+    console.log("ihuu");
+    closeThisModal(event.target);
+    $("#game").tabs({
+        active: 0,
+    });
+});
+
+export { showConfigurationModal, showEndOrderModal, showEndGameModal, closeThisModal };
