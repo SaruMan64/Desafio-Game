@@ -1,6 +1,8 @@
 const cods = new Array(5);
 const timers = new Array(5);
 const stoves = new Array(5);
+let minutes = 1;
+let seconds = 0;
 
 function printGeneralTimer(clock, time) {
     let string = time.toString();
@@ -10,9 +12,10 @@ function printGeneralTimer(clock, time) {
     let minutesField = $(clock).children()[0];
     let secsField = $(clock).children()[2];
     //console.log(secs);
-    if (time > 59) {
-      let seconds = time - 60;
-      let minutes = (time - seconds) / 60;
+    if (time >= 60) {
+      seconds = Math.floor(time - (60 * minutes));
+      minutes = Math.floor(time / 60);
+      seconds == 60 ? seconds = 0 : seconds;
       let minutesString = `0${minutes}`;
       $(minutesField).children().html(minutesString);
       if (seconds >= 10) {

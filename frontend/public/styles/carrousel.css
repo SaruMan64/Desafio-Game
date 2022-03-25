@@ -35,13 +35,22 @@
 }
 
 .text {
-  color: #f2f2f2;
+  color: black;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
   bottom: 8px;
   width: 100%;
   text-align: center;
+  font-family: "Antonio-wght";
+  font-size: 3vmin;
+  font-weight: 900;
+  background-color: #f2f2f2;
+  border-radius: 5%/20%;
+  border: 0.5vmin solid black;
+  width: 30%;
+  height: 4vmin;
+  left: 35%;
 }
 
 .numbertext {

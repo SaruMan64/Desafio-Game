@@ -342,7 +342,7 @@
 #menu #configuration {
   /*   width: 10vmin;
   height: 10vmin; */
-  background: url("../images/menu/pause.png") no-repeat center/ auto 90%,
+  background: url("../images/menu/conf.png") no-repeat center/ auto 90%,
     linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%),
     linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
   box-sizing: border-box;
@@ -352,7 +352,7 @@
 }
 
 #menu #configuration:hover {
-  background: url("../images/menu/pause.png") no-repeat center/ auto 90%,
+  background: url("../images/menu/conf.png") no-repeat center/ auto 90%,
     linear-gradient(rgba(230, 198, 93, 1) 0%, rgba(230, 198, 93, 1) 100%),
     linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
 }

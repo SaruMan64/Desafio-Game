@@ -22,7 +22,7 @@ const zeroFill = (n) => {
 };
 
 const generalTime = factory();
-generalTime.limit = 30;
+generalTime.limit = 300; //tempo do jogo
 let scoreGeral;
 let score;
 
@@ -86,7 +86,7 @@ $(document).ready(function () {
     $(document).on("click", ".decline", function () {
         ordersDeclined++;
     })
-    
+
     // background kitchen
     $("#btn-tabs > li > a").click(() => {
         if (
@@ -198,6 +198,8 @@ $(document).ready(function () {
             scoreGeral = pointing(holder, dishMade);
             score = scoreGeral.totalScore;
 
+            $("#score-game").html(zeroFill(score));
+
             const orderNumber = Number(
                 $("#order-completed").find("#orderNum").html()
             );
@@ -245,6 +247,8 @@ $(document).ready(function () {
     // });
     // $("#end-game").on("click", function () {
     $(document).on("click", "#end-game", function () {
+        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+        console.log(score);
         // Close the scoring modal and open ranking modal
         // $(".popup-overlay, .popup-content").removeClass("active");
         const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
@@ -256,6 +260,8 @@ $(document).ready(function () {
         showEndGameModal(parseInt(scoreGeral.totalScore), acceptanceScore, spiderScore);
         updateScore($name, scoreGeral.totalScore);
         $("#score-game").html(score);
+        console.log(score);
+        // $("#score-game").html(zeroFill(score));
 
         // $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
@@ -278,8 +284,13 @@ $(document).ready(function () {
         console.log(acceptanceScore);
         console.log(spiderScore);
         console.log("end-game haha");
-        showEndGameModal(parseInt(scoreGeral.totalScore), acceptanceScore, spiderScore);
-        updateScore($name, scoreGeral.totalScore);
+        try {
+            showEndGameModal(acceptanceScore, spiderScore, parseInt(scoreGeral.totalScore));
+            updateScore($name, scoreGeral.totalScore);
+        } catch (e) {
+            updateScore($name, 0);
+            showEndGameModal(acceptanceScore, spiderScore, 0);
+        }
         $("#score-game").html(score);
         //showEndGameModal();
         console.log(`Jogo terminou`);

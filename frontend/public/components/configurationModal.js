@@ -3,7 +3,7 @@ import { updateRanking } from "./requests.js";
 import { addCarrousel } from "./carrousel.js";
 
 const closeButton = $(`<button class="close-modal"></button>`);
-let level = 1;
+let level = 2;
 
 function showConfigurationModal() {
     if ($("body").find(".popup-overlay").length == 0) {
@@ -14,7 +14,7 @@ function showConfigurationModal() {
                                 <button class="close-modal"></button>
                             </div>
                             <div>
-                                <button id="change-sound" class="volume" level="2"></button>
+                                <button id="change-sound" class="volume" level="${level}"></button>
                                 <button id="exit-game"></button>
                                 <button id="instructions"></button>
                                 <button id="ranking"></button>
@@ -170,7 +170,7 @@ function showEndOrderModal(clientNumber, scoreGeral) {
     }
 }
 
-function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) {
+function showEndGameModal(acceptancePointing, spidersPointing, totalOrderScore) {
     console.log("entrou no end game modal");
     console.log(totalOrderScore);
     console.log(acceptancePointing);
@@ -236,9 +236,8 @@ $(document).on("click", "#change-sound", function () {
             break;
     }
     level++;
-    level == 5
-        ? $(this).attr("level", "1")
-        : $(this).attr("level", String(Number(level)));
+    level >= 5 ? level = 1 : null;
+    $(this).attr("level", String(Number(level)));
 });
 
 $(document).on("click", "#exit-game", function () {

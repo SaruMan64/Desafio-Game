@@ -18,9 +18,9 @@ const register = function (name) {
     }
 
     for (let i = 0; i < players.length; i++) { // Checks if the name already exists
-         if (name.toLowerCase() === players[i].name.toLowerCase()) {
-             return ("Esse nome de usuário não está disponível. Tente outro nome.");
-         };
+        if (name.toLowerCase() === players[i].name.toLowerCase()) {
+            return ("Esse nome de usuário não está disponível. Tente outro nome.");
+        };
         //continue;
     }
 

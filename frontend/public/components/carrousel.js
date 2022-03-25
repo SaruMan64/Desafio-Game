@@ -19,38 +19,38 @@ function addCarrousel() {
                 <div class="slideshow-container">
                     <div class="mySlides fade">
                         <div class="numbertext">1 / 6</div>
-                        <img src="../images/opening/SakuraTree.png" style="width:100%">
-                        <div class="text">Tela 1</div>
+                        <img src="../images/carousel/pedidospage.gif" style="width:100%">
+                        <div class="text">MOVIMENTAÇÃO DOS PEDIDOS</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">2 / 6</div>
-                        <img src="../images/opening/SakuraOpening.png" style="width:100%">
-                        <div class="text">Tela 2</div>
+                        <img src="../images/carousel/lamemmove.gif" style="width:100%">
+                        <div class="text">COZIMENTO</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">3 / 6</div>
-                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
-                        <div class="text">Tela 3</div>
+                        <img src="../images/carousel/selecionandomolho.gif" style="width:100%">
+                        <div class="text">SELEÇÃO DE MOLHOS</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">4 / 6</div>
-                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
-                        <div class="text">Tela 4</div>
+                        <img src="../images/carousel/ingredientes.gif" style="width:100%">
+                        <div class="text">INGREDIENTES</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">5 / 6</div>
-                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
-                        <div class="text">Tela 5</div>
+                        <img src="../images/carousel/entregadepedido.gif" style="width:100%">
+                        <div class="text">FINALIZAÇÃO DE PEDIDO</div>
                     </div>
 
                     <div class="mySlides fade">
                         <div class="numbertext">6 / 6</div>
-                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
-                        <div class="text">Tela 6</div>
+                        <img src="../images/carousel/spiderattack.gif" style="width:100%">
+                        <div class="text">PEGUE A ARANHA</div>
                     </div>
 
                     <a class="prev"">&#10094;</a>

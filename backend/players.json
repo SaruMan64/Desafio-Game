@@ -1,102 +1,37 @@
 [
   {
-    "id": 6,
+    "id": 1,
     "name": "Yeté",
     "score": 8001
   },
   {
-    "id": 4,
-    "name": "Núbia",
-    "score": 6134
+    "id": 2,
+    "name": "David",
+    "score": 975
   },
   {
     "id": 3,
     "name": "João",
-    "score": 5720
+    "score": 720
   },
   {
-    "id": 2,
-    "name": "Luan",
-    "score": 5098
+    "id": 4,
+    "name": "Núbia",
+    "score": 614
   },
   {
     "id": 5,
     "name": "Samuel",
-    "score": 1630
+    "score": 610
   },
   {
-    "id": 1,
-    "name": "David",
-    "score": 975
+    "id": 6,
+    "name": "Luan",
+    "score": 598
   },
   {
     "id": 7,
     "name": "PamonhaQuentin",
     "score": 100
-  },
-  {
-    "id": 8,
-    "name": "Yeté",
-    "score": 0
-  },
-  {
-    "id": 9,
-    "name": "Yeté",
-    "score": 0
-  },
-  {
-    "id": 10,
-    "name": "yete",
-    "score": 0
-  },
-  {
-    "id": 11,
-    "name": "yete",
-    "score": 0
-  },
-  {
-    "id": 12,
-    "name": "asdfg",
-    "score": 0
-  },
-  {
-    "id": 13,
-    "name": "TEste",
-    "score": 0
-  },
-  {
-    "id": 14,
-    "name": "teste3",
-    "score": 0
-  },
-  {
-    "id": 15,
-    "name": "SAFD",
-    "score": 0
-  },
-  {
-    "id": 16,
-    "name": "poi",
-    "score": 0
-  },
-  {
-    "id": 17,
-    "name": "hoje",
-    "score": 0
-  },
-  {
-    "id": 18,
-    "name": "a",
-    "score": 0
-  },
-  {
-    "id": 19,
-    "name": "poia",
-    "score": 0
-  },
-  {
-    "id": 20,
-    "name": "asdf",
-    "score": 0
   }
 ]
