@@ -345,7 +345,11 @@ $(document).ready(function () {
         sound.playMusic("change");
     });
 
-    $("#configuration").click(function () {
+    $('#configuration[local="CONFIGURAÇÃO"]').click(function () {
+        showConfigurationModal();
+    });
+    
+    $('#configuration[local="PAUSE"]').click(function () {
         showConfigurationModal();
     });
 
