@@ -62,38 +62,39 @@ $(document).ready(function () {
     let $name;
     $("#name-player").html($name);
     //Opening
-     openingHTML();
-     $('#btn').click(function () {
-         sound.playMusic("sakuya");
-         $name = $("#inputName").val();
-         openingAJAX();
-     });
+    openingHTML();
+    $('#btn').click(function () {
+        sound.playMusic("sakuya");
+        sound.volumeAll(0.5);
+        $name = $("#inputName").val();
+        openingAJAX();
 
-    let startTime = Date.now();
-    generalTime.time = 0;
-    generalTime.cod = generalTime.setCorrectingInterval(function () {
-        generalTime.time = (Date.now() - startTime) / 1000;
-        printGeneralTimer($(".clock-menu"), generalTime.time);
-        if (generalTime.time >= generalTime.limit) {
+        let startTime = Date.now();
+        generalTime.time = 0;
+        generalTime.cod = generalTime.setCorrectingInterval(function () {
+            generalTime.time = (Date.now() - startTime) / 1000;
+            printGeneralTimer($(".clock-menu"), generalTime.time);
+            if (generalTime.time >= generalTime.limit) {
 
-            endGame();
-        }
-        //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
-    }, 1000);
-    $("#game").tabs();
+                endGame();
+            }
+            //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
+        }, 1000);
+        $("#game").tabs();
 
-    // background kitchen
-    $("#btn-tabs > li > a").click(() => {
-        if (
-            $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
-        ) {
-            $("#game").css("background", "var(--order)");
-        } else {
-            $("#game").css("background", "var(--no-order)");
-        }
+        // background kitchen
+        $("#btn-tabs > li > a").click(() => {
+            if (
+                $("#btn-select-order").parent("li").attr("aria-expanded") === "true"
+            ) {
+                $("#game").css("background", "var(--order)");
+            } else {
+                $("#game").css("background", "var(--no-order)");
+            }
+        });
+
+        newClient(0);
     });
-
-    newClient(0);
 
     // Aba de pedidos
 
