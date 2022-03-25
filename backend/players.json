@@ -1,10 +1,5 @@
 [
   {
-    "id": 4,
-    "name": "Yeté",
-    "score": 8001
-  },
-  {
     "id": 1,
     "name": "David",
     "score": 450
@@ -20,6 +15,11 @@
     "score": 0
   },
   {
+    "id": 4,
+    "name": "Yeté",
+    "score": 8001
+  },
+  {
     "id": 5,
     "name": "joao",
     "score": 0
@@ -27,71 +27,6 @@
   {
     "id": 6,
     "name": "PamonhaQuentin",
-    "score": 0
-  },
-  {
-    "id": 7,
-    "name": "Pamonha2",
-    "score": 0
-  },
-  {
-    "id": 8,
-    "name": "asdg",
-    "score": 0
-  },
-  {
-    "id": 9,
-    "name": "asdfgh",
-    "score": 0
-  },
-  {
-    "id": 10,
-    "name": "dsfghjgfdsa",
-    "score": 0
-  },
-  {
-    "id": 11,
-    "name": "afdsgsjhghadfg",
-    "score": 0
-  },
-  {
-    "id": 12,
-    "name": "bsdghjbsfghjb",
-    "score": 0
-  },
-  {
-    "id": 13,
-    "name": "sgb",
-    "score": 0
-  },
-  {
-    "id": 14,
-    "name": "teste",
-    "score": 0
-  },
-  {
-    "id": 15,
-    "name": "dfga",
-    "score": 0
-  },
-  {
-    "id": 16,
-    "name": "sgdxfchv",
-    "score": 0
-  },
-  {
-    "id": 17,
-    "name": "fgjsfgj",
-    "score": 0
-  },
-  {
-    "id": 18,
-    "name": "ahradf",
-    "score": 0
-  },
-  {
-    "id": 19,
-    "name": "zdgha",
     "score": 0
   }
 ]
