@@ -161,14 +161,14 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
 function acceptancePointing (ordersAccepted, ordersDenied) {
     const difference = ordersAccepted - ordersDenied;
     if(difference >= 0) {
-        return 10 * difference;
+        return parseInt(10 * difference);
     } else {
         return 0;
     }
 }
 
 function spidersPointing (spidersCaught) {
-    return 25 * spidersCaught;
+    return parseInt(25 * spidersCaught);
 }
 
 function clearDishMade(dishMade) {

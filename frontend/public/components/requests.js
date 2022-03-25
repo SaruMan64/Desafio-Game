@@ -1,9 +1,10 @@
 import {showRanking} from "./score.js";
 import {makeOrder} from "./makeOrder.js";
+import { apiUrl } from "../script.js";
 // import { clientOrder } from "./incomingClients.js";
 
 //const apiUrl = "http://207.148.28.230:4444";
-const apiUrl = "http://localhost:4444";
+// const apiUrl = "http://localhost:4444";
 
 function getOrder(numberClient, seat) {
   $.ajax({

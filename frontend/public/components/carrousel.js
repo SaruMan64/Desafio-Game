@@ -18,21 +18,39 @@ function addCarrousel() {
             <div>
                 <div class="slideshow-container">
                     <div class="mySlides fade">
-                        <div class="numbertext">1 / 3</div>
+                        <div class="numbertext">1 / 6</div>
                         <img src="../images/opening/SakuraTree.png" style="width:100%">
                         <div class="text">Tela 1</div>
                     </div>
 
                     <div class="mySlides fade">
-                        <div class="numbertext">2 / 3</div>
+                        <div class="numbertext">2 / 6</div>
                         <img src="../images/opening/SakuraOpening.png" style="width:100%">
                         <div class="text">Tela 2</div>
                     </div>
 
                     <div class="mySlides fade">
-                        <div class="numbertext">3 / 3</div>
+                        <div class="numbertext">3 / 6</div>
                         <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
                         <div class="text">Tela 3</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">4 / 6</div>
+                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
+                        <div class="text">Tela 4</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">5 / 6</div>
+                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
+                        <div class="text">Tela 5</div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <div class="numbertext">6 / 6</div>
+                        <img src="../images/opening/FrontOpeningHD.png" style="width:100%">
+                        <div class="text">Tela 6</div>
                     </div>
 
                     <a class="prev"">&#10094;</a>
@@ -43,6 +61,9 @@ function addCarrousel() {
                     <span class="dot" level="1"></span>
                     <span class="dot" level="2"></span>
                     <span class="dot" level="3"></span>
+                    <span class="dot" level="4"></span>
+                    <span class="dot" level="5"></span>
+                    <span class="dot" level="6"></span>
                 </div>
             </div>
         </div>`

@@ -7,20 +7,21 @@ const player = {
     score: 0
 };
 
-const register = function(name) {
+const register = function (name) {
     const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
-    if(filterName.test(name)) { // Checks if the name does not contain special characters
+    if (filterName.test(name)) { // Checks if the name does not contain special characters
         return ("Os nomes de usuário não podem conter caracteres especiais.");
     }
 
-    if(name.length < 1 && name.length > 15) { // Check if the name is too long
+    if (name.length < 1 && name.length > 15) { // Check if the name is too long
         return ("Nome de usuário não tem tamanho suficiente.");
     }
 
-    for(let i = 0; i < players.length; i++) { // Checks if the name already exists
-        if(name.toLowerCase() === players[i].name.toLowerCase()) {
-            return("Esse nome de usuário não está disponível. Tente outro nome.");
-        };
+    for (let i = 0; i < players.length; i++) { // Checks if the name already exists
+         if (name.toLowerCase() === players[i].name.toLowerCase()) {
+             return ("Esse nome de usuário não está disponível. Tente outro nome.");
+         };
+        //continue;
     }
 
     const currentPlayer = Object.create(player); // Fill player

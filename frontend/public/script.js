@@ -8,11 +8,13 @@ import { aleatoryChance } from "./components/aleatoryEvents.js";
 import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
 import { factory, printGeneralTimer, clearOneTimer } from "./components/timer.js";
 
-let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
+let dishMade = dishMadeMold;
 let auxTotalOrderScore = 0;
 let ordersAccepted = 0;
 let ordersDeclined = 0;
 let spidersCaught = 0;
+
+//const apiUrl = "http://207.148.28.230:4444";
 const apiUrl = "http://localhost:4444";
 
 const zeroFill = (n) => {
@@ -20,41 +22,9 @@ const zeroFill = (n) => {
 };
 
 const generalTime = factory();
-generalTime.limit = 90;
+generalTime.limit = 30;
+let scoreGeral;
 let score;
-
-/* function setCorrectingInterval(func, delay) {
-    var instance = {};
-    let cod;
-    function tick(func, delay) {
-        if (!instance.started) {
-            instance.func = func;
-            instance.delay = delay;
-            instance.startTime = new Date().valueOf();
-            instance.target = delay;
-            instance.started = true;
-
-            cod = setTimeout(tick, delay);
-        } else {
-            let elapsed = new Date().valueOf() - instance.startTime
-            let adjust = instance.target - elapsed;
-
-            instance.func();
-            instance.target += instance.delay;
-
-            cod = setTimeout(tick, instance.delay + adjust);
-        }
-    }
-
-    return tick(func, delay);
-}; */
-
-function endGame() {
-    generalTime.clearCorrectingInterval(generalTime.cod);
-    stopTimers();
-    showEndGameModal();
-    console.log(`Jogo terminou`);
-}
 
 $(document).ready(function () {
     $("#game").hide();
@@ -63,8 +33,9 @@ $(document).ready(function () {
     openingHTML();
     $("#btn").click(function () {
         $name = $("#inputName").val();
+        console.log($name);
         const filterName = /[^a-zA-Zà-ýÀ-Ý0-9]/;
-        if (!filterName.test($name)) {
+        if (!filterName.test($name) && $name !== "") {
             fetch(apiUrl + "/check?name=" + $name)
                 .then((response) => response.json())
                 .then((res) => {
@@ -73,6 +44,12 @@ $(document).ready(function () {
                         sound.playMusic("sakuya");
                         $("#name-player").html($name);
                         openingAJAX();
+                        $(document).on("click", function () {
+                            if ($("body").find(".modal-menu").length == 0) {
+                                console.log("arainha");
+                                aleatoryChance(1);
+                            }
+                        });
                         let startTime = Date.now();
                         generalTime.time = 0;
                         generalTime.cod = generalTime.setCorrectingInterval(
@@ -105,10 +82,11 @@ $(document).ready(function () {
     $(document).on("click", ".accept", function () {
         ordersAccepted++;
     })
-    
+
     $(document).on("click", ".decline", function () {
         ordersDeclined++;
     })
+    
     // background kitchen
     $("#btn-tabs > li > a").click(() => {
         if (
@@ -217,7 +195,7 @@ $(document).ready(function () {
                 $("#order-completed")[0].children[0].id || "{}"
             );
             dishMade.broth = $("#box").css("background-image");
-            let scoreGeral = pointing(holder, dishMade);
+            scoreGeral = pointing(holder, dishMade);
             score = scoreGeral.totalScore;
 
             const orderNumber = Number(
@@ -271,9 +249,12 @@ $(document).ready(function () {
         // $(".popup-overlay, .popup-content").removeClass("active");
         const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
         const spiderScore = spidersPointing(spidersCaught);
+        console.log(scoreGeral.totalScore);
+        console.log(acceptanceScore);
+        console.log(spiderScore);
         console.log("end-game haha");
-        showEndGameModal(score, acceptanceScore, spiderScore);
-        updateScore();
+        showEndGameModal(parseInt(scoreGeral.totalScore), acceptanceScore, spiderScore);
+        updateScore($name, scoreGeral.totalScore);
         $("#score-game").html(score);
 
         // $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
@@ -287,6 +268,22 @@ $(document).ready(function () {
             });
         });
     });
+
+    function endGame() {
+        generalTime.clearCorrectingInterval(generalTime.cod);
+        stopTimers();
+        const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
+        const spiderScore = spidersPointing(spidersCaught);
+        console.log(scoreGeral);
+        console.log(acceptanceScore);
+        console.log(spiderScore);
+        console.log("end-game haha");
+        showEndGameModal(parseInt(scoreGeral.totalScore), acceptanceScore, spiderScore);
+        updateScore($name, scoreGeral.totalScore);
+        $("#score-game").html(score);
+        //showEndGameModal();
+        console.log(`Jogo terminou`);
+    }
 
     // function endGame() {
     //     updateScore();
@@ -360,12 +357,6 @@ $(document).ready(function () {
         showConfigurationModal();
     });
 
-    $(document).on("click", function () {
-        if ($("body").find(".modal-menu").length == 0) {
-            console.log("arainha");
-            aleatoryChance(1);
-        }
-    });
 });
 
-export { dishMade, sound, generalTime, zeroFill };
+export { dishMade, sound, generalTime, zeroFill, apiUrl };

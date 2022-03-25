@@ -1,4 +1,5 @@
 import { sound } from "./audio.js";
+import { apiUrl } from "../script.js";
 /* Functions */
 //opening
 //Prepend HTML in to body
@@ -62,7 +63,7 @@ function openingAJAX() {
   if (document.getElementById("register").checkValidity()) {
     $.ajax({
       type: "GET",
-      url: `http://localhost:4444/register?nickname=${$("#inputName").val()}`,
+      url: `${apiUrl}/register?nickname=${$("#inputName").val()}`,
       success: function (response) {
         if (response === true) {
           //$name = $("#inputName").val();;

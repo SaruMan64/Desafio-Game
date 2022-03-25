@@ -170,14 +170,16 @@ function showEndOrderModal(clientNumber, scoreGeral) {
     }
 }
 
-function showEndGameModal(totalOrderScore = 0, acceptancePointing = 0, spidersPointing = 0) {
+function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) {
     console.log("entrou no end game modal");
+    console.log(totalOrderScore);
+    console.log(acceptancePointing);
+    console.log(spidersPointing);
     const finalScore = totalOrderScore + acceptancePointing + spidersPointing;
     let div = $(`<div class="popup-overlay">
                     <div class="modal-bigger end-order" style="position: fixed;">
-                        <div class="line-head close-menu">
+                        <div>
                             <h1>Fim do Jogo</h1>
-                            <button class="close-modal"></button>
                         </div>
                         <div>
                             <div id="info-score">
@@ -277,6 +279,14 @@ $(document).on("click", "#next-order", function (event) {
     $("#game").tabs({
         active: 0,
     });
+});
+
+$(document).on("click", "#exit-yes", function () {
+    document.location.reload();
+});
+
+$(document).on("click", "#leave-game", function () {
+    document.location.reload();
 });
 
 export { showConfigurationModal, showEndOrderModal, showEndGameModal, closeThisModal };
