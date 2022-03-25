@@ -6,31 +6,61 @@ class Sounds {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("./sounds/Sound-Button-Effect-Sliding.wav")
+                "file": new Audio("../sounds/Sound-Button-Effect-Sliding.wav")
             },
             "change": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("./sounds/change.wav")
+                "file": new Audio("../sounds/change.wav")
             },
             "sakuya": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("./sounds/Sakuya-Background-Sound.wav")
+                "file": new Audio("../sounds/Sakuya-Background-Sound.wav")
             },
             "winning": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("./sounds/winning.mp3")
+                "file": new Audio("../sounds/winning.mp3")
             },
             "loosing": {
                 "flag": false,
                 "isMuted": false,
                 "isInLoop": false,
-                "file": new Audio("./sounds/loosing.mp3")
+                "file": new Audio("../sounds/loosing.mp3")
+            },
+            "cooking": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("../sounds/cooking.mp3")
+            },
+            "web": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("../sounds/web.mp3")
+            },
+            "put-broth": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("../sounds/put-broth.mp3")
+            },
+            "time-passing": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("../sounds/time-passing.mp3")
+            },
+            "paper-effect": {
+                "flag": false,
+                "isMuted": false,
+                "isInLoop": false,
+                "file": new Audio("../sounds/paper-effect.mp3")
             }
         }
     }
@@ -52,28 +82,30 @@ class Sounds {
             //console.log("pausa");
             this.soundsObj[_sound].file.pause();
             this.soundsObj[_sound].flag = false;
-           // console.log(this.soundsObj[_sound].file.currentTime);
+            // console.log(this.soundsObj[_sound].file.currentTime);
         }
     }
     mutedAll() {
         Object.keys(this.soundsObj).forEach(el => {
-            if (this.soundsObj[el].flag) {
-                if (this.soundsObj[el].isMuted) {
-                    this.soundsObj[el].file.muted = false;
-                    this.soundsObj[el].isMuted = false;
-                    //console.log(this.soundsObj[el].file.currentTime);
-                }
-                else if (!this.soundsObj[el].isMuted) {
-                    this.soundsObj[el].file.muted = true;
-                    this.soundsObj[el].isMuted = true;
-                    //console.log(this.soundsObj[el].file.currentTime);
-                }
+            // if (this.soundsObj[el].flag) {
+            if (this.soundsObj[el].isMuted) {
+                this.soundsObj[el].file.muted = false;
+                this.soundsObj[el].isMuted = false;
+                //console.log(this.soundsObj[el].file.currentTime);
             }
+            else if (!this.soundsObj[el].isMuted) {
+                this.soundsObj[el].file.muted = true;
+                this.soundsObj[el].isMuted = true;
+                //console.log(this.soundsObj[el].file.currentTime);
+            }
+            // }
         });
     }
     volumeAll(value) {
         console.log("volume ", value);
         Object.keys(this.soundsObj).forEach(el => {
+            this.soundsObj[el].file.muted = false;
+            this.soundsObj[el].isMuted = false;
             this.soundsObj[el].file.volume = value;
         });
     }
@@ -94,4 +126,4 @@ class Sounds {
 
 const sound = new Sounds();
 
-export {sound};
+export { sound };

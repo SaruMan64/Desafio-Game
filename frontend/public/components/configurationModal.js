@@ -3,6 +3,7 @@ import { updateRanking } from "./requests.js";
 import { addCarrousel } from "./carrousel.js";
 
 const closeButton = $(`<button class="close-modal"></button>`);
+let level = 1;
 
 function showConfigurationModal() {
     if ($("body").find(".popup-overlay").length == 0) {
@@ -20,6 +21,37 @@ function showConfigurationModal() {
                                 <button id="credits"></button>
                             </div>
                         </div>
+                    </div>`);
+        $("body").append(div[0]);
+    }
+}
+
+function showEndOrder() {
+    if ($("body").find(".popup-overlay").length == 0) {
+        let div = $(`<div class="popup-overlay">
+        <div id="configuration-modal" class="modal-bigger"  style="position: fixed;">
+        <div id="close-menu" class="line-head">
+            <h1>Fim do Pedido</h1>
+            <button class="close-modal"></button>
+        </div>
+        <div>
+        <div id="person-modal"></div>
+        <div id="info-score">
+            <h2>Pontuação</h2>
+            <div>
+                <p id="cooking-score"></p>
+                <p id="broth-score"></p>
+                <p id="ingredients-score"></p>
+                <p id="order-score"></p>
+                <p id="total-score"></p>
+            </div>
+            <div class="btn-modal">
+                <button id="next-order">Próximo pedido</button>
+                <button id="end-game">Finalizar jogo</button>
+            </div>
+        </div>
+        </div>
+    </div>
                     </div>`);
         $("body").append(div[0]);
     }
@@ -62,10 +94,96 @@ function showRankingModal() {
         $("#ranking-modal > div:last-child").append(closeButton[0]);
     }, 100);
 }
-
+/* 
 function showCreditsModal() {
     let div = $(
-        `<div id="credits-modal" class="modal" style="position: fixed;">Créditos<button class="close-modal"></button></div>`
+        `<div id="credits-modal" class="modal" style="position: fixed;">
+            <div>
+                <h1>Créditos</h1>
+                <button class="close-modal"></button>
+            </div>
+            <div id="all-creators">
+                <div id="creators-text">
+                    Agradecemos a todos por jogar nosso jogo!
+                </div>
+                <div id="images-of-creators">
+                    <img src="../images/order/client-9-front.png" />
+                    <img src="../images/order/client-5-front.png" />
+                    <img src="../images/order/client-6-front.png" />
+                    <img src="../images/order/client-7-front.png" />
+                    <img src="../images/order/client-8-front.png" />
+                    <img src="../images/order/chef-3.png" />
+                </div>
+            </div>
+        </div>`
+    );
+    $(".popup-overlay").append(div[0]);
+}
+ */
+function showEndOrderModal(clientNumber, scoreGeral) {
+    let facialExpression;
+    if(scoreGeral.totalScore >= 150 ) {
+        facialExpression = "front";
+    } else {
+        facialExpression = "sad";
+    }
+    let div = $(
+        `<div class="modal-bigger end-order" style="position: fixed;">
+        <div id="close-menu" class="line-head">
+            <h1>Fim do Pedido</h1>
+            <button class="close-modal"></button>
+        </div>
+        <div>
+        <div id="person-modal">
+            <img src="./images/order/client-${clientNumber}-${facialExpression}.png" />
+        </div>
+        <div id="info-score">
+            <h2>Pontuação</h2>
+            <div>
+                <p id="cooking-score">Cozimento: ${scoreGeral.cookingScore} pontos</p>
+                <p id="broth-score">Caldo: ${scoreGeral.brothScore} pontos</p>
+                <p id="ingredients-score">Ingredientes: ${scoreGeral.ingredientsScore} pontos</p>
+                <p id="order-score">Pontuação do pedido: ${scoreGeral.orderScore} pontos</p>
+                <p id="total-score">Pontuação total: ${scoreGeral.totalScore} pontos</p>
+            </div>
+            <div class="btn-modal">
+                <button id="next-order">Próximo pedido</button>
+                <button id="end-game">Finalizar jogo</button>
+            </div>
+        </div>
+        </div>
+    </div>`
+    );
+    $(".popup-overlay").append(div[0]);
+}
+
+function showEndGameModal(totalOrderScore, acceptancePointing, spidersPointing) {
+    const finalScore = totalOrderScore + acceptancePointing + spidersPointing;
+    let div = $(
+        `<div class="modal-bigger end-order" style="position: fixed;">
+        <div id="close-menu" class="line-head">
+            <h1>Fim do Jogo</h1>
+            <button class="close-modal"></button>
+        </div>
+        <div>
+        <div id="person-modal">
+            <img src="./images/order/client-chef-2.png" />
+        </div>
+        <div id="info-score">
+            <h2>Pontuação</h2>
+            <div>
+                <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
+                <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
+                <p id="spider-score">Bônus das aranhas: ${spiderPointing} pontos</p>
+                <p id="final-score">Pontuação final: ${finalScore} pontos</p>
+            </div>
+            <div class="btn-modal">
+                <button id="see-ranking">Ver Ranking</button>
+                <button id="leave-game">Sair</button>
+            </div>
+        </div>
+        </div>
+    </div>`
     );
     $(".popup-overlay").append(div[0]);
 }
@@ -83,24 +201,29 @@ function closeThisModal(target) {
 }
 
 $(document).on("click", "#change-sound", function () {
-    let level = $(this).attr("level");
+    level = Number($(this).attr("level"));
     switch (level) {
         case 1:
-            sound.volumeAll(1);
+            sound.volumeAll(0.60);
+            console.log("volume 60%");
             break;
         case 2:
-            sound.volumeAll(0.66);
+            sound.volumeAll(0.20);
+            console.log("volume 20%");
             break;
         case 3:
-            sound.volumeAll(0.33);
+            sound.mutedAll();
+            console.log("volume mudo");
             break;
         case 4:
-            sound.mutedAll();
+            sound.volumeAll(1);
+            console.log("volume 100%");
             break;
     }
-    level == 4
+    level++;
+    level == 5
         ? $(this).attr("level", "1")
-        : $(this).attr("level", String(Number(level) + 1));
+        : $(this).attr("level", String(Number(level)));
 });
 
 $(document).on("click", "#exit-game", function () {
@@ -116,7 +239,8 @@ $(document).on("click", "#ranking", function () {
 });
 
 $(document).on("click", "#credits", function () {
-    showCreditsModal();
+    showCreditsModal(2, {"cookingScore": 1, "brothScore": 1, "ingredientsScore": 1,
+    "orderScore": 1, "totalScore": 140});
 });
 
 $(document).on("click", ".close-modal", function (event) {
@@ -127,4 +251,4 @@ $(document).on("click", "#exit-no", function (event) {
     closeThisModal(event.target);
 });
 
-export { showConfigurationModal };
+export { showConfigurationModal, showEndOrderModal, showEndGameModal };

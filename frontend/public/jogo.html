@@ -24,14 +24,24 @@
       <aside id="curent-order">
         <header id="order-drop"></header>
         <footer id="menu">
-          <!-- <button id="make-order">
-            <img src="./images/menu/yes.png" alt="" />
-          </button> -->
-          <!-- <button id="mute-all" class="imSound"></button> -->
-          <!-- <button id="exit-game">
-            <img src="./images/menu/exit.png" alt="" />
-          </button> -->
           <button id="configuration" local="PAUSE"></button>
+          <div id="info-game">
+            <h1 id="name-player"></h1>
+            <div>
+              <h3>TEMPO DE JOGO</h3>
+              <div class="clock-menu">
+                <div class="minute">
+                  <span>00</span>
+                </div>
+                <span>:</span>
+                <div class="second">
+                  <span>00</span>
+                </div>
+              </div>
+              <h3>PONTOS</h3>
+              <p id="score-game">0000</p>
+            </div>
+          </div>
         </footer>
       </aside>
       <section id="kitchen">
@@ -136,8 +146,7 @@
             </div>
             <div id="side-stove">
               <div id="ready"></div>
-              <button id="pan-to-noodles-and-broth">
-              </button>
+              <button id="pan-to-noodles-and-broth"></button>
             </div>
           </div>
         </div>
@@ -189,8 +198,7 @@
               <div id="outer-pot">
                 <div id="pot"></div>
               </div>
-              <button id="pan-to-ingredients">
-              </button>
+              <button id="pan-to-ingredients"></button>
             </div>
           </div>
         </div>
@@ -253,8 +261,7 @@
                 </div>
                 <div id="order-completed"></div>
               </div>
-              <button id="end-order">
-              </button>
+              <button id="end-order"></button>
             </div>
 
             <ul class="ingredients">

@@ -130,3 +130,19 @@ h2 {
 .menu-ranking > #ranking-modal tr:nth-child(even):hover {
   background-color: rgba(230, 198, 93, 0.9);
 }
+
+.end-order > div:last-child {
+  flex-direction: row !important;
+}
+
+.end-order #person-modal,
+.end-order #info-score {
+  width: 50%;
+  height: 100%;
+}
+
+.end-order #person-modal img {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}

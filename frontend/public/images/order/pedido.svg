@@ -4,7 +4,7 @@
     <!-- 0 0 400 723 -->
     <path
         d="M0 90.9535C0 85.4563 4.47715 81 10 81H390C395.523 81 400 85.4563 400 90.9535V713.047C400 718.544 395.523 723 390 723H9.99999C4.47714 723 0 718.544 0 713.047V90.9535Z"
-        fill="#E5B372" />
+        fill="#E5B372" stroke="black" stroke-width="3" />
     <g>
         <line x1="50" y1="143.5" x2="350" y2="143.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />
         <line x1="50" y1="178.5" x2="350" y2="178.5" stroke="black" stroke-opacity="0.5" stroke-width="3" />

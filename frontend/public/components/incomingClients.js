@@ -1,22 +1,35 @@
 import { getOrder } from "./requests.js";
 import { factory } from "./timer.js";
 import { makeWiggle, dropWiggle } from "./makeItWiggle.js";
+import { sound } from "./audio.js";
+import { generalTime } from "../script.js";
+
 let freeSeats = [];
 let clientsIn = [];
 let numberClient = 1;
 let services = new Array(6);
 
+function stopTimers() {
+    services.forEach((timer) => {
+        if (timer) {
+            timer.clearCorrectingInterval(timer.cod);
+        }
+    });
+}
+
 function timeOrder(i) {
     let startTime = Date.now();
     services[i] = factory();
-    let time = Math.floor(Math.random() * (30 - 15 + 15) + 15);
-    console.log("O novo pedido virá em " + time + " segundos.");
-    let cod = services[i].setCorrectingInterval(function () {
+    services[i].cod = services[i].setCorrectingInterval(function () {
         let x = Date.now() - startTime;
         //console.log(`Tempo atendimento ${i + 1}: ${x}ms elapsed`);
         services[i].time = x;
     }, 1000);
-    newClient(time);
+    let time = Math.floor(Math.random() * (30 - 15) + 15);
+    if (generalTime.time < generalTime.limit - time) {
+        newClient(time);
+        console.log("O novo pedido virá em " + time + " segundos.");
+    }
 }
 
 function newClient(time) {
@@ -78,6 +91,8 @@ $(document).on("click", ".accept", function () {
         revert: "invalid",
         revert: true,
         start: function (event, ui) {
+            sound.playMusic("paper-effect");
+            $(this).css("z-index", "5");
             $(this).draggable("instance").offset.click = {
                 left: Math.floor(ui.helper.width() / 2),
                 top: Math.floor(ui.helper.height() / 2),
@@ -87,6 +102,7 @@ $(document).on("click", ".accept", function () {
             makeWiggle(this);
         },
         stop: function () {
+            $(this).css("z-index", "0");
             dropWiggle(this);
         }
     });
@@ -163,4 +179,4 @@ function clientOrder() {
     }
 }
 
-export { clientOrder, newClient, services };
+export { clientOrder, newClient, services, stopTimers };

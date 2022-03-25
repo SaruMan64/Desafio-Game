@@ -1,18 +1,28 @@
 import { sound } from "./components/audio.js";
 import { openingHTML, openingAJAX } from "./components/opening.js";
-import { dishMadeMold, pointing, clearKitchen } from "./components/score.js";
+import { dishMadeMold, pointing, clearKitchen, acceptancePointing, spidersPointing } from "./components/score.js";
 import { getOrder, updateScore, updateRanking } from "./components/requests.js";
 import { $plate, $pot, $ready } from "./components/dragNDrop.js";
-import {
-    clientOrder,
-    newClient,
-    services,
-} from "./components/incomingClients.js";
+import { clientOrder, newClient, services, stopTimers } from "./components/incomingClients.js";
 import { aleatoryChance } from "./components/aleatoryEvents.js";
-import { showConfigurationModal } from "./components/configurationModal.js";
-import { factory } from "./components/timer.js";
+import { showConfigurationModal, showEndOrderModal, showEndGameModal } from "./components/configurationModal.js";
+import { factory, printGeneralTimer } from "./components/timer.js";
 
 let dishMade = dishMadeMold; // Não existe função de limpar o pedido feito?
+let auxTotalOrderScore = 0;
+let ordersAccepted = 0;
+let ordersDeclined = 0;
+let spidersCaught = 0;
+
+const zeroFill = (n) => {
+    return n < 10 ? "000" + n
+    : n < 100 ? "00" + n
+    : n < 1000 ? "0" + n
+    : n;
+};
+
+const generalTime = factory();
+generalTime.limit = 90;
 let score;
 
 /* function setCorrectingInterval(func, delay) {
@@ -41,8 +51,15 @@ let score;
     return tick(func, delay);
 }; */
 
+function endGame() {
+    generalTime.clearCorrectingInterval(generalTime.cod);
+    stopTimers();
+    console.log(`Jogo terminou`);
+}
+
 $(document).ready(function () {
     let $name;
+    $("#name-player").html($name);
     //Opening
     /*  openingHTML();
     $('#btn').click(function () {
@@ -50,16 +67,16 @@ $(document).ready(function () {
          $name = $("#inputName").val();
          openingAJAX();
     }); */
-    const generalTime = factory();
     let startTime = Date.now();
-    let cod = generalTime.setCorrectingInterval(function () {
-        let x = (Date.now() - startTime) / 1000;
-        let time = x / 1000;
-        if (x >= 15) {
-            generalTime.clearCorrectingInterval(cod);
-            console.log(`Jogo terminou`);
+    generalTime.time = 0;
+    generalTime.cod = generalTime.setCorrectingInterval(function () {
+        generalTime.time = (Date.now() - startTime) / 1000;
+        printGeneralTimer($(".clock-menu"), generalTime.time);
+        if (generalTime.time >= generalTime.limit) {
+            
+           endGame();
         }
-        console.log(`Tempo jogo: ${x}s elapsed`);
+        //console.log(`Tempo jogo: ${generalTime.time}s elapsed`);
     }, 1000);
     $("#game").tabs();
 
@@ -175,14 +192,8 @@ $(document).ready(function () {
                 $("#order-completed")[0].children[0].id || "{}"
             );
             dishMade.broth = $("#box").css("background-image");
-            let {
-                cookingScore,
-                brothScore,
-                ingredientsScore,
-                orderScore,
-                totalScore,
-            } = pointing(holder, dishMade);
-            score = totalScore;
+            let scoreGeral = pointing(holder, dishMade);
+            score = scoreGeral.totalScore;
 
             const orderNumber = Number(
                 $("#order-completed").find("#orderNum").html()
@@ -195,23 +206,24 @@ $(document).ready(function () {
                         const clientNumber = item.children[0]
                             .getAttribute("src")
                             .split("-")[1];
-                        $("#person-modal").html("");
-                        $("#person-modal").append(
-                            `<img src="./images/order/client-${clientNumber}-front.png" />`
-                        );
-                        $("#cooking-score").html(
-                            `Cozimento: ${cookingScore} pontos`
-                        );
-                        $("#broth-score").html(`Caldo: ${brothScore} pontos`);
-                        $("#ingredients-score").html(
-                            `Ingredientes: ${ingredientsScore} pontos`
-                        );
-                        $("#order-score").html(
-                            `Pontuação do pedido: ${orderScore} pontos`
-                        );
-                        $("#total-score").html(
-                            `Pontuação total: ${totalScore} pontos`
-                        );
+                        showEndOrderModal(clientNumber, scoreGeral);
+                        // $("#person-modal").html("");
+                        // $("#person-modal").append(
+                        //     `<img src="./images/order/client-${clientNumber}-front.png" />`
+                        // );
+                        // $("#cooking-score").html(
+                        //     `Cozimento: ${cookingScore} pontos`
+                        // );
+                        // $("#broth-score").html(`Caldo: ${brothScore} pontos`);
+                        // $("#ingredients-score").html(
+                        //     `Ingredientes: ${ingredientsScore} pontos`
+                        // );
+                        // $("#order-score").html(
+                        //     `Pontuação do pedido: ${orderScore} pontos`
+                        // );
+                        // $("#total-score").html(
+                        //     `Pontuação total: ${totalScore} pontos`
+                        // );
                         console.log(item.children[0]);
                         item.children[0].remove();
 
@@ -248,7 +260,11 @@ $(document).ready(function () {
     $("#end-game").on("click", function () {
         // Close the scoring modal and open ranking modal
         $(".popup-overlay, .popup-content").removeClass("active");
+        const acceptanceScore = acceptancePointing(ordersAccepted, ordersDeclined);
+        const spiderScore = spidersPointing(spidersCaught);
+        showEndGameModal(score, acceptanceScore, spiderScore);
         updateScore();
+        $("#score-game").html(score);
 
         $(".popup-overlay-ranking, .popup-content-ranking").addClass("active"); // Open the ranking modal
         updateRanking();
@@ -264,6 +280,66 @@ $(document).ready(function () {
         });
     });
 
+    function endGame() {
+        updateScore();
+        updateRanking();
+        showEndGameModal(); // Mostrar mensagem de parabéns, somatório (pontuação dos pedidos, bônus por pedidos aceitos, bônus por aranha), pontuação total, total de clientes atendidos e chefinho feliz, botão de sair e botão de ranking.
+        clearGame(); // Limpar personagens dos assentos, pedidos do varal, pedido do order-drop, conteúdo das panelas, zerar timer das panelas, limpar tijela do macarrão, limpar tijela do molho, limpar tijela dos ingredientes, limpar pedido da bandeja, limpar teias de aranha.
+        clearTimer(); // Zerar timer do jogo e deixar pausado.
+    }
+
+    
+    function clearGame() {
+        clearSpiderWeb();
+        clearClients();
+        clearOrders();
+        clearOven();
+        clearTimerOven()
+        clearBowls();
+    }
+    
+    function clearSpiderWeb() {
+        $(".spider-web").each(function() {
+            this.remove();
+        });
+    }
+
+    function clearClients() {
+        $("#all-clients > div").each(function() {
+            this.innerHTML = `<img src="./images/order/seat.png" />`;
+        });
+        $(".seat-top-view > img").each(function() {
+            this.src = "./images/others/seat-top-view.svg";
+        });
+    }
+    
+    function clearOrders() {
+        $("#orders").html("");
+        $("#order-drop").html("");
+        $("#order-completed").html("");
+    }
+
+    function clearOven() {
+        $(".stove").each(function() {
+            this.style = "background: var(--pan-off);";
+            this.innerHTML = "";
+        });
+    }
+
+    function clearTimerOven() {
+        $(".stove").each(function(index) {
+            clearOneTimer(index + 1);
+        });
+    }
+
+    function clearBowls() {
+        $("#ready").html("");
+        $("#ready").droppable("enable");
+        $("#outer-pot").css("background-image", "");
+        $("#box").css("background-image", "");
+        $("#box").html("");
+    }
+
     $("#btn-tabs li").click(function () {
         sound.playMusic("change");
     });
@@ -273,11 +349,11 @@ $(document).ready(function () {
     });
 
     $(document).on("click", function () {
-        if ($("body").find(".popup-overlay").length == 0) {
+        if ($("body").find(".modal-menu").length == 0) {
             console.log("arainha");
-            aleatoryChance(5);
+            aleatoryChance(1);
         }
     });
 });
 
-export { dishMade, sound };
+export { dishMade, sound, generalTime, zeroFill };

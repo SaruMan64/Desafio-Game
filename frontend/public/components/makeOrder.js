@@ -1,9 +1,4 @@
-const zeroFill = (n) => {
-    return n < 10 ? "000" + n
-    : n < 100 ? "00" + n
-    : n < 1000 ? "0" + n
-    : n;
-};
+import { zeroFill } from "../script.js";
 
 function makeOrder(response, numberClient, seat) {
   response.seat = seat; 

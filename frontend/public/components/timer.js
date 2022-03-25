@@ -2,6 +2,34 @@ const cods = new Array(5);
 const timers = new Array(5);
 const stoves = new Array(5);
 
+function printGeneralTimer(clock, time) {
+    let string = time.toString();
+    /* let rest = time % 60;
+    console.log(rest); */
+    //console.log($(stove).children());
+    let minutesField = $(clock).children()[0];
+    let secsField = $(clock).children()[2];
+    //console.log(secs);
+    if (time > 59) {
+      let seconds = time - 60;
+      let minutes = (time - seconds) / 60;
+      let minutesString = `0${minutes}`;
+      $(minutesField).children().html(minutesString);
+      if (seconds >= 10) {
+        $(secsField).children().html(`${Math.round(seconds)}`);
+      } else {
+        $(secsField).children().html(`0${Math.round(seconds)}`);
+      }
+    } else {
+      if (time >= 10) {
+          string = `${Math.round(time)}`;
+      } else {
+          string = `0${Math.round(time)}`;
+      }
+      $(secsField).children().html(string);
+    }
+}
+
 function printTimer(stove, time) { // Show the timer on the stove
     let string = time.toString();
 
@@ -137,4 +165,4 @@ function clearOneTimer(num) {
     return timers[num - 1];
 }
 
-export {setTimer, clearOneTimer, factory};
+export {setTimer, clearOneTimer, factory, printGeneralTimer};

@@ -150,7 +150,25 @@ function pointing(dishOrdered, dishMade) { // Calculate the score
 
     orderScore = cookingScore + brothScore + ingredientsScore;
     totalScore += orderScore;
-    return {cookingScore, brothScore, ingredientsScore, orderScore, totalScore};
+    let obj = {"cookingScore": cookingScore,
+            "brothScore": brothScore,
+            "ingredientsScore": ingredientsScore,
+            "orderScore": orderScore,
+            "totalScore": totalScore};
+    return obj;
+}
+
+function acceptancePointing (ordersAccepted, ordersDenied) {
+    const difference = ordersAccepted - ordersDenied;
+    if(difference >= 0) {
+        return 10 * difference;
+    } else {
+        return 0;
+    }
+}
+
+function spidersPointing (spidersCaught) {
+    return 25 * spidersCaught;
 }
 
 function clearDishMade(dishMade) {
@@ -200,4 +218,4 @@ function clearKitchen() { // Remove the dish made and the current order
     $("#order-completed").html("");
 }
 
-export {dishMadeMold, pointing, clearKitchen, showRanking};
+export {dishMadeMold, pointing, clearKitchen, showRanking, acceptancePointing, spidersPointing};

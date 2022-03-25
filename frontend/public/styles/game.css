@@ -83,6 +83,78 @@
   border-radius: 10px;
 }
 
+#info-game {
+  height: 80%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(230, 198, 93, 0.8);
+  box-sizing: border-box;
+  border: 0.5vmin solid black;
+  border-radius: 10%/15%;
+  text-align: center;
+  font-family: "Antonio-wght";
+}
+
+#info-game > h1 {
+  height: 20%;
+  font-size: 3.5vmin;
+  color: #000000;
+}
+
+#info-game > div {
+  width: 90%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#info-game h3 {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5vmin;
+  font-weight: 100;
+  line-height: 1;
+}
+
+#info-game .clock-menu,
+#info-game #score-game {
+  width: 45%;
+  height: 40%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1vmin;
+  font-size: 4vmin;
+}
+/* 
+#info-game #score-game {
+  z-index: 10 !important;
+}
+
+#score-game::before {
+  content: "88888";
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-family: "Antonio-wght";
+  font-size: 4vmin;
+  z-index: 0 !important;
+  text-align: center;
+  left: 50%;
+} */
+
 #kitchen {
   width: 75%;
 }
@@ -268,7 +340,7 @@
 }
 
 #menu #configuration {
-/*   width: 10vmin;
+  /*   width: 10vmin;
   height: 10vmin; */
   background: url("../images/menu/pause.png") no-repeat center/ auto 90%,
     linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%),

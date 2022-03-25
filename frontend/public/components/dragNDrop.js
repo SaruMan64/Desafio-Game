@@ -1,5 +1,6 @@
 import { setTimer, clearOneTimer } from "./timer.js";
 import { dishMade } from "../script.js";
+import { sound } from "./audio.js";
 
 let $ingredients = $(".ingredients"),
     // $orderList = $("#order-list"),
@@ -73,7 +74,7 @@ $stove.droppable({
     drop: function (event, ui) {
         if ($(this)[0].innerHTML == "") {
             // Se vazio pode adicionar macarrão para cozimento
-
+            sound.playMusic("cooking");
             $(this).append(
                 $(`<div class="itemNoddle"></div>`)
             );
@@ -97,6 +98,7 @@ $stove.droppable({
                         containment: "#table2",
                         revert: "invalid",
                         start: function (event, ui) {
+                            sound.pausedMusic("cooking");
                             $(this).html(`<img class="foods" src="./images/foods/noddle3.png">`)
                             $(this).parent().css("background", "var(--pan-off)")
                             // Stop the stove timer
@@ -141,6 +143,7 @@ $pot.droppable({
     // Muda cor do fundo para a id setada "id=color"
     accept: "#broth > li",
     drop: function (event, ui) {
+        sound.playMusic("put-broth");
         console.log(ui.draggable[0].id);
         if($("#pot").css("background-image").includes("noddle") || $("#outer-pot").css("background-image").includes("noddle")) {
             $("#outer-pot").css("background-image", `url("./images/bowl-with-noddle-and-broth/bowl-with-noddle-and-${ui.draggable[0].id}.png")`);
