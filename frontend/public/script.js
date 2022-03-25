@@ -59,13 +59,13 @@ function endGame() {
 
 $(document).ready(function () {
     let $name;
-    $("#name-player").html($name);
     //Opening
     /*  openingHTML();
     $('#btn').click(function () {
-    sound.playMusic("sakuya");
-         $name = $("#inputName").val();
-         openingAJAX();
+        sound.playMusic("sakuya");
+        $name = $("#inputName").val();
+        $("#name-player").html($name);
+        openingAJAX();
     }); */
     let startTime = Date.now();
     generalTime.time = 0;
