@@ -200,3 +200,147 @@
 .close-modal:hover {
   background-color: black;
 }
+
+#credits-modal > div:last-child {
+  justify-content: space-between;
+}
+
+#credits-modal > div:last-child > p {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vmin;
+  font-family: "Antonio-wght";
+  margin-bottom: 1vmin;
+}
+
+#credits-modal > div:last-child > div {
+  height: 30%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  column-gap: 9vmin;
+}
+
+#credits-modal > div:last-child > div:last-child {
+  justify-content: space-between;
+}
+
+#credits-modal a {
+  height: 18.5vmin;
+  width: 18.5vmin;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 0.5vmin solid black;
+  text-decoration: none;
+}
+
+#credits-modal a::before {
+  position: relative;
+  top: 18.5vmin;
+  font-size: 2.5vmin;
+  font-family: "Antonio-wght";
+  color: black;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+#credits-modal .david {
+  background: url("../images/devs/david-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .david::before {
+  content: "DAVID GOMES";
+}
+
+#credits-modal .david:hover {
+  background: url("../images/devs/david.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .luan {
+  background: url("../images/devs/luan-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .luan:hover {
+  background: url("../images/devs/luan.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .luan::before {
+  content: "LUAN RAABE";
+}
+
+#credits-modal .joao {
+  background: url("../images/devs/joao-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .joao:hover {
+  background: url("../images/devs/joao.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .joao::before {
+  content: "JOÃO CÂNDIDO";
+}
+
+#credits-modal .samuel {
+  background: url("../images/devs/samuel-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .samuel:hover {
+  background: url("../images/devs/samuel.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .samuel::before {
+  content: "SAMUEL RODRIGUES";
+}
+
+#credits-modal .yete {
+  background: url("../images/devs/yete-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .yete:hover {
+  background: url("../images/devs/yete.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .yete::before {
+  content: "YETÉ LABARCA";
+}
+
+#credits-modal .nubia {
+  background: url("../images/devs/nubia-desenho.png") no-repeat center/auto 95%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+#credits-modal .nubia:hover {
+  background: url("../images/devs/nubia.jpg") no-repeat center/auto 100%;
+}
+
+#credits-modal .nubia::before {
+  content: "NÚBIA ALMEIDA";
+}
+
+#credits-modal .edtech {
+  background: url("../images/others/edtech.webp") no-repeat center/95% auto,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .edtech::before {
+  content: "REALIZADOR";
+}
+
+#credits-modal .github {
+  background: url("../images/menu/github.png") no-repeat center top/auto 97%,
+    linear-gradient(rgba(230, 198, 93, 0.8) 0%, rgba(230, 198, 93, 0.8) 100%);
+}
+
+#credits-modal .github::before {
+  content: "REPOSITÓRIO GITHUB";
+}

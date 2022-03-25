@@ -15,6 +15,7 @@ const getOrder = require("./modules/getOrder.js");
 const register = require("./modules/register.js");
 const score = require("./modules/score.js");
 const ranking = require("./modules/ranking.js");
+const check = require("./modules/check.js");
 
 app.get("/order", (req, res) => {
   res.send(getOrder.getOrder());
@@ -32,6 +33,11 @@ app.get("/register", function(req, res) {
   const name = Object.values(req.query)[0];
   const newPlayer = register(name);
   res.send(newPlayer);
+});
+
+app.get("/check", function(req, res) {
+  // res.send(req.query);
+  res.send(check(req.query.name));
 });
 
 app.get("/score", function(req, res) {
