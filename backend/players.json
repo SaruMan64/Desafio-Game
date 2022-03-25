@@ -6,130 +6,32 @@
   },
   {
     "id": 2,
-    "name": "luan",
+    "name": "Luan",
     "score": 0
   },
   {
     "id": 3,
-    "name": "luan1",
+    "name": "João",
     "score": 0
   },
   {
     "id": 4,
-    "name": "Yeté",
-    "score": 8001
+    "name": "Núbia",
+    "score": 0
   },
   {
     "id": 5,
-    "name": "joao",
+    "name": "Samuel",
     "score": 0
+  },
+  {
+    "id": 6,
+    "name": "Yeté",
+    "score": 8001
   },
   {
     "id": 6,
     "name": "PamonhaQuentin",
     "score": 0
-<<<<<<< HEAD
-  },
-  {
-    "id": 7,
-    "name": "Pamonha2",
-    "score": 0
-  },
-  {
-    "id": 8,
-    "name": "asdg",
-    "score": 0
-  },
-  {
-    "id": 9,
-    "name": "asdfgh",
-    "score": 0
-  },
-  {
-    "id": 10,
-    "name": "ssdd",
-    "score": 0
-  },
-  {
-    "id": 11,
-    "name": "asdasd",
-    "score": 0
-  },
-  {
-    "id": 12,
-    "name": "abc",
-    "score": 0
-  },
-  {
-    "id": 13,
-    "name": "bcd",
-    "score": 0
-  },
-  {
-    "id": 14,
-    "name": "Soueu",
-    "score": 0
-  },
-  {
-    "id": 15,
-    "name": "abcd",
-    "score": 0
-  },
-  {
-    "id": 16,
-    "name": "abcde",
-    "score": 0
-  },
-  {
-    "id": 17,
-    "name": "abcdef",
-    "score": 0
-  },
-  {
-    "id": 18,
-    "name": "ttfgghdghd",
-    "score": 0
-  },
-  {
-    "id": 19,
-    "name": "vbdghdrf",
-    "score": 0
-  },
-  {
-    "id": 20,
-    "name": "dsfjhhkjnmm",
-    "score": 0
-  },
-  {
-    "id": 21,
-    "name": "pojhjh",
-    "score": 0
-  },
-  {
-    "id": 22,
-    "name": "fgvnbnvm",
-    "score": 0
-  },
-  {
-    "id": 23,
-    "name": "mbvnmkjgh",
-    "score": 0
-  },
-  {
-    "id": 24,
-    "name": "jkgjnkmb",
-    "score": 0
-  },
-  {
-    "id": 25,
-    "name": "jgbvk",
-    "score": 0
-  },
-  {
-    "id": 26,
-    "name": "nbhnhnh",
-    "score": 0
-=======
->>>>>>> 17fd9005441034b10f4514aa7ac5385e4109fc9c
   }
 ]

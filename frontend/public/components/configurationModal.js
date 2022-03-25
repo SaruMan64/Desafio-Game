@@ -94,35 +94,41 @@ function showRankingModal() {
         $("#ranking-modal > div:last-child").append(closeButton[0]);
     }, 100);
 }
-/* 
+
 function showCreditsModal() {
     let div = $(
-        `<div id="credits-modal" class="modal" style="position: fixed;">
-            <div>
+        `<div id="credits-modal" class="modal-bigger" style="position: fixed;">
+            <div class="line-head">
                 <h1>Créditos</h1>
                 <button class="close-modal"></button>
             </div>
             <div id="all-creators">
-                <div id="creators-text">
+                <p id="creators-text">
                     Agradecemos a todos por jogar nosso jogo!
+                </p>
+                <div>
+                    <a href="https://github.com/DavidGBirth" target="_blank" class="david"></a>
+                    <a href="https://github.com/LuanRaabe" target="_blank" class="luan"></a>
+                    <a href="https://github.com/JonzCandy" target="_blank" class="joao"></a>
                 </div>
-                <div id="images-of-creators">
-                    <img src="../images/order/client-9-front.png" />
-                    <img src="../images/order/client-5-front.png" />
-                    <img src="../images/order/client-6-front.png" />
-                    <img src="../images/order/client-7-front.png" />
-                    <img src="../images/order/client-8-front.png" />
-                    <img src="../images/order/chef-3.png" />
+                <div>
+                <a href="https://github.com/SaruMan64" target="_blank" class="yete"></a>
+                <a href="https://github.com/SamuelHVRodrigues" target="_blank" class="samuel"></a>
+            </div>
+                <div>
+                    <a href="https://www.alphaedtech.org.br" target="_blank" class="edtech"></a>
+                    <a href="https://github.com/nubialmeida" target="_blank" class="nubia"></a>
+                    <a href="https://github.com/SaruMan64/Desafio-Game" target="_blank" class="github"></a>
                 </div>
             </div>
         </div>`
     );
     $(".popup-overlay").append(div[0]);
 }
- */
+
 function showEndOrderModal(clientNumber, scoreGeral) {
     let facialExpression;
-    if(scoreGeral.totalScore >= 150 ) {
+    if (scoreGeral.totalScore >= 150) {
         facialExpression = "front";
     } else {
         facialExpression = "sad";
@@ -239,8 +245,10 @@ $(document).on("click", "#ranking", function () {
 });
 
 $(document).on("click", "#credits", function () {
-    showCreditsModal(2, {"cookingScore": 1, "brothScore": 1, "ingredientsScore": 1,
-    "orderScore": 1, "totalScore": 140});
+    showCreditsModal(2, {
+        "cookingScore": 1, "brothScore": 1, "ingredientsScore": 1,
+        "orderScore": 1, "totalScore": 140
+    });
 });
 
 $(document).on("click", ".close-modal", function (event) {
