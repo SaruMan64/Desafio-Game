@@ -344,3 +344,57 @@
 #credits-modal .github::before {
   content: "REPOSITÓRIO GITHUB";
 }
+
+#info-score h2 {
+  font-family: "Antonio-wght";
+  color: white;
+  font-size: 4vmin;
+}
+
+#info-score .show-score {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  font-size: 3vmin;
+  font-family: "Antonio-wght";
+  color: white;
+}
+
+#info-score .show-score p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#info-score #total-score,
+#info-score #final-score {
+  border-top: 0.5vmin solid white;
+  margin-top: 1vmin;
+}
+
+#info-score button {
+  padding: 0 1vmin 0 1vmin;
+  height: 6vmin;
+  background: linear-gradient(
+      rgba(230, 198, 93, 0.8) 0%,
+      rgba(230, 198, 93, 0.8) 100%
+    ),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 0.5vmin solid black;
+  cursor: pointer;
+  font-size: 3vmin;
+  font-family: "Antonio-wght";
+}
+
+#info-score button:hover {
+  background: linear-gradient(
+      rgba(230, 198, 93, 1) 0%,
+      rgba(230, 198, 93, 1) 100%
+    ),
+    linear-gradient(194.69deg, #b83d2e 0%, #c26d33 100%);
+}

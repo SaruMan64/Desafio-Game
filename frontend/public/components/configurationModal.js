@@ -127,10 +127,9 @@ function showCreditsModal() {
 }
 
 function showEndOrderModal(clientNumber, scoreGeral) {
-<<<<<<< HEAD
     if ($("body").find(".popup-overlay").length == 0) {
         let facialExpression;
-        if(scoreGeral.totalScore >= 150 ) {
+        if (scoreGeral.totalScore >= 150) {
             facialExpression = "front";
         } else {
             facialExpression = "sad";
@@ -147,12 +146,12 @@ function showEndOrderModal(clientNumber, scoreGeral) {
                                 </div>
                                 <div id="info-score">
                                     <h2>Pontuação</h2>
-                                    <div>
-                                        <p id="cooking-score">Cozimento: ${scoreGeral.cookingScore} pontos</p>
-                                        <p id="broth-score">Caldo: ${scoreGeral.brothScore} pontos</p>
-                                        <p id="ingredients-score">Ingredientes: ${scoreGeral.ingredientsScore} pontos</p>
-                                        <p id="order-score">Pontuação do pedido: ${scoreGeral.orderScore} pontos</p>
-                                        <p id="total-score">Pontuação total: ${scoreGeral.totalScore} pontos</p>
+                                    <div class="show-score">
+                                        <p id="cooking-score"><strong>Cozimento:</strong> ${scoreGeral.cookingScore} pontos</p>
+                                        <p id="broth-score"><strong>Caldo:</strong> ${scoreGeral.brothScore} pontos</p>
+                                        <p id="ingredients-score"><strong>Ingredientes:</strong> ${scoreGeral.ingredientsScore} pontos</p>
+                                        <p id="order-score"><strong>Pontuação do pedido:</strong> ${scoreGeral.orderScore} pontos</p>
+                                        <p id="total-score"><strong>Pontuação total:</strong> ${scoreGeral.totalScore} pontos</p>
                                     </div>
                                     <div class="line-head close-menu">
                                         <button id="next-order">Próximo pedido</button>
@@ -162,13 +161,12 @@ function showEndOrderModal(clientNumber, scoreGeral) {
                         </div>
                     </div>`);
         $("body").append(div[0]);
-=======
-    let facialExpression;
-    if (scoreGeral.totalScore >= 150) {
-        facialExpression = "front";
-    } else {
-        facialExpression = "sad";
->>>>>>> 5252a44c16dd95b95168b33e30d374fa261e9cdd
+        /*let facialExpression;
+        if (scoreGeral.totalScore >= 150) {
+            facialExpression = "front";
+        } else {
+            facialExpression = "sad";
+        } */
     }
 }
 
@@ -184,11 +182,11 @@ function showEndGameModal(totalOrderScore = 0, acceptancePointing = 0, spidersPo
                         <div>
                             <div id="info-score">
                                 <h2>Pontuação</h2>
-                                <div>
-                                    <p id="total-score-order">Pontuação dos pedidos: ${totalOrderScore} pontos</p>
-                                    <p id="acceptance-pointing">Bônus de pedidos aceitos: ${acceptancePointing} pontos</p>
-                                    <p id="spider-score">Bônus das aranhas: ${spidersPointing} pontos</p>
-                                    <p id="final-score">Pontuação final: ${finalScore} pontos</p>
+                                <div class="show-score">
+                                    <p id="total-score-order"><strong>Pontuação dos pedidos:</strong> ${totalOrderScore} pontos</p>
+                                    <p id="acceptance-pointing"><strong>Bônus de pedidos aceitos:</strong> ${acceptancePointing} pontos</p>
+                                    <p id="spider-score"><strong>Bônus das aranhas:</strong> ${spidersPointing} pontos</p>
+                                    <p id="final-score"><strong>Pontuação final:</strong> ${finalScore} pontos</p>
                                 </div>
                                 <div class="btn-modal">
                                     <button id="see-ranking">Ver Ranking</button>
@@ -253,6 +251,10 @@ $(document).on("click", "#ranking", function () {
     showRankingModal();
 });
 
+$(document).on("click", "#see-ranking", function () {
+    showRankingModal();
+});
+
 $(document).on("click", "#credits", function () {
     showCreditsModal(2, {
         "cookingScore": 1, "brothScore": 1, "ingredientsScore": 1,
@@ -269,6 +271,7 @@ $(document).on("click", "#exit-no", function (event) {
 });
 
 $(document).on("click", "#next-order", function (event) {
+    $("#game").css("background", "var(--order)");
     console.log("ihuu");
     closeThisModal(event.target);
     $("#game").tabs({

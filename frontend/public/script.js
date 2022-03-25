@@ -200,14 +200,10 @@ $(document).ready(function () {
             $("#game").tabs({ active: 2 });
         } else if ($("#droppable div").length < 5) {
             // If there are not enough ingredients
-<<<<<<< HEAD
-            alert(`A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length} ingredientes`);
-=======
             alert(
                 `A entrega não pôde ser concluída. Adicione pelo menos ${5 - $("#droppable div").length
                 } ingredientes`
             );
->>>>>>> 5252a44c16dd95b95168b33e30d374fa261e9cdd
         } else if ($("#order-completed").html() === "") {
             // If an order was not selected
             alert("A entrega não pôde ser concluída. Especifique o pedido.");
